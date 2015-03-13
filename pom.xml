@@ -34,7 +34,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <version.wildfly.self-contained>1.0.0.Beta1-SNAPSHOT</version.wildfly.self-contained>
+        <version.wildfly-boot>1.0.0.Alpha1-SNAPSHOT</version.wildfly-boot>
         <maven.min.version>3.2.1</maven.min.version>
     </properties>
 
@@ -56,38 +56,15 @@
               </configuration>
             </plugin>
             <plugin>
-              <artifactId>maven-dependency-plugin</artifactId>
-              <executions>
-                <execution>
-                  <phase>prepare-package</phase>
-                  <goals>
-                    <goal>copy-dependencies</goal>
-                  </goals>
-                  <configuration>
-                    <useRepositoryLayout>true</useRepositoryLayout>
-                  </configuration>
-                </execution>
-              </executions>
-            </plugin>
-            <plugin>
-              <artifactId>maven-assembly-plugin</artifactId>
-              <version>2.5.3</version>
+              <groupId>org.wildfly.boot</groupId>
+              <artifactId>wildfly-boot-plugin</artifactId>
+              <version>${version.wildfly-boot}</version>
               <executions>
                 <execution>
                   <phase>package</phase>
                   <goals>
-                    <goal>single</goal>
+                    <goal>create</goal>
                   </goals>
-                  <configuration>
-                    <descriptors>
-                      <descriptor>src/main/assembly/fatjar.xml</descriptor>
-                    </descriptors>
-                    <archive>
-                      <manifest>
-                        <mainClass>org.wildfly.selfcontained.Main</mainClass>
-                      </manifest>
-                    </archive>
-                  </configuration>
                 </execution>
               </executions>
             </plugin>
@@ -95,68 +72,12 @@
     </build>
 
     <dependencies>
-<!--
         <dependency>
-            <groupId>org.wildfly.core</groupId>
-            <artifactId>wildfly-self-contained</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
--->
-
-        <dependency>
-          <groupId>org.wildfly.self-contained</groupId>
-          <artifactId>wildfly-self-contained</artifactId>
-          <version>${version.wildfly.self-contained}</version>
+          <groupId>org.wildfly.boot</groupId>
+          <artifactId>wildfly-boot-web</artifactId>
+          <version>${version.wildfly-boot}</version>
           <scope>provided</scope>
         </dependency>
-        <!-- Core feature pack -->
-<!--
-        <dependency>
-            <groupId>org.wildfly.core</groupId>
-            <artifactId>wildfly-core-feature-pack</artifactId>
-            <type>pom</type>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.wildfly.core</groupId>
-            <artifactId>wildfly-core-feature-pack</artifactId>
-            <type>zip</type>
-            <version>${project.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-            <scope>provided</scope>
-        </dependency>
--->
-
-        <!-- Web feature pack -->
-<!--
-        <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-web-feature-pack</artifactId>
-            <type>pom</type>
-            <version>9.0.0.Alpha1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-web-feature-pack</artifactId>
-            <type>zip</type>
-            <version>9.0.0.Alpha1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-            <scope>provided</scope>
-        </dependency>
--->
     </dependencies>
 
     <repositories>
