@@ -1,4 +1,4 @@
-package org.projectodd.myapp;
+package org.wildfly.boot.examples.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
