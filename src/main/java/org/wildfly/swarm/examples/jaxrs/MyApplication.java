@@ -1,8 +1,7 @@
-package org.wildfly.boot.examples.jaxrs;
+package org.wildfly.swarm.examples.jaxrs;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-import java.util.Set;
 
 /**
  * @author Bob McWhirter

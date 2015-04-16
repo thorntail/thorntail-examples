@@ -1,4 +1,4 @@
-package org.wildfly.boot.examples.jaxrs;
+package org.wildfly.swarm.examples.jaxrs;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
