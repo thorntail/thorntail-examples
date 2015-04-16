@@ -1,4 +1,4 @@
-package org.wildfly.boot.examples.servlet;
+package org.wildfly.swarm.examples.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

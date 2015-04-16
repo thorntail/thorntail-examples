@@ -11,7 +11,7 @@
 
     <servlet>
         <servlet-name>MyServlet</servlet-name>
-        <servlet-class>org.wildfly.boot.examples.servlet.MyServlet</servlet-class>
+        <servlet-class>org.wildfly.swarm.examples.servlet.MyServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

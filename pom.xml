@@ -24,8 +24,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.wildfly.boot.examples</groupId>
-    <artifactId>wildfly-boot-example-servlet</artifactId>
+    <groupId>org.wildfly.swarm.examples</groupId>
+    <artifactId>wildfly-swarm-example-servlet</artifactId>
     <version>1.0.0.Beta1-SNAPSHOT</version>
 
     <name>My App</name>
@@ -34,7 +34,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <version.wildfly-boot>1.0.0.Alpha1-SNAPSHOT</version.wildfly-boot>
+        <version.wildfly-swarm>1.0.0.Alpha1-SNAPSHOT</version.wildfly-swarm>
         <maven.min.version>3.2.1</maven.min.version>
     </properties>
 
@@ -45,9 +45,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
             <plugin>
-              <groupId>org.wildfly.boot</groupId>
-              <artifactId>wildfly-boot-plugin</artifactId>
-              <version>${version.wildfly-boot}</version>
+              <groupId>org.wildfly.swarm</groupId>
+              <artifactId>wildfly-swarm-plugin</artifactId>
+              <version>${version.wildfly-swarm}</version>
               <executions>
                 <execution>
                   <phase>package</phase>
@@ -62,9 +62,9 @@
 
     <dependencies>
         <dependency>
-          <groupId>org.wildfly.boot</groupId>
-          <artifactId>wildfly-boot-web</artifactId>
-          <version>${version.wildfly-boot}</version>
+          <groupId>org.wildfly.swarm</groupId>
+          <artifactId>wildfly-swarm-undertow</artifactId>
+          <version>${version.wildfly-swarm}</version>
           <scope>provided</scope>
         </dependency>
     </dependencies>
