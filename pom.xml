@@ -24,8 +24,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.wildfly.boot.examples</groupId>
-    <artifactId>wildfly-boot-example-jaxrs-shrinkwrap</artifactId>
+    <groupId>org.wildfly.swarm.examples</groupId>
+    <artifactId>wildfly-swarm-example-jaxrs-shrinkwrap</artifactId>
     <version>1.0.0.Beta1-SNAPSHOT</version>
 
     <name>My App</name>
@@ -34,7 +34,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly-boot>1.0.0.Alpha1-SNAPSHOT</version.wildfly-boot>
+        <version.wildfly-swarm>1.0.0.Alpha1-SNAPSHOT</version.wildfly-swarm>
         <maven.min.version>3.2.1</maven.min.version>
     </properties>
 
@@ -50,15 +50,15 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.wildfly.boot.examples.jaxrs.shrinkwrap.Main</mainClass>
+                            <mainClass>org.wildfly.swarm.examples.jaxrs.shrinkwrap.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
             <plugin>
-              <groupId>org.wildfly.boot</groupId>
-              <artifactId>wildfly-boot-plugin</artifactId>
-              <version>${version.wildfly-boot}</version>
+              <groupId>org.wildfly.swarm</groupId>
+              <artifactId>wildfly-swarm-plugin</artifactId>
+              <version>${version.wildfly-swarm}</version>
               <executions>
                 <execution>
                   <phase>package</phase>
@@ -73,16 +73,21 @@
 
     <dependencies>
         <dependency>
-          <groupId>org.wildfly.boot</groupId>
-          <artifactId>wildfly-boot-jaxrs</artifactId>
-          <version>${version.wildfly-boot}</version>
+          <groupId>org.wildfly.swarm</groupId>
+          <artifactId>wildfly-swarm-jaxrs</artifactId>
+          <version>${version.wildfly-swarm}</version>
           <scope>provided</scope>
         </dependency>
         <dependency>
-          <groupId>org.wildfly.boot</groupId>
-          <artifactId>wildfly-boot-shrinkwrap</artifactId>
-          <version>${version.wildfly-boot}</version>
+          <groupId>org.wildfly.swarm</groupId>
+          <artifactId>wildfly-swarm-shrinkwrap</artifactId>
+          <version>${version.wildfly-swarm}</version>
           <scope>provided</scope>
+        </dependency>
+        <dependency>
+          <groupId>joda-time</groupId>
+          <artifactId>joda-time</artifactId>
+          <version>2.7</version>
         </dependency>
     </dependencies>
 

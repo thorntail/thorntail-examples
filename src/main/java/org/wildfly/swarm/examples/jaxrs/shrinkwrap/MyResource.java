@@ -1,4 +1,6 @@
-package org.wildfly.boot.examples.jaxrs.shrinkwrap;
+package org.wildfly.swarm.examples.jaxrs.shrinkwrap;
+
+import org.joda.time.DateTime;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -13,6 +15,6 @@ public class MyResource {
     @GET
     @Produces( "text/plain" )
     public String get() {
-        return "Howdy!";
+        return "Howdy at " + new DateTime();
     }
 }
