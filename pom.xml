@@ -25,7 +25,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-example-datasource-shrinkwrap</artifactId>
+    <artifactId>wildfly-swarm-example-datasource-deployment</artifactId>
     <version>1.0.0.Beta1-SNAPSHOT</version>
 
     <name>My App</name>
@@ -50,7 +50,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.wildfly.swarm.examples.jaxrs.shrinkwrap.Main</mainClass>
+                            <mainClass>org.wildfly.swarm.examples.ds.deployment.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

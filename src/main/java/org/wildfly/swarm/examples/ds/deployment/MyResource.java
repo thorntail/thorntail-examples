@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.jaxrs.shrinkwrap;
+package org.wildfly.swarm.examples.ds.deployment;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

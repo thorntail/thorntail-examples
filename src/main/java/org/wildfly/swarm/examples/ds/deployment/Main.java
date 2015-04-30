@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.jaxrs.shrinkwrap;
+package org.wildfly.swarm.examples.ds.deployment;
 
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.datasources.Datasource;
@@ -33,12 +33,15 @@ public class Main {
 
         Container container = new Container();
 
-        JaxRsDeployment appDeployment = new JaxRsDeployment();
-        appDeployment.addResource(MyResource.class);
+        // Start the container
+        container.start();
 
         // Create a JDBC driver deployment using maven groupId:artifactId
         // The version is resolved from your pom.xml's <dependency>
         DriverDeployment driverDeployment = new DriverDeployment( "com.h2database:h2", "h2" );
+
+        // Deploy the JDBC driver
+        container.deploy(driverDeployment);
 
         // Create a DS deployment
         DatasourceDeployment dsDeployment = new DatasourceDeployment(new Datasource("ExampleDS")
@@ -47,17 +50,15 @@ public class Main {
                 .authentication("sa", "sa")
         );
 
-        // Start the container
-        container.start();
-
-        // Deploy the JDBC driver
-        container.deploy(driverDeployment);
-
         // Deploy the datasource
         container.deploy( dsDeployment );
 
+
+        JaxRsDeployment appDeployment = new JaxRsDeployment();
+        appDeployment.addResource(MyResource.class);
+
         // Deploy your app
-        container.deploy( appDeployment );
+        container.deploy(appDeployment);
 
     }
 }
