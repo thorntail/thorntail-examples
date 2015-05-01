@@ -89,6 +89,12 @@
           <version>${version.wildfly-swarm}</version>
           <scope>provided</scope>
         </dependency>
+        <dependency>
+          <groupId>org.wildfly.swarm</groupId>
+          <artifactId>wildfly-swarm-msc</artifactId>
+          <version>${version.wildfly-swarm}</version>
+          <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
