@@ -34,7 +34,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <version.wildfly-swarm>1.0.0.Alpha1-SNAPSHOT</version.wildfly-swarm>
+        <version.wildfly-swarm>1.0.0.Alpha1</version.wildfly-swarm>
         <maven.min.version>3.2.1</maven.min.version>
     </properties>
 
