@@ -40,7 +40,7 @@ This dependency provides the JAX-RS APIs to your application, so the
 project does *not* need to specify those.
 
 Additional application dependencies (in this case `joda-time`) can be
-specified and will be included in the normal `.war. construction and available
+specified and will be included in the normal `.war` construction and available
 within the WildFly Swarm application `.jar`.
 
 ## Build
