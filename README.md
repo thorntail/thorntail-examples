@@ -88,9 +88,6 @@ configure the container and deploy the resources programatically.
     import org.wildfly.swarm.datasources.Driver;
     import org.wildfly.swarm.jaxrs.JaxRsDeployment;
     
-    /**
-     * @author Bob McWhirter
-     */
     public class Main {
     
         public static void main(String[] args) throws Exception {
