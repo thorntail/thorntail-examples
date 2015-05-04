@@ -2,7 +2,6 @@ package org.wildfly.swarm.examples.jaxrs.shrinkwrap;
 
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JaxRsDeployment;
-import org.wildfly.swarm.logging.LoggingSubsystem;
 
 /**
  * @author Bob McWhirter
