@@ -1,4 +1,4 @@
-# Datasource via Subsystem/Fraction
+# Datasource via Deployment.
 
 This example builds upon the JAX-RS/ShrinkWrap example to also
 deploy a JDBC datasource as an additional deployment.
