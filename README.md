@@ -128,7 +128,7 @@ named in the constructor).
 
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-jaxrs-shrinkwrap-1.0.0.Beta1-SNAPSHOT-swarm.jar
+    java -jar ./target/wildfly-swarm-example-messaging-1.0.0.Beta1-SNAPSHOT-swarm.jar
 
 
 ## Use
