@@ -4,7 +4,7 @@ This examples uses JAX-RS resource implementations and deploys
 them through a user-provided `main()` programatically without
 construction a `.war` file during the build.
 
-## Project `pomx.xml`
+## Project `pom.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.
 
