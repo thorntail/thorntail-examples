@@ -8,6 +8,9 @@ the driver be a part of the JBoss Modules module tree. Given
 that, the H2 database is really the only easy one to use
 at this time.
 
+> Please raise any issues found with this example on the main project:
+> https://github.com/wildfly-swarm/wildfly-swarm/issues
+
 ## Project `pomx.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.
@@ -41,7 +44,7 @@ jar.
 
 Additionally, the usual `maven-jar-plugin` is provided configuration
 to indicate which of our own classes should be used for the `main()`
-method. 
+method.
 
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -87,12 +90,12 @@ configure the container and deploy the resources programatically.
     import org.wildfly.swarm.datasources.DatasourcesFraction;
     import org.wildfly.swarm.datasources.Driver;
     import org.wildfly.swarm.jaxrs.JaxRsDeployment;
-    
+
     public class Main {
-    
+
         public static void main(String[] args) throws Exception {
             Container container = new Container();
-    
+
             container.subsystem(new DatasourcesFraction()
                             .driver(new Driver("h2")
                                     .xaDatasourceClassName("org.h2.jdbcx.JdbcDataSource")
@@ -102,13 +105,13 @@ configure the container and deploy the resources programatically.
                                     .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
                                     .authentication("sa", "sa"))
             );
-    
-    
+
+
             container.start();
-    
+
             JaxRsDeployment appDeployment = new JaxRsDeployment();
             appDeployment.addResource(MyResource.class);
-    
+
             container.deploy(appDeployment);
         }
     }
@@ -130,7 +133,7 @@ The resource looks up the Datasource through JNDI at run-time:
 
     @Path( "/" )
     public class MyResource {
-    
+
         @GET
         @Produces( "text/plain" )
         public String get() throws NamingException, SQLException {
@@ -157,7 +160,3 @@ The resource looks up the Datasource through JNDI at run-time:
 ## Use
 
     http://localhost:8080/
-
-
-
-
