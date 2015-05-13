@@ -1,8 +1,11 @@
 # JBoss MSC Example
 
 This example takes a simple `.jar` build and deploys
-JBoss MSC (Modular Service Container) services by 
+JBoss MSC (Modular Service Container) services by
 instances from a user-provided `main()`.
+
+> Please raise any issues found with this example on the main project:
+> https://github.com/wildfly-swarm/wildfly-swarm/issues
 
 ## Project `pom.xml`
 
@@ -30,7 +33,7 @@ create the runnable `.jar`.
 
 Additionally, the usual `maven-jar-plugin` is provided configuration
 to indicate which of our own classes should be used for the `main()`
-method. 
+method.
 
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -65,19 +68,19 @@ once they are deployed into the container.
 
     import org.wildfly.swarm.container.Container;
     import org.wildfly.swarm.msc.ServiceDeployment;
-    
+
     public class Main {
-    
+
         public static void main(String[] args) throws Exception {
             Container container = new Container();
-    
+
             container.start();
-    
+
             ServiceDeployment deployment = new ServiceDeployment();
             deployment.addService( new MyService("hi!" ) );
             deployment.addService( new MyService("howdy!" ) );
             container.deploy( deployment );
-    
+
             deployment = new ServiceDeployment();
             deployment.addService( new MyService("hi #2!" ) );
             deployment.addService( new MyService("howdy #2!" ) );
@@ -123,9 +126,3 @@ Watch the console for messages on STDERR.
     13:20:41,929 ERROR [stderr] (Thread-22) hi!
     13:20:41,952 ERROR [stderr] (Thread-23) hi #2!
     13:20:41,952 ERROR [stderr] (Thread-24) howdy #2!
-
-
-
-
-
-
