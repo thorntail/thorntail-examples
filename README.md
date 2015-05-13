@@ -3,6 +3,9 @@
 This example takes a normal JAX-RS and CDI build, and wraps it into
 a `-swarm` runnable jar.
 
+> Please raise any issues found with this example on the main project:
+> https://github.com/wildfly-swarm/wildfly-swarm/issues
+
 ## Project `pom.xml`
 
 This project is a traditional JAX-RS and CDI project, with maven packaging
@@ -49,7 +52,7 @@ within the WildFly Swarm application `.jar`.
 
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-jaxrs-cdi-1.0.0.Beta1-SNAPSHOT-swarm.jar 
+    java -jar ./target/wildfly-swarm-example-jaxrs-cdi-1.0.0.Beta1-SNAPSHOT-swarm.jar
 
 ## Use
 
