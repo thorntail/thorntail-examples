@@ -3,6 +3,9 @@
 This example builds upon the JAX-RS/ShrinkWrap example to also
 deploy a JDBC datasource as an additional deployment.
 
+> Please raise any issues found with this example on the main project:
+> https://github.com/wildfly-swarm/wildfly-swarm/issues
+
 ## Project `pomx.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.
@@ -31,7 +34,7 @@ jar.
 
 Additionally, the usual `maven-jar-plugin` is provided configuration
 to indicate which of our own classes should be used for the `main()`
-method. 
+method.
 
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -82,36 +85,36 @@ it deploys the JDBC driver jar using simplified Maven GAV (no version is require
 and deploys a datasource.
 
     package org.wildfly.swarm.examples.ds.deployment;
-    
+
     import org.wildfly.swarm.container.Container;
     import org.wildfly.swarm.datasources.Datasource;
     import org.wildfly.swarm.datasources.DatasourceDeployment;
     import org.wildfly.swarm.datasources.DriverDeployment;
     import org.wildfly.swarm.jaxrs.JaxRsDeployment;
-    
+
     public class Main {
-    
+
         public static void main(String[] args) throws Exception {
-    
+
             Container container = new Container();
-    
+
             container.start();
-    
+
             DriverDeployment driverDeployment = new DriverDeployment( "com.h2database:h2", "h2" );
-    
+
             container.deploy(driverDeployment);
-    
+
             DatasourceDeployment dsDeployment = new DatasourceDeployment(new Datasource("ExampleDS")
                     .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
                     .driver("h2" )
                     .authentication("sa", "sa")
             );
-    
+
             container.deploy( dsDeployment );
-    
+
             JaxRsDeployment appDeployment = new JaxRsDeployment();
             appDeployment.addResource(MyResource.class);
-    
+
             container.deploy(appDeployment);
         }
     }
@@ -136,7 +139,7 @@ The resource looks up the Datasource through JNDI at run-time:
 
     @Path( "/" )
     public class MyResource {
-    
+
         @GET
         @Produces( "text/plain" )
         public String get() throws NamingException, SQLException {
@@ -163,7 +166,3 @@ The resource looks up the Datasource through JNDI at run-time:
 ## Use
 
     http://localhost:8080/
-
-
-
-
