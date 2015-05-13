@@ -3,6 +3,9 @@
 This example takes a normal servlet build, and wraps it into
 a `-swarm` runnable jar.
 
+> Please raise any issues found with this example on the main project:
+> https://github.com/wildfly-swarm/wildfly-swarm/issues
+
 ## Project `pom.xml`
 
 This project is a traditional servlet project, with maven packaging
