@@ -62,3 +62,7 @@ exist.  This is used to bind the deployment to the root of the web-server,
 instead of using the `.war`'s own name as the application context.
 
     http://localhost:8080/
+
+> Be aware that you will notice an exception in the logs when accessing the page.
+> This is simply an overly verbose message from WildFly that the 'favicon.ico' file couldn't be found.
+
