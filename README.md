@@ -27,17 +27,11 @@ create the runnable `.jar`.
       </executions>
     </plugin>
 
-To define the needed parts of WildFly Swarm, the following dependencies are added
+To define the needed parts of WildFly Swarm, the following dependency is added
 
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-jaxrs</artifactId>
-        <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-weld</artifactId>
+        <artifactId>wildfly-swarm-weld-jaxrs</artifactId>
         <version>${version.wildfly-swarm}</version>
         <scope>provided</scope>
     </dependency>
