@@ -10,6 +10,9 @@ JMS destinations for use by the JAX-RS resource.
 It also deploys an MSC service to consume messages from
 the destination.  
 
+> Please raise any issues found with this example on the main project:
+> https://github.com/wildfly-swarm/wildfly-swarm/issues
+
 ## Project `pomx.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.
@@ -35,7 +38,7 @@ create the runnable `.jar`.
 
 Additionally, the usual `maven-jar-plugin` is provided configuration
 to indicate which of our own classes should be used for the `main()`
-method. 
+method.
 
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -82,12 +85,12 @@ subsystem and deploy all the pieces of the application.
     import org.wildfly.swarm.messaging.MessagingFraction;
     import org.wildfly.swarm.messaging.MessagingServer;
     import org.wildfly.swarm.msc.ServiceDeployment;
-    
+
     public class Main {
-    
+
         public static void main(String[] args) throws Exception {
             Container container = new Container();
-    
+
             container.subsystem(new MessagingFraction()
                             .server(
                                     new MessagingServer()
@@ -96,19 +99,19 @@ subsystem and deploy all the pieces of the application.
                                             .queue("my-queue")
                             )
             );
-    
+
             container.start();
-    
+
             JaxRsDeployment appDeployment = new JaxRsDeployment();
             appDeployment.addResource(MyResource.class);
-    
+
             container.deploy(appDeployment);
-    
+
             ServiceDeployment deployment = new ServiceDeployment();
             deployment.addService(new MyService("/jms/topic/my-topic" ) );
-    
+
             container.deploy( deployment );
-    
+
         }
     }
 
@@ -121,7 +124,7 @@ The container is started.
 A JAX-RS deployment based on a project class is deployed, as is an
 instance of an MSC service (which consumes messages from the destination
 named in the constructor).
-    
+
 ## Build
 
     mvn package
@@ -138,7 +141,3 @@ named in the constructor).
 On the console the MSC service will print the message it received over JMS
 
     2015-05-04 14:05:11,457 ERROR [stderr] (Thread-2 (HornetQ-client-global-threads-316630753)) received: Hello!
-
-
-
-
