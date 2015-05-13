@@ -4,6 +4,9 @@ This examples uses JAX-RS resource implementations and deploys
 them through a user-provided `main()` programatically without
 construction a `.war` file during the build.
 
+> Please raise any issues found with this example on the main project:
+> https://github.com/wildfly-swarm/wildfly-swarm/issues
+
 ## Project `pom.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.
@@ -29,7 +32,7 @@ create the runnable `.jar`.
 
 Additionally, the usual `maven-jar-plugin` is provided configuration
 to indicate which of our own classes should be used for the `main()`
-method. 
+method.
 
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -65,15 +68,15 @@ configure the container and deploy the resources programatically.
 
     import org.wildfly.swarm.container.Container;
     import org.wildfly.swarm.jaxrs.JaxRsDeployment;
-    
+
     public class Main {
-    
+
         public static void main(String[] args) throws Exception {
             Container container = new Container();
-    
+
             JaxRsDeployment deployment = new JaxRsDeployment();
             deployment.addResource(MyResource.class);
-    
+
             container.start(deployment);
         }
     }
@@ -102,7 +105,3 @@ deployment to the root URL.
 ## Use
 
     http://localhost:8080/
-
-
-
-
