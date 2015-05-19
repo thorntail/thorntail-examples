@@ -46,16 +46,6 @@ public class MyResource
 	return "Active";
     }
 
-    @Path("aa")
-	@GET
-    @Produces("text/plain")
-    public String aa() throws Exception  // dummy method name for now
-    {
-	AtomicAction A = new AtomicAction();
-
-	return "Active";
-    }
-
     @Path("begincommit")
     @GET
     @Produces("text/plain")
