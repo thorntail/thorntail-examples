@@ -30,8 +30,6 @@ import javax.transaction.UserTransaction;
 
 import javax.naming.InitialContext;
 
-import com.arjuna.ats.arjuna.AtomicAction;
-
 /**
  * @author nmcl
  */
