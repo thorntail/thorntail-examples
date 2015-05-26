@@ -1,7 +1,7 @@
 package org.wildfly.swarm.examples.jaxrs.shrinkwrap;
 
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.jaxrs.JaxRsDeployment;
+import org.wildfly.swarm.jaxrs.JAXRSDeployment;
 
 /**
  * @author Bob McWhirter
@@ -9,11 +9,13 @@ import org.wildfly.swarm.jaxrs.JaxRsDeployment;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+
         Container container = new Container();
 
-        JaxRsDeployment deployment = new JaxRsDeployment();
+        JAXRSDeployment deployment = new JAXRSDeployment( container );
         deployment.addResource(MyResource.class);
 
-        container.start(deployment);
+        container.start().deploy( deployment );
+
     }
 }
