@@ -18,13 +18,15 @@ import java.util.List;
 @Path("/employees")
 public class EmployeeController {
 
-  @Inject
-  private EmployeeService employeeService;
+    @Inject
+    private EmployeeService employeeService;
 
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public List<Employee> findAll() {
-    return employeeService.findAll();
-  }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Employee> findAll() {
+        List<Employee> results = employeeService.findAll();
+        System.err.println(results);
+        return results;
+    }
 
 }

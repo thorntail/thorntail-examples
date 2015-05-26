@@ -12,11 +12,11 @@ import java.util.List;
 @ApplicationScoped
 public class EmployeeService {
 
-  public List<Employee> findAll() {
-    return new ArrayList<Employee>() {{
-      add(new Employee(1L, "emp01"));
-      add(new Employee(2L, "emp02"));
-    }};
-  }
+    public List<Employee> findAll() {
+        return new ArrayList<Employee>() {{
+            add(new Employee(1L, "emp01"));
+            add(new Employee(2L, "emp02"));
+        }};
+    }
 
 }

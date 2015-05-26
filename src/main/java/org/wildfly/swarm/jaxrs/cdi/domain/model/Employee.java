@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Employee implements Serializable {
 
-  private Long id;
-  private String name;
+    private Long id;
+    private String name;
 
 }
