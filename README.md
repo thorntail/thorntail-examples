@@ -22,9 +22,8 @@ create the runnable `.jar`.
       <version>${version.wildfly-swarm}</version>
       <executions>
         <execution>
-          <phase>package</phase>
           <goals>
-            <goal>create</goal>
+            <goal>package</goal>
           </goals>
         </execution>
       </executions>
@@ -36,7 +35,6 @@ To define the needed parts of WildFly Swarm, a dependency is added
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-jaxrs</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
 
 This dependency provides the JAX-RS APIs to your application, so the
@@ -46,13 +44,11 @@ Additional application dependencies (in this case `joda-time`) can be
 specified and will be included in the normal `.war` construction and available
 within the WildFly Swarm application `.jar`.
 
-## Build
-
-    mvn package
-
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-jaxrs-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn package && java -jar ./target/wildfly-swarm-example-jaxrs-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn wildfly-swarm:run
+* From your IDE, run class `org.wildfly.swarm.Swarm`
 
 ## Use
 
@@ -63,6 +59,6 @@ instead of using the `.war`'s own name as the application context.
 
     http://localhost:8080/
 
-> Be aware that you will notice an exception in the logs when accessing the page.
-> This is simply an overly verbose message from WildFly that the 'favicon.ico' file couldn't be found.
+Be aware that you will notice an exception in the logs when accessing the page.
+This is simply an overly verbose message from WildFly that the 'favicon.ico' file couldn't be found.
 
