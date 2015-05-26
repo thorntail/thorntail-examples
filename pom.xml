@@ -34,25 +34,21 @@
     <packaging>war</packaging>
 
     <properties>
-        <version.wildfly-swarm>1.0.0.Alpha1</version.wildfly-swarm>
+        <version.wildfly-swarm>1.0.0.Alpha2-SNAPSHOT</version.wildfly-swarm>
         <maven.min.version>3.2.1</maven.min.version>
     </properties>
 
+
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
             <plugin>
               <groupId>org.wildfly.swarm</groupId>
               <artifactId>wildfly-swarm-plugin</artifactId>
               <version>${version.wildfly-swarm}</version>
               <executions>
                 <execution>
-                  <phase>package</phase>
                   <goals>
-                    <goal>create</goal>
+                    <goal>package</goal>
                   </goals>
                 </execution>
               </executions>
@@ -65,7 +61,6 @@
             <groupId>org.wildfly.swarm</groupId>
             <artifactId>wildfly-swarm-jaxrs</artifactId>
             <version>${version.wildfly-swarm}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>joda-time</groupId>
