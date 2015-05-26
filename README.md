@@ -53,38 +53,17 @@ jar.
       </executions>
     </plugin>
 
-<<<<<<< HEAD
-Additionally, the usual `maven-jar-plugin` is provided configuration
-to indicate which of our own classes should be used for the `main()`
-method.
-
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-            <archive>
-                <manifest>
-                    <mainClass>org.wildfly.swarm.examples.ds.subsystem.Main</mainClass>
-                </manifest>
-            </archive>
-        </configuration>
-    </plugin>
-
-=======
->>>>>>> Adjust to the latest WildFly-Swarm.
 To define the needed parts of WildFly Swarm, a few dependencies are added
 
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-jaxrs</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-datasources</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
 
 The `wildfly-swarm-jaxrs` dependency allows usage of ShrinkWrap APIs within the `main()` in addition
@@ -103,13 +82,8 @@ configure the container and deploy the resources programatically.
     import org.wildfly.swarm.datasources.Datasource;
     import org.wildfly.swarm.datasources.DatasourcesFraction;
     import org.wildfly.swarm.datasources.Driver;
-<<<<<<< HEAD
-    import org.wildfly.swarm.jaxrs.JaxRsDeployment;
-
-=======
     import org.wildfly.swarm.jaxrs.JAXRSDeployment;
     
->>>>>>> Adjust to the latest WildFly-Swarm.
     public class Main {
 
         public static void main(String[] args) throws Exception {
@@ -127,13 +101,8 @@ configure the container and deploy the resources programatically.
 
 
             container.start();
-<<<<<<< HEAD
-
-            JaxRsDeployment appDeployment = new JaxRsDeployment();
-=======
     
             JAXRSDeployment appDeployment = new JAXRSDeployment( container );
->>>>>>> Adjust to the latest WildFly-Swarm.
             appDeployment.addResource(MyResource.class);
 
             container.deploy(appDeployment);
