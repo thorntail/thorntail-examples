@@ -4,12 +4,26 @@ This example builds upon the JAX-RS/ShrinkWrap example to also
 deploy a JDBC datasource through subsystem configuration.
 
 Deploying a JDBC driver through this method requires that
-the driver be a part of the JBoss Modules module tree. Given
-that, the H2 database is really the only easy one to use
-at this time.
+the driver be a part of the JBoss Modules module tree. 
 
-> Please raise any issues found with this example on the main project:
-> https://github.com/wildfly-swarm/wildfly-swarm/issues
+Just as WildFly-Swarm can provide portions of the module tree
+through various jars, so can your own application.
+
+By creating `src/main/resources/modules/com/h2database/h2/main/module.xml`,
+this new module is made available during the boot of the app-server.
+
+The `module.xml` references the `h2.jar` through Maven coordinates:
+
+    <resources>
+        <artifact name="com.h2database:h2:${version.h2}"/>
+    </resources>
+
+The `${version.h2}` is simply a property defined in your pom.xml,
+and normal Maven resource-filtering replaces it, to avoid having
+to hard-code it.
+
+Please raise any issues found with this example on the main project:
+https://github.com/wildfly-swarm/wildfly-swarm/issues
 
 ## Project `pomx.xml`
 
@@ -27,21 +41,19 @@ jar.
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>wildfly-swarm-plugin</artifactId>
       <version>${version.wildfly-swarm}</version>
+      <configuration>
+        <mainClass>org.wildfly.swarm.examples.ds.subsystem.Main</mainClass>
+      </configuration>
       <executions>
         <execution>
-          <phase>package</phase>
           <goals>
-            <goal>create</goal>
+            <goal>package</goal>
           </goals>
-          <configuration>
-            <modules>
-              <module>com.h2database.h2</module>
-            </modules>
-          </configuration>
         </execution>
       </executions>
     </plugin>
 
+<<<<<<< HEAD
 Additionally, the usual `maven-jar-plugin` is provided configuration
 to indicate which of our own classes should be used for the `main()`
 method.
@@ -58,6 +70,8 @@ method.
         </configuration>
     </plugin>
 
+=======
+>>>>>>> Adjust to the latest WildFly-Swarm.
 To define the needed parts of WildFly Swarm, a few dependencies are added
 
     <dependency>
@@ -89,8 +103,13 @@ configure the container and deploy the resources programatically.
     import org.wildfly.swarm.datasources.Datasource;
     import org.wildfly.swarm.datasources.DatasourcesFraction;
     import org.wildfly.swarm.datasources.Driver;
+<<<<<<< HEAD
     import org.wildfly.swarm.jaxrs.JaxRsDeployment;
 
+=======
+    import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+    
+>>>>>>> Adjust to the latest WildFly-Swarm.
     public class Main {
 
         public static void main(String[] args) throws Exception {
@@ -108,8 +127,13 @@ configure the container and deploy the resources programatically.
 
 
             container.start();
+<<<<<<< HEAD
 
             JaxRsDeployment appDeployment = new JaxRsDeployment();
+=======
+    
+            JAXRSDeployment appDeployment = new JAXRSDeployment( container );
+>>>>>>> Adjust to the latest WildFly-Swarm.
             appDeployment.addResource(MyResource.class);
 
             container.deploy(appDeployment);
@@ -124,10 +148,10 @@ specific configuration we enable a driver and a datasource.
 
 JNDI names are bound automatically.
 
-A `JaxRsDeployment` is constructed, and the JAX-RS resource class is
-added to it.
+The empty container is started.
 
-The container is then started with the deployment.
+A `JAXRSDeployment` is constructed, and the JAX-RS resource class is
+added to it and then deployed to the container.
 
 The resource looks up the Datasource through JNDI at run-time:
 
@@ -149,13 +173,13 @@ The resource looks up the Datasource through JNDI at run-time:
     }
 
 
-## Build
-
-    mvn package
-
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-datasource-subsystem-1.0.0.Beta1-SNAPSHOT-swarm.jar
+You can run it many ways:
+
+* mvn package && java -jar ./target/wildfly-swarm-example-datasource-subsystem-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn wildfly-swarm:run
+* In your IDE run the `org.wildfly.swarm.examples.ds.subsystem.Main` class
 
 ## Use
 

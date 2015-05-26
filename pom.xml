@@ -34,42 +34,32 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly-swarm>1.0.0.Alpha1</version.wildfly-swarm>
+        <version.wildfly-swarm>1.0.0.Alpha2-SNAPSHOT</version.wildfly-swarm>
         <maven.min.version>3.2.1</maven.min.version>
+
+        <version.h2>1.4.187</version.h2>
     </properties>
 
     <build>
+        <resources>
+          <resource>
+            <directory>src/main/resources</directory>
+            <filtering>true</filtering>
+          </resource>
+        </resources>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>org.wildfly.swarm.examples.ds.subsystem.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
             <plugin>
               <groupId>org.wildfly.swarm</groupId>
               <artifactId>wildfly-swarm-plugin</artifactId>
               <version>${version.wildfly-swarm}</version>
+              <configuration>
+                <mainClass>org.wildfly.swarm.examples.ds.subsystem.Main</mainClass>
+              </configuration>
               <executions>
                 <execution>
-                  <phase>package</phase>
                   <goals>
-                    <goal>create</goal>
+                    <goal>package</goal>
                   </goals>
-                  <configuration>
-                    <modules>
-                      <module>com.h2database.h2</module>
-                    </modules>
-                  </configuration>
                 </execution>
               </executions>
             </plugin>
@@ -81,13 +71,17 @@
           <groupId>org.wildfly.swarm</groupId>
           <artifactId>wildfly-swarm-jaxrs</artifactId>
           <version>${version.wildfly-swarm}</version>
-          <scope>provided</scope>
         </dependency>
         <dependency>
           <groupId>org.wildfly.swarm</groupId>
           <artifactId>wildfly-swarm-datasources</artifactId>
           <version>${version.wildfly-swarm}</version>
-          <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+          <version>${version.h2}</version>
         </dependency>
     </dependencies>
 
