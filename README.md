@@ -6,7 +6,7 @@ deploy a JDBC datasource as an additional deployment.
 > Please raise any issues found with this example on the main project:
 > https://github.com/wildfly-swarm/wildfly-swarm/issues
 
-## Project `pomx.xml`
+## Project `pom.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.
 
