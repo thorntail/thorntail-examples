@@ -13,39 +13,22 @@ The project is a normal maven project with `jar` packaging, not `war`.
     <packaging>jar</packaging>
 
 The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
-create the runnable `.jar`.  Additional configuration parameters are
-added to instruct the plugin to include the `com.h2database.h2` module
-from the WildFly distribution.  This allows access to the H2 driver
-jar.
+create the runnable `.jar`.  
 
     <plugin>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>wildfly-swarm-plugin</artifactId>
       <version>${version.wildfly-swarm}</version>
+      <configuration>
+        <mainClass>org.wildfly.swarm.examples.ds.deployment.Main</mainClass>
+      </configuration>
       <executions>
         <execution>
-          <phase>package</phase>
           <goals>
-            <goal>create</goal>
+            <goal>package</goal>
           </goals>
         </execution>
       </executions>
-    </plugin>
-
-Additionally, the usual `maven-jar-plugin` is provided configuration
-to indicate which of our own classes should be used for the `main()`
-method.
-
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-            <archive>
-                <manifest>
-                    <mainClass>org.wildfly.swarm.examples.ds.deployment.Main</mainClass>
-                </manifest>
-            </archive>
-        </configuration>
     </plugin>
 
 To define the needed parts of WildFly Swarm, a few dependencies are added
@@ -54,13 +37,11 @@ To define the needed parts of WildFly Swarm, a few dependencies are added
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-jaxrs</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-datasources</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
 
 The `wildfly-swarm-jaxrs` dependency allows usage of ShrinkWrap APIs within the `main()` in addition
@@ -85,37 +66,41 @@ it deploys the JDBC driver jar using simplified Maven GAV (no version is require
 and deploys a datasource.
 
     package org.wildfly.swarm.examples.ds.deployment;
-
+    
     import org.wildfly.swarm.container.Container;
     import org.wildfly.swarm.datasources.Datasource;
     import org.wildfly.swarm.datasources.DatasourceDeployment;
     import org.wildfly.swarm.datasources.DriverDeployment;
-    import org.wildfly.swarm.jaxrs.JaxRsDeployment;
-
+    import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+    
+    /**
+     * @author Bob McWhirter
+     */
     public class Main {
-
+    
         public static void main(String[] args) throws Exception {
-
+    
             Container container = new Container();
-
+    
             container.start();
-
-            DriverDeployment driverDeployment = new DriverDeployment( "com.h2database:h2", "h2" );
-
+    
+            DriverDeployment driverDeployment = new DriverDeployment( container, "com.h2database:h2", "h2" );
+    
             container.deploy(driverDeployment);
-
-            DatasourceDeployment dsDeployment = new DatasourceDeployment(new Datasource("ExampleDS")
+    
+            DatasourceDeployment dsDeployment = new DatasourceDeployment(container, new Datasource("ExampleDS")
                     .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
                     .driver("h2" )
                     .authentication("sa", "sa")
             );
-
+    
             container.deploy( dsDeployment );
-
-            JaxRsDeployment appDeployment = new JaxRsDeployment();
+    
+            JAXRSDeployment appDeployment = new JAXRSDeployment(container);
             appDeployment.addResource(MyResource.class);
-
+    
             container.deploy(appDeployment);
+    
         }
     }
 
@@ -130,10 +115,8 @@ A datasource is then deployed using the previously-deployed driver.
 
 JNDI names are bound automatically.
 
-A `JaxRsDeployment` is constructed, and the JAX-RS resource class is
+A `JAXRSDeployment` is constructed, and the JAX-RS resource class is
 added to it.
-
-The container is then started with the deployment.
 
 The resource looks up the Datasource through JNDI at run-time:
 
@@ -155,13 +138,13 @@ The resource looks up the Datasource through JNDI at run-time:
     }
 
 
-## Build
-
-    mvn package
-
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-datasource-deployment-1.0.0.Beta1-SNAPSHOT-swarm.jar
+You can run it many ways:
+
+* mvn package && java -jar ./target/wildfly-swarm-example-datasource-deployment-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn wildfly-swarm:run
+* In your IDE run the `org.wildfly.swarm.examples.ds.deployment.Main` class
 
 ## Use
 
