@@ -1,6 +1,6 @@
 package org.wildfly.swarm.examples.jpa;
 
-import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.GET;
@@ -11,14 +11,14 @@ import javax.ws.rs.Produces;
  * @author Ken Finnigan
  */
 @Path("/")
-@Stateless
+@ApplicationScoped
 public class EmployeeResource {
 
       @PersistenceContext
       EntityManager em;
 
       @GET
-      @Produces("application/xml")
+      @Produces("application/json")
       public Employee[] get() {
           return em.createNamedQuery("Employee.findAll", Employee.class).getResultList().toArray(new Employee[0]);
       }
