@@ -34,36 +34,23 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly-swarm>1.0.0.Alpha1</version.wildfly-swarm>
+        <version.wildfly-swarm>1.0.0.Alpha2-SNAPSHOT</version.wildfly-swarm>
         <maven.min.version>3.2.1</maven.min.version>
     </properties>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>org.wildfly.swarm.examples.transactions.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
               <groupId>org.wildfly.swarm</groupId>
               <artifactId>wildfly-swarm-plugin</artifactId>
               <version>${version.wildfly-swarm}</version>
+              <configuration>
+                <mainClass>org.wildfly.swarm.examples.transactions.Main</mainClass>
+              </configuration>
               <executions>
                 <execution>
-                  <phase>package</phase>
                   <goals>
-                    <goal>create</goal>
+                    <goal>package</goal>
                   </goals>
                 </execution>
               </executions>
@@ -72,11 +59,6 @@
     </build>
 
     <dependencies>
-      <dependency>
-	<groupId>javax.transaction</groupId>
-	<artifactId>jta</artifactId>
-	<version>1.1</version>
-      </dependency>
       <dependency>
 	<groupId>org.jboss.narayana.arjunacore</groupId>
 	<artifactId>arjunacore</artifactId>
@@ -87,19 +69,11 @@
           <groupId>org.wildfly.swarm</groupId>
           <artifactId>wildfly-swarm-jaxrs</artifactId>
           <version>${version.wildfly-swarm}</version>
-          <scope>provided</scope>
         </dependency>
         <dependency>
           <groupId>org.wildfly.swarm</groupId>
           <artifactId>wildfly-swarm-transactions</artifactId>
           <version>${version.wildfly-swarm}</version>
-          <scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.wildfly.swarm</groupId>
-          <artifactId>wildfly-swarm-msc</artifactId>
-          <version>${version.wildfly-swarm}</version>
-          <scope>provided</scope>
         </dependency>
     </dependencies>
 

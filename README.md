@@ -3,6 +3,9 @@
 This example uses a JAX-RS resource and UserTransaction to start
 and end transactions.
 
+> Please raise any issues found with this example on the main project:
+> https://github.com/wildfly-swarm/wildfly-swarm/issues
+
 ## Project `pom.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.
@@ -16,80 +19,86 @@ create the runnable `.jar`.
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>wildfly-swarm-plugin</artifactId>
       <version>${version.wildfly-swarm}</version>
+      <configuration>
+        <mainClass>org.wildfly.swarm.examples.transactions.Main</mainClass>
+      </configuration>
       <executions>
         <execution>
-          <phase>package</phase>
           <goals>
-            <goal>create</goal>
+            <goal>package</goal>
           </goals>
         </execution>
       </executions>
     </plugin>
 
-Additionally, the usual `maven-jar-plugin` is provided configuration
-to indicate which of our own classes should be used for the `main()`
-method.
-
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-            <archive>
-                <manifest>
-                    <mainClass>org.wildfly.swarm.examples.transactions.Main</mainClass>
-                </manifest>
-            </archive>
-        </configuration>
-    </plugin>
-
-Currently we have to add javax.transactions into the pom.xml for building due to
-https://github.com/wildfly-swarm/wildfly-swarm/issues/27
-
-To define the needed parts of WildFly Swarm, a dependency is added
+To define the needed parts of WildFly Swarm, a few dependencies are added
 
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-jaxrs</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-transactions</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-msc</artifactId>
-        <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
 
-## Build
+## Project `main()`
 
-    mvn package
+Since this project deploys JAX-RS resources without a `.war` being constructed,
+it provides its own `main()` method (specified above via the `wildfly-swarm-plugin`) to
+configure the container and deploy the resources programmatically.
+
+    package org.wildfly.swarm.examples.transactions;
+    
+    import org.wildfly.swarm.container.Container;
+    import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+    import org.wildfly.swarm.transactions.TransactionsFraction;
+    
+    public class Main
+    {
+        public static void main (String[] args) throws Exception 
+        {
+            Container container = new Container();
+    
+            container.subsystem(new TransactionsFraction(4712, 4713));
+    
+            // Start the container
+            container.start();
+    
+            JAXRSDeployment appDeployment = new JAXRSDeployment(container);
+            appDeployment.addResource(MyResource.class);
+    
+            container.deploy(appDeployment);
+        }
+    }
+
+
+This demonstrates starting the container without any deployments,
+and then deploying the required classes.  
 
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-transactions-1.0.0.Beta1-SNAPSHOT-swarm.jar
-
+* mvn package && java -jar ./target/wildfly-swarm-example-transactions-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn wildfly-swarm:run
+* From your IDE, run class `org.wildfly.swarm.examples.transactions.Main`
 
 ## Use
 
     http://localhost:8080/
 
-On the console the MSC service will print the message ...
+The browser will print the message ...
 
-   Active
+    Active
 
 Then try
 
     http://localhost:8080/begincommit
 
-On the console the ouput shout be ...
+The browser output should be ...
 
-   Transaction begun ok and committed ok
+    Transaction begun ok and committed ok
 
 Next
 
@@ -97,7 +106,7 @@ Next
 
 And we'll see ...
 
-Transaction begun ok and rolled back ok
+    Transaction begun ok and rolled back ok
 
 Finally try
 
@@ -105,6 +114,6 @@ Finally try
 
 And you'll see ...
 
-Nested transaction support is not enabled!
+    Nested transaction support is not enabled!
 
 Of course if you've enabled nested transactions in JTA on WildFly then you'll see something different!

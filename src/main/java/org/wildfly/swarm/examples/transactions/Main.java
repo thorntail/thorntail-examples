@@ -23,9 +23,8 @@
 package org.wildfly.swarm.examples.transactions;
 
 import org.wildfly.swarm.container.Container;
+import org.wildfly.swarm.jaxrs.JAXRSDeployment;
 import org.wildfly.swarm.transactions.TransactionsFraction;
-import org.wildfly.swarm.msc.ServiceDeployment;
-import org.wildfly.swarm.jaxrs.JaxRsDeployment;
 
 /**
  * @author nmcl
@@ -52,7 +51,7 @@ public class Main
 	 * Now register JAX-RS resource class.
 	 */
 
-	JaxRsDeployment appDeployment = new JaxRsDeployment();
+        JAXRSDeployment appDeployment = new JAXRSDeployment(container);
         appDeployment.addResource(MyResource.class);
 
         container.deploy(appDeployment);
