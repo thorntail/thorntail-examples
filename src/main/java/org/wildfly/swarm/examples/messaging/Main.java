@@ -35,7 +35,7 @@ public class Main {
         ServiceActivatorDeployment deployment = new ServiceActivatorDeployment(container);
         deployment.addServiceActivator( MyServiceActivator.class );
         deployment.addClass( MyService.class );
-        
+
         // Deploy the services
         container.deploy( deployment );
 
