@@ -26,51 +26,34 @@ create the runnable `.jar`.
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>wildfly-swarm-plugin</artifactId>
       <version>${version.wildfly-swarm}</version>
+      <configuration>
+        <mainClass>org.wildfly.swarm.examples.messaging.Main</mainClass>
+      </configuration>
       <executions>
         <execution>
-          <phase>package</phase>
           <goals>
-            <goal>create</goal>
+            <goal>package</goal>
           </goals>
         </execution>
       </executions>
     </plugin>
 
-Additionally, the usual `maven-jar-plugin` is provided configuration
-to indicate which of our own classes should be used for the `main()`
-method.
-
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-            <archive>
-                <manifest>
-                    <mainClass>org.wildfly.swarm.examples.messaging.Main</mainClass>
-                </manifest>
-            </archive>
-        </configuration>
-    </plugin>
-
-To define the needed parts of WildFly Swarm, a dependency is added
+To define the needed parts of WildFly Swarm, some dependencies are added
 
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-jaxrs</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-messaging</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-msc</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
 
 ## Project `main()`
@@ -78,42 +61,46 @@ To define the needed parts of WildFly Swarm, a dependency is added
 This project supplies a `main()` in order to configure the messaging
 subsystem and deploy all the pieces of the application.
 
-    package org.wildfly.swarm.examples.messaging;
+package org.wildfly.swarm.examples.messaging;
 
-    import org.wildfly.swarm.container.Container;
-    import org.wildfly.swarm.jaxrs.JaxRsDeployment;
-    import org.wildfly.swarm.messaging.MessagingFraction;
-    import org.wildfly.swarm.messaging.MessagingServer;
-    import org.wildfly.swarm.msc.ServiceDeployment;
+import org.wildfly.swarm.container.Container;
+import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+import org.wildfly.swarm.messaging.MessagingFraction;
+import org.wildfly.swarm.messaging.MessagingServer;
+import org.wildfly.swarm.msc.ServiceActivatorDeployment;
 
-    public class Main {
+/**
+ * @author Bob McWhirter
+ */
+public class Main {
 
-        public static void main(String[] args) throws Exception {
-            Container container = new Container();
+    public static void main(String[] args) throws Exception {
+        Container container = new Container();
 
-            container.subsystem(new MessagingFraction()
-                            .server(
-                                    new MessagingServer()
-                                            .enableInVmConnector()
-                                            .topic("my-topic")
-                                            .queue("my-queue")
-                            )
-            );
+        container.subsystem(new MessagingFraction()
+                        .server(
+                                new MessagingServer()
+                                        .enableInVMConnector()
+                                        .topic("my-topic")
+                                        .queue("my-queue")
+                        )
+        );
 
-            container.start();
+        container.start();
 
-            JaxRsDeployment appDeployment = new JaxRsDeployment();
-            appDeployment.addResource(MyResource.class);
+        JAXRSDeployment appDeployment = new JAXRSDeployment(container);
+        appDeployment.addResource(MyResource.class);
 
-            container.deploy(appDeployment);
+        container.deploy(appDeployment);
 
-            ServiceDeployment deployment = new ServiceDeployment();
-            deployment.addService(new MyService("/jms/topic/my-topic" ) );
+        ServiceActivatorDeployment deployment = new ServiceActivatorDeployment(container);
+        deployment.addServiceActivator( MyServiceActivator.class );
+        deployment.addClass( MyService.class );
 
-            container.deploy( deployment );
-
-        }
+        container.deploy( deployment );
     }
+}
+
 
 After the container is instantiated, the Messaging fraction is
 configured and installed, enabling the in-vm connector and setting
@@ -121,18 +108,14 @@ up a topic and a queue.
 
 The container is started.
 
-A JAX-RS deployment based on a project class is deployed, as is an
-instance of an MSC service (which consumes messages from the destination
-named in the constructor).
+A JAX-RS deployment based on a project class is deployed, as is the
+MSC service-activator, which activates a service to consume messages.
 
-## Build
+You can run it many ways:
 
-    mvn package
-
-## Run
-
-    java -jar ./target/wildfly-swarm-example-messaging-1.0.0.Beta1-SNAPSHOT-swarm.jar
-
+* mvn package && java -jar ./target/wildfly-swarm-example-messaging-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn wildfly-swarm:run
+* In your IDE run the `org.wildfly.swarm.examples.messaging.Main` class
 
 ## Use
 
