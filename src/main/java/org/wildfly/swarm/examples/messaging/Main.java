@@ -1,10 +1,10 @@
 package org.wildfly.swarm.examples.messaging;
 
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.jaxrs.JaxRsDeployment;
+import org.wildfly.swarm.jaxrs.JAXRSDeployment;
 import org.wildfly.swarm.messaging.MessagingFraction;
 import org.wildfly.swarm.messaging.MessagingServer;
-import org.wildfly.swarm.msc.ServiceDeployment;
+import org.wildfly.swarm.msc.ServiceActivatorDeployment;
 
 /**
  * @author Bob McWhirter
@@ -17,7 +17,7 @@ public class Main {
         container.subsystem(new MessagingFraction()
                         .server(
                                 new MessagingServer()
-                                        .enableInVmConnector()
+                                        .enableInVMConnector()
                                         .topic("my-topic")
                                         .queue("my-queue")
                         )
@@ -26,15 +26,16 @@ public class Main {
         // Start the container
         container.start();
 
-        JaxRsDeployment appDeployment = new JaxRsDeployment();
+        JAXRSDeployment appDeployment = new JAXRSDeployment(container);
         appDeployment.addResource(MyResource.class);
 
         // Deploy your app
         container.deploy(appDeployment);
 
-        ServiceDeployment deployment = new ServiceDeployment();
-        deployment.addService(new MyService("/jms/topic/my-topic" ) );
-
+        ServiceActivatorDeployment deployment = new ServiceActivatorDeployment(container);
+        deployment.addServiceActivator( MyServiceActivator.class );
+        deployment.addClass( MyService.class );
+        
         // Deploy the services
         container.deploy( deployment );
 
