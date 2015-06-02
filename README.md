@@ -22,9 +22,8 @@ create the runnable `.jar`.
       <version>${version.wildfly-swarm}</version>
       <executions>
         <execution>
-          <phase>package</phase>
           <goals>
-            <goal>create</goal>
+            <goal>package</goal>
           </goals>
         </execution>
       </executions>
@@ -36,13 +35,11 @@ To define the needed parts of WildFly Swarm, the following dependencies are adde
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-undertow</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-weld</artifactId>
         <version>${version.wildfly-swarm}</version>
-        <scope>provided</scope>
     </dependency>
 
 This dependency provides the Servlet and CDI APIs to your application, so the
@@ -52,13 +49,13 @@ Additional application dependencies can be
 specified and will be included in the normal `.war` construction and available
 within the WildFly Swarm application `.jar`.
 
-## Build
-
-    mvn package
-
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-servlet-cdi-1.0.0.Beta1-SNAPSHOT-swarm.jar
+You can run it many ways:
+
+* mvn package && java -jar ./target/wildfly-swarm-example-servlet-cdi-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn wildfly-swarm:run
+* In your IDE run the `org.wildfly.swarm.Swarm` class
 
 ## Use
 
