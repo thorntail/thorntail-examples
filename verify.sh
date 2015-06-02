@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-START_TIMEOUT=10
+START_TIMEOUT=30
 JAR=target/*-swarm.jar
 PID=nothing
 
