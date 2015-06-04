@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>16</version>
+  </parent>
+
+  <groupId>org.wildfly.swarm.examples</groupId>
+  <artifactId>wildfly-swarm-examples-parent</artifactId>
+  <version>1.0.0.Alpha02-SNAPSHOT</version>
+
+  <name>WildFly Swarm Examples: Parent</name>
+  <description>WildFly Swarm Examples: Parent</description>
+
+  <packaging>pom</packaging>
+
+  <properties>
+    <version.wildfly-swarm>1.0.0.Alpha2</version.wildfly-swarm>
+
+    <maven.min.version>3.2.1</maven.min.version>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.wildfly.swarm</groupId>
+          <artifactId>wildfly-swarm-plugin</artifactId>
+          <version>${version.wildfly-swarm}</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>package</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <modules>
+    <module>cdi-servlet</module>
+    <module>datasource-deployment</module>
+    <module>datasource-subsystem</module>
+    <module>jaxrs</module>
+    <module>jaxrs-cdi</module>
+    <module>jaxrs-shrinkwrap</module>
+    <module>jpa-jaxrs-cdi</module>
+    <module>jpa-servlet</module>
+    <module>messaging</module>
+    <module>msc</module>
+    <module>servlet</module>
+    <module>transactions</module>
+  </modules>
+</project>

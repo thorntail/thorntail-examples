@@ -8,19 +8,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+  <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-example-datasource-subsystem</artifactId>
-    <version>1.0.0.Beta1-SNAPSHOT</version>
+    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <version>1.0.0.Alpha02-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
 
-    <name>My App</name>
-    <description>My App</description>
+    <artifactId>wildfly-swarm-datasource-subsystem</artifactId>
+
+    <name>WildFly Swarm Examples: Datasource Subsystem</name>
+    <description>WildFly Swarm Examples: Datasource Subsystem</description>
 
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly-swarm>1.0.0.Alpha2-SNAPSHOT</version.wildfly-swarm>
-        <maven.min.version>3.2.1</maven.min.version>
-
         <version.h2>1.4.187</version.h2>
     </properties>
 
@@ -35,7 +37,6 @@
             <plugin>
               <groupId>org.wildfly.swarm</groupId>
               <artifactId>wildfly-swarm-plugin</artifactId>
-              <version>${version.wildfly-swarm}</version>
               <configuration>
                 <mainClass>org.wildfly.swarm.examples.ds.subsystem.Main</mainClass>
               </configuration>

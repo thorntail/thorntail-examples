@@ -8,19 +8,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+  <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-example-servlet-cdi</artifactId>
-    <version>1.0.0.Beta1-SNAPSHOT</version>
+    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <version>1.0.0.Alpha02-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
 
-    <name>My App</name>
-    <description>My App</description>
+    <artifactId>wildfly-swarm-cdi-servlet</artifactId>
+
+    <name>WildFly Swarm Examples: CDI and Servlet</name>
+    <description>WildFly Swarm Examples: CDI and Servlet</description>
 
     <packaging>war</packaging>
-
-    <properties>
-        <version.wildfly-swarm>1.0.0.Alpha2-SNAPSHOT</version.wildfly-swarm>
-        <maven.min.version>3.2.1</maven.min.version>
-    </properties>
 
     <build>
         <plugins>
@@ -34,14 +34,6 @@
             <plugin>
               <groupId>org.wildfly.swarm</groupId>
               <artifactId>wildfly-swarm-plugin</artifactId>
-              <version>${version.wildfly-swarm}</version>
-              <executions>
-                <execution>
-                  <goals>
-                    <goal>package</goal>
-                  </goals>
-                </execution>
-              </executions>
             </plugin>
         </plugins>
     </build>
