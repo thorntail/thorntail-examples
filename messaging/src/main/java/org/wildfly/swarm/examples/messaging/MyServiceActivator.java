@@ -12,10 +12,10 @@ import org.jboss.msc.service.ServiceTarget;
 public class MyServiceActivator implements ServiceActivator {
     public void activate(ServiceActivatorContext context) throws ServiceRegistryException {
 
-        System.err.println( "activating services" );
+        System.err.println("activating services");
         ServiceTarget target = context.getServiceTarget();
 
-        target.addService(ServiceName.of( "my", "service", "1" ), new MyService("/jms/topic/my-topic") )
+        target.addService(ServiceName.of("my", "service", "1"), new MyService("/jms/topic/my-topic"))
                 .install();
     }
 }

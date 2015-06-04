@@ -15,9 +15,9 @@ public class Main {
 
         ServiceActivatorDeployment deployment = new ServiceActivatorDeployment(container);
 
-        deployment.addServiceActivator( MyServiceActivator.class );
-        deployment.addClass( MyService.class );
+        deployment.addServiceActivator(MyServiceActivator.class);
+        deployment.addClass(MyService.class);
 
-        container.deploy( deployment );
+        container.deploy(deployment);
     }
 }

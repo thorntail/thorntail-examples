@@ -12,10 +12,10 @@ public class Main {
 
         Container container = new Container();
 
-        JAXRSDeployment deployment = new JAXRSDeployment( container );
+        JAXRSDeployment deployment = new JAXRSDeployment(container);
         deployment.addResource(MyResource.class);
 
-        container.start().deploy( deployment );
+        container.start().deploy(deployment);
 
     }
 }

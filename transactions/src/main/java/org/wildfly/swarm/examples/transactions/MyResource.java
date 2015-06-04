@@ -5,56 +5,45 @@
  */
 package org.wildfly.swarm.examples.transactions;
 
+import javax.naming.InitialContext;
+import javax.transaction.UserTransaction;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
-import javax.transaction.UserTransaction;
-
-import javax.naming.InitialContext;
 
 /**
  * @author nmcl
  */
 
 @Path("/")
-public class MyResource
-{
+public class MyResource {
     @GET
     @Produces("text/plain")
-    public String init() throws Exception
-    {
-	return "Active";
+    public String init() throws Exception {
+        return "Active";
     }
 
     @Path("begincommit")
     @GET
     @Produces("text/plain")
-    public String beginCommit() throws Exception
-    {
-	UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
-	String value = "Transaction ";
+    public String beginCommit() throws Exception {
+        UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+        String value = "Transaction ";
 
-	try
-	{
-	    txn.begin();
+        try {
+            txn.begin();
 
-	    value += "begun ok";
+            value += "begun ok";
 
-	    try
-	    {
-		txn.commit();
+            try {
+                txn.commit();
 
-		value += " and committed ok";
-	    }
-	    catch (final Throwable ex)
-	    {
-		value += " but failed to commit";
-	    }
-	}
-	catch (final Throwable ex)
-	{
-	    value += "failed to begin: "+ex.toString();
+                value += " and committed ok";
+            } catch (final Throwable ex) {
+                value += " but failed to commit";
+            }
+        } catch (final Throwable ex) {
+            value += "failed to begin: " + ex.toString();
         }
 
         return value;
@@ -63,31 +52,24 @@ public class MyResource
     @Path("beginrollback")
     @GET
     @Produces("text/plain")
-    public String beginRollback() throws Exception
-    {
-	UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
-	String value = "Transaction ";
+    public String beginRollback() throws Exception {
+        UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+        String value = "Transaction ";
 
-	try
-	{
-	    txn.begin();
+        try {
+            txn.begin();
 
-	    value += "begun ok";
+            value += "begun ok";
 
-	    try
-	    {
-		txn.rollback();
+            try {
+                txn.rollback();
 
-		value += " and rolled back ok";
-	    }
-	    catch (final Throwable ex)
-	    {
-		value += " but failed to rollback "+ex.toString();
-	    }
-	}
-	catch (final Throwable ex)
-	{
-	    value += "failed to begin: "+ex.toString();
+                value += " and rolled back ok";
+            } catch (final Throwable ex) {
+                value += " but failed to rollback " + ex.toString();
+            }
+        } catch (final Throwable ex) {
+            value += "failed to begin: " + ex.toString();
         }
 
         return value;
@@ -96,32 +78,25 @@ public class MyResource
     @Path("nested")
     @GET
     @Produces("text/plain")
-    public String nested() throws Exception
-    {
-	UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
-	String value = "Nested transaction ";
+    public String nested() throws Exception {
+        UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
+        String value = "Nested transaction ";
 
-	try
-	{
-	    txn.begin();
-	    txn.begin();
+        try {
+            txn.begin();
+            txn.begin();
 
-	    value += "support appears to be enabled!";
+            value += "support appears to be enabled!";
 
-	    try
-	    {
-		txn.commit();
-		txn.commit();
-	    }
-	    catch (final Throwable ex)
-	    {
-	    }
-	}
-	catch (final Throwable ex)
-	{
-	    value += "support is not enabled!";
+            try {
+                txn.commit();
+                txn.commit();
+            } catch (final Throwable ex) {
+            }
+        } catch (final Throwable ex) {
+            value += "support is not enabled!";
 
-	    txn.commit(); // laziness but should have a try/catch here too
+            txn.commit(); // laziness but should have a try/catch here too
         }
 
         return value;

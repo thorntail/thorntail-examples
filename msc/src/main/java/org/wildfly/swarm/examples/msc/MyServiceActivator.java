@@ -16,19 +16,19 @@ public class MyServiceActivator implements ServiceActivator {
 
 
         MyService service = new MyService("Hi #1");
-        target.addService(ServiceName.of( "my", "service", "1"), service )
+        target.addService(ServiceName.of("my", "service", "1"), service)
                 .install();
 
         service = new MyService("Hi #2");
-        target.addService(ServiceName.of( "my", "service", "2"), service )
+        target.addService(ServiceName.of("my", "service", "2"), service)
                 .install();
 
         service = new MyService("Howdy #1");
-        target.addService(ServiceName.of( "my", "service", "3"), service )
+        target.addService(ServiceName.of("my", "service", "3"), service)
                 .install();
 
         service = new MyService("Howdy #2");
-        target.addService(ServiceName.of( "my", "service", "4"), service )
+        target.addService(ServiceName.of("my", "service", "4"), service)
                 .install();
 
     }

@@ -11,7 +11,9 @@ import org.jboss.msc.service.StopContext;
 public class MyService implements Service<Void> {
 
     private final String message;
+
     private Thread thread;
+
     private boolean shouldRun;
 
     public MyService(String message) {

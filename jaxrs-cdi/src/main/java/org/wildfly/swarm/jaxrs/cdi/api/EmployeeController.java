@@ -1,7 +1,6 @@
 package org.wildfly.swarm.jaxrs.cdi.api;
 
-import org.wildfly.swarm.jaxrs.cdi.domain.model.Employee;
-import org.wildfly.swarm.jaxrs.cdi.domain.service.EmployeeService;
+import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -9,7 +8,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
+
+import org.wildfly.swarm.jaxrs.cdi.domain.model.Employee;
+import org.wildfly.swarm.jaxrs.cdi.domain.service.EmployeeService;
 
 /**
  * @author Yoshimasa Tanabe

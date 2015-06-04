@@ -1,10 +1,11 @@
 package org.wildfly.swarm.jaxrs.cdi.domain.service;
 
-import org.wildfly.swarm.jaxrs.cdi.domain.model.Employee;
-
-import javax.enterprise.context.ApplicationScoped;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.enterprise.context.ApplicationScoped;
+
+import org.wildfly.swarm.jaxrs.cdi.domain.model.Employee;
 
 /**
  * @author Yoshimasa Tanabe

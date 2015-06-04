@@ -33,11 +33,11 @@ public class Main {
         container.deploy(appDeployment);
 
         ServiceActivatorDeployment deployment = new ServiceActivatorDeployment(container);
-        deployment.addServiceActivator( MyServiceActivator.class );
-        deployment.addClass( MyService.class );
+        deployment.addServiceActivator(MyServiceActivator.class);
+        deployment.addClass(MyService.class);
 
         // Deploy the services
-        container.deploy( deployment );
+        container.deploy(deployment);
 
     }
 }

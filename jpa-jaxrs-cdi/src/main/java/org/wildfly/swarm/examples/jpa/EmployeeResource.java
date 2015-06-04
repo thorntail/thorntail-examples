@@ -14,12 +14,12 @@ import javax.ws.rs.Produces;
 @ApplicationScoped
 public class EmployeeResource {
 
-      @PersistenceContext
-      EntityManager em;
+    @PersistenceContext
+    EntityManager em;
 
-      @GET
-      @Produces("application/json")
-      public Employee[] get() {
-          return em.createNamedQuery("Employee.findAll", Employee.class).getResultList().toArray(new Employee[0]);
-      }
+    @GET
+    @Produces("application/json")
+    public Employee[] get() {
+        return em.createNamedQuery("Employee.findAll", Employee.class).getResultList().toArray(new Employee[0]);
+    }
 }

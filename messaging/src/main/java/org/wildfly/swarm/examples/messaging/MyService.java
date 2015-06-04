@@ -1,10 +1,5 @@
 package org.wildfly.swarm.examples.messaging;
 
-import org.jboss.msc.service.Service;
-import org.jboss.msc.service.StartContext;
-import org.jboss.msc.service.StartException;
-import org.jboss.msc.service.StopContext;
-
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -17,12 +12,18 @@ import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
+import org.jboss.msc.service.Service;
+import org.jboss.msc.service.StartContext;
+import org.jboss.msc.service.StartException;
+import org.jboss.msc.service.StopContext;
+
 /**
  * @author Bob McWhirter
  */
 public class MyService implements Service<Void> {
 
     private final String destinationName;
+
     private Connection conn;
 
     public MyService(String destinationName) {
@@ -43,7 +44,7 @@ public class MyService implements Service<Void> {
             consumer.setMessageListener(new MessageListener() {
                 public void onMessage(Message message) {
                     try {
-                        System.err.println("received: " + ((TextMessage)message).getText() );
+                        System.err.println("received: " + ((TextMessage) message).getText());
                     } catch (JMSException e) {
                         e.printStackTrace();
                     }

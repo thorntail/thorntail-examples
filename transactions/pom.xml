@@ -4,9 +4,9 @@
   ~
   ~ Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
@@ -15,49 +15,49 @@
     <relativePath>../</relativePath>
   </parent>
 
-    <artifactId>wildfly-swarm-transactions</artifactId>
+  <artifactId>wildfly-swarm-transactions</artifactId>
 
-    <name>WildFly Swarm Examples: Transactions</name>
-    <description>WildFly Swarm Examples: Transactions</description>
+  <name>WildFly Swarm Examples: Transactions</name>
+  <description>WildFly Swarm Examples: Transactions</description>
 
-    <packaging>jar</packaging>
+  <packaging>jar</packaging>
 
-    <build>
-        <plugins>
-            <plugin>
-              <groupId>org.wildfly.swarm</groupId>
-              <artifactId>wildfly-swarm-plugin</artifactId>
-              <configuration>
-                <mainClass>org.wildfly.swarm.examples.transactions.Main</mainClass>
-              </configuration>
-              <executions>
-                <execution>
-                  <goals>
-                    <goal>package</goal>
-                  </goals>
-                </execution>
-              </executions>
-            </plugin>
-        </plugins>
-    </build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>wildfly-swarm-plugin</artifactId>
+        <configuration>
+          <mainClass>org.wildfly.swarm.examples.transactions.Main</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
-    <dependencies>
-      <dependency>
-	<groupId>org.jboss.narayana.arjunacore</groupId>
-	<artifactId>arjunacore</artifactId>
-	<version>5.1.1.Final</version>
-	<scope>provided</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.wildfly.swarm</groupId>
-          <artifactId>wildfly-swarm-jaxrs</artifactId>
-          <version>${version.wildfly-swarm}</version>
-        </dependency>
-        <dependency>
-          <groupId>org.wildfly.swarm</groupId>
-          <artifactId>wildfly-swarm-transactions</artifactId>
-          <version>${version.wildfly-swarm}</version>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>org.jboss.narayana.arjunacore</groupId>
+      <artifactId>arjunacore</artifactId>
+      <version>5.1.1.Final</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-jaxrs</artifactId>
+      <version>${version.wildfly-swarm}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-transactions</artifactId>
+      <version>${version.wildfly-swarm}</version>
+    </dependency>
+  </dependencies>
 
 </project>

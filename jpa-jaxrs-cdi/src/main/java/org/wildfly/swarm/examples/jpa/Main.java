@@ -17,11 +17,11 @@ public class Main {
 
         // Create a JDBC driver deployment using maven groupId:artifactId
         // The version is resolved from your pom.xml's <dependency>
-        DriverDeployment driverDeployment = new DriverDeployment( container, "com.h2database:h2", "h2" );
+        DriverDeployment driverDeployment = new DriverDeployment(container, "com.h2database:h2", "h2");
         container.deploy(driverDeployment);
 
         // Create a DS deployment
-        DatasourceDeployment dsDeployment = new DatasourceDeployment( container, new Datasource("ExampleDS")
+        DatasourceDeployment dsDeployment = new DatasourceDeployment(container, new Datasource("ExampleDS")
                 .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
                 .driver("h2")
                 .authentication("sa", "sa")

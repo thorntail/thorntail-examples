@@ -13,14 +13,12 @@ import org.wildfly.swarm.transactions.TransactionsFraction;
  * @author nmcl
  */
 
-public class Main
-{
-    public static void main (String[] args) throws Exception 
-    {
+public class Main {
+    public static void main(String[] args) throws Exception {
         Container container = new Container();
 
 	/*
-	 * Use specific TransactionFraction even though it doesn't do
+     * Use specific TransactionFraction even though it doesn't do
 	 * any more than the default one - for now.
 	 */
 
