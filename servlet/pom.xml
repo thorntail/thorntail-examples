@@ -15,7 +15,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-servlet</artifactId>
+  <artifactId>wildfly-swarm-example-servlet</artifactId>
 
   <name>WildFly Swarm Examples: Servlet</name>
   <description>WildFly Swarm Examples: Servlet</description>

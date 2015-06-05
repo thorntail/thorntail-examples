@@ -15,7 +15,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-jaxrs</artifactId>
+  <artifactId>wildfly-swarm-example-jaxrs</artifactId>
 
   <name>WildFly Swarm Examples: JAX-RS</name>
   <description>WildFly Swarm Examples: JAX-RS</description>

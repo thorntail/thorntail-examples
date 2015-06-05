@@ -15,7 +15,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-cdi-servlet</artifactId>
+  <artifactId>wildfly-swarm-example-cdi-servlet</artifactId>
 
   <name>WildFly Swarm Examples: CDI and Servlet</name>
   <description>WildFly Swarm Examples: CDI and Servlet</description>
