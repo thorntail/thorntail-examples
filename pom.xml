@@ -51,6 +51,7 @@
     <module>messaging</module>
     <module>msc</module>
     <module>servlet</module>
+    <module>static</module>
     <module>transactions</module>
   </modules>
 </project>
