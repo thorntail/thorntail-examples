@@ -27,6 +27,9 @@
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
+        <configuration>
+          <mainClass>org.wildfly.swarm.examples.ds.deployment.Main</mainClass>
+        </configuration>
       </plugin>
     </plugins>
   </build>
