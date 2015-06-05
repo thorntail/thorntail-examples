@@ -15,6 +15,8 @@ public class Main {
         JAXRSDeployment deployment = new JAXRSDeployment(container);
         deployment.addResource(MyResource.class);
 
+        System.err.println( javax.security.auth.login.LoginException.class );
+
         container.start().deploy(deployment);
 
     }

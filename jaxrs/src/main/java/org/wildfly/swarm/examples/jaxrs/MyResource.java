@@ -15,6 +15,7 @@ public class MyResource {
     @GET
     @Produces("text/plain")
     public String get() {
-        return "Howdy at " + new DateTime();
+        // Prove we can use an external dependency and weird JDK classes.
+        return "Howdy at " + new DateTime() + ".  Have a JDK class: " + javax.security.auth.login.LoginException.class.getName();
     }
 }
