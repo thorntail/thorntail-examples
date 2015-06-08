@@ -61,46 +61,45 @@ To define the needed parts of WildFly Swarm, some dependencies are added
 This project supplies a `main()` in order to configure the messaging
 subsystem and deploy all the pieces of the application.
 
-package org.wildfly.swarm.examples.messaging;
-
-import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.jaxrs.JAXRSDeployment;
-import org.wildfly.swarm.messaging.MessagingFraction;
-import org.wildfly.swarm.messaging.MessagingServer;
-import org.wildfly.swarm.msc.ServiceActivatorDeployment;
-
-/**
- * @author Bob McWhirter
- */
-public class Main {
-
-    public static void main(String[] args) throws Exception {
-        Container container = new Container();
-
-        container.subsystem(new MessagingFraction()
-                        .server(
-                                new MessagingServer()
-                                        .enableInVMConnector()
-                                        .topic("my-topic")
-                                        .queue("my-queue")
-                        )
-        );
-
-        container.start();
-
-        JAXRSDeployment appDeployment = new JAXRSDeployment(container);
-        appDeployment.addResource(MyResource.class);
-
-        container.deploy(appDeployment);
-
-        ServiceActivatorDeployment deployment = new ServiceActivatorDeployment(container);
-        deployment.addServiceActivator( MyServiceActivator.class );
-        deployment.addClass( MyService.class );
-
-        container.deploy( deployment );
+    package org.wildfly.swarm.examples.messaging;
+    
+    import org.wildfly.swarm.container.Container;
+    import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+    import org.wildfly.swarm.messaging.MessagingFraction;
+    import org.wildfly.swarm.messaging.MessagingServer;
+    import org.wildfly.swarm.msc.ServiceActivatorDeployment;
+    
+    /**
+     * @author Bob McWhirter
+     */
+    public class Main {
+    
+        public static void main(String[] args) throws Exception {
+            Container container = new Container();
+    
+            container.subsystem(new MessagingFraction()
+                            .server(
+                                    new MessagingServer()
+                                            .enableInVMConnector()
+                                            .topic("my-topic")
+                                            .queue("my-queue")
+                            )
+            );
+    
+            container.start();
+    
+            JAXRSDeployment appDeployment = new JAXRSDeployment(container);
+            appDeployment.addResource(MyResource.class);
+    
+            container.deploy(appDeployment);
+    
+            ServiceActivatorDeployment deployment = new ServiceActivatorDeployment(container);
+            deployment.addServiceActivator( MyServiceActivator.class );
+            deployment.addClass( MyService.class );
+    
+            container.deploy( deployment );
+        }
     }
-}
-
 
 After the container is instantiated, the Messaging fraction is
 configured and installed, enabling the in-vm connector and setting
