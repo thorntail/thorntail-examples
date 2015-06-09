@@ -1,7 +1,7 @@
-# JPA and Servlet Example
+# JPA and Servlet with Shrinkwrap Example
 
 This example uses JPA and Servlet classes deployed through a user-provided
-main() programmatically without constructing a .war file during the build.
+`main()` programmatically without constructing a `.war` file during the build.
 
 > Please raise any issues found with this example on the main project:
 > https://github.com/wildfly-swarm/wildfly-swarm/issues
