@@ -29,6 +29,7 @@
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
+          <packagingExcludes>WEB-INF/lib/wildfly-swarm-*.jar</packagingExcludes>
         </configuration>
       </plugin>
       <plugin>
