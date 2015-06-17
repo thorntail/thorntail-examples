@@ -52,6 +52,7 @@
     <module>jaxrs-cdi</module>
     <module>jaxrs-shrinkwrap</module>
     <module>jpa-jaxrs-cdi-shrinkwrap</module>
+    <module>jpa-servlet</module>
     <module>jpa-servlet-shrinkwrap</module>
     <module>messaging</module>
     <module>msc</module>
