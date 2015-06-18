@@ -71,27 +71,33 @@ and deploys a datasource.
     import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
     import org.wildfly.swarm.container.Container;
     import org.wildfly.swarm.datasources.Datasource;
-    import org.wildfly.swarm.datasources.DatasourceDeployment;
-    import org.wildfly.swarm.datasources.DriverDeployment;
+    import org.wildfly.swarm.datasources.DatasourcesFraction;
+    import org.wildfly.swarm.datasources.Driver;
     import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+    import org.wildfly.swarm.jpa.JPAFraction;
     
     public class Main {
         public static void main(String[] args) throws Exception {
             Container container = new Container();
-            container.start();
     
-            // Create a JDBC driver deployment using maven groupId:artifactId
-            // The version is resolved from your pom.xml's <dependency>
-            DriverDeployment driverDeployment = new DriverDeployment( container, "com.h2database:h2", "h2" );
-            container.deploy(driverDeployment);
-    
-            // Create a DS deployment
-            DatasourceDeployment dsDeployment = new DatasourceDeployment( container, new Datasource("ExampleDS")
-                    .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
-                    .driver("h2")
-                    .authentication("sa", "sa")
+            container.subsystem(new DatasourcesFraction()
+                            .driver(new Driver("h2")
+                                    .datasourceClassName("org.h2.Driver")
+                                    .xaDatasourceClassName("org.h2.jdbcx.JdbcDataSource")
+                                    .module("com.h2database.h2"))
+                            .datasource(new Datasource("MyDS")
+                                    .driver("h2")
+                                    .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
+                                    .authentication("sa", "sa"))
             );
-            container.deploy(dsDeployment);
+    
+            // Prevent JPA Fraction from installing it's default datasource fraction
+            container.fraction(new JPAFraction()
+                            .inhibitDefaultDatasource()
+                            .defaultDatasourceName("MyDS")
+            );
+    
+            container.start();
     
             JAXRSDeployment deployment = new JAXRSDeployment(container);
             deployment.getArchive().addClasses(Employee.class);
@@ -106,13 +112,15 @@ and deploys a datasource.
 This method constructs a new default Container, which automatically
 initializes all fractions (or subsystems) that are available.
 
-A `DriverDeployment` is created, specifying the `groupId` and `artifactId` portions
-of the maven dependency (the version is inferred from your `pom.xml`), along with
-a name for referencing the driver.
-
-A datasource is then deployed using the previously-deployed driver.
+The datasources fraction has no particular default configuration, so by providing a
+specific configuration we enable a driver and a datasource.
 
 JNDI names are bound automatically.
+
+We prevent the JPA fraction from automatically configuring a default driver and datasource
+as we want to define that ourselves.
+
+The empty container is started.
 
 A `JAXRSDeployment` is constructed, and the JAX-RS resource class is
 added to it, along with the JPA Entity class, persistence.xml and load.sql.
@@ -125,7 +133,7 @@ deployment to the root URL.
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/wildfly-swarm-example-jpa-jaxrs-cdi-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn package && java -jar ./target/wildfly-swarm-example-jpa-jaxrs-cdi-shrinkwrap-swarm.jar
 * mvn wildfly-swarm:run
 * In your IDE run the `org.wildfly.swarm.examples.jpa.Main` class
 
