@@ -51,6 +51,7 @@
     <module>jaxrs</module>
     <module>jaxrs-cdi</module>
     <module>jaxrs-shrinkwrap</module>
+    <module>jpa-jaxrs-cdi</module>
     <module>jpa-jaxrs-cdi-shrinkwrap</module>
     <module>jpa-jaxrs-cdi-shrinkwrap2</module>
     <module>jpa-servlet</module>
