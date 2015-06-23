@@ -3,7 +3,10 @@
 This example takes a simple `.jar` build and deploys JBoss MSC 
 (Modular Service Container) service-activators from a user-provided `main()`.
 
-> Please raise any issues found with this example on the main project:
+> Please raise any issues found with this example in this repo:
+> https://github.com/wildfly-swarm/wildfly-swarm-examples
+>
+> Issues related to WildFly Swarm core should be raised in the main repo:
 > https://github.com/wildfly-swarm/wildfly-swarm/issues
 
 ## Project `pom.xml`

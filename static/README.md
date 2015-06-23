@@ -2,6 +2,12 @@
 
 This example serves static content using WildFly Swarm.
 
+> Please raise any issues found with this example in this repo:
+> https://github.com/wildfly-swarm/wildfly-swarm-examples
+>
+> Issues related to WildFly Swarm core should be raised in the main repo:
+> https://github.com/wildfly-swarm/wildfly-swarm/issues
+
 ## Project `pom.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.

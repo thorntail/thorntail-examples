@@ -3,7 +3,10 @@
 This example uses a JAX-RS resource and UserTransaction to start
 and end transactions.
 
-> Please raise any issues found with this example on the main project:
+> Please raise any issues found with this example in this repo:
+> https://github.com/wildfly-swarm/wildfly-swarm-examples
+>
+> Issues related to WildFly Swarm core should be raised in the main repo:
 > https://github.com/wildfly-swarm/wildfly-swarm/issues
 
 ## Project `pom.xml`
