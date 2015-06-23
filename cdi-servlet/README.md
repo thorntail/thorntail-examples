@@ -53,7 +53,7 @@ within the WildFly Swarm application `.jar`.
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/wildfly-swarm-example-servlet-cdi-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn package && java -jar ./target/wildfly-swarm-example-servlet-cdi-swarm.jar
 * mvn wildfly-swarm:run
 * In your IDE run the `org.wildfly.swarm.Swarm` class
 

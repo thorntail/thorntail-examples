@@ -112,7 +112,7 @@ MSC service-activator, which activates a service to consume messages.
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/wildfly-swarm-example-messaging-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn package && java -jar ./target/wildfly-swarm-example-messaging-swarm.jar
 * mvn wildfly-swarm:run
 * In your IDE run the `org.wildfly.swarm.examples.messaging.Main` class
 

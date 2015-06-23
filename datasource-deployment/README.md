@@ -142,7 +142,7 @@ The resource looks up the Datasource through JNDI at run-time:
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/wildfly-swarm-example-datasource-deployment-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn package && java -jar ./target/wildfly-swarm-example-datasource-deployment-swarm.jar
 * mvn wildfly-swarm:run
 * In your IDE run the `org.wildfly.swarm.examples.ds.deployment.Main` class
 

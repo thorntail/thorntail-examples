@@ -80,7 +80,7 @@ and then deploying the required classes.
 
 ## Run
 
-* mvn package && java -jar ./target/wildfly-swarm-example-transactions-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn package && java -jar ./target/wildfly-swarm-example-transactions-swarm.jar
 * mvn wildfly-swarm:run
 * From your IDE, run class `org.wildfly.swarm.examples.transactions.Main`
 

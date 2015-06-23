@@ -82,7 +82,7 @@ deployment to the root URL.
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/wildfly-swarm-example-jaxrs-shrinkwrap-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn package && java -jar ./target/wildfly-swarm-example-jaxrs-shrinkwrap-swarm.jar
 * mvn wildfly-swarm:run
 * In your IDE run the `org.wildfly.swarm.examples.jaxrs.shrinkwrap.Main` class
 

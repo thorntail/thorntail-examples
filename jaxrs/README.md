@@ -46,7 +46,7 @@ within the WildFly Swarm application `.jar`.
 
 ## Run
 
-* mvn package && java -jar ./target/wildfly-swarm-example-jaxrs-1.0.0.Beta1-SNAPSHOT-swarm.jar
+* mvn package && java -jar ./target/wildfly-swarm-example-jaxrs-swarm.jar
 * mvn wildfly-swarm:run
 * From your IDE, run class `org.wildfly.swarm.Swarm`
 
