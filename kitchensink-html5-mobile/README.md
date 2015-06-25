@@ -1,6 +1,6 @@
 # WildFly kitchensink-html5-mobile Example
 
-This example takes the kitchensick-html5-mobile[https://github.com/wildfly/quickstart/tree/master/kitchensink-html5-mobile]
+This example takes the [kitchensick-html5-mobile](https://github.com/wildfly/quickstart/tree/master/kitchensink-html5-mobile)
 quickstart from WildFly, and wraps it into a `-swarm` runnable jar.
 
 > Please raise any issues found with this example in this repo:
