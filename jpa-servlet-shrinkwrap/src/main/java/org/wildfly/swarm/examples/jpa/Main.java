@@ -2,12 +2,12 @@ package org.wildfly.swarm.examples.jpa;
 
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.container.DefaultWarDeployment;
-import org.wildfly.swarm.container.WarDeployment;
 import org.wildfly.swarm.datasources.Datasource;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.datasources.Driver;
 import org.wildfly.swarm.jpa.JPAFraction;
+import org.wildfly.swarm.undertow.DefaultWarDeployment;
+import org.wildfly.swarm.undertow.WarDeployment;
 
 /**
  * @author Ken Finnigan
