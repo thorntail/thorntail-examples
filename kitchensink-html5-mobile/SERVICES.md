@@ -31,6 +31,7 @@ MemberService End Points
 
 ```JavaScript
 [{"name":"Jane Smith","email":"jane.smith@mailinator.com","phoneNumber":"4160000000"}]
+```
 
 * Response example:
  * Success: 200 OK
