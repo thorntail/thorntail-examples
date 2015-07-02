@@ -1,9 +1,21 @@
+buildscript {
+  version = '1.0.0.Alpha4-SNAPSHOT'
+  repositories {
+    mavenLocal()
+  }
+  dependencies {
+    classpath "org.wildfly.swarm:wildfly-swarm-plugin:$version"
+  }
+}
+
+//apply plugin: 'wildfly-swarm'
+
+
 apply plugin: 'java'
 apply plugin: 'application'
 
-version = '1.0.0.Alpha4-SNAPSHOT'
-
 mainClassName = 'org.wildfly.swarm.examples.gradle.Main'
+//swarm.mainClass = 'org.wildfly.swarm.examples.gradle.Main'
 
 repositories {
     mavenLocal()
@@ -12,18 +24,3 @@ repositories {
 dependencies {
     compile "org.wildfly.swarm:wildfly-swarm-jaxrs:$version"
 }
-
-buildscript {
-  repositories {
-    mavenLocal()
-  }
-  dependencies {
-    classpath "org.wildfly.swarm:wildfly-swarm-plugin:1.0.0.Alpha4-SNAPSHOT"
-  }
-
-}
-
-apply plugin: 'wildfly-swarm'
-
-swarm.mainClass = 'org.wildfly.swarm.examples.gradle.Main'
-
