@@ -3,3 +3,8 @@
 target/
 build/
 .gradle/
+
+# eclipse stuff
+.classpath
+.project
+.settings/
