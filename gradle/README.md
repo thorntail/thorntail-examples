@@ -5,4 +5,4 @@ Beginning of a Gradle plugin example.
 
 ## Run
 
-* ./gradlew clean wildfly-swarm-package && java -jar ./build/wildfly-swarm-example-gradle-swarm.jar
+* ./gradlew clean wildfly-swarm-package && java -jar ./build/lib/wildfly-swarm-example-gradle-swarm.jar
