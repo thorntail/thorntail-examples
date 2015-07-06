@@ -13,4 +13,4 @@ application.
 
 ## Run
 
-* ./gradlew clean wildfly-swarm-package && java -jar ./build/lib/wildfly-swarm-example-gradle-swarm.jar
+* ./gradlew clean wildfly-swarm-package && java -jar ./build/libs/wildfly-swarm-example-gradle-swarm.jar
