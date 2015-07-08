@@ -4,7 +4,7 @@ buildscript {
     mavenLocal()
   }
   dependencies {
-    classpath 'org.wildfly.swarm:wildfly-swarm-plugin:$version'
+    classpath "org.wildfly.swarm:wildfly-swarm-plugin:$version"
   }
 }
 
@@ -20,6 +20,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.wildfly.swarm:wildfly-swarm-jaxrs:$version'
-    compile 'org.wildfly.swarm:wildfly-swarm-mail:$version'
+    compile "org.wildfly.swarm:wildfly-swarm-jaxrs:$version"
+    compile "org.wildfly.swarm:wildfly-swarm-ejb:$version"
+    compile "org.wildfly.swarm:wildfly-swarm-mail:$version"
 }
