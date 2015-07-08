@@ -1,9 +1,10 @@
 buildscript {
+  version = '1.0.0.Alpha4-SNAPSHOT'
   repositories {
     mavenLocal()
   }
   dependencies {
-    classpath 'org.wildfly.swarm:wildfly-swarm-plugin:1.0.0.Alpha4-SNAPSHOT'
+    classpath 'org.wildfly.swarm:wildfly-swarm-plugin:$version'
   }
 }
 
@@ -19,6 +20,6 @@ repositories {
 }
 
 dependencies {
-    compile 'org.wildfly.swarm:wildfly-swarm-jaxrs:1.0.0.Alpha4-SNAPSHOT'
-    compile 'org.wildfly.swarm:wildfly-swarm-mail:1.0.0.Alpha4-SNAPSHOT'
+    compile 'org.wildfly.swarm:wildfly-swarm-jaxrs:$version'
+    compile 'org.wildfly.swarm:wildfly-swarm-mail:$version'
 }
