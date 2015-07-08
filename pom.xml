@@ -48,6 +48,7 @@
     <module>cdi-servlet</module>
     <module>datasource-deployment</module>
     <module>datasource-subsystem</module>
+    <module>docker-jaxrs-app</module>
     <module>jaxrs</module>
     <module>jaxrs-cdi</module>
     <module>jaxrs-shrinkwrap</module>
@@ -63,6 +64,5 @@
     <module>static</module>
     <module>static-war</module>
     <module>transactions</module>
-    <module>wildfly-swarm-jaxrs-docker</module>
   </modules>
 </project>
