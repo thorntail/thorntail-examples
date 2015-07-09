@@ -57,6 +57,7 @@
     <module>jpa-jaxrs-cdi-shrinkwrap2</module>
     <module>jpa-servlet</module>
     <module>jpa-servlet-shrinkwrap</module>
+    <module>jsf</module>
     <module>kitchensink-html5-mobile</module>
     <module>messaging</module>
     <module>msc</module>
