@@ -58,6 +58,7 @@
     <module>jpa-servlet</module>
     <module>jpa-servlet-shrinkwrap</module>
     <module>jsf</module>
+    <module>jsf-shrinkwrap</module>
     <module>kitchensink-html5-mobile</module>
     <module>messaging</module>
     <module>msc</module>
