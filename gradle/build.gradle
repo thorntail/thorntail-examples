@@ -15,6 +15,12 @@ apply plugin: 'application'
 
 mainClassName = 'org.wildfly.swarm.examples.gradle.Main'
 
+swarm {
+  properties {
+    jboss.http.port = 8181
+  }
+}
+
 repositories {
     mavenLocal()
 }
