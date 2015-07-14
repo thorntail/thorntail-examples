@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.wildfly.swarm.examples</groupId>
+    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <version>1.0.0.Alpha02-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+
+  <artifactId>wildfly-swarm-examples-multiple-parent</artifactId>
+
+  <name>WildFly Swarm Examples: Multiple Services Parent</name>
+  <description>WildFly Swarm Examples: Multiple Services Parent</description>
+
+  <packaging>pom</packaging>
+
+  <build>
+  </build>
+
+  <modules>
+    <module>time</module>
+    <module>events</module>
+  </modules>
+</project>

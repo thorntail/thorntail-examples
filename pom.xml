@@ -66,5 +66,7 @@
     <module>static</module>
     <module>static-war</module>
     <module>transactions</module>
+
+    <module>multiple</module>
   </modules>
 </project>
