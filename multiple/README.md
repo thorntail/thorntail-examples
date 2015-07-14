@@ -8,6 +8,18 @@
 
 The beginnings of a multi-service example.
 
+Two services exist:
+
+* Time
+* Events
+
+The `time` service simply returns the current time as a JSON map
+with fields for hour, minute, second, etc.
+
+The `events` service queries the `time` service, and returns a list of
+currently on-going events.  Currently, it just generates a list of events
+that started at the top of the current hour.
+
 Build and run the time service:
 
   $ cd time
