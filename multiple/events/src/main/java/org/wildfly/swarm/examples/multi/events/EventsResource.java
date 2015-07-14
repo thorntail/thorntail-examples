@@ -59,7 +59,7 @@ public class EventsResource {
                         }
                         asyncResponse.resume(events);
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        asyncResponse.resume(e);
                     }
                 },
                 (err) -> {
