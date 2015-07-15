@@ -8,10 +8,12 @@ import org.jboss.msc.service.StopContext;
 import org.jboss.msc.value.InjectedValue;
 import org.wildfly.clustering.dispatcher.CommandDispatcher;
 import org.wildfly.clustering.dispatcher.CommandDispatcherFactory;
+import org.wildfly.clustering.dispatcher.CommandResponse;
 import org.wildfly.clustering.group.Group;
 import org.wildfly.clustering.group.Node;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Bob McWhirter
@@ -56,7 +58,10 @@ public class ClusterWatcher implements Service<Void> {
                 while (shouldRun) {
                     try {
                         Thread.sleep(1000);
-                        dispatcher.executeOnCluster( new PingCommand( requester ) );
+                        Map<Node, CommandResponse<Object>> result = dispatcher.executeOnCluster(new PingCommand(requester));
+                        for ( CommandResponse each : result.values() ) {
+                            System.err.println( " -> " + each.get() );
+                        }
                     } catch (InterruptedException e) {
                         break;
                     } catch (Exception e) {

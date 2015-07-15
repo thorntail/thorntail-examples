@@ -19,6 +19,6 @@ public class PingCommand implements Command<Object, Node>, Serializable {
     @Override
     public Object execute(Node node) throws Exception {
         System.err.println(this.requester + " :: running against :: " + node.getSocketAddress());
-        return null;
+        return node.getSocketAddress().toString() + " says hi in return";
     }
 }

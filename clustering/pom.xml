@@ -30,7 +30,7 @@
         <configuration>
           <mainClass>org.wildfly.swarm.examples.clustering.Main</mainClass>
           <properties>
-            <jboss.bind.address>10.0.1.175</jboss.bind.address>
+            <jboss.bind.address>127.0.0.1</jboss.bind.address>
             <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
           </properties>
         </configuration>
