@@ -6,6 +6,8 @@ You'll need to enable multicast on localhost, possibly:
 
     sudo route add -net 224.0.0.0/4 127.0.0.1
 
+see: https://issues.jboss.org/browse/JGRP-1808
+
 
 Run twice:
 
