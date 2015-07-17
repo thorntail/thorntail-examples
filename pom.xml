@@ -52,6 +52,7 @@
     <module>docker-jaxrs-app</module>
     <module>jaxrs</module>
     <module>jaxrs-cdi</module>
+    <module>jaxrs-msc</module>
     <module>jaxrs-shrinkwrap</module>
     <module>jpa-jaxrs-cdi</module>
     <module>jpa-jaxrs-cdi-shrinkwrap</module>

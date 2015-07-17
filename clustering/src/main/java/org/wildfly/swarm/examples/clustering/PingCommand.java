@@ -10,6 +10,8 @@ import java.io.Serializable;
  */
 public class PingCommand implements Command<Object, Node>, Serializable {
 
+    public static final Long serialVersionUID = 1L;
+
     private final String requester;
 
     public PingCommand(String requester) {
@@ -18,7 +20,8 @@ public class PingCommand implements Command<Object, Node>, Serializable {
 
     @Override
     public Object execute(Node node) throws Exception {
-        System.err.println(this.requester + " :: running against :: " + node.getSocketAddress());
+        System.err.println( "HI from " + requester );
+        //System.err.println(this.requester + " :: running against :: " + node.getSocketAddress());
         return node.getSocketAddress().toString() + " says hi in return";
     }
 }

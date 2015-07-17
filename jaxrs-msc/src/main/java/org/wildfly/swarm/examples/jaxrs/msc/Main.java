@@ -1,9 +1,8 @@
-package org.wildfly.swarm.examples.jaxrs.shrinkwrap;
+package org.wildfly.swarm.examples.jaxrs.msc;
 
-import org.jboss.shrinkwrap.api.spec.WebArchive;
-import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
+import org.wildfly.swarm.msc.ServiceActivatorArchive;
 
 /**
  * @author Bob McWhirter
@@ -16,8 +15,9 @@ public class Main {
 
         JAXRSArchive deployment = container.create("myapp.war", JAXRSArchive.class);
         deployment.addClass(MyResource.class);
-        //deployment.addAsLibrary(Swarm.artifact("joda-time:joda-time"));
         deployment.addAllDependencies();
+        deployment.as(ServiceActivatorArchive.class).addServiceActivator(MyServiceActivator.class);
+        deployment.addClass(MyService.class);
         container.start().deploy(deployment);
     }
 }

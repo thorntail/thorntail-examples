@@ -5,6 +5,7 @@ import org.jboss.msc.service.ServiceActivatorContext;
 import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.ServiceRegistryException;
 import org.jboss.msc.service.ServiceTarget;
+import org.wildfly.clustering.dispatcher.CommandDispatcherFactory;
 
 /**
  * @author Bob McWhirter
@@ -17,9 +18,7 @@ public class ClusterWatcherActivator implements ServiceActivator {
         ClusterWatcher watcher = new ClusterWatcher();
 
         target.addService( ServiceName.of( "cluster", "watcher" ), watcher )
-                .addDependency( ServiceName.parse( "jboss.clustering.dispatcher.default" ), watcher.getDispatcherInjector() )
-                .addDependency( ServiceName.parse( "jboss.clustering.group.default" ), watcher.getGroupInjector() )
-                .addDependency( ServiceName.parse( "jboss.clustering.nodes.default" ), watcher.getNodesInjector() )
+                .addDependency( ServiceName.parse( "jboss.clustering.dispatcher.default" ), CommandDispatcherFactory.class, watcher.getCommandDispatcherFactoryInjector() )
                 .install();
 
         /*

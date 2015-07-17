@@ -24,52 +24,46 @@ public class ClusterWatcher implements Service<Void> {
 
     private boolean shouldRun;
 
-    private InjectedValue dispatcherInjector = new InjectedValue();
-    private InjectedValue groupInjector = new InjectedValue();
-    private InjectedValue nodesInjector = new InjectedValue();
+    private InjectedValue<CommandDispatcherFactory> dispatcherInjector = new InjectedValue();
 
     public ClusterWatcher() {
     }
 
     public void start(final StartContext startContext) throws StartException {
-        System.err.println(" dispatcher ---> " + this.dispatcherInjector.getValue());
-        System.err.println(" group ---> " + this.groupInjector.getValue());
-        System.err.println(" nodes ---> " + this.nodesInjector.getValue());
 
-
-        CommandDispatcherFactory factory = (CommandDispatcherFactory) this.dispatcherInjector.getValue();
+        CommandDispatcherFactory factory = this.dispatcherInjector.getValue();
         CommandDispatcher<Node> dispatcher = factory.createCommandDispatcher("ping", factory.getGroup().getLocalNode());
-        System.err.println( "I am " + factory.getGroup().getLocalNode().getSocketAddress() );
+        System.err.println("I am " + factory.getGroup().getLocalNode().getSocketAddress());
 
-        factory.getGroup().addListener(new Group.Listener() {
-            @Override
-            public void membershipChanged(List<Node> previousMembers, List<Node> members, boolean merged) {
-                System.err.println( "Membership now: " + members );
-            }
+        factory.getGroup().addListener((List<Node> previousMembers, List<Node> members, boolean merged) -> {
+            System.err.println("Membership now: " + members);
         });
 
         String requester = factory.getGroup().getLocalNode().getSocketAddress().toString();
         startContext.asynchronous();
         this.shouldRun = true;
-        this.thread = new Thread(new Runnable() {
-            public void run() {
-                startContext.complete();
+        this.thread = new Thread(() -> {
+            startContext.complete();
 
-                while (shouldRun) {
-                    try {
-                        Thread.sleep(1000);
-                        Map<Node, CommandResponse<Object>> result = dispatcher.executeOnCluster(new PingCommand(requester));
-                        for ( CommandResponse each : result.values() ) {
-                            System.err.println( " -> " + each.get() );
-                        }
-                    } catch (InterruptedException e) {
-                        break;
-                    } catch (Exception e) {
-                        e.printStackTrace();
+            while (shouldRun) {
+                try {
+                    Thread.sleep(1000);
+                    if (factory.getGroup().getNodes().isEmpty()) {
+                        System.err.println("no nodes");
+                        //continue;
                     }
+                    System.err.println("issue command " + factory.getGroup().getNodes());
+                    Map<Node, CommandResponse<Object>> result = dispatcher.executeOnCluster(new PingCommand(requester), factory.getGroup().getLocalNode());
+                    for (CommandResponse each : result.values()) {
+                        System.err.println(" -> " + each.get());
+                    }
+                } catch (InterruptedException e) {
+                    break;
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
             }
+
         });
 
         this.thread.start();
@@ -83,16 +77,9 @@ public class ClusterWatcher implements Service<Void> {
         return null;
     }
 
-    public Injector getDispatcherInjector() {
+    public Injector<CommandDispatcherFactory> getCommandDispatcherFactoryInjector() {
         return this.dispatcherInjector;
     }
 
-    public Injector getGroupInjector() {
-        return this.groupInjector;
-    }
-
-    public Injector getNodesInjector() {
-        return this.nodesInjector;
-    }
 }
 
