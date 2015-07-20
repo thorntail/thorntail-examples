@@ -9,7 +9,6 @@ import org.jboss.msc.value.InjectedValue;
 import org.wildfly.clustering.dispatcher.CommandDispatcher;
 import org.wildfly.clustering.dispatcher.CommandDispatcherFactory;
 import org.wildfly.clustering.dispatcher.CommandResponse;
-import org.wildfly.clustering.group.Group;
 import org.wildfly.clustering.group.Node;
 
 import java.util.List;
@@ -32,14 +31,12 @@ public class ClusterWatcher implements Service<Void> {
     public void start(final StartContext startContext) throws StartException {
 
         CommandDispatcherFactory factory = this.dispatcherInjector.getValue();
-        CommandDispatcher<Node> dispatcher = factory.createCommandDispatcher("ping", factory.getGroup().getLocalNode());
-        System.err.println("I am " + factory.getGroup().getLocalNode().getSocketAddress());
-
         factory.getGroup().addListener((List<Node> previousMembers, List<Node> members, boolean merged) -> {
             System.err.println("Membership now: " + members);
         });
+        CommandDispatcher<Node> dispatcher = factory.createCommandDispatcher("ping", factory.getGroup().getLocalNode());
 
-        String requester = factory.getGroup().getLocalNode().getSocketAddress().toString();
+        String nodeName = System.getProperty( "jboss.node.name" );
         startContext.asynchronous();
         this.shouldRun = true;
         this.thread = new Thread(() -> {
@@ -49,13 +46,11 @@ public class ClusterWatcher implements Service<Void> {
                 try {
                     Thread.sleep(1000);
                     if (factory.getGroup().getNodes().isEmpty()) {
-                        System.err.println("no nodes");
                         //continue;
                     }
-                    System.err.println("issue command " + factory.getGroup().getNodes());
-                    Map<Node, CommandResponse<Object>> result = dispatcher.executeOnCluster(new PingCommand(requester), factory.getGroup().getLocalNode());
+                    Map<Node, CommandResponse<Object>> result = dispatcher.executeOnCluster(new PingCommand(nodeName), factory.getGroup().getLocalNode());
                     for (CommandResponse each : result.values()) {
-                        System.err.println(" -> " + each.get());
+                        System.err.println(" Responses from PING -> " + each.get());
                     }
                 } catch (InterruptedException e) {
                     break;

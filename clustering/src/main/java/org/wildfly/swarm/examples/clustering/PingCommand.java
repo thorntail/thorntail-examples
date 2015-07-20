@@ -20,8 +20,8 @@ public class PingCommand implements Command<Object, Node>, Serializable {
 
     @Override
     public Object execute(Node node) throws Exception {
-        System.err.println( "HI from " + requester );
-        //System.err.println(this.requester + " :: running against :: " + node.getSocketAddress());
-        return node.getSocketAddress().toString() + " says hi in return";
+        System.err.println( "Received PING from " + requester );
+        String nodeName = System.getProperty( "jboss.node.name" );
+        return nodeName + " (" + node.getSocketAddress().toString() + ") says 'hi'";
     }
 }
