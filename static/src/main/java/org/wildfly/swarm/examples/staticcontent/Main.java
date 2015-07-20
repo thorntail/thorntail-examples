@@ -1,7 +1,8 @@
 package org.wildfly.swarm.examples.staticcontent;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.undertow.StaticDeployment;
+import org.wildfly.swarm.undertow.WARArchive;
 
 /**
  * @author Bob McWhirter
@@ -12,7 +13,9 @@ public class Main {
 
         Container container = new Container();
 
-        StaticDeployment deployment = new StaticDeployment(container, "/static");
+        WARArchive deployment = ShrinkWrap.create( WARArchive.class );
+
+        deployment.staticContent("/static");
 
         container.start().deploy(deployment);
 

@@ -1,8 +1,9 @@
 package org.wildfly.swarm.example.docker;
 
 import lombok.extern.slf4j.Slf4j;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.logging.LoggingFraction;
 
 @Slf4j
@@ -17,8 +18,8 @@ public class SwarmMain {
                 .rootLogger(logLevel, "CONSOLE"));
         container.start();
 
-        JAXRSDeployment jaxrsDeployment = new JAXRSDeployment(container);
-        jaxrsDeployment.setApplication(JaxRsApplication.class);
+        JAXRSArchive jaxrsDeployment = ShrinkWrap.create( JAXRSArchive.class );
+        jaxrsDeployment.addClass(JaxRsApplication.class);
         jaxrsDeployment.addResource(MyResource.class);
         container.deploy(jaxrsDeployment);
     }

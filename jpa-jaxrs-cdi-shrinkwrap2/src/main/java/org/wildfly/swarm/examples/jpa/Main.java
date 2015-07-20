@@ -1,12 +1,13 @@
 package org.wildfly.swarm.examples.jpa;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.jboss.shrinkwrap.api.asset.StringAsset;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.datasources.Datasource;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.datasources.Driver;
-import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jpa.JPAFraction;
 
 /**
@@ -37,18 +38,19 @@ public class Main {
 
         container.start();
 
-        JAXRSDeployment deployment = new JAXRSDeployment(container);
-        deployment.getArchive().addClass(Employee.class);
-        deployment.getArchive().addClass(Resources.class);
-        deployment.getArchive().addAsWebInfResource(new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
-        deployment.getArchive().addAsWebInfResource(new ClassLoaderAsset("META-INF/load.sql", Main.class.getClassLoader()), "classes/META-INF/load.sql");
+        JAXRSArchive deployment = ShrinkWrap.create( JAXRSArchive.class );
+        deployment.addClass(Employee.class);
+        deployment.addClass(Resources.class);
+        deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
+        deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/load.sql", Main.class.getClassLoader()), "classes/META-INF/load.sql");
 
-        deployment.getArchive().addAsWebInfResource(new StringAsset("<beans xmlns=\"http://xmlns.jcp.org/xml/ns/javaee\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
+        deployment.addAsWebInfResource(new StringAsset("<beans xmlns=\"http://xmlns.jcp.org/xml/ns/javaee\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n" +
                 "    xsi:schemaLocation=\"\n" +
                 "        http://xmlns.jcp.org/xml/ns/javaee\n" +
                 "        http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd\" bean-discovery-mode=\"all\">\n" +
                 "</beans>"), "beans.xml");
         deployment.addResource(EmployeeResource.class);
+        deployment.addAllDependencies();
 
         container.deploy(deployment);
     }

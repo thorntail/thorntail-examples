@@ -1,5 +1,6 @@
 package org.wildfly.swarm.examples.jaxrs.shrinkwrap;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.container.Container;
@@ -14,9 +15,8 @@ public class Main {
 
         Container container = new Container();
 
-        JAXRSArchive deployment = container.create("myapp.war", JAXRSArchive.class);
+        JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "myapp.war");
         deployment.addClass(MyResource.class);
-        //deployment.addAsLibrary(Swarm.artifact("joda-time:joda-time"));
         deployment.addAllDependencies();
         container.start().deploy(deployment);
     }

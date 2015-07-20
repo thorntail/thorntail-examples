@@ -5,8 +5,9 @@
  */
 package org.wildfly.swarm.examples.transactions;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.transactions.TransactionsFraction;
 
 /**
@@ -29,10 +30,10 @@ public class Main {
         container.start();
 
 	/*
-	 * Now register JAX-RS resource class.
+     * Now register JAX-RS resource class.
 	 */
 
-        JAXRSDeployment appDeployment = new JAXRSDeployment(container);
+        JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
         appDeployment.addResource(MyResource.class);
 
         container.deploy(appDeployment);

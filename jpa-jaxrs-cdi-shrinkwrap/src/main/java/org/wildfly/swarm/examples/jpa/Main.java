@@ -1,11 +1,12 @@
 package org.wildfly.swarm.examples.jpa;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.datasources.Datasource;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.datasources.Driver;
-import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jpa.JPAFraction;
 
 /**
@@ -34,11 +35,12 @@ public class Main {
 
         container.start();
 
-        JAXRSDeployment deployment = new JAXRSDeployment(container);
-        deployment.getArchive().addClasses(Employee.class);
-        deployment.getArchive().addAsWebInfResource(new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
-        deployment.getArchive().addAsWebInfResource(new ClassLoaderAsset("META-INF/load.sql", Main.class.getClassLoader()), "classes/META-INF/load.sql");
+        JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
+        deployment.addClasses(Employee.class);
+        deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
+        deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/load.sql", Main.class.getClassLoader()), "classes/META-INF/load.sql");
         deployment.addResource(EmployeeResource.class);
+        deployment.addAllDependencies();
 
         container.deploy(deployment);
     }

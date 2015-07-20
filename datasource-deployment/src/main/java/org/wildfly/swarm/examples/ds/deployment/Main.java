@@ -1,10 +1,12 @@
 package org.wildfly.swarm.examples.ds.deployment;
 
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.wildfly.swarm.ArtifactManager;
 import org.wildfly.swarm.container.Container;
+import org.wildfly.swarm.container.JARArchive;
 import org.wildfly.swarm.datasources.Datasource;
-import org.wildfly.swarm.datasources.DatasourceDeployment;
-import org.wildfly.swarm.datasources.DriverDeployment;
-import org.wildfly.swarm.jaxrs.JAXRSDeployment;
+import org.wildfly.swarm.datasources.DatasourceArchive;
+import org.wildfly.swarm.jaxrs.JAXRSArchive;
 
 /**
  * @author Bob McWhirter
@@ -20,22 +22,29 @@ public class Main {
 
         // Create a JDBC driver deployment using maven groupId:artifactId
         // The version is resolved from your pom.xml's <dependency>
-        DriverDeployment driverDeployment = new DriverDeployment(container, "com.h2database:h2", "h2");
+        container.deploy(ArtifactManager.artifact("com.h2database:h2", "h2"));
 
-        // Deploy the JDBC driver
-        container.deploy(driverDeployment);
-
+        /*
         // Create a DS deployment
         DatasourceDeployment dsDeployment = new DatasourceDeployment(container, new Datasource("ExampleDS")
                 .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
                 .driver("h2")
                 .authentication("sa", "sa")
         );
+        */
+
+        JARArchive dsArchive = ShrinkWrap.create(JARArchive.class);
+        dsArchive.as(DatasourceArchive.class).datasource(
+                new Datasource("ExampleDS")
+                        .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
+                        .driver("h2")
+                        .authentication("sa", "sa")
+        );
 
         // Deploy the datasource
-        container.deploy(dsDeployment);
+        container.deploy(dsArchive);
 
-        JAXRSDeployment appDeployment = new JAXRSDeployment(container);
+        JAXRSArchive appDeployment = ShrinkWrap.create( JAXRSArchive.class );
         appDeployment.addResource(MyResource.class);
 
         // Deploy your app
