@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.multi.time;
+package org.wildfly.swarm.examples.netflix.ribbon.time;
 
 import org.joda.time.DateTime;
 

@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.multi.events;
+package org.wildfly.swarm.examples.netflix.ribbon.events;
 
 import com.netflix.ribbon.RibbonRequest;
 import com.netflix.ribbon.proxy.annotation.Http;
@@ -15,7 +15,7 @@ public interface TimeService {
     @TemplateName("currentTime")
     @Http(
             method = Http.HttpMethod.GET,
-            uriTemplate = "/"
+            uri = "/"
     )
     RibbonRequest<ByteBuf> currentTime();
 }

@@ -10,15 +10,15 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-multiple-parent</artifactId>
+    <artifactId>wildfly-swarm-examples-netflix-ribbon-parent</artifactId>
     <version>1.0.0.Alpha02-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-multiple-events</artifactId>
+  <artifactId>wildfly-swarm-example-netflix-ribbon-events</artifactId>
 
-  <name>WildFly Swarm Examples: Multiple - Events</name>
-  <description>WildFly Swarm Examples: Multiple - Events</description>
+  <name>WildFly Swarm Examples: Netflix Ribbon - Events</name>
+  <description>WildFly Swarm Examples: Netflix Ribbon - Events</description>
 
   <packaging>jar</packaging>
 
@@ -28,7 +28,11 @@
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <configuration>
-          <mainClass>org.wildfly.swarm.examples.multi.events.Main</mainClass>
+          <mainClass>org.wildfly.swarm.examples.netflix.ribbon.events.Main</mainClass>
+          <properties>
+            <jboss.bind.address>127.0.0.1</jboss.bind.address>
+            <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+          </properties>
         </configuration>
       </plugin>
     </plugins>
@@ -41,14 +45,9 @@
       <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
-      <groupId>joda-time</groupId>
-      <artifactId>joda-time</artifactId>
-      <version>2.7</version>
-    </dependency>
-    <dependency>
       <groupId>com.netflix.ribbon</groupId>
       <artifactId>ribbon</artifactId>
-      <version>2.0-RC1</version>
+      <version>2.1.0</version>
       <exclusions>
         <exclusion>
           <groupId>com.netflix.eureka</groupId>
@@ -56,6 +55,34 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxjava</artifactId>
+      <version>1.0.9</version>
+    </dependency>
+    <dependency>
+      <groupId>io.reactivex</groupId>
+      <artifactId>rxnetty</artifactId>
+      <version>0.4.9</version>
+    </dependency>
+    <dependency>
+      <groupId>io.netty</groupId>
+      <artifactId>netty-buffer</artifactId>
+      <version>4.0.27.Final</version>
+    </dependency>
+<!--
+    <dependency>
+      <groupId>com.netflix.ribbon</groupId>
+      <artifactId>ribbon-core</artifactId>
+      <version>2.1.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.netflix.eureka</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+-->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>

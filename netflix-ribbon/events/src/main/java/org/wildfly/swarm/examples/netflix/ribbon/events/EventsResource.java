@@ -1,13 +1,10 @@
-package org.wildfly.swarm.examples.multi.events;
+package org.wildfly.swarm.examples.netflix.ribbon.events;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
-import com.netflix.ribbon.ClientOptions;
 import com.netflix.ribbon.Ribbon;
-import com.netflix.ribbon.http.HttpResourceGroup;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
 import rx.Observable;
@@ -17,9 +14,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.container.AsyncResponse;
 import javax.ws.rs.container.Suspended;
-import javax.ws.rs.ext.MessageBodyReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -33,10 +28,7 @@ public class EventsResource {
     private final TimeService time;
 
     public EventsResource() {
-        ClientOptions options = ClientOptions.create();
-        options.withConfigurationBasedServerList("localhost:8181");
-        HttpResourceGroup resourceGroup = Ribbon.createHttpResourceGroup( "time", options );
-        this.time = Ribbon.from( TimeService.class, resourceGroup );
+        this.time = Ribbon.from( TimeService.class );
     }
 
     @GET

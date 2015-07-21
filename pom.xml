@@ -69,6 +69,7 @@
     <module>static-war</module>
     <module>transactions</module>
 
-    <module>multiple</module>
+    <!-- extras -->
+    <module>netflix-ribbon</module>
   </modules>
 </project>

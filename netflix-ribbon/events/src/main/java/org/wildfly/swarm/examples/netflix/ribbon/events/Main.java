@@ -1,8 +1,9 @@
-package org.wildfly.swarm.examples.multi.events;
+package org.wildfly.swarm.examples.netflix.ribbon.events;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
+import org.wildfly.swarm.netflix.ribbon.RibbonArchive;
 
 /**
  * @author Bob McWhirter
@@ -14,6 +15,8 @@ public class Main {
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
         deployment.addResource(EventsResource.class);
         deployment.addClass( TimeService.class);
+        deployment.addAllDependencies();
+        deployment.as( RibbonArchive.class );
         container.start().deploy(deployment);
     }
 }
