@@ -55,6 +55,7 @@
         </exclusion>
       </exclusions>
     </dependency>
+<!--
     <dependency>
       <groupId>io.reactivex</groupId>
       <artifactId>rxjava</artifactId>
@@ -65,6 +66,7 @@
       <artifactId>rxnetty</artifactId>
       <version>0.4.9</version>
     </dependency>
+-->
     <dependency>
       <groupId>io.netty</groupId>
       <artifactId>netty-buffer</artifactId>

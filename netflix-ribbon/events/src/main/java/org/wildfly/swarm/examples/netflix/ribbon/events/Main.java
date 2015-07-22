@@ -13,8 +13,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Container container = new Container();
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
-        deployment.addResource(EventsResource.class);
-        deployment.addClass( TimeService.class);
+        deployment.addPackage( Main.class.getPackage() );
         deployment.addAllDependencies();
         deployment.as( RibbonArchive.class );
         container.start().deploy(deployment);
