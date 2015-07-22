@@ -22,14 +22,22 @@ that started at the top of the current hour.
 
 Build and run the time service:
 
-  $ cd time
-  $ mvn -Djboss.http.port=8181 wildfly-swarm:run
+    $ cd time
+    $ mvn -Djboss.http.port=8081 wildfly-swarm:run
 
-In a separate window
+Maybe run it twice:
 
-  $ cd events
-  $ mvn wildfly-swarm:run
+    $ cd time
+    $ mvn -Djboss.http.port=8082 wildfly-swarm:run
+
+Then run the events service, which consumes the time service(s):
+
+    $ cd events
+    $ mvn wildfly-swarm:run
 
 Then
 
 * http://localhost:8080/
+
+Kill and restart one or both of the `time` services, and witness how stuff
+behaves.

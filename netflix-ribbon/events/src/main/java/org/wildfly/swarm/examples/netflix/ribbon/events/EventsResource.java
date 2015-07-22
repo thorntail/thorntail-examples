@@ -28,7 +28,8 @@ public class EventsResource {
     private final TimeService time;
 
     public EventsResource() {
-        this.time = Ribbon.from( TimeService.class );
+        //this.time = Ribbon.from( TimeService.class );
+        this.time = TimeService.INSTANCE;
     }
 
     @GET

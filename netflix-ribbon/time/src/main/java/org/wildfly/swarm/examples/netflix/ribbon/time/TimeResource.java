@@ -17,6 +17,7 @@ public class TimeResource {
     @GET
     @Produces("application/json")
     public Map<String,Object> get() {
+        System.err.println( "I was asked for the time" );
         Map<String,Object> t = new HashMap<>();
         DateTime d = new DateTime();
 
