@@ -1,5 +1,8 @@
 # Multiple services plus NetFlixOSS Ribbon
 
+> NOTE: This example will not work yet, as it relies upon a patch
+> in the upstream of WildFly not yet available in a released version.
+
 > Please raise any issues found with this example in this repo:
 > https://github.com/wildfly-swarm/wildfly-swarm-examples
 >
