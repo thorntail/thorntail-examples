@@ -46,7 +46,6 @@
 
   <modules>
     <module>cdi-servlet</module>
-    <module>clustering</module>
     <module>datasource-deployment</module>
     <module>datasource-subsystem</module>
     <module>docker-jaxrs-app</module>
