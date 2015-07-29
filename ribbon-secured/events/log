@@ -1,0 +1,194 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WildFly Swarm Examples: Netflix Ribbon - Events 1.0.0.Alpha02-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ wildfly-swarm-example-netflix-ribbon-events ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ wildfly-swarm-example-netflix-ribbon-events ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ wildfly-swarm-example-netflix-ribbon-events ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/bob/repos/wildfly-swarm-examples/netflix-ribbon/events/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ wildfly-swarm-example-netflix-ribbon-events ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ wildfly-swarm-example-netflix-ribbon-events ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ wildfly-swarm-example-netflix-ribbon-events ---
+[INFO] 
+[INFO] --- wildfly-swarm-plugin:1.0.0.Alpha4-SNAPSHOT:package (default) @ wildfly-swarm-example-netflix-ribbon-events ---
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-jaxrs
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-ee
+add dependency: compile:org.jboss.spec.javax.enterprise.concurrent:jboss-concurrency-api_1.0_spec
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-io
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-logging
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-naming
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-security
+add dependency: compile:org.picketbox:picketbox
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-undertow
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-bootstrap
+add dependency: compile:org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec
+add dependency: compile:org.jboss.spec.javax.websocket:jboss-websocket-api_1.1_spec
+add dependency: compile:org.jboss.shrinkwrap:shrinkwrap-api
+add dependency: compile:org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-container
+add dependency: compile:org.jboss.shrinkwrap:shrinkwrap-spi
+add dependency: compile:org.jboss.shrinkwrap:shrinkwrap-impl-base
+add dependency: compile:org.ow2.asm:asm-all
+add dependency: compile:com.fasterxml.jackson.core:jackson-databind
+add dependency: compile:com.fasterxml.jackson.core:jackson-annotations
+add dependency: compile:com.fasterxml.jackson.core:jackson-core
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-netflix-ribbon-keycloak
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-netflix-ribbon
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-msc
+add dependency: compile:org.jboss.msc:jboss-msc
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-clustering
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-jmx
+add dependency: compile:com.netflix.hystrix:hystrix-core
+add dependency: runtime:org.slf4j:slf4j-api
+add dependency: compile:com.netflix.archaius:archaius-core
+add dependency: runtime:com.google.code.findbugs:annotations
+add dependency: runtime:commons-configuration:commons-configuration
+add dependency: runtime:commons-logging:commons-logging
+add dependency: runtime:com.google.guava:guava
+add dependency: runtime:com.google.code.findbugs:jsr305
+add dependency: compile:com.netflix.ribbon:ribbon
+add dependency: runtime:javax.inject:javax.inject
+add dependency: compile:com.netflix.ribbon:ribbon-core
+add dependency: runtime:commons-lang:commons-lang
+add dependency: compile:com.netflix.ribbon:ribbon-loadbalancer
+add dependency: runtime:com.netflix.netflix-commons:netflix-statistics
+add dependency: runtime:com.netflix.servo:servo-core
+add dependency: runtime:com.netflix.servo:servo-internal
+add dependency: runtime:com.netflix.netflix-commons:netflix-commons-util
+add dependency: compile:com.netflix.ribbon:ribbon-transport
+add dependency: runtime:io.reactivex:rxnetty-contexts
+add dependency: runtime:io.reactivex:rxnetty-servo
+add dependency: compile:io.reactivex:rxjava
+add dependency: compile:io.reactivex:rxnetty
+add dependency: runtime:io.netty:netty-codec-http
+add dependency: runtime:io.netty:netty-codec
+add dependency: runtime:io.netty:netty-handler
+add dependency: runtime:io.netty:netty-transport-native-epoll
+add dependency: compile:io.netty:netty-buffer
+add dependency: compile:io.netty:netty-common
+add dependency: compile:io.netty:netty-transport
+add dependency: compile:org.wildfly.swarm:wildfly-swarm-keycloak
+= io.netty:netty-buffer:4.0.26.Final:jar: [compile]
+= org.wildfly.swarm:wildfly-swarm-netflix-ribbon-keycloak:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-netflix-ribbon-keycloak
+provided-2: com.netflix.ribbon:ribbon
+provided-2: com.netflix.ribbon:ribbon-core
+provided-2: com.netflix.ribbon:ribbon-transport
+provided-2: com.netflix.ribbon:ribbon-load-balancer
+provided-2: com.netflix.hystrix:hystrix-core
+provided-2: io.reactivex:rxjava
+provided-2: io.reactivex:rxnetty
+provided-2: io.netty:netty-buffer
+= com.fasterxml.jackson.core:jackson-databind:2.6.0-rc4:jar: [compile]
+= io.reactivex:rxnetty:0.4.9:jar: [compile]
+= com.netflix.hystrix:hystrix-core:1.4.3:jar: [compile]
+= io.reactivex:rxjava:1.0.9:jar: [compile]
+= io.netty:netty-handler:4.0.27.Final:jar: [runtime]
+= com.netflix.ribbon:ribbon-loadbalancer:2.1.0:jar: [compile]
+= com.netflix.ribbon:ribbon-transport:2.1.0:jar: [compile]
+= io.netty:netty-transport-native-epoll:4.0.27.Final:jar: [runtime]
+= com.netflix.archaius:archaius-core:0.6.6:jar: [compile]
+= org.wildfly.swarm:wildfly-swarm-naming:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-naming
+= org.ow2.asm:asm-all:5.0.4:jar: [compile]
+= com.fasterxml.jackson.core:jackson-annotations:2.6.0-rc3:jar: [compile]
+= org.jboss.spec.javax.enterprise.concurrent:jboss-concurrency-api_1.0_spec:1.0.0.Final:jar: [compile]
+= org.jboss.msc:jboss-msc:1.2.6.Final:jar: [compile]
+= io.reactivex:rxnetty-contexts:0.4.9:jar: [runtime]
+= org.jboss.spec.javax.websocket:jboss-websocket-api_1.1_spec:1.1.1.Final:jar: [compile]
+= org.wildfly.swarm:wildfly-swarm-keycloak:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-keycloak
+provided-2: org.keycloak:keycloak-core
+provided-2: org.keycloak:keycloak-undertow-adapter
+provided-2: org.keycloak:keycloak-adapter-core
+provided-2: net.iharder:base64
+provided-2: org.bouncycastle:bcprov-jdk15on
+= org.wildfly.swarm:wildfly-swarm-ee:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-ee
+provided-2: org.jboss.spec.javax.enterprise.concurrent:jboss-concurrency-api_1.0_spec
+= io.netty:netty-transport:4.0.26.Final:jar: [compile]
+= org.picketbox:picketbox:4.9.2.Final:jar: [compile]
+= io.reactivex:rxnetty-servo:0.4.9:jar: [runtime]
+= org.wildfly.swarm:wildfly-swarm-logging:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-logging
+= org.wildfly.swarm:wildfly-swarm-bootstrap:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-bootstrap
+= io.netty:netty-common:4.0.26.Final:jar: [compile]
+= javax.inject:javax.inject:1:jar: [runtime]
+= com.google.guava:guava:11.0.2:jar: [runtime]
+= com.netflix.netflix-commons:netflix-commons-util:0.1.1:jar: [runtime]
+= io.netty:netty-codec:4.0.27.Final:jar: [runtime]
+= com.netflix.ribbon:ribbon:2.1.0:jar: [compile]
+= com.netflix.netflix-commons:netflix-statistics:0.1.1:jar: [runtime]
+= org.wildfly.swarm:wildfly-swarm-io:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-io
+= org.jboss.shrinkwrap:shrinkwrap-impl-base:1.1.2:jar: [compile]
+= org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec:1.0.0.Final:jar: [compile]
+= commons-configuration:commons-configuration:1.8:jar: [runtime]
+= com.google.code.findbugs:jsr305:1.3.9:jar: [runtime]
+= org.wildfly.swarm:wildfly-swarm-container:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-container
+provided-2: org.jboss.shrinkwrap:shrinkwrap-api
+provided-2: org.jboss.shrinkwrap:shrinkwrap-spi
+provided-2: org.jboss.shrinkwrap:shrinkwrap-impl-base
+= com.google.code.findbugs:annotations:2.0.0:jar: [runtime]
+= org.slf4j:slf4j-api:1.7.0:jar: [runtime]
+= com.netflix.servo:servo-internal:0.9.2:jar: [runtime]
+= org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec:1.0.0.Final:jar: [compile]
+= org.jboss.shrinkwrap:shrinkwrap-spi:1.1.2:jar: [compile]
+= org.wildfly.swarm:wildfly-swarm-undertow:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-undertow
+provided-2: org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec
+provided-2: org.jboss.spec.javax.websocket:jboss-websocket-api_1.1_spec
+= io.netty:netty-codec-http:4.0.27.Final:jar: [runtime]
+= org.jboss.shrinkwrap:shrinkwrap-api:1.1.2:jar: [compile]
+= com.netflix.ribbon:ribbon-core:2.1.0:jar: [compile]
+= org.wildfly.swarm:wildfly-swarm-netflix-ribbon:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-netflix-ribbon
+provided-2: com.netflix.ribbon:ribbon
+provided-2: com.netflix.ribbon:ribbon-core
+provided-2: com.netflix.ribbon:ribbon-transport
+provided-2: com.netflix.ribbon:ribbon-loadbalancer
+provided-2: com.netflix.hystrix:hystrix-core
+provided-2: com.netflix.archaius:archaius-core
+provided-2: io.reactivex:rxjava
+provided-2: io.reactivex:rxnetty
+provided-2: io.netty:netty-buffer
+= commons-lang:commons-lang:2.6:jar: [runtime]
+= org.wildfly.swarm:wildfly-swarm-msc:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-msc
+provided-2: org.jboss.msc:jboss-msc
+= org.wildfly.swarm:wildfly-swarm-jaxrs:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-jaxrs
+provided-2: org.jboss.spec.javax.ws.rs:jboss-jaxrs-api_2.0_spec
+= org.wildfly.swarm:wildfly-swarm-security:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-security
+provided-2: org.picketbox:picketbox
+= commons-logging:commons-logging:1.1.1:jar: [runtime]
+= com.netflix.servo:servo-core:0.9.2:jar: [runtime]
+= org.wildfly.swarm:wildfly-swarm-jmx:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-jmx
+= org.wildfly.swarm:wildfly-swarm-clustering:1.0.0.Alpha4-SNAPSHOT:jar: [compile]
+provided-1: org.wildfly.swarm:wildfly-swarm-clustering
+provided-2: org.wildfly:wildfly-clustering-api
+= com.fasterxml.jackson.core:jackson-core:2.6.0-rc3:jar: [compile]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.012 s
+[INFO] Finished at: 2015-07-28T16:16:11-04:00
+[INFO] Final Memory: 16M/309M
+[INFO] ------------------------------------------------------------------------
