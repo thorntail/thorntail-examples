@@ -12,8 +12,8 @@
 
   <artifactId>wildfly-swarm-examples-ribbon-secured-parent</artifactId>
 
-  <name>WildFly Swarm Examples: Netflix Ribbon Parent</name>
-  <description>WildFly Swarm Examples: Netflix Ribbon Parent</description>
+  <name>WildFly Swarm Examples: Netflix Ribbon - Secured - Parent</name>
+  <description>WildFly Swarm Examples: Netflix Ribbon - Secured - Parent</description>
 
   <packaging>pom</packaging>
 
