@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2015 Red Hat, Inc. and/or its affiliates.
+  ~
+  ~ Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
+  -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.wildfly.swarm.examples</groupId>
+    <artifactId>wildfly-swarm-examples-logstash-parent</artifactId>
+    <version>1.0.0.Alpha02-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+
+  <artifactId>wildfly-swarm-example-logstash-time</artifactId>
+
+  <name>WildFly Swarm Examples: Logstash - Time</name>
+  <description>WildFly Swarm Examples: Logstash - Time</description>
+
+  <packaging>jar</packaging>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>wildfly-swarm-plugin</artifactId>
+        <configuration>
+          <mainClass>org.wildfly.swarm.examples.netflix.ribbon.time.Main</mainClass>
+          <properties>
+            <jboss.bind.address>127.0.0.1</jboss.bind.address>
+            <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+          </properties>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-jaxrs</artifactId>
+      <version>${version.wildfly-swarm}</version>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.7</version>
+    </dependency>
+  </dependencies>
+
+</project>

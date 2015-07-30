@@ -71,5 +71,6 @@
     <!-- extras -->
     <module>ribbon</module>
     <module>ribbon-secured</module>
+    <module>logstash</module>
   </modules>
 </project>
