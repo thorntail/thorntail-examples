@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Container container = new Container();
-
+        container.setArgs(args);
         container.start();
 
         JavaArchive deployment = ShrinkWrap.create( JavaArchive.class );

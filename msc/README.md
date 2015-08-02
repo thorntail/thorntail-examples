@@ -57,7 +57,7 @@ MSC services.
 
         public static void main(String[] args) throws Exception {
             Container container = new Container();
-    
+                container.setArgs(args);
                 container.start();
     
             ServiceActivatorDeployment deployment = new ServiceActivatorDeployment(container);
@@ -87,6 +87,7 @@ Watch the console for messages on STDERR.
     15:55:08,664 INFO  [org.jboss.as] (MSC service thread 1-6) WFLYSRV0049: WildFly Core 1.0.0.CR1 "Kenny" starting
     2015-05-27 15:55:09,030 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Core 1.0.0.CR1 "Kenny" started in 416ms - Started 26 of 31 services (5 services are lazy, passive or on-demand)
     2015-05-27 15:55:09,081 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0027: Starting deployment of "services.jar" (runtime-name: "services.jar")
+    2015-05-27 15:55:09,081 ERROR [stderr] (MSC service thread 1-5) Args available to services: []
     2015-05-27 15:55:09,114 ERROR [stderr] (Thread-25) Howdy #2
     2015-05-27 15:55:09,114 ERROR [stderr] (Thread-23) Hi #1
     2015-05-27 15:55:09,115 ERROR [stderr] (Thread-24) Hi #2
