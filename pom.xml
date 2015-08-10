@@ -68,9 +68,13 @@
     <module>static-war</module>
     <module>transactions</module>
 
+    <module>simple</module>
+
     <!-- extras -->
     <module>ribbon</module>
+<!--
     <module>ribbon-secured</module>
+-->
     <module>logstash</module>
   </modules>
 </project>

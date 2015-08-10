@@ -15,7 +15,7 @@ public class Main {
         container.setArgs(args);
         container.start();
 
-        JavaArchive deployment = ShrinkWrap.create( JavaArchive.class );
+        JavaArchive deployment = ShrinkWrap.create( JavaArchive.class, "myapp.jar" );
 
         deployment.addClass(MyService.class);
         deployment.as(ServiceActivatorArchive.class).addServiceActivator(MyServiceActivator.class);

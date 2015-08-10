@@ -15,26 +15,28 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-jaxrs-cdi</artifactId>
+  <artifactId>wildfly-swarm-example-simple</artifactId>
 
-  <name>WildFly Swarm Examples: JAX-RS and CDI</name>
-  <description>WildFly Swarm Examples: JAX-RS and CDI</description>
+  <name>WildFly Swarm Examples: Simple</name>
+  <description>WildFly Swarm Examples: Simple</description>
 
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
+        <configuration>
+          <mainClass>org.wildfly.swarm.examples.simple.Main</mainClass>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
@@ -42,13 +44,8 @@
   <dependencies>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jaxrs-weld</artifactId>
+      <artifactId>wildfly-swarm-container</artifactId>
       <version>${version.wildfly-swarm}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.16.4</version>
     </dependency>
   </dependencies>
 

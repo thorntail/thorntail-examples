@@ -13,11 +13,6 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Container container = new Container();
-        /*
-        container.fraction(new LogstashFraction()
-                .hostname("localhost")
-                .port("8000"));
-                */
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
         deployment.addResource(TimeResource.class);
         deployment.addAllDependencies();
