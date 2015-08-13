@@ -21,6 +21,10 @@
   <description>WildFly Swarm Examples: CDI and Vaadin</description>
 
   <packaging>war</packaging>
+  
+  <properties>
+      <version.vaadin>7.5.3</version.vaadin>
+  </properties>
 
   <build>
     <plugins>
@@ -46,38 +50,23 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-security</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
       <artifactId>wildfly-swarm-undertow</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-transactions</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-bean-validation</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-server</artifactId>
-        <version>7.5.3</version>
+        <version>${version.vaadin}</version>
     </dependency>
     <dependency>
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-client-compiled</artifactId>
-        <version>7.5.3</version>
+        <version>${version.vaadin}</version>
     </dependency>
     <dependency>
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-themes</artifactId>
-        <version>7.5.3</version>
+        <version>${version.vaadin}</version>
     </dependency>
     <dependency>
       <groupId>com.vaadin</groupId>
