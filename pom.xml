@@ -67,6 +67,7 @@
     <module>static</module>
     <module>static-war</module>
     <module>transactions</module>
+    <module>vaadin</module>
 
     <module>simple</module>
 
