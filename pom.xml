@@ -13,7 +13,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <version.wildfly-swarm>1.0.0.Alpha4</version.wildfly-swarm>
+    <version.wildfly-swarm>1.0.0.Alpha5-SNAPSHOT</version.wildfly-swarm>
 
     <maven.min.version>3.2.1</maven.min.version>
 
