@@ -5,7 +5,7 @@
   <parent>
     <artifactId>wildfly-swarm-examples-parent</artifactId>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <version>1.0.0.Alpha02-SNAPSHOT</version>
+    <version>1.0.0.Alpha5-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>

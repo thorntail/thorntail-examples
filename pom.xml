@@ -5,7 +5,7 @@
 
   <groupId>org.wildfly.swarm.examples</groupId>
   <artifactId>wildfly-swarm-examples-parent</artifactId>
-  <version>1.0.0.Alpha02-SNAPSHOT</version>
+  <version>1.0.0.Alpha5-SNAPSHOT</version>
 
   <name>WildFly Swarm Examples: Parent</name>
   <description>WildFly Swarm Examples: Parent</description>
