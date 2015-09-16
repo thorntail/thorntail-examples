@@ -2,9 +2,9 @@ package org.wildfly.swarm.examples.ds.deployment;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.ArtifactManager;
+import org.wildfly.swarm.config.datasources.subsystem.dataSource.DataSource;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.container.JARArchive;
-import org.wildfly.swarm.datasources.Datasource;
 import org.wildfly.swarm.datasources.DatasourceArchive;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 
@@ -35,16 +35,17 @@ public class Main {
 
         JARArchive dsArchive = ShrinkWrap.create(JARArchive.class);
         dsArchive.as(DatasourceArchive.class).datasource(
-                new Datasource("ExampleDS")
-                        .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
-                        .driver("h2")
-                        .authentication("sa", "sa")
+                new DataSource("ExampleDS")
+                        .connectionUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
+                        .driverName("h2")
+                        .userName("sa")
+                        .password("sa")
         );
 
         // Deploy the datasource
         container.deploy(dsArchive);
 
-        JAXRSArchive appDeployment = ShrinkWrap.create( JAXRSArchive.class );
+        JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
         appDeployment.addResource(MyResource.class);
 
         // Deploy your app

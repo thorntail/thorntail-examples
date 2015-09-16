@@ -1,10 +1,11 @@
 package org.wildfly.swarm.examples.ds.subsystem;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.wildfly.swarm.config.datasources.subsystem.dataSource.DataSource;
+import org.wildfly.swarm.config.datasources.subsystem.jdbcDriver.JdbcDriver;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.datasources.Datasource;
+import org.wildfly.swarm.container.Fraction;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
-import org.wildfly.swarm.datasources.Driver;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 
 /**
@@ -18,15 +19,16 @@ public class Main {
 
         // Configure the Datasources subsystem with a driver
         // and a datasource
-        container.subsystem(new DatasourcesFraction()
-                        .driver(new Driver("h2")
-                                .datasourceClassName("org.h2.Driver")
-                                .xaDatasourceClassName("org.h2.jdbcx.JdbcDataSource")
-                                .module("com.h2database.h2"))
-                        .datasource(new Datasource("ExampleDS")
-                                .driver("h2")
-                                .connectionURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
-                                .authentication("sa", "sa"))
+        container.subsystem((Fraction) new DatasourcesFraction()
+                        .jdbcDriver(new JdbcDriver("h2")
+                                .driverDatasourceClassName("org.h2.Driver")
+                                .xaDatasourceClass("org.h2.jdbcx.JdbcDataSource")
+                                .driverModuleName("com.h2database.h2"))
+                        .dataSource(new DataSource("ExampleDS")
+                                .driverName("h2")
+                                .connectionUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE")
+                                .userName("sa")
+                                .password("sa"))
         );
 
 
