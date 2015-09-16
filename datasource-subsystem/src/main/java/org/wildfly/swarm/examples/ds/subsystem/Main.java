@@ -19,7 +19,7 @@ public class Main {
 
         // Configure the Datasources subsystem with a driver
         // and a datasource
-        container.subsystem((Fraction) new DatasourcesFraction()
+        container.subsystem(new DatasourcesFraction()
                         .jdbcDriver(new JdbcDriver("h2")
                                 .driverDatasourceClassName("org.h2.Driver")
                                 .xaDatasourceClass("org.h2.jdbcx.JdbcDataSource")

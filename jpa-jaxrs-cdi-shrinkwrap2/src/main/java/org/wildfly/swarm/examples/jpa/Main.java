@@ -6,7 +6,6 @@ import org.jboss.shrinkwrap.api.asset.StringAsset;
 import org.wildfly.swarm.config.datasources.subsystem.dataSource.DataSource;
 import org.wildfly.swarm.config.datasources.subsystem.jdbcDriver.JdbcDriver;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.container.Fraction;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jpa.JPAFraction;
@@ -18,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Container container = new Container();
 
-        container.subsystem((Fraction) new DatasourcesFraction()
+        container.subsystem(new DatasourcesFraction()
                         .jdbcDriver(new JdbcDriver("h2")
                                 .driverDatasourceClassName("org.h2.Driver")
                                 .xaDatasourceClass("org.h2.jdbcx.JdbcDataSource")

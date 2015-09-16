@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Container container = new Container();
 
-        container.fraction((Fraction) new DatasourcesFraction()
+        container.fraction(new DatasourcesFraction()
                         .jdbcDriver(new JdbcDriver("h2")
                                 .driverDatasourceClassName("org.h2.Driver")
                                 .xaDatasourceClass("org.h2.jdbcx.JdbcDataSource")
