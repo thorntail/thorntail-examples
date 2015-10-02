@@ -32,7 +32,7 @@ public class Main {
         // Prevent JPA Fraction from installing it's default datasource fraction
         container.fraction(new JPAFraction()
                         .inhibitDefaultDatasource()
-                        .defaultDatasourceName("MyDS")
+                        .defaultDatasource("MyDS")
         );
 
         //container.fraction(LoggingFraction.createTraceLoggingFraction());

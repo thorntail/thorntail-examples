@@ -5,7 +5,6 @@ import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.wildfly.swarm.config.datasources.subsystem.dataSource.DataSource;
 import org.wildfly.swarm.config.datasources.subsystem.jdbcDriver.JdbcDriver;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.container.Fraction;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jpa.JPAFraction;
@@ -32,7 +31,7 @@ public class Main {
         // Prevent JPA Fraction from installing it's default datasource fraction
         container.fraction(new JPAFraction()
                         .inhibitDefaultDatasource()
-                        .defaultDatasourceName("MyDS")
+                        .defaultDatasource("MyDS")
         );
 
         container.start();
