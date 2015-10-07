@@ -62,6 +62,7 @@
     <module>jsf-shrinkwrap</module>
     <module>kitchensink-html5-mobile</module>
     <module>messaging</module>
+    <module>messaging-mdb</module>
     <module>msc</module>
     <module>servlet</module>
     <module>static</module>
