@@ -2,7 +2,7 @@ package org.wildfly.swarm.examples.ds.deployment;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.ArtifactManager;
-import org.wildfly.swarm.config.datasources.subsystem.dataSource.DataSource;
+import org.wildfly.swarm.config.datasources.DataSource;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.container.JARArchive;
 import org.wildfly.swarm.datasources.DatasourceArchive;

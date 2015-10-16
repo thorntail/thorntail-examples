@@ -2,8 +2,8 @@ package org.wildfly.swarm.examples.jpa;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
-import org.wildfly.swarm.config.datasources.subsystem.dataSource.DataSource;
-import org.wildfly.swarm.config.datasources.subsystem.jdbcDriver.JdbcDriver;
+import org.wildfly.swarm.config.datasources.DataSource;
+import org.wildfly.swarm.config.datasources.JdbcDriver;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jpa.JPAFraction;
