@@ -1,12 +1,16 @@
 package org.wildfly.swarm.examples.messaging;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.wildfly.swarm.config.messaging_activemq.Server;
+import org.wildfly.swarm.config.messaging_activemq.server.*;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.container.JARArchive;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.messaging.MessagingFraction;
 import org.wildfly.swarm.messaging.MessagingServer;
 import org.wildfly.swarm.msc.ServiceActivatorArchive;
+
+import java.util.Arrays;
 
 /**
  * @author Bob McWhirter
@@ -16,14 +20,28 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Container container = new Container();
 
-        container.subsystem(new MessagingFraction()
-                        .server(
-                                new MessagingServer()
-                                        .enableInVMConnector()
-                                        .topic("my-topic")
-                                        .queue("my-queue")
-                        )
-        );
+        final String serverName = "default";
+
+        final ConnectionFactory connectionFactory = new ConnectionFactory("InVmConnectionFactory")
+                .connectors(Arrays.asList("in-vm"))
+                .entries(Arrays.asList("java:/ConnectionFactory"));
+
+        final PooledConnectionFactory pooledConnectionFactory = new PooledConnectionFactory("activemq-ra")
+                .entries(Arrays.asList("java:jboss/DefaultJMSConnectionFactory"))
+                .connectors(Arrays.asList("in-vm"))
+                .transaction("xa");
+
+        final MessagingFraction fraction = MessagingFraction.createDefaultFraction()
+                .server(new Server(serverName)
+                        .inVmConnector(new InVmConnector("in-vm").serverId(1))
+                        .inVmAcceptor(new InVmAcceptor("in-vm").serverId(1))
+                        .connectionFactory(connectionFactory)
+                        .pooledConnectionFactory(pooledConnectionFactory)
+                        .jmsTopic(new JmsTopic("my-topic").entries(Arrays.asList("java:/jms/topic/my-topic")))
+                        .jmsQueue(new JmsQueue("my-queue").entries(Arrays.asList("java:/jms/queue/my-queue"))));
+
+
+        container.subsystem(fraction);
 
         // Start the container
         container.start();
