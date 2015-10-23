@@ -7,7 +7,6 @@ import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.container.JARArchive;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.messaging.MessagingFraction;
-import org.wildfly.swarm.messaging.MessagingServer;
 import org.wildfly.swarm.msc.ServiceActivatorArchive;
 
 import java.util.Arrays;
@@ -20,28 +19,11 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Container container = new Container();
 
-        final String serverName = "default";
-
-        final ConnectionFactory connectionFactory = new ConnectionFactory("InVmConnectionFactory")
-                .connectors(Arrays.asList("in-vm"))
-                .entries(Arrays.asList("java:/ConnectionFactory"));
-
-        final PooledConnectionFactory pooledConnectionFactory = new PooledConnectionFactory("activemq-ra")
-                .entries(Arrays.asList("java:jboss/DefaultJMSConnectionFactory"))
-                .connectors(Arrays.asList("in-vm"))
-                .transaction("xa");
-
-        final MessagingFraction fraction = MessagingFraction.createDefaultFraction()
-                .server(new Server(serverName)
-                        .inVmConnector(new InVmConnector("in-vm").serverId(1))
-                        .inVmAcceptor(new InVmAcceptor("in-vm").serverId(1))
-                        .connectionFactory(connectionFactory)
-                        .pooledConnectionFactory(pooledConnectionFactory)
-                        .jmsTopic(new JmsTopic("my-topic").entries(Arrays.asList("java:/jms/topic/my-topic")))
-                        .jmsQueue(new JmsQueue("my-queue").entries(Arrays.asList("java:/jms/queue/my-queue"))));
-
-
-        container.subsystem(fraction);
+        container.fraction(MessagingFraction.createDefaultFraction()
+                .defaultServer((s) -> {
+                    s.jmsTopic("my-topic");
+                    s.jmsQueue("my-queue");
+                }));
 
         // Start the container
         container.start();
@@ -52,7 +34,7 @@ public class Main {
         // Deploy your app
         container.deploy(appDeployment);
 
-        JARArchive deployment = ShrinkWrap.create( JARArchive.class );
+        JARArchive deployment = ShrinkWrap.create(JARArchive.class);
         deployment.addClass(MyService.class);
         deployment.as(ServiceActivatorArchive.class).addServiceActivator(MyServiceActivator.class);
 
