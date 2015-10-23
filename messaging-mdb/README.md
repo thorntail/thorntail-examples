@@ -75,21 +75,17 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.messaging.MessagingFraction;
-import org.wildfly.swarm.messaging.MessagingServer;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
         Container container = new Container();
 
-        container.subsystem(new MessagingFraction()
-                        .server(
-                                new MessagingServer()
-                                        .enableInVMConnector()
-                                        .topic("my-topic")
-                                        .queue("my-queue")
-                        )
-        );
+        container.fraction(MessagingFraction.createDefaultFraction()
+                .defaultServer((s) -> {
+                    s.jmsTopic("my-topic");
+                    s.jmsQueue("my-queue");
+                }));
 
         // Start the container
         container.start();
