@@ -4,7 +4,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
 import org.jboss.shrinkwrap.api.asset.StringAsset;
 import org.wildfly.swarm.config.datasources.DataSource;
-import org.wildfly.swarm.config.datasources.JdbcDriver;
+import org.wildfly.swarm.datasources.JdbcDriver;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
@@ -17,8 +17,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Container container = new Container();
 
-        container.subsystem(new DatasourcesFraction()
+        container.fraction(new DatasourcesFraction()
                         .jdbcDriver(new JdbcDriver("h2")
+                                .driverName("h2")
                                 .driverDatasourceClassName("org.h2.Driver")
                                 .xaDatasourceClass("org.h2.jdbcx.JdbcDataSource")
                                 .driverModuleName("com.h2database.h2"))
@@ -32,7 +33,7 @@ public class Main {
         // Prevent JPA Fraction from installing it's default datasource fraction
         container.fraction(new JPAFraction()
                         .inhibitDefaultDatasource()
-                        .defaultDatasource("MyDS")
+                        .defaultDatasource("jboss/datasources/MyDS")
         );
 
         //container.fraction(LoggingFraction.createTraceLoggingFraction());
