@@ -2,9 +2,8 @@ package org.wildfly.swarm.examples.ds.subsystem;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.config.datasources.DataSource;
-import org.wildfly.swarm.config.datasources.JdbcDriver;
+import org.wildfly.swarm.datasources.JdbcDriver;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.container.Fraction;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 
