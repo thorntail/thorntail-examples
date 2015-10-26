@@ -23,7 +23,7 @@ public class Main {
 	 * any more than the default one - for now.
 	 */
 
-        container.subsystem(new TransactionsFraction(4712, 4713));
+        container.fraction(new TransactionsFraction(4712, 4713));
 
         // Start the container
 
