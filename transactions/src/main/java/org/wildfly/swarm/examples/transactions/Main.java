@@ -15,13 +15,15 @@ import org.wildfly.swarm.transactions.TransactionsFraction;
  */
 
 public class Main {
+
     public static void main(String[] args) throws Exception {
+
         Container container = new Container();
 
-	/*
-     * Use specific TransactionFraction even though it doesn't do
-	 * any more than the default one - for now.
-	 */
+        /*
+         * Use specific TransactionFraction even though it doesn't do
+	     * any more than the default one - for now.
+	     */
 
         container.fraction(new TransactionsFraction(4712, 4713));
 
@@ -29,9 +31,9 @@ public class Main {
 
         container.start();
 
-	/*
-     * Now register JAX-RS resource class.
-	 */
+	    /*
+         * Now register JAX-RS resource class.
+	     */
 
         JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
         appDeployment.addResource(MyResource.class);
