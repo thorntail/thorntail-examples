@@ -14,10 +14,11 @@ public class Main {
         Container container = new Container();
 
         container.fraction(MessagingFraction.createDefaultFraction()
-                .defaultServer((s) -> {
-                    s.jmsTopic("my-topic");
-                    s.jmsQueue("my-queue");
-                }));
+                        .defaultServer((s) -> {
+                            s.jmsQueue("my-queue");
+                            s.jmsTopic("my-topic");
+                        })
+        );
 
         // Start the container
         container.start();
