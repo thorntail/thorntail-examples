@@ -52,27 +52,33 @@ Since this project deploys JAX-RS resources without a `.war` being construction,
 provides its own `main()` method (specified above via the `wildfly-swarm-plugin`) to
 configure the container and deploy the resources programatically.
 
+
     package org.wildfly.swarm.examples.jaxrs.shrinkwrap;
-
-    import org.wildfly.swarm.container.Container;
-    import org.wildfly.swarm.jaxrs.JAXRSDeployment;
     
-    public class Main {
+    import org.jboss.shrinkwrap.api.ShrinkWrap;
+    import org.jboss.shrinkwrap.api.spec.WebArchive;
+    import org.wildfly.swarm.Swarm;
+    import org.wildfly.swarm.container.Container;
+    import org.wildfly.swarm.jaxrs.JAXRSArchive;
+    
 
+    public class Main {
+    
         public static void main(String[] args) throws Exception {
+    
             Container container = new Container();
     
-            JAXRSDeployment deployment = new JAXRSDeployment( container );
-            deployment.addResource(MyResource.class);
-
-            container.start(deployment);
+            JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "myapp.war");
+            deployment.addClass(MyResource.class);
+            deployment.addAllDependencies();
+            container.start().deploy(deployment);
         }
     }
 
 This method constructs a new default Container, which automatically
 initializes all fractions (or subsystems) that are available.
 
-A `JAXRSDeployment` is constructed, and the JAX-RS resource class is
+A `JAXRSArchive` is constructed, and the JAX-RS resource class is
 added to it.
 
 The container is then started with the deployment.
