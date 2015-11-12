@@ -8,3 +8,6 @@ build/
 .classpath
 .project
 .settings/
+
+# verify logs
+verify.log

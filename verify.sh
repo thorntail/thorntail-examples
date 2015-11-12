@@ -9,3 +9,9 @@ cd ..
 cd ./messaging/
 ./verify.sh
 cd ..
+
+
+# Verify Static example
+cd ./static/
+./verify.sh
+cd ..
