@@ -2,6 +2,7 @@ package org.wildfly.swarm.examples.ds.deployment;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.ArtifactManager;
+import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.config.datasources.DataSource;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.container.JARArchive;
@@ -22,7 +23,7 @@ public class Main {
 
         // Create a JDBC driver deployment using maven groupId:artifactId
         // The version is resolved from your pom.xml's <dependency>
-        container.deploy(ArtifactManager.artifact("com.h2database:h2", "h2"));
+        container.deploy(Swarm.artifact("com.h2database:h2", "h2"));
 
         /*
         // Create a DS deployment
