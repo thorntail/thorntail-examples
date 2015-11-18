@@ -43,25 +43,29 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
 ## Project `main()`
 
-The main() simply deploys static content from the classpath to the
-context root of `/static`
+The main() simply deploys static content from the classpath.
 
     package org.wildfly.swarm.examples.staticcontent;
 
+    import org.jboss.shrinkwrap.api.ShrinkWrap;
     import org.wildfly.swarm.container.Container;
-    import org.wildfly.swarm.undertow.StaticDeployment;
-    
+    import org.wildfly.swarm.undertow.WARArchive;
+
     public class Main {
-    
+
         public static void main(String[] args) throws Exception {
-    
-        Container container = new Container();
-    
-            StaticDeployment deployment = new StaticDeployment(container, "/static");
-    
+
+            Container container = new Container();
+
+            WARArchive deployment = ShrinkWrap.create(WARArchive.class);
+
+            deployment.staticContent();
+
             container.start().deploy(deployment);
+
         }
     }
+
 
 ## Run
 
@@ -73,4 +77,4 @@ You can run it many ways:
 
 ## Use
 
-    http://localhost:8080/static/
+    http://localhost:8080/
