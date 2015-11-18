@@ -15,7 +15,7 @@ public class Main {
 
         WARArchive deployment = ShrinkWrap.create( WARArchive.class );
 
-        deployment.staticContent("/static");
+        deployment.staticContent();
 
         container.start().deploy(deployment);
 

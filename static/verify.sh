@@ -5,7 +5,7 @@ JAR=target/*-swarm.jar
 PID=nothing
 
 function verify() {
-  httpShould http://localhost:8080/static/ 'Static content'
+  httpShould http://localhost:8080/ 'Static content'
   return $?
 }
 
