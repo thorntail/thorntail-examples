@@ -10,15 +10,15 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <artifactId>examples-jaxrs</artifactId>
     <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>example-msc</artifactId>
+  <artifactId>example-jaxrs-shrinkwrap</artifactId>
 
-  <name>WildFly Swarm Examples: MSC</name>
-  <description>WildFly Swarm Examples: MSC</description>
+  <name>WildFly Swarm Examples: JAX-RS ShrinkWrap</name>
+  <description>WildFly Swarm Examples: JAX-RS ShrinkWrap</description>
 
   <packaging>jar</packaging>
 
@@ -28,7 +28,7 @@
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <configuration>
-          <mainClass>org.wildfly.swarm.examples.msc.Main</mainClass>
+          <mainClass>org.wildfly.swarm.examples.jaxrs.shrinkwrap.Main</mainClass>
         </configuration>
         <executions>
           <execution>
@@ -52,8 +52,13 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-msc</artifactId>
+      <artifactId>wildfly-swarm-jaxrs</artifactId>
       <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.7</version>
     </dependency>
   </dependencies>
 

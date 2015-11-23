@@ -3,9 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.wildfly.swarm</groupId>
+    <artifactId>wildfly-swarm-parent</artifactId>
+    <version>1.0.0.Alpha6-SNAPSHOT</version>
+  </parent>
+
   <groupId>org.wildfly.swarm.examples</groupId>
   <artifactId>wildfly-swarm-examples-parent</artifactId>
+<!--
   <version>1.0.0.Alpha6-SNAPSHOT</version>
+-->
 
   <name>WildFly Swarm Examples: Parent</name>
   <description>WildFly Swarm Examples: Parent</description>
@@ -23,6 +31,20 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>projectodd-snapshots</id>
+      <name>Project:odd Snapshots from CI</name>
+      <url>https://repository-projectodd.forge.cloudbees.com/snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
   <build>
     <finalName>${project.artifactId}</finalName>
 
@@ -34,25 +56,93 @@
           <version>${version.wildfly-swarm}</version>
           <executions>
             <execution>
+              <id>package</id>
               <goals>
                 <goal>package</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>start</id>
+              <phase>pre-integration-test</phase>
+              <goals>
+                <goal>start</goal>
+              </goals>
+              <configuration>
+                <stdoutFile>target/stdout.log</stdoutFile>
+                <stderrFile>target/stderr.log</stderrFile>
+              </configuration>
+            </execution>
+            <execution>
+              <id>stop</id>
+              <phase>post-integration-test</phase>
+              <goals>
+                <goal>stop</goal>
               </goals>
             </execution>
           </executions>
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>integration-test</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>integration-test</goal>
+            </goals>
+            <configuration>
+              <testSourceDirectory>src/it/java</testSourceDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-arquillian</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.graphene</groupId>
+      <artifactId>graphene-webdriver</artifactId>
+      <type>pom</type>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.wildfly.swarm.examples</groupId>
+        <artifactId>examples-base</artifactId>
+        <version>${project.version}</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <modules>
+    <module>base</module>
+
+    <module>jaxrs</module>
+    <module>jpa</module>
+    <module>msc</module>
+<!--
     <module>cdi-servlet</module>
     <module>datasource-deployment</module>
     <module>datasource-subsystem</module>
     <module>docker-jaxrs-app</module>
-    <module>jaxrs</module>
-    <module>jaxrs-cdi</module>
-    <module>jaxrs-msc</module>
-    <module>jaxrs-shrinkwrap</module>
     <module>jpa-jaxrs-cdi</module>
     <module>jpa-jaxrs-cdi-shrinkwrap</module>
     <module>jpa-jaxrs-cdi-shrinkwrap2</module>
@@ -71,12 +161,13 @@
     <module>vaadin</module>
 
     <module>simple</module>
+-->
 
     <!-- extras -->
-    <module>ribbon</module>
 <!--
+    <module>ribbon</module>
     <module>ribbon-secured</module>
--->
     <module>logstash</module>
+-->
   </modules>
 </project>
