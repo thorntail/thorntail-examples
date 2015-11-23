@@ -23,7 +23,7 @@ create the runnable `.jar`.
       <artifactId>wildfly-swarm-plugin</artifactId>
       <version>${version.wildfly-swarm}</version>
       <configuration>
-        <mainClass>org.wildfly.swarm.examples.jpa.Main</mainClass>
+        <mainClass>org.wildfly.swarm.examples.jpa.shrinkwrap.Main</mainClass>
       </configuration>
       <executions>
         <execution>
@@ -135,7 +135,7 @@ You can run it many ways:
 
 * mvn package && java -jar ./target/wildfly-swarm-example-jpa-servlet-shrinkwrap-swarm.jar
 * mvn wildfly-swarm:run
-* From your IDE, run class `org.wildfly.swarm.examples.jpa.Main`
+* From your IDE, run class `org.wildfly.swarm.examples.jpa.shrinkwrap.Main`
 
 ## Use
 

@@ -25,5 +25,6 @@
 
   <modules>
     <module>jpa-war</module>
+    <module>jpa-shrinkwrap</module>
   </modules>
 </project>

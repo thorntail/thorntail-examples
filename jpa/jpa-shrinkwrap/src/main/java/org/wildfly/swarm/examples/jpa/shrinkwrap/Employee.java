@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.jpa;
+package org.wildfly.swarm.examples.jpa.shrinkwrap;
 
 import java.io.Serializable;
 import java.util.Objects;

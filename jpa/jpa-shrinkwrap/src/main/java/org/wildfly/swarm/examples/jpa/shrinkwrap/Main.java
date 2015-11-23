@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.jpa;
+package org.wildfly.swarm.examples.jpa.shrinkwrap;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
