@@ -31,5 +31,6 @@
   <modules>
     <module>time</module>
     <module>events</module>
+    <module>frontend</module>
   </modules>
 </project>

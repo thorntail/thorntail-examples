@@ -16,7 +16,7 @@ import java.sql.Time;
 @ResourceGroup( name="time" )
 public interface TimeService {
 
-    static TimeService INSTANCE = Ribbon.from(TimeService.class);
+    TimeService INSTANCE = Ribbon.from(TimeService.class);
 
     @TemplateName("currentTime")
     @Http(

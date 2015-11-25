@@ -1,17 +1,15 @@
-package org.wildfly.swarm.examples.netflix.ribbon.time;
+package org.wildfly.swarm.examples.netflix.ribbon.frontend;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jgroups.JGroupsFraction;
-import org.wildfly.swarm.netflix.ribbon.RibbonArchive;
+import org.wildfly.swarm.undertow.WARArchive;
 
 /**
- * @author Bob McWhirter
+ * @author Lance Ball
  */
 public class Main {
-
-    public static void main(String[] args) throws Exception {
+    public static void main(String... args) throws Exception {
         Container container = new Container();
         JGroupsFraction fraction = new JGroupsFraction()
                 .defaultChannel( "swarm-jgroups")
@@ -46,10 +44,10 @@ public class Main {
                     c.stack( "udp" );
                 });
         container.fraction(fraction);
-        JAXRSArchive deployment = ShrinkWrap.create( JAXRSArchive.class );
-        deployment.addResource(TimeResource.class);
-        deployment.addAllDependencies();
-        deployment.as(RibbonArchive.class).setApplicationName( "time" );
-        container.start().deploy(deployment);
+        container.start();
+        WARArchive war = ShrinkWrap.create(WARArchive.class);
+        war.staticContent();
+        war.addAllDependencies();
+        container.deploy(war);
     }
 }

@@ -23,10 +23,10 @@ public class Main {
                         p.property("bind_port", "9090");
                     }));
                     s.protocol("TCPPING", (p)-> {
-                        p.property("initial_hosts", "localhost[9090],localhost[9091],localhost[9092]")
-                                .property("port_range", "3")
+                        p.property("initial_hosts", "localhost[9090],localhost[9091],localhost[9092],localhost[9093]")
+                                .property("port_range", "4")
                                 .property("timeout", "3000")
-                                .property("num_initial_members", "3");
+                                .property("num_initial_members", "4");
                     });
                     s.protocol( "FD_SOCK", (p)->{
                         p.socketBinding( "jgroups-udp-fd" );
@@ -45,13 +45,12 @@ public class Main {
                 .channel( "swarm-jgroups", (c)->{
                     c.stack( "udp" );
                 });
-        ;
         container.fraction(fraction);
 
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
         deployment.addPackage( Main.class.getPackage() );
         deployment.addAllDependencies();
-        //deployment.as( RibbonArchive.class );
+        deployment.as( RibbonArchive.class ).setApplicationName( "events" );
         container.start().deploy(deployment);
     }
 }

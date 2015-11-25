@@ -1,0 +1,16 @@
+body {
+    font-family: sans-serif;
+    margin: 1em;
+}
+
+.service {
+}
+
+.service h2 {
+    border-bottom: 1px dotted;
+    margin: 1ex;
+}
+
+.service .service-address {
+    margin: 1ex 2ex;
+}
