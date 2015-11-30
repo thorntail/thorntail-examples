@@ -10,15 +10,15 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <artifactId>examples-jsf</artifactId>
     <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-jsf-shrinkwrap</artifactId>
+  <artifactId>example-jsf-shrinkwrap</artifactId>
 
-  <name>WildFly Swarm Examples: JSF Shrinkwrap</name>
-  <description>WildFly Swarm Examples: JSF Shrinkwrap</description>
+  <name>WildFly Swarm Examples: JSF ShrinkWrap</name>
+  <description>WildFly Swarm Examples: JSF ShrinkWrap</description>
 
   <packaging>jar</packaging>
 
@@ -32,9 +32,13 @@
         </configuration>
         <executions>
           <execution>
-            <goals>
-              <goal>package</goal>
-            </goals>
+            <id>package</id>
+          </execution>
+          <execution>
+            <id>start</id>
+          </execution>
+          <execution>
+            <id>stop</id>
           </execution>
         </executions>
       </plugin>
@@ -42,6 +46,10 @@
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>org.wildfly.swarm.examples</groupId>
+      <artifactId>examples-base</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>wildfly-swarm-jsf</artifactId>

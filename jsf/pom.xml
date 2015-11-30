@@ -15,41 +15,16 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-jsf</artifactId>
+  <artifactId>examples-jsf</artifactId>
 
-  <name>WildFly Swarm Examples: JSF</name>
-  <description>WildFly Swarm Examples: JSF</description>
+  <name>WildFly Swarm Examples: JSR parent</name>
+  <description>WildFly Swarm Examples: JSF parent</description>
 
-  <packaging>war</packaging>
+  <packaging>pom</packaging>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-          <packagingExcludes>WEB-INF/lib/wildfly-swarm-*.jar</packagingExcludes>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jsf</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-weld</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-  </dependencies>
-
+  <modules>
+    <module>jsf-war</module>
+    <module>jsf-shrinkwrap</module>
+  </modules>
 </project>
