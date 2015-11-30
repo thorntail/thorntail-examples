@@ -51,8 +51,42 @@ var Service = React.createClass({
     });
     return (
       <div className='service'>
-      <h2>{this.props.service}</h2>
-      {addresses}
+        <h2>{this.props.service}</h2>
+        {addresses}
+        <DataButton serviceName={this.props.service} />
+      </div>
+    );
+  }
+});
+
+var DataButton = React.createClass({
+  getInitialState: function() {
+    return {response: ''};
+  },
+
+  handleClick: function(event) {
+    var button = this;
+    console.log("Calling service: " + this.props.serviceName);
+    Ribbon.getJSON(this.props.serviceName)
+      .promise
+      .then(function(response) {
+        console.log("Got response ")
+        console.log(response);
+        button.setState({
+          response: JSON.stringify(response)
+        });
+      });
+  },
+
+  render: function() {
+    return (
+      <div>
+        <p onClick={this.handleClick}>
+        Click to request {this.props.serviceName}
+        </p>
+        <p>
+        {this.state.response}
+        </p>
       </div>
     );
   }
