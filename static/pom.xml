@@ -15,38 +15,16 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-static</artifactId>
+  <artifactId>examples-static</artifactId>
 
-  <name>WildFly Swarm Examples: Static Content</name>
-  <description>WildFly Swarm Examples: Static Content</description>
+  <name>WildFly Swarm Examples: Static parent</name>
+  <description>WildFly Swarm Examples: Static parent</description>
 
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-plugin</artifactId>
-        <configuration>
-          <mainClass>org.wildfly.swarm.examples.staticcontent.Main</mainClass>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>package</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-undertow</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-  </dependencies>
-
+  <modules>
+    <module>static-war</module>
+    <module>static-shrinkwrap</module>
+  </modules>
 </project>

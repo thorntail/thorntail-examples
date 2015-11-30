@@ -153,6 +153,7 @@
     <module>jpa</module>
     <module>jsf</module>
     <module>msc</module>
+    <module>static</module>
 <!--
     <module>cdi-servlet</module>
     <module>datasource-deployment</module>
@@ -169,8 +170,6 @@
     <module>messaging-mdb</module>
     <module>msc</module>
     <module>servlet</module>
-    <module>static</module>
-    <module>static-war</module>
     <module>transactions</module>
     <module>vaadin</module>
 
@@ -184,4 +183,13 @@
     <module>logstash</module>
 -->
   </modules>
+
+  <profiles>
+    <profile>
+      <id>uberjar</id>
+      <properties>
+        <wildfly-swarm.useUberJar>true</wildfly-swarm.useUberJar>
+      </properties>
+    </profile>
+  </profiles>
 </project>
