@@ -148,6 +148,7 @@
   <modules>
     <module>base</module>
 
+    <module>datasource</module>
     <module>jaxrs</module>
     <module>jpa</module>
     <module>jsf</module>
