@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.cdi;
+package org.wildfly.swarm.examples.servlet.cdi;
 
 import java.time.LocalDateTime;
 

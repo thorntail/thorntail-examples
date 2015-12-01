@@ -154,9 +154,9 @@
     <module>jsf</module>
     <module>messaging</module>
     <module>msc</module>
+    <module>servlet</module>
     <module>static</module>
 <!--
-    <module>cdi-servlet</module>
     <module>datasource-deployment</module>
     <module>datasource-subsystem</module>
     <module>docker-jaxrs-app</module>
