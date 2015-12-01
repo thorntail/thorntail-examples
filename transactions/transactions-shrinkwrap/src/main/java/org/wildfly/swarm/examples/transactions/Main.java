@@ -25,7 +25,9 @@ public class Main {
 	     * any more than the default one - for now.
 	     */
 
-        container.fraction(new TransactionsFraction(4712, 4713));
+        container.fraction(TransactionsFraction.createDefaultFraction()
+                .port(4712)
+                .statusPort(4713));
 
         // Start the container
 

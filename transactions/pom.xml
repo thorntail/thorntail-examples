@@ -15,49 +15,15 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-transactions</artifactId>
+  <artifactId>examples-transactions</artifactId>
 
-  <name>WildFly Swarm Examples: Transactions</name>
-  <description>WildFly Swarm Examples: Transactions</description>
+  <name>WildFly Swarm Examples: Transactions parent</name>
+  <description>WildFly Swarm Examples: Transactions parent</description>
 
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-plugin</artifactId>
-        <configuration>
-          <mainClass>org.wildfly.swarm.examples.transactions.Main</mainClass>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>package</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.jboss.narayana.arjunacore</groupId>
-      <artifactId>arjunacore</artifactId>
-      <version>5.1.1.Final</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jaxrs</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-transactions</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-  </dependencies>
-
+  <modules>
+    <module>transactions-shrinkwrap</module>
+  </modules>
 </project>

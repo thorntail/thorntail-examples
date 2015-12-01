@@ -102,13 +102,18 @@
         <executions>
           <execution>
             <id>integration-test</id>
-            <phase>integration-test</phase>
             <goals>
               <goal>integration-test</goal>
             </goals>
             <configuration>
               <testSourceDirectory>src/it/java</testSourceDirectory>
             </configuration>
+          </execution>
+          <execution>
+            <id>verify</id>
+            <goals>
+              <goal>verify</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
@@ -157,6 +162,7 @@
     <module>msc</module>
     <module>servlet</module>
     <module>static</module>
+    <module>transactions</module>
 <!--
     <module>datasource-deployment</module>
     <module>datasource-subsystem</module>
@@ -165,7 +171,6 @@
     <module>kitchensink-html5-mobile</module>
     <module>msc</module>
     <module>servlet</module>
-    <module>transactions</module>
     <module>vaadin</module>
 
     <module>simple</module>
