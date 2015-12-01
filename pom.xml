@@ -151,6 +151,7 @@
     <module>datasource</module>
     <module>jaxrs</module>
     <module>jpa</module>
+    <module>jpa-jaxrs-cdi</module>
     <module>jsf</module>
     <module>messaging</module>
     <module>msc</module>
@@ -160,11 +161,6 @@
     <module>datasource-deployment</module>
     <module>datasource-subsystem</module>
     <module>docker-jaxrs-app</module>
-    <module>jpa-jaxrs-cdi</module>
-    <module>jpa-jaxrs-cdi-shrinkwrap</module>
-    <module>jpa-jaxrs-cdi-shrinkwrap2</module>
-    <module>jpa-servlet</module>
-    <module>jpa-servlet-shrinkwrap</module>
     <module>jsf-shrinkwrap</module>
     <module>kitchensink-html5-mobile</module>
     <module>msc</module>
