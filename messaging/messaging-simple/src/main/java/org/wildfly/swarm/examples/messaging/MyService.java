@@ -40,11 +40,11 @@ public class MyService implements Service<Void> {
             Session sess = conn.createSession();
             MessageConsumer consumer = sess.createConsumer(destination);
             startContext.complete();
-            System.err.println("Starting to receive from " + destination);
+            System.out.println("Starting to receive from " + destination);
             consumer.setMessageListener(new MessageListener() {
                 public void onMessage(Message message) {
                     try {
-                        System.err.println("received: " + ((TextMessage) message).getText());
+                        System.out.println("received: " + ((TextMessage) message).getText());
                     } catch (JMSException e) {
                         e.printStackTrace();
                     }

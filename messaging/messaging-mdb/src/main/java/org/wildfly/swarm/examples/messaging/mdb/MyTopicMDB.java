@@ -19,7 +19,7 @@ public class MyTopicMDB implements MessageListener {
     @Override
     public void onMessage(Message message) {
         try {
-            System.err.println("received: " + ((TextMessage) message).getText());
+            System.out.println("received: " + ((TextMessage) message).getText());
         } catch (JMSException e) {
             e.printStackTrace();
         }

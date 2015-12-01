@@ -152,6 +152,7 @@
     <module>jaxrs</module>
     <module>jpa</module>
     <module>jsf</module>
+    <module>messaging</module>
     <module>msc</module>
     <module>static</module>
 <!--
@@ -166,8 +167,6 @@
     <module>jpa-servlet-shrinkwrap</module>
     <module>jsf-shrinkwrap</module>
     <module>kitchensink-html5-mobile</module>
-    <module>messaging</module>
-    <module>messaging-mdb</module>
     <module>msc</module>
     <module>servlet</module>
     <module>transactions</module>

@@ -10,15 +10,15 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <artifactId>examples-messaging</artifactId>
     <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-messaging-mdb</artifactId>
+  <artifactId>example-messaging</artifactId>
 
-  <name>WildFly Swarm Examples: Messaging MDB</name>
-  <description>WildFly Swarm Examples: Messaging MDB</description>
+  <name>WildFly Swarm Examples: Messaging (Simple)</name>
+  <description>WildFly Swarm Examples: Messaging (Simple)</description>
 
   <packaging>jar</packaging>
 
@@ -28,13 +28,17 @@
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <configuration>
-          <mainClass>org.wildfly.swarm.examples.messaging.mdb.Main</mainClass>
+          <mainClass>org.wildfly.swarm.examples.messaging.Main</mainClass>
         </configuration>
         <executions>
           <execution>
-            <goals>
-              <goal>package</goal>
-            </goals>
+            <id>package</id>
+          </execution>
+          <execution>
+            <id>start</id>
+          </execution>
+          <execution>
+            <id>stop</id>
           </execution>
         </executions>
       </plugin>
@@ -43,8 +47,12 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.wildfly.swarm.examples</groupId>
+      <artifactId>examples-base</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jaxrs-weld</artifactId>
+      <artifactId>wildfly-swarm-jaxrs</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
@@ -54,7 +62,7 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-ejb</artifactId>
+      <artifactId>wildfly-swarm-msc</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
   </dependencies>
