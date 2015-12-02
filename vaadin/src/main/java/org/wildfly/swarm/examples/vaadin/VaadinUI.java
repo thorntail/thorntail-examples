@@ -1,6 +1,7 @@
 
-package org.wildfly.swarm.examples.cdi;
+package org.wildfly.swarm.examples.vaadin;
 
+import com.vaadin.annotations.JavaScript;
 import com.vaadin.annotations.Theme;
 import com.vaadin.cdi.CDIUI;
 import com.vaadin.server.VaadinRequest;

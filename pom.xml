@@ -163,17 +163,10 @@
     <module>servlet</module>
     <module>static</module>
     <module>transactions</module>
-<!--
-    <module>datasource-deployment</module>
-    <module>datasource-subsystem</module>
-    <module>docker-jaxrs-app</module>
-    <module>jsf-shrinkwrap</module>
-    <module>kitchensink-html5-mobile</module>
-    <module>msc</module>
-    <module>servlet</module>
     <module>vaadin</module>
-
-    <module>simple</module>
+<!--
+    <module>docker-jaxrs-app</module>
+    <module>kitchensink-html5-mobile</module>
 -->
 
     <!-- extras -->
