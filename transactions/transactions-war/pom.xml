@@ -35,9 +35,6 @@
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
-        <configuration>
-          <mainClass>org.wildfly.swarm.examples.transactions.Main</mainClass>
-        </configuration>
         <executions>
           <execution>
             <id>package</id>
