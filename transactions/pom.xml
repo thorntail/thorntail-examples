@@ -24,6 +24,7 @@
 
 
   <modules>
+    <module>transactions-war</module>
     <module>transactions-shrinkwrap</module>
   </modules>
 </project>
