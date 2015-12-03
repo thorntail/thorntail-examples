@@ -34,10 +34,10 @@ var Topology = React.createClass({
       );
     }
     return (
-        <div id='topology'>
+      <div id='topology'>
         <h2>Service Topology</h2>
         {services}
-        </div>
+      </div>
     );
   }
 });
@@ -49,45 +49,152 @@ var Service = React.createClass({
           <Address address={address} key={address}/>
       );
     });
+
+    if (this.props.service === 'time') {
+      return (
+        <div className='service'>
+          <TimeService endpoints={addresses} />
+        </div>
+      );
+    } else {
+      return (
+        <div className='service'>
+          <EventService endpoints={addresses} />
+        </div>
+      );
+    }
+  }
+});
+
+function formatTime(obj) {
+  return obj['h'] + ':' + obj['m'] + ':' + obj['s'] + '.' + obj['ms'] + ' on ' +
+    obj['Y'] + '-' + obj['M'] + '-' + obj['D'] + ' ';
+}
+
+var TimeService = React.createClass({
+  getInitialState: function() {
+    return {responses: []};
+  },
+
+  updatePanel: function(response) {
+    console.log(response);
+    this.setState({
+      responses: this.state.responses.concat([response])
+    });
+  },
+
+  render: function() {
     return (
-      <div className='service'>
-        <h2>{this.props.service}</h2>
-        {addresses}
-        <DataButton serviceName={this.props.service} />
+      <div className='time-service'>
+        <h2>Time Service</h2>
+        <div className='endpoints'>
+        <h3>Endpoints</h3>
+        {this.props.endpoints}
+        </div>
+        <GetJSONButton serviceName='time' responseHandler={this.updatePanel} />
+        {this.state.responses.reverse().map(function(response) {
+          return (
+              <TimeStamp key={response['ms']} timestamp={response} />
+          );
+        })}
       </div>
     );
   }
 });
 
-var DataButton = React.createClass({
+var TimeStamp = React.createClass({
+  render: function() {
+    return (
+      <div className='timestamp'>
+        {formatTime(this.props.timestamp)}
+      </div>
+    );
+  }
+});
+
+var EventService = React.createClass({
   getInitialState: function() {
-    return {response: ''};
+    return {response: []};
   },
 
+  updatePanel: function(response) {
+    console.log(response);
+    this.setState({
+      response: response
+    });
+  },
+
+  render: function() {
+    return (
+      <div className='event-service'>
+        <h2>Event Service</h2>
+        <div className='endpoints'>
+        <h3>Endpoints</h3>
+        {this.props.endpoints}
+        </div>
+        <GetJSONButton serviceName='events' responseHandler={this.updatePanel} />
+        <PostJSONButton serviceName='events' responseHandler={this.updatePanel} />
+
+        {this.state.response.reverse().map(function(evt) {
+          return (
+              <Event key={evt.id} event={evt} />
+          );
+        })}
+
+      </div>
+    );
+  }
+});
+
+var Event = React.createClass({
+  render: function() {
+    return (
+      <ul className='event'>
+        <li>Event ID: {this.props.event.id}</li>
+        <li>Event Type: {this.props.event.name}</li>
+        <li>Timestamp: <TimeStamp key={'e' + this.props.event.timestamp['ms']}
+          timestamp={this.props.event.timestamp} /></li>
+      </ul>
+    );
+  }
+});
+
+var GetJSONButton = React.createClass({
   handleClick: function(event) {
-    var button = this;
-    console.log("Calling service: " + this.props.serviceName);
+    console.log("GET service: " + this.props.serviceName);
     Ribbon.getJSON(this.props.serviceName)
-      .promise
-      .then(function(response) {
-        console.log("Got response ")
-        console.log(response);
-        button.setState({
-          response: JSON.stringify(response)
-        });
-      });
+      .then(this.props.responseHandler);
   },
 
   render: function() {
     return (
       <div>
         <p onClick={this.handleClick}>
-        Click to request {this.props.serviceName}
-        </p>
-        <p>
-        {this.state.response}
+        <span className='btn'>
+          Click to GET {this.props.serviceName}
+        </span>
         </p>
       </div>
+    );
+  }
+});
+
+var PostJSONButton = React.createClass({
+  handleClick: function(event) {
+    console.log("POST service: " + this.props.serviceName);
+    Ribbon.postJSON(this.props.serviceName, {name: 'User POST'})
+      .then(this.props.responseHandler);
+  },
+
+  render: function() {
+    return (
+        <div>
+        <p onClick={this.handleClick}>
+        <span className='btn'>
+        Click to post a new item to {this.props.serviceName}
+      </span>
+        </p>
+        </div>
     );
   }
 });
