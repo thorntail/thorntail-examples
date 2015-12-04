@@ -25,6 +25,19 @@
   <build>
     <plugins>
       <plugin>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>integration-test</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>verify</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <configuration>
@@ -43,45 +56,106 @@
             <phase>none</phase>
           </execution>
           <execution>
-            <id>multistart</id>
-            <phase>pre-integration-test</phase>
-            <goals>
-              <goal>multistart</goal>
-            </goals>
-            <configuration>
-              <processes>
-                <process>
-                  <artifactId>example-ribbon-frontend</artifactId>
-                </process>
-                <process>
-                  <artifactId>example-ribbon-time</artifactId>
-                  <properties>
-                    <jboss.http.port>8081</jboss.http.port>
-                  </properties>
-                </process>
-                <process>
-                  <artifactId>example-ribbon-time</artifactId>
-                  <properties>
-                    <jboss.http.port>8082</jboss.http.port>
-                  </properties>
-                </process>
-                <process>
-                  <artifactId>example-ribbon-events</artifactId>
-                  <properties>
-                    <jboss.http.port>8083</jboss.http.port>
-                  </properties>
-                </process>
-              </processes>
-            </configuration>
-          </execution>
-          <execution>
             <id>stop</id>
-            <phase>post-integration-test</phase>
+            <phase>none</phase>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>phantomjs</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>test-compile</phase>
+                <goals>
+                  <goal>testCompile</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>integration-test</id>
+                <phase>integration-test</phase>
+              </execution>
+              <execution>
+                <id>verify</id>
+                <phase>verify</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>wildfly-swarm-plugin</artifactId>
+            <configuration>
+              <properties>
+                <jboss.bind.address>127.0.0.1</jboss.bind.address>
+                <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+              </properties>
+            </configuration>
+            <executions>
+              <execution>
+                <id>package</id>
+                <phase>none</phase>
+              </execution>
+              <execution>
+                <id>start</id>
+                <phase>none</phase>
+              </execution>
+              <execution>
+                <id>multistart</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>multistart</goal>
+                </goals>
+                <configuration>
+                  <processes>
+                    <process>
+                      <artifactId>example-ribbon-frontend</artifactId>
+                    </process>
+                    <process>
+                      <artifactId>example-ribbon-time</artifactId>
+                      <properties>
+                        <jboss.http.port>8081</jboss.http.port>
+                      </properties>
+                    </process>
+                    <process>
+                      <artifactId>example-ribbon-time</artifactId>
+                      <properties>
+                        <jboss.http.port>8082</jboss.http.port>
+                      </properties>
+                    </process>
+                    <process>
+                      <artifactId>example-ribbon-events</artifactId>
+                      <properties>
+                        <jboss.http.port>8083</jboss.http.port>
+                      </properties>
+                    </process>
+                  </processes>
+                </configuration>
+              </execution>
+              <execution>
+                <id>stop</id>
+                <phase>post-integration-test</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
   <dependencies>
     <dependency>
