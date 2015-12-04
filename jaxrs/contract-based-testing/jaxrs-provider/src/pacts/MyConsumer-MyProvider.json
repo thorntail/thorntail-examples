@@ -1,0 +1,33 @@
+{
+    "provider": {
+        "name": "MyProvider"
+    },
+    "consumer": {
+        "name": "MyConsumer"
+    },
+    "interactions": [
+        {
+            "providerState": "Consumer is FOOBAR",
+            "description": "A request to say Howdy",
+            "request": {
+                "method": "POST",
+                "path": "/",
+                "headers": {
+                    "client-name": "FOOBAR"
+                }
+            },
+            "response": {
+                "status": 200,
+                "body": "Howdy FOOBAR"
+            }
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "2.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.2.0"
+        }
+    }
+}
