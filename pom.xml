@@ -164,6 +164,7 @@
     <module>static</module>
     <module>transactions</module>
     <module>vaadin</module>
+    <module>ribbon</module>
 <!--
     <module>docker-jaxrs-app</module>
     <module>kitchensink-html5-mobile</module>
@@ -171,7 +172,6 @@
 
     <!-- extras -->
 <!--
-    <module>ribbon</module>
     <module>ribbon-secured</module>
     <module>logstash</module>
 -->

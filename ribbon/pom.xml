@@ -10,7 +10,7 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-examples-ribbon-parent</artifactId>
+  <artifactId>examples-ribbon-parent</artifactId>
 
   <name>WildFly Swarm Examples: Netflix Ribbon Parent</name>
   <description>WildFly Swarm Examples: Netflix Ribbon Parent</description>
@@ -18,6 +18,32 @@
   <packaging>pom</packaging>
 
   <build>
+    <plugins>
+      <plugin>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>wildfly-swarm-plugin</artifactId>
+        <configuration>
+          <properties>
+            <jboss.bind.address>127.0.0.1</jboss.bind.address>
+            <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+          </properties>
+        </configuration>
+        <executions>
+          <execution>
+            <id>package</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>start</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>stop</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 
   <dependencies>
@@ -29,8 +55,11 @@
   </dependencies>
 
   <modules>
+<!--
     <module>time</module>
     <module>events</module>
     <module>frontend</module>
+-->
+    <module>test</module>
   </modules>
 </project>

@@ -10,15 +10,15 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-ribbon-parent</artifactId>
+    <artifactId>examples-ribbon-parent</artifactId>
     <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-ribbon-time</artifactId>
+  <artifactId>example-ribbon-time</artifactId>
 
-  <name>WildFly Swarm Examples: Netflix Ribbon - Time</name>
-  <description>WildFly Swarm Examples: Netflix Ribbon - Time</description>
+  <name>WildFly Swarm Examples: Netflix Ribbon: Time</name>
+  <description>WildFly Swarm Examples: Netflix Ribbon: Time</description>
 
   <packaging>jar</packaging>
 
