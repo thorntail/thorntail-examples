@@ -18,8 +18,8 @@ var Topology = React.createClass({
 
   componentDidMount: function() {
     var component = this;
-    Ribbon.onTopologyChange(function(message) {
-      component.setState({data: JSON.parse(message)});
+    Ribbon.onTopologyChange(function(topology) {
+      component.setState({data: JSON.parse(topology)});
     });
   },
 
