@@ -28,5 +28,6 @@
     <module>jaxrs-shrinkwrap</module>
     <module>jaxrs-cdi</module>
     <module>contract-based-testing</module>
+    <module>scala</module>
   </modules>
 </project>
