@@ -1,0 +1,12 @@
+
+By default this just builds everything.
+
+To execute the tests, ensure you have PhantomJS 2.0 in your path.
+
+And then use the `-Pphantomjs` profile.
+
+If you're on OSX, stock PhantomJS 2.0 may not work, in which case,
+use:
+
+  https://github.com/eugene1g/phantomjs/releases
+

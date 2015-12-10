@@ -6,18 +6,44 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>wildfly-swarm-examples-parent</artifactId>
-    <version>1.0.0.Alpha02-SNAPSHOT</version>
+    <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-examples-ribbon-secured-parent</artifactId>
+  <artifactId>examples-ribbon-secured-parent</artifactId>
 
-  <name>WildFly Swarm Examples: Netflix Ribbon - Secured - Parent</name>
-  <description>WildFly Swarm Examples: Netflix Ribbon - Secured - Parent</description>
+  <name>WildFly Swarm Examples: Netflix Ribbon Secured Parent</name>
+  <description>WildFly Swarm Examples: Netflix Ribbon Secured Parent</description>
 
   <packaging>pom</packaging>
 
   <build>
+    <plugins>
+      <plugin>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>wildfly-swarm-plugin</artifactId>
+        <configuration>
+          <properties>
+            <jboss.bind.address>127.0.0.1</jboss.bind.address>
+            <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+          </properties>
+        </configuration>
+        <executions>
+          <execution>
+            <id>package</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>start</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>stop</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 
   <dependencies>
@@ -29,7 +55,6 @@
   </dependencies>
 
   <modules>
-    <module>time</module>
-    <module>events</module>
+    <module>test</module>
   </modules>
 </project>

@@ -1,16 +1,5 @@
 package org.wildfly.swarm.examples.netflix.ribbon.events;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.container.AsyncResponse;
-import javax.ws.rs.container.Suspended;
-
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,6 +8,16 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
 import rx.Observable;
 
+import javax.ws.rs.*;
+import javax.ws.rs.container.AsyncResponse;
+import javax.ws.rs.container.Suspended;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Map;
+
 /**
  * @author Bob McWhirter
  */
@@ -26,16 +25,29 @@ import rx.Observable;
 public class EventsResource {
 
     private final TimeService time;
+    private static final ArrayList<Event> EVENTS = new ArrayList<>();
 
     public EventsResource() {
         this.time = TimeService.INSTANCE;
     }
 
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public void get(@Suspended final AsyncResponse asyncResponse) {
-        Observable<ByteBuf> obs = this.time.currentTime().observe();
+        Event event = new Event();
+        event.setName("GET");
+        recordEvent(event, asyncResponse);
+    }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void post(Event event, @Suspended final AsyncResponse asyncResponse) {
+        recordEvent(event, asyncResponse);
+    }
+
+    private void recordEvent(Event event, @Suspended AsyncResponse asyncResponse) {
+        Observable<ByteBuf> obs = this.time.currentTime().observe();
         obs.subscribe(
                 (result) -> {
                     try {
@@ -44,18 +56,20 @@ public class EventsResource {
                         JsonFactory factory = new JsonFactory();
                         JsonParser parser = factory.createParser(new ByteBufInputStream(result));
                         Map map = reader.readValue(parser, Map.class);
-                        int hour = (int) map.get("h");
-                        List<String> events = new ArrayList<>();
-                        for (int i = 1; i <= 10; ++i) {
-                            events.add("Event #" + i + " at " + hour + ":00");
-                        }
-                        asyncResponse.resume(events);
+                        event.setTimestamp(map);
+                        event.setId(EVENTS.size());
+                        EVENTS.add(event);
+                        asyncResponse.resume(EVENTS);
                     } catch (IOException e) {
+                        System.err.println("ERROR: " + e.getLocalizedMessage());
                         asyncResponse.resume(e);
                     }
                 },
                 (err) -> {
+                    System.err.println("ERROR: " + err.getLocalizedMessage());
                     asyncResponse.resume(err);
                 });
+
+        System.out.println("New event");
     }
 }

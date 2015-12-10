@@ -10,15 +10,15 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-ribbon-secured-parent</artifactId>
-    <version>1.0.0.Alpha02-SNAPSHOT</version>
+    <artifactId>examples-ribbon-secured-parent</artifactId>
+    <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-netflix-ribbon-secured-time</artifactId>
+  <artifactId>example-ribbon-secured-time</artifactId>
 
-  <name>WildFly Swarm Examples: Netflix Ribbon - Secured - Time</name>
-  <description>WildFly Swarm Examples: Netflix Ribbon - Secured - Time</description>
+  <name>WildFly Swarm Examples: Netflix Ribbon Secured: Time</name>
+  <description>WildFly Swarm Examples: Netflix Ribbon Secured: Time</description>
 
   <packaging>jar</packaging>
 
@@ -45,28 +45,10 @@
       <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-keycloak</artifactId>
-      <version>${version.wildfly-swarm}</version>
-    </dependency>
-    <dependency>
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
       <version>2.7</version>
     </dependency>
-<!--
-    <dependency>
-      <groupId>com.netflix.ribbon</groupId>
-      <artifactId>ribbon</artifactId>
-      <version>2.0-RC1</version>
-      <exclusions>
-        <exclusion>
-          <groupId>com.netflix.eureka</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
--->
   </dependencies>
 
 </project>

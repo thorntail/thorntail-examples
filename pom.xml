@@ -165,6 +165,9 @@
     <module>transactions</module>
     <module>vaadin</module>
     <module>ribbon</module>
+    <module>ribbon-secured</module>
+
+    <module>keycloak-server</module>
 <!--
     <module>docker-jaxrs-app</module>
     <module>kitchensink-html5-mobile</module>
