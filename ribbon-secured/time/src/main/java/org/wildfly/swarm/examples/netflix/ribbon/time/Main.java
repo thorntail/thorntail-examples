@@ -4,6 +4,8 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jgroups.JGroupsFraction;
+import org.wildfly.swarm.keycloak.Secured;
+import org.wildfly.swarm.logging.LoggingFraction;
 import org.wildfly.swarm.netflix.ribbon.RibbonArchive;
 
 /**
@@ -46,10 +48,14 @@ public class Main {
                     c.stack( "udp" );
                 });
         container.fraction(fraction);
-        JAXRSArchive deployment = ShrinkWrap.create( JAXRSArchive.class );
+        JAXRSArchive deployment = ShrinkWrap.create( JAXRSArchive.class, "time.war" );
         deployment.addResource(TimeResource.class);
         deployment.addAllDependencies();
         deployment.as(RibbonArchive.class).setApplicationName( "time" );
+        deployment.as(Secured.class)
+                .protect()
+                .withMethod( "GET" )
+                .withRole( "test-user" );
         container.start().deploy(deployment);
     }
 }

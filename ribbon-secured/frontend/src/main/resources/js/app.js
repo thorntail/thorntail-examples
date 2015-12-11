@@ -1,15 +1,72 @@
-var Ribbon = ribbon();
+
+var keycloak = new Keycloak( '/keycloak.json' );
+
+var Ribbon = ribbon({keycloak: keycloak});
 
 var App = React.createClass({
+  componentWillMount: function() {
+    var self = this;
+    this.props.keycloak.init({ onLoad: 'check-sso' }).success( function() {
+      if ( self.props.keycloak.authenticated ) {
+        self.setState( {keycloak: self.props.keycloak} );
+      }
+    } );
+  },
+
   render: function() {
     return (
         <div>
           <h1>WildFly Swarm Ribbon Example</h1>
+          <Auth keycloak={this.props.keycloak}/>
           <Topology />
         </div>
     );
   }
 });
+
+var Auth = React.createClass({
+  render: function() {
+    console.log( "render", this.props.keycloak );
+    if ( this.props.keycloak.authenticated ) {
+      return (
+        <div><Logout keycloak={this.props.keycloak}/></div>
+      );
+    }
+
+    return (
+      <div><Login keycloak={this.props.keycloak}/></div>
+    )
+  }
+});
+
+
+var Login = React.createClass({
+  handleClick: function() {
+    this.props.keycloak.login();
+  },
+
+  render: function() {
+    return (
+      <div id="login" onClick={this.handleClick}>
+        Login
+      </div>
+    )
+  }
+})
+
+var Logout = React.createClass({
+  handleClick: function() {
+    this.props.keycloak.logout();
+  },
+
+  render: function() {
+    return (
+      <div id="logout" onClick={this.handleClick}>
+        Logout
+      </div>
+    )
+  }
+})
 
 var Topology = React.createClass({
   getInitialState: function() {
@@ -161,7 +218,6 @@ var Event = React.createClass({
 
 var GetJSONButton = React.createClass({
   handleClick: function(event) {
-    console.log("GET service: " + this.props.serviceName);
     Ribbon.getJSON(this.props.serviceName)
       .then(this.props.responseHandler);
   },
@@ -170,7 +226,7 @@ var GetJSONButton = React.createClass({
     return (
       <div>
         <p onClick={this.handleClick}>
-        <span className='btn'>
+        <span className='btn get-btn'>
           Click to GET {this.props.serviceName}
         </span>
         </p>
@@ -181,7 +237,6 @@ var GetJSONButton = React.createClass({
 
 var PostJSONButton = React.createClass({
   handleClick: function(event) {
-    console.log("POST service: " + this.props.serviceName);
     Ribbon.postJSON(this.props.serviceName, {name: 'User POST'})
       .then(this.props.responseHandler);
   },
@@ -190,7 +245,7 @@ var PostJSONButton = React.createClass({
     return (
         <div>
         <p onClick={this.handleClick}>
-        <span className='btn'>
+        <span className='btn post-btn'>
         Click to post a new item to {this.props.serviceName}
       </span>
         </p>
@@ -207,7 +262,10 @@ var Address = React.createClass({
   }
 });
 
+
+
 ReactDOM.render(
-  <App />,
+  <App keycloak={keycloak}/>,
   document.getElementById('app')
 );
+

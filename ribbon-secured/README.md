@@ -68,3 +68,11 @@ which consumes the time service(s). Again, note the UI changes.
 
 Now you can kill and restart one or both of the `time` services, and witness the
 UI changes. You can also `GET` time and event service data, and `POST` new events.
+
+### Keyclaok Server
+
+The Keycloak server will launch as part of the test, an import the test-realm.
+
+There is a user named `bob` with the password of `tall`.
+
+

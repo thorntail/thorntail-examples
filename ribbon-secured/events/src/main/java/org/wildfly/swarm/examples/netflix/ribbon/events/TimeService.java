@@ -7,6 +7,7 @@ import com.netflix.ribbon.proxy.annotation.Hystrix;
 import com.netflix.ribbon.proxy.annotation.ResourceGroup;
 import com.netflix.ribbon.proxy.annotation.TemplateName;
 import io.netty.buffer.ByteBuf;
+import org.wildfly.swarm.netflix.ribbon.secured.client.SecuredRibbon;
 
 import java.sql.Time;
 
@@ -16,7 +17,7 @@ import java.sql.Time;
 @ResourceGroup( name="time" )
 public interface TimeService {
 
-    TimeService INSTANCE = Ribbon.from(TimeService.class);
+    TimeService INSTANCE = SecuredRibbon.from(TimeService.class);
 
     @TemplateName("currentTime")
     @Http(

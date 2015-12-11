@@ -34,6 +34,7 @@ public class EventsResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public void get(@Suspended final AsyncResponse asyncResponse) {
+        System.err.println( "I was asked for event" );
         Event event = new Event();
         event.setName("GET");
         recordEvent(event, asyncResponse);
@@ -47,9 +48,12 @@ public class EventsResource {
     }
 
     private void recordEvent(Event event, @Suspended AsyncResponse asyncResponse) {
+        System.err.println( "asking for time" );
         Observable<ByteBuf> obs = this.time.currentTime().observe();
+        System.err.println( "asked for time" );
         obs.subscribe(
                 (result) -> {
+                    System.err.println( "got time result: " + result );
                     try {
                         ObjectMapper mapper = new ObjectMapper();
                         ObjectReader reader = mapper.reader();
@@ -69,7 +73,5 @@ public class EventsResource {
                     System.err.println("ERROR: " + err.getLocalizedMessage());
                     asyncResponse.resume(err);
                 });
-
-        System.out.println("New event");
     }
 }

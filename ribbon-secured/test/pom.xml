@@ -127,7 +127,15 @@
                       <artifactId>keycloak-server-service</artifactId>
                       <classifier>swarm</classifier>
                       <properties>
-                        <jboss.http.port>9090</jboss.http.port>
+                        <jboss.http.port>9191</jboss.http.port>
+                        <wildfly.swarm.keycloak.server.db>${basedir}/target/keycloak</wildfly.swarm.keycloak.server.db>
+                        <keycloak.migration.provider>singleFile</keycloak.migration.provider>
+                        <keycloak.migration.file>${basedir}/test-realm.json</keycloak.migration.file>
+                        <keycloak.migration.strategy>OVERWRITE_EXISTING</keycloak.migration.strategy>
+                        <keycloak.migration.action>import</keycloak.migration.action>
+<!--
+                        <keycloak.migration.action>export</keycloak.migration.action>
+-->
                       </properties>
                     </process>
                     <process>

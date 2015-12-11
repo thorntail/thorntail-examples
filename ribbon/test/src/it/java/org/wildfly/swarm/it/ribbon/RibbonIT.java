@@ -62,7 +62,7 @@ public class RibbonIT extends AbstractIntegrationTest {
         Matcher matcher = TIME_REGEX.matcher(timestamp.getText());
         assertThat( matcher.matches() ).isTrue();
 
-        WebElement getEventButton = browser.findElementByCssSelector(".time-service .get-btn");
+        WebElement getEventButton = browser.findElementByCssSelector(".event-service .get-btn");
         assertThat( getEventButton ).isNotNull();
 
         getEventButton.click();

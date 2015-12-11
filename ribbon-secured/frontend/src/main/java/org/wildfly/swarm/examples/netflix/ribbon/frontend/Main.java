@@ -45,7 +45,7 @@ public class Main {
                 });
         container.fraction(fraction);
         container.start();
-        WARArchive war = ShrinkWrap.create(WARArchive.class);
+        WARArchive war = ShrinkWrap.create(WARArchive.class, "frontend.war");
         war.staticContent();
         war.addAllDependencies();
         container.deploy(war);
