@@ -161,7 +161,6 @@ var Event = React.createClass({
 
 var GetJSONButton = React.createClass({
   handleClick: function(event) {
-    console.log("GET service: " + this.props.serviceName);
     Ribbon.getJSON(this.props.serviceName)
       .then(this.props.responseHandler);
   },
@@ -170,7 +169,7 @@ var GetJSONButton = React.createClass({
     return (
       <div>
         <p onClick={this.handleClick}>
-        <span className='btn'>
+        <span className='btn get-btn'>
           Click to GET {this.props.serviceName}
         </span>
         </p>
@@ -181,7 +180,6 @@ var GetJSONButton = React.createClass({
 
 var PostJSONButton = React.createClass({
   handleClick: function(event) {
-    console.log("POST service: " + this.props.serviceName);
     Ribbon.postJSON(this.props.serviceName, {name: 'User POST'})
       .then(this.props.responseHandler);
   },
@@ -190,7 +188,7 @@ var PostJSONButton = React.createClass({
     return (
         <div>
         <p onClick={this.handleClick}>
-        <span className='btn'>
+        <span className='btn post-btn'>
         Click to post a new item to {this.props.serviceName}
       </span>
         </p>
