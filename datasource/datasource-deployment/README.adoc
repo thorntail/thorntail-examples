@@ -13,20 +13,25 @@ a _deployment_.
 
 The project is a normal maven project with `jar` packaging, not `war`.
 
-    <packaging>jar</packaging>
+[source,xml]
+----
+<packaging>jar</packaging>
+----
 
 The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
 create the runnable `.jar`.  
 
-    <plugin>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-plugin</artifactId>
-      <version>${version.wildfly-swarm}</version>
-      <configuration>
-        <mainClass>org.wildfly.swarm.examples.ds.deployment.Main</mainClass>
-      </configuration>
-      ...
-    </plugin>
+[source,xml]
+----
+<plugin>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-plugin</artifactId>
+  <configuration>
+    <mainClass>org.wildfly.swarm.examples.ds.deployment.Main</mainClass>
+  </configuration>
+  ...
+</plugin>
+----
     
 As with the other examples, this one inherits a few standard executions
 from the parent `pom.xml`, particularly the `package` execution.
@@ -35,28 +40,35 @@ To define the needed parts of WildFly Swarm, a few dependencies are added.
 The first is not strictly required for doing datasource deployments, but is
 needed for the example to demonstrate usage of the deployed datasource:
 
-    <dependency>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-jaxrs</artifactId>
-        <version>${version.wildfly-swarm}</version>
-    </dependency>
+[source,xml]
+----
+<dependency>
+    <groupId>org.wildfly.swarm</groupId>
+    <artifactId>wildfly-swarm-jaxrs</artifactId>
+</dependency>
+----
 
-To support datasources in general, the next dependency is required.
+To support datasources in general, the next dependency is required:
     
-    <dependency>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-datasources</artifactId>
-        <version>${version.wildfly-swarm}</version>
-    </dependency>
+[source,xml]
+----
+<dependency>
+    <groupId>org.wildfly.swarm</groupId>
+    <artifactId>wildfly-swarm-datasources</artifactId>
+</dependency>
+----
 
 Additionally, the JDBC driver jar you wish to deploy is specified as a dependency
 within your `pom.xml`
 
-    <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <version>1.4.187</version>
-    </dependency>
+[source,xml]
+----
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <version>1.4.187</version>
+</dependency>
+----
 
 == Project `main()`
 
