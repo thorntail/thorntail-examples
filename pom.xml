@@ -155,6 +155,7 @@
 
     <module>datasource</module>
     <module>jaxrs</module>
+    <module>jaxws</module>
     <module>jpa</module>
     <module>jpa-jaxrs-cdi</module>
     <module>jsf</module>
