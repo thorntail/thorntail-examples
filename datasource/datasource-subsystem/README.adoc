@@ -24,7 +24,7 @@ property substitution:
 [source,xml]
 ----
 <resources>
-    <artifact name="com.h2database:h2:${version.h2}"/>
+  <artifact name="com.h2database:h2:${version.h2}"/>
 </resources>
 ----
 
@@ -69,8 +69,8 @@ needed for the example to demonstrate usage of the datasource:
 [source,xml]
 ----
 <dependency>
-    <groupId>org.wildfly.swarm</groupId>
-    <artifactId>wildfly-swarm-jaxrs</artifactId>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-jaxrs</artifactId>
 </dependency>
 ----
     
@@ -79,8 +79,8 @@ To support datasources in general, the next dependency is required:
 [source,xml]
 ----
 <dependency>
-    <groupId>org.wildfly.swarm</groupId>
-    <artifactId>wildfly-swarm-datasources</artifactId>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-datasources</artifactId>
 </dependency>
 ----
 

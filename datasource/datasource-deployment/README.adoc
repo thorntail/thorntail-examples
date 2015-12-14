@@ -43,8 +43,8 @@ needed for the example to demonstrate usage of the deployed datasource:
 [source,xml]
 ----
 <dependency>
-    <groupId>org.wildfly.swarm</groupId>
-    <artifactId>wildfly-swarm-jaxrs</artifactId>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-jaxrs</artifactId>
 </dependency>
 ----
 
@@ -53,8 +53,8 @@ To support datasources in general, the next dependency is required:
 [source,xml]
 ----
 <dependency>
-    <groupId>org.wildfly.swarm</groupId>
-    <artifactId>wildfly-swarm-datasources</artifactId>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-datasources</artifactId>
 </dependency>
 ----
 
@@ -64,9 +64,9 @@ within your `pom.xml`
 [source,xml]
 ----
 <dependency>
-    <groupId>com.h2database</groupId>
-    <artifactId>h2</artifactId>
-    <version>1.4.187</version>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <version>1.4.187</version>
 </dependency>
 ----
 
