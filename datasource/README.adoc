@@ -1,0 +1,18 @@
+= Datasource Examples
+
+JDBC Drivers and datasources can be configured in two
+different ways within a WildFly Swarm application.
+
+The first is through a *deployment*, which is, as you might
+guess, a deployment-time creation of a datasource. Through
+deployments you can create both JDBC drivers and associated
+datasources that other deployments can use.
+
+The second is through *fraction configuration*, which is
+at a slightly higher level, tied to the container configuration.
+
+While both can result in the same functionality, there is not
+any particular difference between them other than how you package
+your application and if you want to work with JBoss Modules
+`module.xml` descriptors.
+
