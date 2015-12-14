@@ -50,7 +50,7 @@ yet. Leave this window open and visible while you bring up the two services.
 Open another terminal window to build and run the time service:
 
     $ cd time
-    $ mvn -Djboss.http.port=8081 wildfly-swarm:run
+    $ mvn -Djboss.socket.binding.port-offset=1 wildfly-swarm:run
 
 You should see the Ribbon topology update in the browser as the time service
 comes up. Now, open another terminal window, and run the `time` service again,
@@ -58,7 +58,7 @@ but this time give it a different port number. Notice how the web UI updates
 itself as the service comes up.
 
     $ cd time
-    $ mvn -Djboss.http.port=8082 wildfly-swarm:run
+    $ mvn -Djboss.socket.binding.port-offset=2 wildfly-swarm:run
 
 Finally, open yet another terminal window and run the events service,
 which consumes the time service(s). Again, note the UI changes.
