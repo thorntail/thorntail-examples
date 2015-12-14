@@ -1,0 +1,7 @@
+= Utility Module
+
+This module does not directly provide an example for anything.
+
+It's used to configure Arquillian and provide some abstract base
+classes to be used in the various tests.  It is pulled into other
+examples with a `<scope>test</scope>` scope.
