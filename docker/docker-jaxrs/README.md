@@ -1,0 +1,41 @@
+= Run a WildFly-Swarm microservice in Docker
+
+You need to have Docker and docker-compose installed. 
+
+== Packaging your application
+  
+Run `mvn clean package`. A `example-docker-jaxrs-swarm.jar` file will be built in your target folder.
+
+Additionally A docker image named 'example-docker-jaxrs' will be added to your local image registry.
+
+### Running Docker with a Wildfly-Swarm microservice inside
+
+You run the Docker container and start the Wildfly-Swarm microservice (a simple JAX-RS application) with the following commands:
+
+`mvn docker:start`
+
+OR
+
+`docker run -p 8080:8080 example-docker-jaxrs`
+
+== Inspect your running Docker containers
+
+From a terminal run `docker ps` and you should see something like: 
+
+    CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                    NAMES
+    a840d7990c15        example-docker-jaxrs   "/bin/sh -c 'java -ja"   43 seconds ago      Up 42 seconds       0.0.0.0:8080->8080/tcp   admiring_brattain
+
+Now try to `curl` the resource running inside Docker:
+
+    curl localhost:8080/resource
+
+Result should be the following:
+
+    bar
+
+== Special notes for OSX
+
+Assuming you're using `docker-machine` from the Docker Toolbox, your `curl`
+command should look like 
+
+    curl $(docker-machine ip default):8080/resource

@@ -172,6 +172,7 @@
     <module>vaadin</module>
     <module>ribbon</module>
     <module>ribbon-secured</module>
+
 <!--
     <module>docker-jaxrs-app</module>
     <module>kitchensink-html5-mobile</module>
@@ -191,5 +192,12 @@
         <wildfly-swarm.useUberJar>true</wildfly-swarm.useUberJar>
       </properties>
     </profile>
+    <profile>
+      <id>docker</id>
+      <modules>
+        <module>docker</module>
+      </modules>
+    </profile>
   </profiles>
+
 </project>

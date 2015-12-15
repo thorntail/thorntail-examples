@@ -8,14 +8,14 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <artifactId>examples-docker</artifactId>
     <groupId>org.wildfly.swarm.examples</groupId>
     <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>wildfly-swarm-example-docker-jaxrs-app</artifactId>
+  <artifactId>example-docker-jaxrs</artifactId>
 
   <name>WildFly Swarm Examples: Docker and JAX-RS</name>
   <description>WildFly Swarm Examples: JAX-RS in Docker container</description>
@@ -32,15 +32,9 @@
       <artifactId>lombok</artifactId>
       <version>1.16.2</version>
     </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.7.5</version>
-    </dependency>
   </dependencies>
 
   <build>
-    <finalName>DockerJaxRS</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -67,9 +61,72 @@
         </configuration>
         <executions>
           <execution>
+            <id>package</id>
+          </execution>
+          <execution>
+            <id>start</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>stop</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jolokia</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <configuration>
+          <images>
+            <image>
+              <name>${project.build.finalName}</name>
+              <run>
+                <ports> 
+                  <port>8080:8080</port>
+                </ports> 
+              </run>
+              <build>
+                <from>java:openjdk-8-jdk</from>
+                <ports>
+                  <port>8080</port>
+                </ports>
+                <assembly>
+                  <basedir>/</basedir>
+                  <inline>
+                    <files>
+                      <file>
+                        <source>${project.build.directory}/${project.artifactId}-swarm.jar</source>
+                        <outputDirectory>/opt</outputDirectory>
+                      </file>
+                    </files>
+                  </inline>
+                </assembly>
+                <entryPoint>
+                  <shell>java -jar /opt/${project.artifactId}-swarm.jar</shell>
+                </entryPoint>
+              </build>
+            </image>
+          </images>
+        </configuration>
+        <executions>
+          <execution>
             <phase>package</phase>
             <goals>
-              <goal>package</goal>
+              <goal>build</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>pre-integration-test</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>start</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>post-integration-test</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>stop</goal>
             </goals>
           </execution>
         </executions>
