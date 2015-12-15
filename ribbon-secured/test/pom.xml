@@ -123,8 +123,8 @@
                 <configuration>
                   <processes>
                     <process>
-                      <groupId>org.wildfly.swarm</groupId>
-                      <artifactId>keycloak-server-service</artifactId>
+                      <groupId>org.wildfly.swarm.servers</groupId>
+                      <artifactId>keycloak</artifactId>
                       <classifier>swarm</classifier>
                       <properties>
                         <jboss.http.port>9191</jboss.http.port>
