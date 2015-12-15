@@ -194,8 +194,8 @@
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>keycloak-server-service</artifactId>
+      <groupId>org.wildfly.swarm.servers</groupId>
+      <artifactId>keycloak</artifactId>
       <classifier>swarm</classifier>
       <version>${project.version}</version>
       <scope>provided</scope>
