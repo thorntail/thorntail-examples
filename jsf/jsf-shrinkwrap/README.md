@@ -108,7 +108,7 @@ The container is then started with the deployment.
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/wildfly-swarm-example-jsf-shrinkwrap-swarm.jar
+* mvn package && java -jar ./target/example-jsf-shrinkwrap-swarm.jar
 * mvn wildfly-swarm:run
 * In your IDE run the `org.wildfly.swarm.examples.jsf.shrinkwrap.Main` class
 
