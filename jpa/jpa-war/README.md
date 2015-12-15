@@ -51,7 +51,7 @@ APIs.
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/wildfly-swarm-example-jpa-servlet-swarm.jar
+* mvn package && java -jar ./target/example-jpa-war-swarm.jar
 * mvn wildfly-swarm:run
 * From your IDE, run class `org.wildfly.swarm.Swarm`
 

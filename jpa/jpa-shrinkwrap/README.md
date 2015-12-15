@@ -133,7 +133,7 @@ A `DefaultWarDeployment` is constructed, and the JPA Entity class, Servlet class
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/wildfly-swarm-example-jpa-servlet-shrinkwrap-swarm.jar
+* mvn package && java -jar ./target/jpa-shrinkwrap-swarm.jar
 * mvn wildfly-swarm:run
 * From your IDE, run class `org.wildfly.swarm.examples.jpa.shrinkwrap.Main`
 

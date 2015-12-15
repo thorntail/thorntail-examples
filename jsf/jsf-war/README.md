@@ -54,7 +54,7 @@ project does *not* need to specify those.
 
 ## Run
 
-* mvn package && java -jar ./target/wildfly-swarm-example-jsf-swarm.jar
+* mvn package && java -jar ./target/example-jsf-war-swarm.jar
 * mvn wildfly-swarm:run
 * From your IDE, run class `org.wildfly.swarm.Swarm`
 
