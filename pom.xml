@@ -158,6 +158,7 @@
   <modules>
     <module>base</module>
 
+    <module>camel</module>
     <module>datasource</module>
     <module>jaxrs</module>
     <module>jaxws</module>
