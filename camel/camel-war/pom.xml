@@ -54,6 +54,12 @@
       <version>${version.camel}</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>wildfly-swarm-undertow</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
     <!-- this is only a test dependency for our 
          integration test of this example        -->
     <dependency>
