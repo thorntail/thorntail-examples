@@ -1,15 +1,11 @@
 package org.wildfly.swarm.examples.messaging;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.wildfly.swarm.config.messaging_activemq.Server;
-import org.wildfly.swarm.config.messaging_activemq.server.*;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.container.JARArchive;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.messaging.MessagingFraction;
 import org.wildfly.swarm.msc.ServiceActivatorArchive;
-
-import java.util.Arrays;
 
 /**
  * @author Bob McWhirter
