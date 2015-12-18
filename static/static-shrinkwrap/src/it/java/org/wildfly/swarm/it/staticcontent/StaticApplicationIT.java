@@ -1,4 +1,4 @@
-package org.wildfly.swarm.it.jaxrs;
+package org.wildfly.swarm.it.staticcontent;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
