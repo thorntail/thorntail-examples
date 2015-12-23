@@ -52,17 +52,17 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jaxrs-weld</artifactId>
+      <artifactId>jaxrs-weld</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-messaging</artifactId>
+      <artifactId>messaging</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-ejb</artifactId>
+      <artifactId>ejb</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
   </dependencies>

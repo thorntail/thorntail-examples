@@ -29,7 +29,6 @@
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
-          <packagingExcludes>WEB-INF/lib/wildfly-swarm-*.jar</packagingExcludes>
         </configuration>
       </plugin>
       <plugin>
@@ -57,7 +56,7 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jaxrs</artifactId>
+      <artifactId>jaxrs</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>

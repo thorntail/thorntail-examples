@@ -10,12 +10,12 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <artifactId>examples-parent</artifactId>
     <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-kitchensink-html5-mobile</artifactId>
+  <artifactId>example-kitchensink-html5-mobile</artifactId>
   <name>WildFly Swarm Examples: Kitchensink HTML5/Mobile</name>
   <description> Java EE HTML5 mobile web application for use on WildFly, that was converted from the WildFly Quickstart</description>
 
@@ -50,21 +50,21 @@
     <!-- Import the Servlet API -->
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jaxrs-weld</artifactId>
+      <artifactId>jaxrs-weld</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
 
     <!-- Import the JPA API -->
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-jpa</artifactId>
+      <artifactId>jpa</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
 
     <!-- Import the EJB API -->
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-ejb</artifactId>
+      <artifactId>ejb</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
 
@@ -73,7 +73,7 @@
     <!-- Import the Hibernate Validator API -->
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-hibernate-validator</artifactId>
+      <artifactId>hibernate-validator</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
 

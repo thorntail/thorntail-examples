@@ -10,7 +10,7 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <artifactId>examples-parent</artifactId>
     <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
@@ -29,7 +29,6 @@
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
-          <packagingExcludes>WEB-INF/lib/wildfly-swarm-*.jar</packagingExcludes>
         </configuration>
       </plugin>
       <plugin>
@@ -57,17 +56,17 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-undertow</artifactId>
+      <artifactId>undertow</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-security</artifactId>
+      <artifactId>security</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-webservices</artifactId>
+      <artifactId>webservices</artifactId>
       <version>${project.version}</version>
     </dependency>
   </dependencies>

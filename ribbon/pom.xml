@@ -10,7 +10,7 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <artifactId>examples-parent</artifactId>
     <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
@@ -54,7 +54,7 @@
   <dependencies>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-ribbon</artifactId>
+      <artifactId>ribbon</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
   </dependencies>

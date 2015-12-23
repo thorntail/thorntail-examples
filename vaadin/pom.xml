@@ -10,12 +10,12 @@
 
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <artifactId>wildfly-swarm-examples-parent</artifactId>
+    <artifactId>examples-parent</artifactId>
     <version>1.0.0.Alpha6-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>wildfly-swarm-example-vaadin</artifactId>
+  <artifactId>example-vaadin</artifactId>
 
   <name>WildFly Swarm Examples: CDI and Vaadin</name>
   <description>WildFly Swarm Examples: CDI and Vaadin</description>
@@ -60,12 +60,12 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-weld</artifactId>
+      <artifactId>weld</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>wildfly-swarm-undertow</artifactId>
+      <artifactId>undertow</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
