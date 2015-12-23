@@ -51,7 +51,7 @@ public class Main {
         JAXRSArchive deployment = ShrinkWrap.create( JAXRSArchive.class, "time.war" );
         deployment.addResource(TimeResource.class);
         deployment.addAllDependencies();
-        deployment.as(RibbonArchive.class).setApplicationName( "time" );
+        deployment.as(RibbonArchive.class).advertise();
         deployment.as(Secured.class)
                 .protect()
                 .withMethod( "GET" )

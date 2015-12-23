@@ -46,10 +46,10 @@ public class Main {
                     c.stack( "udp" );
                 });
         container.fraction(fraction);
-        JAXRSArchive deployment = ShrinkWrap.create( JAXRSArchive.class );
+        JAXRSArchive deployment = ShrinkWrap.create( JAXRSArchive.class, "time.war" );
         deployment.addResource(TimeResource.class);
         deployment.addAllDependencies();
-        deployment.as(RibbonArchive.class).setApplicationName( "time" );
+        deployment.as(RibbonArchive.class).advertise();
         container.start().deploy(deployment);
     }
 }

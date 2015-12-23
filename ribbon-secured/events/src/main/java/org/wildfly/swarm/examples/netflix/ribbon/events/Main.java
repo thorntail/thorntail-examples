@@ -52,7 +52,7 @@ public class Main {
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "events.war" );
         deployment.addPackage(Main.class.getPackage());
         deployment.addAllDependencies();
-        deployment.as(RibbonArchive.class).setApplicationName("events");
+        deployment.as(RibbonArchive.class).advertise();
         deployment.as(Secured.class)
                 .protect()
                 .withMethod( "GET" )

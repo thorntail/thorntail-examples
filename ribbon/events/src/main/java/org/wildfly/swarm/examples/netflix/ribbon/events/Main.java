@@ -47,10 +47,10 @@ public class Main {
                 });
         container.fraction(fraction);
 
-        JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
+        JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "events.war");
         deployment.addPackage( Main.class.getPackage() );
         deployment.addAllDependencies();
-        deployment.as( RibbonArchive.class ).setApplicationName( "events" );
+        deployment.as( RibbonArchive.class ).advertise();
         container.start().deploy(deployment);
     }
 }
