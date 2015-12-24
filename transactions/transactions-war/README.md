@@ -13,7 +13,7 @@ and end transactions.
 
 The project is a normal maven project with `jar` packaging, not `war`.
 
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
 The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
 create the runnable `.jar`.
