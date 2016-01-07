@@ -87,6 +87,13 @@ By default, if no JAX-RS `Application` is provided a default is added
 to the deployment specifying an `@ApplicationPath("/")` to bind the
 deployment to the root URL.
 
+We could modify the above `main()` method with:
+
+    deployment.addClass(MyApp.class);
+
+to provide our own JAX-RS `Application`, which would modify the path to be
+`http://localhost:8080/taco`.
+
 ## Run
 
 You can run it many ways:
