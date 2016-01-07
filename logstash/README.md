@@ -3,11 +3,8 @@
 > NOTE: This example will not work yet, as it relies upon a patch
 > in the upstream of WildFly not yet available in a released version.
 
-> Please raise any issues found with this example in this repo:
-> https://github.com/wildfly-swarm/wildfly-swarm-examples
->
-> Issues related to WildFly Swarm core should be raised in the main repo:
-> https://github.com/wildfly-swarm/wildfly-swarm/issues
+> Please raise any issues found with this example in our JIRA:
+> https://issues.jboss.org/browse/SWARM
 
 The beginnings of a multi-service example.
 

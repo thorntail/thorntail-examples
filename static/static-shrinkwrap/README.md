@@ -2,11 +2,8 @@
 
 This example serves static content using WildFly Swarm.
 
-> Please raise any issues found with this example in this repo:
-> https://github.com/wildfly-swarm/wildfly-swarm-examples
->
-> Issues related to WildFly Swarm core should be raised in the main repo:
-> https://github.com/wildfly-swarm/wildfly-swarm/issues
+> Please raise any issues found with this example in our JIRA:
+> https://issues.jboss.org/browse/SWARM
 
 ## Project `pom.xml`
 

@@ -1,10 +1,4 @@
 = WildFly-Swarm and Docker
 
-> Please raise any issues found with this example in this repo:
-> https://github.com/wildfly-swarm/wildfly-swarm-examples/issues
->
-> Issues related to *WildFly Swarm* core should be raised in our JIRA:
-> https://issues.jboss.org/browse/SWARM
-
 These examples will only be built if you provide `-Pdocker` to the
 Maven command-line from the root, or build from this directory or lower.

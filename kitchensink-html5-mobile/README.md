@@ -3,11 +3,8 @@
 This example takes the [kitchensick-html5-mobile](https://github.com/wildfly/quickstart/tree/master/kitchensink-html5-mobile)
 quickstart from WildFly, and wraps it into a `-swarm` runnable jar.
 
-> Please raise any issues found with this example in this repo:
-> https://github.com/wildfly-swarm/wildfly-swarm-examples
->
-> Issues related to WildFly Swarm core should be raised in the main repo:
-> https://github.com/wildfly-swarm/wildfly-swarm/issues
+> Please raise any issues found with this example in our JIRA:
+> https://issues.jboss.org/browse/SWARM
 
 ## Project `pom.xml`
 

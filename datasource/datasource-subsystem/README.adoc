@@ -1,9 +1,6 @@
 = Datasource via Fraction
 
-> Please raise any issues found with this example in this repo:
-> https://github.com/wildfly-swarm/wildfly-swarm-examples/issues
->
-> Issues related to *WildFly Swarm* core should be raised in our JIRA:
+> Please raise any issues found with this example in our JIRA:
 > https://issues.jboss.org/browse/SWARM
 
 This example demonstrates how to create a datasource through

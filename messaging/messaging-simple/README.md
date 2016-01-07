@@ -10,11 +10,8 @@ JMS destinations for use by the JAX-RS resource.
 It also deploys an MSC service to consume messages from
 the destination.  
 
-> Please raise any issues found with this example in this repo:
-> https://github.com/wildfly-swarm/wildfly-swarm-examples
->
-> Issues related to WildFly Swarm core should be raised in the main repo:
-> https://github.com/wildfly-swarm/wildfly-swarm/issues
+> Please raise any issues found with this example in our JIRA:
+> https://issues.jboss.org/browse/SWARM
 
 ## Project `pomx.xml`
 

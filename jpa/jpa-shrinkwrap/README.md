@@ -3,11 +3,8 @@
 This example uses JPA and Servlet classes deployed through a user-provided
 `main()` programmatically without constructing a `.war` file during the build.
 
-> Please raise any issues found with this example in this repo:
-> https://github.com/wildfly-swarm/wildfly-swarm-examples
->
-> Issues related to WildFly Swarm core should be raised in the main repo:
-> https://github.com/wildfly-swarm/wildfly-swarm/issues
+> Please raise any issues found with this example in our JIRA:
+> https://issues.jboss.org/browse/SWARM
 
 ## Project `pom.xml`
 

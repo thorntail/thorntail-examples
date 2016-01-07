@@ -5,11 +5,8 @@ a `-swarm` runnable jar.
 
 It is originally from [wildfly-quickstart helloworld-ws](https://github.com/wildfly/quickstart/tree/10.x/helloworld-ws).
 
-> Please raise any issues found with this example in this repo:
-> https://github.com/wildfly-swarm/wildfly-swarm-examples
->
-> Issues related to WildFly Swarm core should be raised in the main repo:
-> https://github.com/wildfly-swarm/wildfly-swarm/issues
+> Please raise any issues found with this example in our JIRA:
+> https://issues.jboss.org/browse/SWARM
 
 ## Project `pom.xml`
 
