@@ -172,7 +172,10 @@
     <module>transactions</module>
     <module>vaadin</module>
     <module>ribbon</module>
+<!--
+    until keycloak rebases to WF10CR5
     <module>ribbon-secured</module>
+-->
 
 <!--
     <module>docker-jaxrs-app</module>
