@@ -42,17 +42,17 @@ To define the needed parts of WildFly Swarm, some dependencies are added
 
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-jaxrs</artifactId>
+        <artifactId>jaxrs</artifactId>
         <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-messaging</artifactId>
+        <artifactId>messaging</artifactId>
         <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-msc</artifactId>
+        <artifactId>msc</artifactId>
         <version>${version.wildfly-swarm}</version>
     </dependency>
 

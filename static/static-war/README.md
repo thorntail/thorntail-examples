@@ -33,7 +33,7 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-undertow</artifactId>
+        <artifactId>undertow</artifactId>
         <version>${version.wildfly-swarm}</version>
     </dependency>
 

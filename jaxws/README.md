@@ -40,7 +40,7 @@ To define the needed parts of WildFly Swarm, a dependency is added
 ``` xml
 <dependency>
   <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-webservices</artifactId>
+  <artifactId>webservices</artifactId>
   <version>${version.wildfly-swarm}</version>
 </dependency>
 ```

@@ -47,17 +47,17 @@ To define the needed parts of WildFly Swarm, some dependencies are added
 ``` xml
 <dependency>
   <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-jaxrs-weld</artifactId>
+  <artifactId>weld-jaxrs</artifactId>
   <version>${version.wildfly-swarm}</version>
 </dependency>
 <dependency>
   <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-messaging</artifactId>
+  <artifactId>messaging</artifactId>
   <version>${version.wildfly-swarm}</version>
 </dependency>
 <dependency>
   <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-ejb</artifactId>
+  <artifactId>ejb</artifactId>
   <version>${version.wildfly-swarm}</version>
 </dependency>
 ```

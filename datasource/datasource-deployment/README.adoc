@@ -41,7 +41,7 @@ needed for the example to demonstrate usage of the deployed datasource:
 ----
 <dependency>
   <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-jaxrs</artifactId>
+  <artifactId>jaxrs</artifactId>
 </dependency>
 ----
 
@@ -51,7 +51,7 @@ To support datasources in general, the next dependency is required:
 ----
 <dependency>
   <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-datasources</artifactId>
+  <artifactId>datasources</artifactId>
 </dependency>
 ----
 

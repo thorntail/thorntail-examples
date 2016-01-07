@@ -35,12 +35,12 @@ To define the needed parts of WildFly Swarm, a few dependencies are added
 
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-jaxrs</artifactId>
+        <artifactId>jaxrs</artifactId>
         <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-transactions</artifactId>
+        <artifactId>transactions</artifactId>
         <version>${version.wildfly-swarm}</version>
     </dependency>
 

@@ -33,7 +33,7 @@ To define the needed parts of WildFly Swarm, the following dependency is added
 
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-weld-jaxrs</artifactId>
+        <artifactId>jaxrs-weld</artifactId>
         <version>${version.wildfly-swarm}</version>
     </dependency>
 

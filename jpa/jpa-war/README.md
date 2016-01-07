@@ -32,12 +32,12 @@ To define the needed parts of WildFly Swarm, a few dependencies are added
 
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-jpa</artifactId>
+        <artifactId>jpa</artifactId>
         <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>wildfly-swarm-undertow</artifactId>
+        <artifactId>undertow</artifactId>
         <version>${version.wildfly-swarm}</version>
     </dependency>
 
