@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.wildfly.swarm:wildfly-swarm-jaxrs:$version"
-    compile "org.wildfly.swarm:wildfly-swarm-ejb:$version"
-    compile "org.wildfly.swarm:wildfly-swarm-mail:$version"
+    compile "org.wildfly.swarm:jaxrs:$version"
+    compile "org.wildfly.swarm:ejb:$version"
+    compile "org.wildfly.swarm:mail:$version"
 }

@@ -26,5 +26,5 @@ repositories {
 }
 
 dependencies {
-    compile "org.wildfly.swarm:wildfly-swarm-jaxrs:$version"
+    compile "org.wildfly.swarm:jaxrs:$version"
 }
