@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.ds.deployment;
+package org.wildfly.swarm.examples.ds.subsystem;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
