@@ -158,6 +158,7 @@
   <modules>
     <module>base</module>
 
+    <module>arjuna</module>
     <module>camel</module>
     <module>datasource</module>
     <module>jaxrs</module>
