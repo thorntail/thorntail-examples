@@ -183,3 +183,30 @@ You can run it many ways:
 == Use
 
     http://localhost:8080/
+
+== (Option) Other Database usage
+
+Of course, you can also use other databases such as PostgreSQL.
+
+When you use PostgreSQL JDBC Driver and datasource, the container settings may be the following snipet.
+
+[source,java]
+----
+// Configure the Datasources subsystem with a driver
+// and a datasource for PostgreSQL
+container.fraction(new DatasourcesFraction()
+                .jdbcDriver("org.postgresql", (d) -> {
+                    d.driverDatasourceClassName("org.postgresql.Driver");
+                    d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
+                    d.driverModuleName("org.postgresql");
+                })
+                .dataSource("ExampleDS", (ds) -> {
+                    ds.driverName("org.postgresql");
+                    ds.connectionUrl("jdbc:postgresql://localhost:5432/postgres");
+                    ds.userName("postgres");
+                    ds.password("postgres");
+                });
+);
+----
+
+And, you should add `src/main/resources/modules/org/postgresql/main/module.xml` for PostgreSQL JDBC Driver as with h2.
