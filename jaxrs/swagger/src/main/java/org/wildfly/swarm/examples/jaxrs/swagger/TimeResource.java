@@ -21,6 +21,6 @@ public class TimeResource {
     )
     @Produces(MediaType.APPLICATION_JSON)
     public String get() {
-        return "The time is " + new DateTime();
+        return String.format("{\"value\" : \"The time is %s\"}", new DateTime());
     }
 }
