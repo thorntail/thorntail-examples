@@ -42,7 +42,7 @@
         <artifactId>wildfly-swarm-plugin</artifactId>
         <configuration>
           <properties>
-            <jboss.bind.address>127.0.0.1</jboss.bind.address>
+            <swarm.bind.address>127.0.0.1</swarm.bind.address>
             <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
           </properties>
         </configuration>
@@ -101,7 +101,7 @@
             <artifactId>wildfly-swarm-plugin</artifactId>
             <configuration>
               <properties>
-                <jboss.bind.address>127.0.0.1</jboss.bind.address>
+                <swarm.bind.address>127.0.0.1</swarm.bind.address>
                 <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
               </properties>
             </configuration>
@@ -127,7 +127,7 @@
                       <artifactId>keycloak</artifactId>
                       <classifier>swarm</classifier>
                       <properties>
-                        <jboss.http.port>9191</jboss.http.port>
+                        <swarm.http.port>9191</swarm.http.port>
                         <wildfly.swarm.keycloak.server.db>${basedir}/target/keycloak</wildfly.swarm.keycloak.server.db>
                         <keycloak.migration.provider>singleFile</keycloak.migration.provider>
                         <keycloak.migration.file>${basedir}/test-realm.json</keycloak.migration.file>
@@ -144,19 +144,19 @@
                     <process>
                       <artifactId>example-ribbon-secured-time</artifactId>
                       <properties>
-                        <jboss.http.port>8081</jboss.http.port>
+                        <swarm.http.port>8081</swarm.http.port>
                       </properties>
                     </process>
                     <process>
                       <artifactId>example-ribbon-secured-time</artifactId>
                       <properties>
-                        <jboss.http.port>8082</jboss.http.port>
+                        <swarm.http.port>8082</swarm.http.port>
                       </properties>
                     </process>
                     <process>
                       <artifactId>example-ribbon-secured-events</artifactId>
                       <properties>
-                        <jboss.http.port>8083</jboss.http.port>
+                        <swarm.http.port>8083</swarm.http.port>
                       </properties>
                     </process>
                   </processes>
