@@ -16,13 +16,14 @@ import static org.fest.assertions.Assertions.assertThat;
 /**
  * @author Bob McWhirter
  */
-@RunWith(Arquillian.class)
+//@RunWith(Arquillian.class)
 public class VaadinApplicationIT extends AbstractIntegrationTest {
 
     @Drone
     PhantomJSDriver browser;
 
-    @Test
+    //disabled until SWARM-249
+    //@Test
     public void testIt() throws Exception {
         browser.manage().window().setSize( new Dimension(1024, 768));
         browser.navigate().to("http://localhost:8080/");
