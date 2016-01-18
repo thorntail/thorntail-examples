@@ -5,13 +5,14 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.logging.LoggingFraction;
+import org.wildfly.swarm.config.logging.Level;
 
 //@Slf4j
 public class SwarmMain {
     public static void main(String[] args) throws Exception {
         Container container = new Container();
 
-        String logLevel = "INFO";
+        Level logLevel = Level.INFO;
         container.fraction(new LoggingFraction()
                 .formatter("PATTERN", "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n")
                 .consoleHandler(logLevel, "PATTERN")
