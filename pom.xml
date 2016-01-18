@@ -154,6 +154,8 @@
     <module>ribbon</module>
     <module>ribbon-secured</module>
 
+    <module>docker</module>
+
 <!--
     <module>docker-jaxrs-app</module>
     <module>kitchensink-html5-mobile</module>
@@ -168,16 +170,13 @@
 
   <profiles>
     <profile>
+      <id>docker</id>
+    </profile>
+    <profile>
       <id>uberjar</id>
       <properties>
         <wildfly-swarm.useUberJar>true</wildfly-swarm.useUberJar>
       </properties>
-    </profile>
-    <profile>
-      <id>docker</id>
-      <modules>
-        <module>docker</module>
-      </modules>
     </profile>
     <profile>
       <id>not-skipping-tests</id>
