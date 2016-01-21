@@ -29,7 +29,7 @@ The `${version.h2}` is simply a property defined in your `pom.xml`,
 and normal Maven resource-filtering replaces it, to avoid having
 to hard-code it.
 
-== Project `pomx.xml`
+== Project `pom.xml`
 
 The project is a normal maven project with `jar` packaging, not `war`.
 
