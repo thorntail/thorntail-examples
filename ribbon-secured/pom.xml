@@ -57,6 +57,11 @@
       <artifactId>ribbon-secured</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>topology-jgroups</artifactId>
+      <version>${version.wildfly-swarm}</version>
+    </dependency>
   </dependencies>
 
   <modules>

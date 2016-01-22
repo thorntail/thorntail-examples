@@ -1,7 +1,7 @@
 
 var keycloak = new Keycloak( '/keycloak.json' );
 
-var Ribbon = ribbon({keycloak: keycloak});
+var topo = topology({keycloak: keycloak});
 
 var App = React.createClass({
   componentWillMount: function() {
@@ -75,7 +75,7 @@ var Topology = React.createClass({
 
   componentDidMount: function() {
     var component = this;
-    Ribbon.onTopologyChange(function(message) {
+    topo.onTopologyChange(function(message) {
       component.setState({data: JSON.parse(message)});
     });
   },
@@ -218,7 +218,7 @@ var Event = React.createClass({
 
 var GetJSONButton = React.createClass({
   handleClick: function(event) {
-    Ribbon.getJSON(this.props.serviceName)
+    topo.getJSON(this.props.serviceName)
       .then(this.props.responseHandler);
   },
 
@@ -237,7 +237,7 @@ var GetJSONButton = React.createClass({
 
 var PostJSONButton = React.createClass({
   handleClick: function(event) {
-    Ribbon.postJSON(this.props.serviceName, {name: 'User POST'})
+    topo.postJSON(this.props.serviceName, {name: 'User POST'})
       .then(this.props.responseHandler);
   },
 

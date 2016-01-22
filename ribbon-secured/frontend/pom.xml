@@ -53,7 +53,7 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>ribbon-webapp</artifactId>
+      <artifactId>topology-webapp</artifactId>
       <version>${version.wildfly-swarm}</version>
     </dependency>
   </dependencies>

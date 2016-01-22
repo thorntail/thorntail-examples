@@ -1,4 +1,4 @@
-var Ribbon = ribbon();
+var topo = topology();
 
 var App = React.createClass({
   render: function() {
@@ -18,7 +18,7 @@ var Topology = React.createClass({
 
   componentDidMount: function() {
     var component = this;
-    Ribbon.onTopologyChange(function(topology) {
+    topo.onTopologyChange(function(topology) {
       component.setState({data: JSON.parse(topology)});
     });
   },
@@ -161,7 +161,7 @@ var Event = React.createClass({
 
 var GetJSONButton = React.createClass({
   handleClick: function(event) {
-    Ribbon.getJSON(this.props.serviceName)
+    topo.getJSON(this.props.serviceName)
       .then(this.props.responseHandler);
   },
 
@@ -180,7 +180,7 @@ var GetJSONButton = React.createClass({
 
 var PostJSONButton = React.createClass({
   handleClick: function(event) {
-    Ribbon.postJSON(this.props.serviceName, {name: 'User POST'})
+    topo.postJSON(this.props.serviceName, {name: 'User POST'})
       .then(this.props.responseHandler);
   },
 

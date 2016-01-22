@@ -17,10 +17,14 @@ import java.util.Map;
 @Path("/")
 public class TimeResource {
 
+    public TimeResource() {
+        System.out.println( "TimeResource ctor" );
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response get() {
-        System.err.println( "I was asked for the time" );
+        System.out.println( "I was asked for the time" );
         Map<String,Object> t = new HashMap<>();
         DateTime d = new DateTime();
 
@@ -47,6 +51,7 @@ public class TimeResource {
     @OPTIONS
     @Path("{path : .*}")
     public Response options() {
+        System.out.println( "Time pre-flight" );
         return Response.ok("")
                 .header("Access-Control-Allow-Origin", "*")
                 .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
