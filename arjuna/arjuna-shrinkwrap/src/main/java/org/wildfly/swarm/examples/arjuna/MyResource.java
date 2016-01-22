@@ -30,10 +30,9 @@ import java.util.Hashtable;
 
 import com.arjuna.ats.arjuna.common.Uid;
 import com.arjuna.ats.arjuna.common.arjPropertyManager;
+import com.arjuna.ats.arjuna.AtomicAction;
 import com.arjuna.ats.arjuna.coordinator.CheckedAction;
 import com.arjuna.ats.arjuna.coordinator.CheckedActionFactory;
-
-import javax.transaction.UserTransaction;
 
 import javax.naming.InitialContext;
 
@@ -51,49 +50,76 @@ public class MyResource {
     }
 
     @GET
+    @Path("atomicaction")
     @Produces("text/plain")
-    public String aa() throws Exception  // dummy method name for now
+    public String atomicaction() throws Exception
     {
-        try {
-            arjPropertyManager.getCoordinatorEnvironmentBean()
-                    .setCheckedActionFactory((txId, actionType) -> {
-                        System.out.println("MyEJB::getCheckedAction called");
-                        return new CheckedAction() {
-                            @Override
-                            public void check(boolean isCommit, Uid actUid,
-                                              Hashtable list) {
-                                System.out.println("MyEJB::check called");
-                            }
-                        };
-                    });
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
+	String value = "problem!";
 
-        return "Active!";
+	try
+	{
+	    arjPropertyManager.getCoordinatorEnvironmentBean()
+		.setCheckedActionFactory(new CheckedActionFactory() {
+
+			@Override
+			    public CheckedAction getCheckedAction(Uid txId,
+								  String actionType) {
+			    System.out.println("MyEJB::getCheckedAction called");
+			    return new CheckedAction() {
+				@Override
+				    public void check(boolean isCommit, Uid actUid,
+						      Hashtable list) {
+				    System.out.println("MyResource::check called");
+				}
+			    };
+			}
+		    });
+
+	    AtomicAction A = new AtomicAction();
+
+	    A.begin();
+
+	    value = "Begin "+A;
+
+	    A.commit();
+
+	    value += "\nCommitted "+A;
+	}
+	catch (final Throwable x)
+	{
+	    value += x;
+	}
+
+	return value;
     }
 
     @Path("begincommit")
     @GET
     @Produces("text/plain")
     public String beginCommit() throws Exception {
-        UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
-        String value = "Transaction ";
+	AtomicAction txn = new AtomicAction();
+	String value = "Transaction ";
 
-        try {
-            txn.begin();
+	try
+	{
+	    txn.begin();
 
-            value += "begun ok";
+	    value += "begun ok";
 
-            try {
-                txn.commit();
+	    try
+	    {
+		txn.commit();
 
-                value += " and committed ok";
-            } catch (final Throwable ex) {
-                value += " but failed to commit";
-            }
-        } catch (final Throwable ex) {
-            value += "failed to begin: " + ex.toString();
+		value += " and committed ok";
+	    }
+	    catch (final Throwable ex)
+	    {
+		value += " but failed to commit";
+	    }
+	}
+	catch (final Throwable ex)
+	{
+	    value += "failed to begin: "+ex.toString();
         }
 
         return value;
@@ -103,23 +129,29 @@ public class MyResource {
     @GET
     @Produces("text/plain")
     public String beginRollback() throws Exception {
-        UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
-        String value = "Transaction ";
+	AtomicAction txn = new AtomicAction();
+	String value = "Transaction ";
 
-        try {
-            txn.begin();
+	try
+	{
+	    txn.begin();
 
-            value += "begun ok";
+	    value += "begun ok";
 
-            try {
-                txn.rollback();
+	    try
+	    {
+		txn.abort();
 
-                value += " and rolled back ok";
-            } catch (final Throwable ex) {
-                value += " but failed to rollback " + ex.toString();
-            }
-        } catch (final Throwable ex) {
-            value += "failed to begin: " + ex.toString();
+		value += " and rolled back ok";
+	    }
+	    catch (final Throwable ex)
+	    {
+		value += " but failed to rollback "+ex.toString();
+	    }
+	}
+	catch (final Throwable ex)
+	{
+	    value += "failed to begin: "+ex.toString();
         }
 
         return value;
@@ -129,24 +161,33 @@ public class MyResource {
     @GET
     @Produces("text/plain")
     public String nested() throws Exception {
-        UserTransaction txn = (UserTransaction) new InitialContext().lookup("java:comp/UserTransaction");
-        String value = "Nested transaction ";
+	AtomicAction txn = new AtomicAction();
+	String value = "Nested transaction ";
 
-        try {
-            txn.begin();
-            txn.begin();
+	try
+	{
+	    txn.begin();
 
-            value += "support appears to be enabled!";
+	    AtomicAction txn2 = new AtomicAction();
 
-            try {
-                txn.commit();
-                txn.commit();
-            } catch (final Throwable ex) {
-            }
-        } catch (final Throwable ex) {
-            value += "support is not enabled!";
+	    txn2.begin();
 
-            txn.commit(); // laziness but should have a try/catch here too
+	    value += " " + txn2+" started!";
+
+	    try
+	    {
+		txn2.commit();
+		txn.commit();
+	    }
+	    catch (final Throwable ex)
+	    {
+	    }
+	}
+	catch (final Throwable ex)
+	{
+	    value += "failed!";
+
+	    txn.commit(); // laziness but should have a try/catch here too
         }
 
         return value;
