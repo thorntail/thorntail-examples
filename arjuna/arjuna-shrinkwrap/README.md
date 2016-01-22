@@ -43,9 +43,6 @@ method.
         </configuration>
     </plugin>
 
-Currently we have to add javax.transactions into the pom.xml for building due to
-https://github.com/wildfly-swarm/wildfly-swarm/issues/27
-
 To define the needed parts of WildFly Swarm, a dependency is added
 
     <dependency>
@@ -73,7 +70,7 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-arjuna-1.0.0.Beta1-SNAPSHOT-swarm.jar
+    java -jar ./target/example-arjuna-shrinkwrap-swarm.jar
 
 
 ## Use
