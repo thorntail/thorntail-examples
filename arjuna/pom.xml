@@ -24,9 +24,6 @@
 
 
   <modules>
-<!--
-    <module>arjuna-war</module>
--->
     <module>arjuna-shrinkwrap</module>
   </modules>
 </project>
