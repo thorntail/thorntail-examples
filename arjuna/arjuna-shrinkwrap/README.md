@@ -43,9 +43,6 @@ method.
         </configuration>
     </plugin>
 
-Currently we have to add javax.transactions into the pom.xml for building due to
-https://github.com/wildfly-swarm/wildfly-swarm/issues/27
-
 To define the needed parts of WildFly Swarm, a dependency is added
 
     <dependency>
@@ -73,13 +70,39 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
 ## Run
 
-    java -jar ./target/wildfly-swarm-example-arjuna-1.0.0.Beta1-SNAPSHOT-swarm.jar
-
+    java -jar ./target/example-arjuna-shrinkwrap-swarm.jar
 
 ## Use
 
-    http://localhost:8080/
+    First try ...
 
-On the console the MSC service will print the message ...
+    http://localhost:8080/atomicaction
 
-   Transaction begun ok and committed ok
+    In the browser you should see something like ...
+
+    Begin BasicAction: 0:ffffac1c8001:2fb05ec4:567ed3a5:b status: ActionStatus.RUNNING
+    Committed BasicAction: 0:ffffac1c8001:2fb05ec4:567ed3a5:b status: ActionStatus.COMMITTED
+
+    Then try ...
+
+    http://localhost:8080/begincommit
+
+    Should result in ...
+
+    Transaction begun ok and committed ok
+
+    Next ...
+
+    http://localhost:8080/beginrollback
+
+    Should give you the following in the browser ...
+
+    Transaction begun ok and committed ok
+    
+    Now try ...
+
+    http://localhost:8080/beginrollback
+
+    You should get something like the following in your browser ...
+
+    Nested transaction  BasicAction: 0:ffffac1c8001:-315e47ea:567ed60e:19 status: ActionStatus.RUNNING started!
