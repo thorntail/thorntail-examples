@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2015 Red Hat, Inc. and/or its affiliates.
+  ~
+  ~ Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
+  -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.wildfly.swarm.examples</groupId>
+    <artifactId>examples-ribbon-consul-parent</artifactId>
+    <version>1.0.0.Alpha7-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+
+  <artifactId>example-ribbon-consul-test</artifactId>
+
+  <name>WildFly Swarm Examples: Netflix Ribbon using Consul: Multi-service Test </name>
+  <description>WildFly Swarm Examples: Netflix Ribbon using Consul: Multi-service Test</description>
+
+  <packaging>pom</packaging>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>integration-test</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>verify</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>wildfly-swarm-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>package</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>start</id>
+            <phase>none</phase>
+          </execution>
+          <execution>
+            <id>stop</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>consul</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>test-compile</phase>
+                <goals>
+                  <goal>testCompile</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>integration-test</id>
+                <phase>integration-test</phase>
+              </execution>
+              <execution>
+                <id>verify</id>
+                <phase>verify</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>wildfly-swarm-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>package</id>
+                <phase>none</phase>
+              </execution>
+              <execution>
+                <id>start</id>
+                <phase>none</phase>
+              </execution>
+              <execution>
+                <id>multistart</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>multistart</goal>
+                </goals>
+                <configuration>
+                  <processes>
+                    <process>
+                      <artifactId>example-ribbon-consul-frontend</artifactId>
+                    </process>
+                    <process>
+                      <artifactId>example-ribbon-consul-time</artifactId>
+                      <properties>
+                        <swarm.http.port>8081</swarm.http.port>
+                      </properties>
+                    </process>
+                    <process>
+                      <artifactId>example-ribbon-consul-time</artifactId>
+                      <properties>
+                        <swarm.http.port>8082</swarm.http.port>
+                      </properties>
+                    </process>
+                    <process>
+                      <artifactId>example-ribbon-consul-events</artifactId>
+                      <properties>
+                        <swarm.http.port>8083</swarm.http.port>
+                      </properties>
+                    </process>
+                  </processes>
+                </configuration>
+              </execution>
+              <execution>
+                <id>stop</id>
+                <phase>post-integration-test</phase>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.wildfly.swarm.examples</groupId>
+      <artifactId>examples-base</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm.examples</groupId>
+      <artifactId>example-ribbon-consul-frontend</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm.examples</groupId>
+      <artifactId>example-ribbon-consul-time</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm.examples</groupId>
+      <artifactId>example-ribbon-consul-events</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+
+  <modules>
+    <module>../frontend</module>
+    <module>../events</module>
+    <module>../time</module>
+  </modules>
+
+</project>
