@@ -76,7 +76,7 @@ var Topology = React.createClass({
   componentDidMount: function() {
     var component = this;
     topo.onTopologyChange(function(message) {
-      component.setState({data: JSON.parse(message)});
+      component.setState({data: message});
     });
   },
 

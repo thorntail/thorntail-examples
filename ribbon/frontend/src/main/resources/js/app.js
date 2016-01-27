@@ -19,7 +19,7 @@ var Topology = React.createClass({
   componentDidMount: function() {
     var component = this;
     topo.onTopologyChange(function(topology) {
-      component.setState({data: JSON.parse(topology)});
+      component.setState({data: topology});
     });
   },
 
