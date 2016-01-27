@@ -9,7 +9,7 @@ JGroups, it relies upon Hashicorp's Consul service-discovery mechanisms.
 To execute this test, you must
 
 * Have v2.0+ of phantomjs available in your $PATH
-* Have a Consul server/agent running on localhost:8500
+* Have a Consul server/agent running on http://<IP>:<PORT>
 
 You can run consul with
 
@@ -17,6 +17,6 @@ You can run consul with
 
 Once the above is satisfied, you can run
 
-    mvn verify -Pconsul
+    mvn verify -Pconsul -Dswarm.consul.url=http://<IP>:<PORT>
 
 
