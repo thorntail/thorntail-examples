@@ -57,7 +57,7 @@ public class RibbonIT extends AbstractIntegrationTest {
 
         getTimeButton.click();
 
-        Thread.sleep( 2000 );
+        Thread.sleep( 5000 );
 
         List<WebElement> timestamp = browser.findElementsByCssSelector(".time-service .timestamp");
         assertThat( timestamp ).isEmpty();
@@ -67,7 +67,7 @@ public class RibbonIT extends AbstractIntegrationTest {
 
         getEventButton.click();
 
-        Thread.sleep( 2000 );
+        Thread.sleep( 5000 );
 
         List<WebElement> event = browser.findElementsByCssSelector(".event-service .event");
         assertThat( event ).isEmpty();
@@ -87,7 +87,7 @@ public class RibbonIT extends AbstractIntegrationTest {
         browser.findElementById( "password" ).sendKeys( "tall" );
         browser.findElementById( "kc-login" ).click();
 
-        Thread.sleep( 2000 );
+        Thread.sleep( 5000 );
 
         WebElement logout = browser.findElementById("logout");
         assertThat( logout ).isNotNull();
@@ -103,7 +103,7 @@ public class RibbonIT extends AbstractIntegrationTest {
 
         getTimeButton.click();
 
-        Thread.sleep( 2000 );
+        Thread.sleep( 5000 );
 
         WebElement timestamp = browser.findElementByCssSelector(".time-service .timestamp");
         assertThat( timestamp ).isNotNull();
@@ -116,7 +116,7 @@ public class RibbonIT extends AbstractIntegrationTest {
 
         getEventButton.click();
 
-        Thread.sleep( 2000 );
+        Thread.sleep( 5000 );
 
         WebElement event = browser.findElementByCssSelector(".event-service .event");
         assertThat( event ).isNotNull();
