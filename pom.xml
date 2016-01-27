@@ -92,6 +92,9 @@
             </goals>
             <configuration>
               <testSourceDirectory>src/it/java</testSourceDirectory>
+              <systemPropertyVariables>
+                <phantomjs.binary.version>2.1.1</phantomjs.binary.version>
+              </systemPropertyVariables>
             </configuration>
           </execution>
           <execution>

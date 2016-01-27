@@ -25,15 +25,26 @@
   <build>
     <plugins>
       <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
         <executions>
           <execution>
             <id>integration-test</id>
-            <phase>none</phase>
+            <phase>integration-test</phase>
           </execution>
           <execution>
             <id>verify</id>
-            <phase>none</phase>
+            <phase>verify</phase>
           </execution>
         </executions>
       </plugin>
@@ -56,122 +67,61 @@
             <phase>none</phase>
           </execution>
           <execution>
+            <id>multistart</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>multistart</goal>
+            </goals>
+            <configuration>
+              <processes>
+                <process>
+                  <groupId>org.wildfly.swarm.servers</groupId>
+                  <artifactId>keycloak</artifactId>
+                  <classifier>swarm</classifier>
+                  <properties>
+                    <swarm.http.port>9191</swarm.http.port>
+                    <wildfly.swarm.keycloak.server.db>${basedir}/target/keycloak</wildfly.swarm.keycloak.server.db>
+                    <keycloak.migration.provider>singleFile</keycloak.migration.provider>
+                    <keycloak.migration.file>${basedir}/test-realm.json</keycloak.migration.file>
+                    <keycloak.migration.strategy>OVERWRITE_EXISTING</keycloak.migration.strategy>
+                    <keycloak.migration.action>import</keycloak.migration.action>
+<!--
+                    <keycloak.migration.action>export</keycloak.migration.action>
+-->
+                  </properties>
+                </process>
+                <process>
+                  <artifactId>example-ribbon-secured-frontend</artifactId>
+                </process>
+                <process>
+                  <artifactId>example-ribbon-secured-time</artifactId>
+                  <properties>
+                    <swarm.http.port>8081</swarm.http.port>
+                  </properties>
+                </process>
+                <process>
+                  <artifactId>example-ribbon-secured-time</artifactId>
+                  <properties>
+                    <swarm.http.port>8082</swarm.http.port>
+                  </properties>
+                </process>
+                <process>
+                  <artifactId>example-ribbon-secured-events</artifactId>
+                  <properties>
+                    <swarm.http.port>8083</swarm.http.port>
+                  </properties>
+                </process>
+              </processes>
+            </configuration>
+          </execution>
+          <execution>
             <id>stop</id>
-            <phase>none</phase>
+            <phase>post-integration-test</phase>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>phantomjs</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <executions>
-              <execution>
-                <phase>test-compile</phase>
-                <goals>
-                  <goal>testCompile</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <artifactId>maven-failsafe-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>integration-test</id>
-                <phase>integration-test</phase>
-              </execution>
-              <execution>
-                <id>verify</id>
-                <phase>verify</phase>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.wildfly.swarm</groupId>
-            <artifactId>wildfly-swarm-plugin</artifactId>
-            <configuration>
-              <properties>
-                <swarm.bind.address>127.0.0.1</swarm.bind.address>
-                <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
-              </properties>
-            </configuration>
-            <executions>
-              <execution>
-                <id>package</id>
-                <phase>none</phase>
-              </execution>
-              <execution>
-                <id>start</id>
-                <phase>none</phase>
-              </execution>
-              <execution>
-                <id>multistart</id>
-                <phase>pre-integration-test</phase>
-                <goals>
-                  <goal>multistart</goal>
-                </goals>
-                <configuration>
-                  <processes>
-                    <process>
-                      <groupId>org.wildfly.swarm.servers</groupId>
-                      <artifactId>keycloak</artifactId>
-                      <classifier>swarm</classifier>
-                      <properties>
-                        <swarm.http.port>9191</swarm.http.port>
-                        <wildfly.swarm.keycloak.server.db>${basedir}/target/keycloak</wildfly.swarm.keycloak.server.db>
-                        <keycloak.migration.provider>singleFile</keycloak.migration.provider>
-                        <keycloak.migration.file>${basedir}/test-realm.json</keycloak.migration.file>
-                        <keycloak.migration.strategy>OVERWRITE_EXISTING</keycloak.migration.strategy>
-                        <keycloak.migration.action>import</keycloak.migration.action>
-<!--
-                        <keycloak.migration.action>export</keycloak.migration.action>
--->
-                      </properties>
-                    </process>
-                    <process>
-                      <artifactId>example-ribbon-secured-frontend</artifactId>
-                    </process>
-                    <process>
-                      <artifactId>example-ribbon-secured-time</artifactId>
-                      <properties>
-                        <swarm.http.port>8081</swarm.http.port>
-                      </properties>
-                    </process>
-                    <process>
-                      <artifactId>example-ribbon-secured-time</artifactId>
-                      <properties>
-                        <swarm.http.port>8082</swarm.http.port>
-                      </properties>
-                    </process>
-                    <process>
-                      <artifactId>example-ribbon-secured-events</artifactId>
-                      <properties>
-                        <swarm.http.port>8083</swarm.http.port>
-                      </properties>
-                    </process>
-                  </processes>
-                </configuration>
-              </execution>
-              <execution>
-                <id>stop</id>
-                <phase>post-integration-test</phase>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 
   <dependencies>
     <dependency>
