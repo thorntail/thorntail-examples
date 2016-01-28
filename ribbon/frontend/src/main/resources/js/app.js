@@ -46,7 +46,7 @@ var Service = React.createClass({
   render: function() {
     var addresses = this.props.addresses.map(function(address) {
       return (
-          <Address address={address} key={address}/>
+          <Address address={address} key={address.endpoint}/>
       );
     });
 
@@ -200,7 +200,12 @@ var PostJSONButton = React.createClass({
 var Address = React.createClass({
   render: function() {
     return (
-        <p className='service-address'>{this.props.address}</p>
+        <div>
+          <p className='service-address'>{this.props.address.endpoint}</p>
+          {this.props.address.tags.map( function(tag) {
+            return (<span key={tag}>{tag}</span>);
+          })}
+        </div>
     );
   }
 });
