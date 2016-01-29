@@ -15,11 +15,10 @@ public class Main {
 
         Container container = new Container();
 
-        JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "swagger-app.war");
-        deployment.addPackage(Main.class.getPackage());
+        SwaggerArchive archive = ShrinkWrap.create(SwaggerArchive.class, "swagger-app.war");
+        JAXRSArchive deployment = archive.as(JAXRSArchive.class).addPackage(Main.class.getPackage());
 
-        // Enable the swagger bits
-        SwaggerArchive archive = deployment.as(SwaggerArchive.class);
+
         // Tell swagger where our resources are
         archive.setResourcePackages("org.wildfly.swarm.examples.jaxrs.swagger");
 

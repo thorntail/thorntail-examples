@@ -1,7 +1,7 @@
-# JAX-RS .war Example
+# JAX-RS .war With Swagger Enabled Example
 
 This example takes a normal JAX-RS build, and wraps it into
-a `-swarm` runnable jar.
+a `-swarm` runnable jar with `swagger` enabled on the resources.
 
 > Please raise any issues found with this example in our JIRA:
 > https://issues.jboss.org/browse/SWARM
@@ -40,6 +40,18 @@ To define the needed parts of WildFly Swarm, a dependency is added
 This dependency provides the JAX-RS APIs to your application, so the
 project does *not* need to specify those.
 
+To enable the `swagger` fraction, another dependency is added
+
+    <dependency>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>swagger</artifactId>
+        <version>${version.wildfly-swarm}</version>
+    </dependency>
+
+This dependency will cause the WildFly Swarm `swagger` fraction to
+enable swagger with zero configuration. You can browse the swagger.json
+at http://localhost:8080/swagger.json.
+
 Additional application dependencies (in this case `joda-time`) can be
 specified and will be included in the normal `.war` construction and available
 within the WildFly Swarm application `.jar`.
@@ -61,4 +73,3 @@ instead of using the `.war`'s own name as the application context.
 
 Be aware that you will notice an exception in the logs when accessing the page.
 This is simply an overly verbose message from WildFly that the 'favicon.ico' file couldn't be found.
-
