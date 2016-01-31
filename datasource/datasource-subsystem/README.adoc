@@ -111,7 +111,7 @@ public class Main {
         // and a datasource
         container.fraction(new DatasourcesFraction()
                         .jdbcDriver("h2", (d) -> {
-                            d.driverDatasourceClassName("org.h2.Driver");
+                            d.driverClassName("org.h2.Driver");
                             d.xaDatasourceClass("org.h2.jdbcx.JdbcDataSource");
                             d.driverModuleName("com.h2database.h2");
                         })
@@ -196,7 +196,7 @@ When you use PostgreSQL JDBC Driver and datasource, the container settings may b
 // and a datasource for PostgreSQL
 container.fraction(new DatasourcesFraction()
                 .jdbcDriver("org.postgresql", (d) -> {
-                    d.driverDatasourceClassName("org.postgresql.Driver");
+                    d.driverClassName("org.postgresql.Driver");
                     d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
                     d.driverModuleName("org.postgresql");
                 })

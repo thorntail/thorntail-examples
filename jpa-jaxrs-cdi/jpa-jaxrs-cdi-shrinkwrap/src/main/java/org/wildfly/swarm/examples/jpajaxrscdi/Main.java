@@ -16,7 +16,7 @@ public class Main {
 
         container.fraction(new DatasourcesFraction()
                         .jdbcDriver("h2", (d) -> {
-                            d.driverDatasourceClassName("org.h2.Driver");
+                            d.driverClassName("org.h2.Driver");
                             d.xaDatasourceClass("org.h2.jdbcx.JdbcDataSource");
                             d.driverModuleName("com.h2database.h2");
                         })

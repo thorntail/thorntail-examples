@@ -42,7 +42,7 @@ public class Main {
     private static DatasourcesFraction datasourceWithH2() {
         return new DatasourcesFraction()
                 .jdbcDriver("h2", (d) -> {
-                    d.driverDatasourceClassName("org.h2.Driver");
+                    d.driverClassName("org.h2.Driver");
                     d.xaDatasourceClass("org.h2.jdbcx.JdbcDataSource");
                     d.driverModuleName("com.h2database.h2");
                 })
@@ -57,7 +57,7 @@ public class Main {
     private static DatasourcesFraction datasourceWithPostgresql() {
         return new DatasourcesFraction()
                 .jdbcDriver("org.postgresql", (d) -> {
-                    d.driverDatasourceClassName("org.postgresql.Driver");
+                    d.driverClassName("org.postgresql.Driver");
                     d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
                     d.driverModuleName("org.postgresql");
                 })
@@ -72,7 +72,7 @@ public class Main {
     private static DatasourcesFraction datasourceWithMysql() {
         return new DatasourcesFraction()
                 .jdbcDriver("com.mysql", (d) -> {
-                    d.driverDatasourceClassName("com.mysql.jdbc.Driver");
+                    d.driverClassName("com.mysql.jdbc.Driver");
                     d.xaDatasourceClass("com.mysql.jdbc.jdbc2.optional.MysqlXADataSource");
                     d.driverModuleName("com.mysql");
                 })

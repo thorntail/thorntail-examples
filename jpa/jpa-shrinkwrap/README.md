@@ -83,7 +83,7 @@ and deploys a datasource.
     
             container.subsystem(new DatasourcesFraction()
                             .driver(new Driver("h2")
-                                    .datasourceClassName("org.h2.Driver")
+                                    .driverClassName("org.h2.Driver")
                                     .xaDatasourceClassName("org.h2.jdbcx.JdbcDataSource")
                                     .module("com.h2database.h2"))
                             .datasource(new Datasource("MyDS")
