@@ -1,0 +1,41 @@
+project do
+  artifact_id 'jruby-sinatra'
+  group_id    'org.wildfly.swarm.examples'
+  version     '1.0.0.Alpha7-SNAPSHOT'
+
+  properties('project.build.sourceEncoding' => 'utf-8',
+             'jruby.version'                => '1.7.23')
+
+  packaging :war
+
+  dependencies do
+    jar('org.jruby.rack:jruby-rack', '1.1.18', exclusions: ['org.jruby:jruby-complete'])
+    jar('org.wildfly.swarm:undertow', '1.0.0.Alpha7-SNAPSHOT')
+    gemfile
+    jarfile if File.exists?('Jarfile.lock')
+  end
+end
+
+pom 'org.jruby:jruby', '${jruby.version}'
+
+jruby_plugin!(:gem,
+              :includeLibDirectoryInResources => true,
+              :includeRubygemsInTestResources => false,
+              :includeRubygemsInResources => true)
+
+resource do
+  directory '${basedir}'
+  includes ['app/**']
+end
+
+build do
+  final_name File.basename(File.expand_path('.'))
+  directory 'pkg'
+end
+
+plugin(:war, '2.6',
+       :warSourceDirectory => '${basedir}/public',
+       :webResources => [{:directory => '${basedir}',
+                          :targetPath => 'WEB-INF'}])
+                          
+plugin('org.wildfly.swarm:wildfly-swarm-plugin:1.0.0.Alpha7-SNAPSHOT')

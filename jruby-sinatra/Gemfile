@@ -1,0 +1,5 @@
+source 'http://rubygems.org'
+
+gem 'jar-dependencies','0.1.15'
+gem 'rack','1.6.4'
+gem 'sinatra','1.4.6'
