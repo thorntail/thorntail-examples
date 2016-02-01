@@ -29,6 +29,7 @@
     <module>jaxrs-cdi</module>
     <module>contract-based-testing</module>
     <module>scala</module>
+    <module>kotlin</module>
     <module>swagger</module>
   </modules>
 </project>

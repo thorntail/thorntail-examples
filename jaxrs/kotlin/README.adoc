@@ -1,0 +1,56 @@
+= JAX-RS & Kotlin Example
+
+> Please raise any issues found with this example in our JIRA:
+> https://issues.jboss.org/browse/SWARM
+
+== Project `pom.xml`
+
+The project is a normal maven project with `jar` packaging, not `war`.
+
+[source,xml]
+----
+<packaging>jar</packaging>
+----
+
+The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
+create the runnable `.jar`.
+
+[source,xml]
+----
+<plugin>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-plugin</artifactId>
+  <configuration>
+    <mainClass>org.wildfly.swarm.examples.kotlin.MainKt</mainClass>
+  </configuration>
+  ....
+</plugin>
+----
+
+As with the other examples, this one inherits a few standard executions
+from the parent `pom.xml`, particularly the `package` execution.
+
+To define the needed parts of WildFly Swarm, a dependency is added
+
+[source,xml]
+----
+<dependency>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>jaxrs</artifactId>
+  <version>${version.wildfly-swarm}</version>
+</dependency>
+----
+
+This dependency allows usage of ShrinkWrap APIs within the `main()` in addition
+to providing the JAX-RS APIs.
+
+== Run
+
+You can run this example many ways:
+
+* mvn package && java -jar ./target/example-kotlin-swarm.jar
+* mvn wildfly-swarm:run
+
+== Use
+
+    http://localhost:8080/
