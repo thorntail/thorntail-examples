@@ -11,12 +11,12 @@
   <parent>
     <groupId>org.wildfly.swarm</groupId>
     <artifactId>wildfly-swarm</artifactId>
-    <version>1.0.0.Alpha7-SNAPSHOT</version>
+    <version>1.0.0.Alpha7</version>
   </parent>
 
   <groupId>org.wildfly.swarm.examples</groupId>
   <artifactId>examples-parent</artifactId>
-  <version>1.0.0.Alpha7-SNAPSHOT</version>
+  <version>1.0.0.Alpha7</version>
 
   <name>WildFly Swarm Examples: Parent</name>
   <description>WildFly Swarm Examples: Parent</description>

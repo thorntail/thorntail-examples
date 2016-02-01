@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-camel</artifactId>
-    <version>1.0.0.Alpha7-SNAPSHOT</version>
+    <version>1.0.0.Alpha7</version>
     <relativePath>../</relativePath>
   </parent>
 
