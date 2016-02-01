@@ -11,7 +11,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-datasource</artifactId>
-    <version>1.0.0.Alpha7</version>
+    <version>1.0.0.Alpha8-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
