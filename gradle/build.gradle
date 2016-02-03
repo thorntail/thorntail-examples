@@ -1,15 +1,19 @@
 buildscript {
-  version = '1.0.0.Alpha6-SNAPSHOT'
+  version = '1.0.0.Alpha9-SNAPSHOT'
+
   repositories {
     mavenLocal()
+    mavenCentral()
   }
+
   dependencies {
+    classpath "io.spring.gradle:dependency-management-plugin:0.5.4.RELEASE"
     classpath "org.wildfly.swarm:wildfly-swarm-plugin:$version"
   }
 }
 
+apply plugin: 'io.spring.dependency-management'
 apply plugin: 'wildfly-swarm'
-
 apply plugin: 'java'
 apply plugin: 'application'
 
@@ -17,12 +21,13 @@ mainClassName = 'org.wildfly.swarm.examples.gradle.Main'
 
 swarm {
   properties {
-    jboss.http.port = 8181
+    swarm.http.port = 8181
   }
 }
 
 repositories {
     mavenLocal()
+    mavenCentral()
 }
 
 dependencies {

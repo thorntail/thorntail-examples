@@ -4,7 +4,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.mail.MailFraction;
-import org.wildfly.swarm.mail.SmtpServer;
 
 /**
  * @author Helio Frota
@@ -12,22 +11,17 @@ import org.wildfly.swarm.mail.SmtpServer;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+        final Container container = new Container();
+        final MailFraction fraction = new MailFraction();
+        final String host = System.getProperty("smtp.host");
+        final String port = System.getProperty("smtp.port");
 
-        Container container = new Container();
-        
-        SmtpServer smtp = new SmtpServer("ExampleName");
-        
-        container.fraction(new MailFraction()
-            .smtpServer(smtp
-                .host("add_your_smtp_here")
-                .port("25")));
-        
-        JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class);
-        deployment.addClass(Mail.class);
-        deployment.addAllDependencies();
-        container.start().deploy(deployment);
+        System.out.println(String.format("Using smtp server at %s:%s", host, port));
 
-        System.out.println(smtp.jndiName());
-
+        container.fraction(fraction.smtpServer("ExampleName", s -> s.host(host).port(port)))
+                .start()
+                .deploy(ShrinkWrap.create(JAXRSArchive.class)
+                                .addClass(Mail.class)
+                                .addAllDependencies());
     }
 }
