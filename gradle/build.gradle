@@ -7,12 +7,10 @@ buildscript {
   }
 
   dependencies {
-    classpath "io.spring.gradle:dependency-management-plugin:0.5.4.RELEASE"
     classpath "org.wildfly.swarm:wildfly-swarm-plugin:$version"
   }
 }
 
-apply plugin: 'io.spring.dependency-management'
 apply plugin: 'wildfly-swarm'
 apply plugin: 'java'
 apply plugin: 'application'
@@ -26,7 +24,7 @@ swarm {
 }
 
 repositories {
-    mavenLocal()
+  mavenLocal()
     mavenCentral()
 }
 
