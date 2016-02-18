@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+  <!-- Scan the the domain package for Spring repositories and services -->
+  <context:component-scan base-package="org.wildfly.swarm.examples.springdata" />
+
+  <jpa:repositories base-package="org.wildfly.swarm.examples.springdata.repository" />
+
+  <!-- Look up the database in JNDI -->
+  <jee:jndi-lookup jndi-name="java:jboss/datasources/ExampleDS" id="dataSource"
+                   expected-type="javax.sql.DataSource" />
+
+  <!-- Look up the container deployed EntityManager -->
+  <jee:jndi-lookup jndi-name="java:comp/env/spring-data/EntityManager"
+                   id="entityManagerFactory" expected-type="javax.persistence.EntityManagerFactory" />
+
+  <!-- Use JTA transactions with the container-deployed EntityManager -->
+  <tx:jta-transaction-manager />
+
+  <!-- Use declarative transactions on the services -->
+  <tx:annotation-driven />
+
+</beans>

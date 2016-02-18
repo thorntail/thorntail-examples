@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.wildfly.swarm.examples</groupId>
+    <artifactId>examples-parent</artifactId>
+    <version>1.0.0.Alpha9-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+
+  <artifactId>examples-spring</artifactId>
+
+  <name>WildFly Swarm Examples: Spring parent</name>
+  <description>WildFly Swarm Examples: Spring parent</description>
+
+  <packaging>pom</packaging>
+
+  <properties>
+    <version.spring-data-jpa>1.9.2.RELEASE</version.spring-data-jpa>
+    <version.spring>4.1.9.RELEASE</version.spring>
+  </properties>
+
+  <modules>
+    <module>spring-data</module>
+  </modules>
+</project>
