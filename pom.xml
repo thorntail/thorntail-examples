@@ -151,6 +151,13 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.wildfly.swarm</groupId>
+        <artifactId>bom</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
         <groupId>org.wildfly.swarm.examples</groupId>
         <artifactId>examples-base</artifactId>
         <version>${project.version}</version>
@@ -181,7 +188,9 @@
     <module>ribbon-consul</module>
     <module>gradle</module>
     <module>docker</module>
+<!--
     <module>spring</module>
+-->
 
 <!--
     <module>docker-jaxrs-app</module>

@@ -147,8 +147,8 @@
       <groupId>org.wildfly.swarm.servers</groupId>
       <artifactId>keycloak</artifactId>
       <classifier>swarm</classifier>
-      <version>${project.version}</version>
       <scope>provided</scope>
+      <version>${project.version}</version>
     </dependency>
   </dependencies>
 

@@ -55,21 +55,14 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>ribbon</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>topology-jgroups</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
   </dependencies>
 
   <modules>
-<!--
-    <module>time</module>
-    <module>events</module>
-    <module>frontend</module>
--->
     <module>test</module>
   </modules>
 </project>

@@ -53,17 +53,14 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs-weld</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>messaging</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>ejb</artifactId>
-      <version>${version.wildfly-swarm}</version>
     </dependency>
   </dependencies>
 

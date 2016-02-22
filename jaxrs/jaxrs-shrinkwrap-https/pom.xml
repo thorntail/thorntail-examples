@@ -53,12 +53,10 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>management</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>joda-time</groupId>
