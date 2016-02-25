@@ -22,11 +22,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <configuration>
-          <packagingExcludes>
-            WEB-INF/lib/hibernate-jpa*.jar
-          </packagingExcludes>
-        </configuration>
       </plugin>
       <plugin>
         <groupId>org.wildfly.swarm</groupId>

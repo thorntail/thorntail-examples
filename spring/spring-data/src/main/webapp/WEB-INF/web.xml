@@ -15,15 +15,14 @@
   <servlet>
     <servlet-name>Spring MVC Servlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/spring-mvc-context.xml</param-value>
+    </init-param>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>Spring MVC Servlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
-  <persistence-unit-ref>
-    <persistence-unit-ref-name>spring-data/EntityManager</persistence-unit-ref-name>
-    <persistence-unit-name>SpringPU</persistence-unit-name>
-  </persistence-unit-ref>
 </web-app>

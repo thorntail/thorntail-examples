@@ -20,7 +20,9 @@
                    expected-type="javax.sql.DataSource" />
 
   <!-- Look up the container deployed EntityManager -->
-  <jee:jndi-lookup jndi-name="java:comp/env/spring-data/EntityManager"
+  <jee:jndi-lookup jndi-name="java:/spring/em"
+                   id="entityManager" expected-type="javax.persistence.EntityManager" />
+  <jee:jndi-lookup jndi-name="java:/spring/emf"
                    id="entityManagerFactory" expected-type="javax.persistence.EntityManagerFactory" />
 
   <!-- Use JTA transactions with the container-deployed EntityManager -->

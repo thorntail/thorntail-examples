@@ -10,6 +10,9 @@
       <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
       <property name="javax.persistence.schema-generation.drop-source" value="metadata"/>
       <property name="javax.persistence.sql-load-script-source" value="META-INF/load.sql"/>
+
+      <property name="jboss.entity.manager.jndi.name" value="java:/spring/em"/>
+      <property name="jboss.entity.manager.factory.jndi.name" value="java:/spring/emf"/>
     </properties>
   </persistence-unit>
 </persistence>
