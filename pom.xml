@@ -217,9 +217,7 @@
     <module>ribbon-consul</module>
     <module>gradle</module>
     <module>docker</module>
-<!--
     <module>spring</module>
--->
 
 <!--
     <module>docker-jaxrs-app</module>
