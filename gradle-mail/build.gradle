@@ -5,11 +5,14 @@ buildscript {
     mavenLocal()
     mavenCentral()
   }
+  
   dependencies {
+    classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
     classpath "org.wildfly.swarm:wildfly-swarm-plugin:$version"
   }
 }
 
+apply plugin: "io.spring.dependency-management"
 apply plugin: 'wildfly-swarm'
 apply plugin: 'java'
 apply plugin: 'application'
@@ -28,8 +31,14 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+  imports {
+    mavenBom "org.wildfly.swarm:bom:$version"
+  }
+}
+
 dependencies {
-    compile "org.wildfly.swarm:jaxrs:$version"
-    compile "org.wildfly.swarm:ejb:$version"
-    compile "org.wildfly.swarm:mail:$version"
+    compile "org.wildfly.swarm:jaxrs"
+    compile "org.wildfly.swarm:ejb"
+    compile "org.wildfly.swarm:mail"
 }
