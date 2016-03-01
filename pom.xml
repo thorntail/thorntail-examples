@@ -53,7 +53,7 @@
         <enabled>true</enabled>
       </snapshots>
     </pluginRepository>
-    
+
     <!--
         needed until the latest version of gradle-maven-plugin is released to central:
         https://github.com/LendingClub/gradle-maven-plugin/issues/25
@@ -199,7 +199,7 @@
     <module>base</module>
 
     <module>arjuna</module>
-    <module>camel</module>
+    <!-- <module>camel</module> -->
     <module>datasource</module>
     <module>jaxrs</module>
     <module>jaxws</module>
