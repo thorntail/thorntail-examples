@@ -23,12 +23,12 @@ that started at the top of the current hour.
 Build and run the time service:
 
     $ cd time
-    $ mvn -Djboss.http.port=8081 wildfly-swarm:run
+    $ mvn -Dswarm.http.port=8081 wildfly-swarm:run
 
 Maybe run it twice:
 
     $ cd time
-    $ mvn -Djboss.http.port=8082 wildfly-swarm:run
+    $ mvn -Dswarm.http.port=8082 wildfly-swarm:run
 
 Then run the events service, which consumes the time service(s):
 
