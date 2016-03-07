@@ -54,18 +54,6 @@
       <groupId>org.wildfly.swarm.examples</groupId>
       <artifactId>examples-base</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>undertow</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>security</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>webservices</artifactId>
-    </dependency>
   </dependencies>
 
 </project>

@@ -59,14 +59,6 @@
       <artifactId>examples-base</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>weld</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>undertow</artifactId>
-    </dependency>
-    <dependency>
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-server</artifactId>
         <version>${version.vaadin}</version>
