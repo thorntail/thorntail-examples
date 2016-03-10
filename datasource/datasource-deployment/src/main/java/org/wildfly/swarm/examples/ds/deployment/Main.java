@@ -3,9 +3,9 @@ package org.wildfly.swarm.examples.ds.deployment;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.container.JARArchive;
 import org.wildfly.swarm.datasources.DatasourceArchive;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
+import org.wildfly.swarm.spi.api.JARArchive;
 
 /**
  * @author Bob McWhirter
