@@ -11,6 +11,7 @@ import static org.fest.assertions.Assertions.assertThat;
 
 /**
  * @author Bob McWhirter
+ * @author Ken Finnigan
  */
 @RunWith(Arquillian.class)
 public class TransactionsApplicationIT extends AbstractIntegrationTest {
@@ -19,19 +20,13 @@ public class TransactionsApplicationIT extends AbstractIntegrationTest {
     WebDriver browser;
 
     @Test
-    public void testActive() {
+    public void testTransactions() {
         browser.navigate().to("http://localhost:8080/");
         assertThat(browser.getPageSource()).contains("Active");
-    }
 
-    @Test
-    public void testBeginCommit() {
         browser.navigate().to("http://localhost:8080/begincommit");
         assertThat(browser.getPageSource()).contains("Transaction begun ok and committed ok" );
-    }
 
-    @Test
-    public void testBeginRollback() {
         browser.navigate().to("http://localhost:8080/beginrollback");
         assertThat(browser.getPageSource()).contains("Transaction begun ok and rolled back ok" );
     }
