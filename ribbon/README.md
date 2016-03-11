@@ -61,7 +61,7 @@ Finally, open yet another terminal window and run the events service,
 which consumes the time service(s). Again, note the UI changes.
 
     $ cd events
-    $ mvn wildfly-swarm:run
+    $ mvn -Dswarm.port.offset=3 wildfly-swarm:run
 
 Now you can kill and restart one or both of the `time` services, and witness the
 UI changes. You can also `GET` time and event service data, and `POST` new events.
