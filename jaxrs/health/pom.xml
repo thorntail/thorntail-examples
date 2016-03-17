@@ -15,10 +15,10 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>example-jaxrs-swagger</artifactId>
+  <artifactId>example-jaxrs-health</artifactId>
 
-  <name>WildFly Swarm Examples: JAX-RS swagger</name>
-  <description>WildFly Swarm Examples: JAX-RS swagger</description>
+  <name>WildFly Swarm Examples: JAX-RS Health Endpoint</name>
+  <description>WildFly Swarm Examples: JAX-RS Health Endpoint</description>
 
   <packaging>jar</packaging>
 
@@ -56,7 +56,8 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>swagger</artifactId>
+      <artifactId>monitor</artifactId>
+      <version>1.0.0.Beta5-SNAPSHOT</version> <!-- TOOD remove version here -->
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>

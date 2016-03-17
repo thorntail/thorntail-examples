@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.jaxrs.swagger;
+package org.wildfly.swarm.examples.jaxrs.health;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
