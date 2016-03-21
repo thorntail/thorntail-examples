@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.jaxrs.health;
+package org.wildfly.swarm.examples.jaxrs.swagger;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.jaxrs.health;
+package org.wildfly.swarm.examples.jaxrs.swagger;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
