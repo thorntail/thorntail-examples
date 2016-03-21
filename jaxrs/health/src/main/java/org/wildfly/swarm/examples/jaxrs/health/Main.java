@@ -7,6 +7,7 @@ import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.logging.LoggingFraction;
 import org.wildfly.swarm.management.ManagementFraction;
+import org.wildfly.swarm.monitor.MonitorFraction;
 
 /**
  * @author Lance Ball
@@ -25,6 +26,7 @@ public class Main {
         deployment.addAllDependencies();
         container
                 .fraction(LoggingFraction.createDefaultLoggingFraction())
+                .fraction(new MonitorFraction().securityRealm("ManagementRealm"))
                 .fraction(new ManagementFraction()
                                   .securityRealm("ManagementRealm", (realm) -> {
                                       realm.inMemoryAuthentication((authn) -> {
