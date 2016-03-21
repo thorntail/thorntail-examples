@@ -21,7 +21,7 @@ public class HealthCheckResource {
     @GET
     @Path("/second-health")
     @Produces(MediaType.TEXT_PLAIN)
-    @Health(secure = false)
+    @Health(inheritSecurity = false)
     public String secondHealthCheckMethod() {
         return "Healthy: On HealthCheckResource#secondHealthCheckMethod()";
     }
