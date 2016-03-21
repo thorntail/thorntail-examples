@@ -3,8 +3,8 @@
 See also the userguide section for monitoring and security realms:
 https://wildfly-swarm.gitbooks.io/wildfly-swarm-users-guide/content/advanced/monitoring.html
 
-This example builds on that by adding the `monitor` fraction
-so that the JAX-RS endpoints can expose health checks to service registries.
+This example uses the `monitor` and `management` fractions
+so that the JAX-RS endpoints can securely expose health checks to service registries.
 
 > Please raise any issues found with this example in our JIRA:
 > https://issues.jboss.org/browse/SWARM
