@@ -32,5 +32,6 @@
     <module>scala</module>
     <module>kotlin</module>
     <module>swagger</module>
+    <module>health</module>	
   </modules>
 </project>
