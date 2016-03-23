@@ -70,3 +70,10 @@ an *uberjar*.  To run them as an *uberjar*, use the `-Puberjar` profile
 when invoking Maven.
 
     mvn install -Puberjar
+
+== Docker
+
+We have some examples that use Docker which are located in /docker. Building the examples requires that Docker is installed
+on your machine and that you run Maven with:
+
+    mvn install -Pdocker
