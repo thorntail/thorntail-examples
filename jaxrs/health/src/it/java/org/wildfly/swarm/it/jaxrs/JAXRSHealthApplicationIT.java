@@ -20,7 +20,7 @@ public class JAXRSHealthApplicationIT extends AbstractIntegrationTest {
 
     @Test
     public void testIt() {
-        browser.navigate().to("http://localhost:8080/app/health");
+        browser.navigate().to("http://localhost:8080/app/second-health");
         assertThat(browser.getPageSource()).contains("Healthy");
     }
 }
