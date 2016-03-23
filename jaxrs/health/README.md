@@ -93,7 +93,7 @@ adds the monitoring and management fractions that provide the /health endpoints 
 
 ## @Health Annotations
 
-In our example, we annotate the JAX-RS resource to be exposed as a hea;th endpoint:
+In our example, we annotate the JAX-RS resource to be exposed as a health endpoint:
 
     @GET
     @Path("/health")
