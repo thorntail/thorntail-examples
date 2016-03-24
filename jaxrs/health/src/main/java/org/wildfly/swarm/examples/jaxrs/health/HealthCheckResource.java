@@ -1,29 +1,31 @@
 package org.wildfly.swarm.examples.jaxrs.health;
 
+import java.io.File;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 import org.wildfly.swarm.monitor.Health;
+import org.wildfly.swarm.monitor.HealthStatus;
 
 @Path("/app")
 public class HealthCheckResource {
 
     @GET
     @Path("/health")
-    @Produces(MediaType.TEXT_PLAIN)
     @Health
-    public String firstHealthCheckMethod() {
-        return "Healthy: On HealthCheckResource#firstHealthCheckMethod()";
+    public HealthStatus checkDiskspace() {
+        File path = new File(".");
+        long freeBytes = path.getFreeSpace();
+        long threshold = 1024 * 1024 * 100; // 100mb
+        return freeBytes>threshold ? HealthStatus.up() : HealthStatus.down().withAttribute("freebytes", freeBytes);
     }
 
     @GET
     @Path("/second-health")
-    @Produces(MediaType.TEXT_PLAIN)
     @Health(inheritSecurity = false)
-    public String secondHealthCheckMethod() {
-        return "Healthy: On HealthCheckResource#secondHealthCheckMethod()";
+    public HealthStatus checkSomethingElse() {
+        return HealthStatus.up();
     }
 
 }
