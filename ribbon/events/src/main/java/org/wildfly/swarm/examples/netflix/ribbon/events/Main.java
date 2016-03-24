@@ -49,7 +49,6 @@ public class Main {
 
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "events.war");
         deployment.addPackage( Main.class.getPackage() );
-        deployment.addAllDependencies();
         deployment.as( RibbonArchive.class ).advertise();
         container.start().deploy(deployment);
     }
