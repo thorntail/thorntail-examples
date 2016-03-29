@@ -1,13 +1,11 @@
 package org.wildfly.swarm.examples.messaging;
 
-import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
+import javax.jms.JMSConsumer;
+import javax.jms.JMSContext;
 import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
-import javax.jms.Session;
+import javax.jms.JMSRuntimeException;
 import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -24,7 +22,7 @@ public class MyService implements Service<Void> {
 
     private final String destinationName;
 
-    private Connection conn;
+    private JMSContext context;
 
     public MyService(String destinationName) {
         this.destinationName = destinationName;
@@ -34,23 +32,20 @@ public class MyService implements Service<Void> {
         try {
             Context ctx = new InitialContext();
             ConnectionFactory factory = (ConnectionFactory) ctx.lookup("ConnectionFactory");
-            this.conn = factory.createConnection();
-
             Destination destination = (Destination) ctx.lookup(destinationName);
-            Session sess = conn.createSession();
-            MessageConsumer consumer = sess.createConsumer(destination);
+
+            this.context = factory.createContext();
+            JMSConsumer consumer = context.createConsumer(destination);
+
             startContext.complete();
             System.out.println("Starting to receive from " + destination);
-            consumer.setMessageListener(new MessageListener() {
-                public void onMessage(Message message) {
-                    try {
-                        System.out.println("received: " + ((TextMessage) message).getText());
-                    } catch (JMSException e) {
-                        e.printStackTrace();
-                    }
+            consumer.setMessageListener(message -> {
+                try {
+                    System.out.println("received: " + ((TextMessage) message).getText());
+                } catch (JMSException e) {
+                    e.printStackTrace();
                 }
             });
-            conn.start();
         } catch (Throwable t) {
             throw new StartException(t);
         }
@@ -58,8 +53,8 @@ public class MyService implements Service<Void> {
 
     public void stop(StopContext stopContext) {
         try {
-            this.conn.close();
-        } catch (JMSException e) {
+            this.context.close();
+        } catch (JMSRuntimeException e) {
             e.printStackTrace();
         }
 
