@@ -29,6 +29,10 @@
         <artifactId>wildfly-swarm-plugin</artifactId>
         <configuration>
           <mainClass>org.wildfly.swarm.examples.messaging.clustering.Main</mainClass>
+          <properties>
+            <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
+            <swarm.bind.address>127.0.0.1</swarm.bind.address>
+          </properties>
         </configuration>
         <executions>
           <execution>
