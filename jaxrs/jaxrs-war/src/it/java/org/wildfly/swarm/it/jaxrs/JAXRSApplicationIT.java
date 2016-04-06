@@ -11,6 +11,7 @@ import static org.fest.assertions.Assertions.assertThat;
 
 /**
  * @author Bob McWhirter
+ * @author Ken Finnigan
  */
 @RunWith(Arquillian.class)
 public class JAXRSApplicationIT extends AbstractIntegrationTest {
@@ -22,5 +23,11 @@ public class JAXRSApplicationIT extends AbstractIntegrationTest {
     public void testIt() {
         browser.navigate().to("http://localhost:8080/");
         assertThat(browser.getPageSource()).contains("Howdy at ");
+    }
+
+    @Test
+    public void testExceptionMapping() {
+        browser.navigate().to("http://localhost:8080/bad");
+        assertThat(browser.getPageSource()).contains("This is our exception page!");
     }
 }

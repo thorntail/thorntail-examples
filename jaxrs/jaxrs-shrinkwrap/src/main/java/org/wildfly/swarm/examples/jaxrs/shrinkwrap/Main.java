@@ -17,6 +17,7 @@ public class Main {
 
         JAXRSArchive deployment = ShrinkWrap.create(JAXRSArchive.class, "myapp.war");
         deployment.addClass(MyResource.class);
+        deployment.addClass(NotFoundExceptionMapper.class);
         deployment.addAllDependencies();
         container.start().deploy(deployment);
     }
