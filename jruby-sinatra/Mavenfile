@@ -1,7 +1,7 @@
 project do
   artifact_id 'jruby-sinatra'
   group_id    'org.wildfly.swarm.examples'
-  version     '1.0.0.Alpha7-SNAPSHOT'
+  version     '1.0.0.Beta7'
 
   properties('project.build.sourceEncoding' => 'utf-8',
              'jruby.version'                => '1.7.23')
@@ -37,5 +37,5 @@ plugin(:war, '2.6',
        :warSourceDirectory => '${basedir}/public',
        :webResources => [{:directory => '${basedir}',
                           :targetPath => 'WEB-INF'}])
-                          
+
 plugin('org.wildfly.swarm:wildfly-swarm-plugin:1.0.0.Alpha7-SNAPSHOT')

@@ -1,11 +1,11 @@
 buildscript {
-  version = '1.0.0.Alpha9-SNAPSHOT'
-  
+  version = '1.0.0.Beta7'
+
   repositories {
     mavenLocal()
     mavenCentral()
   }
-  
+
   dependencies {
     classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
     classpath "org.wildfly.swarm:wildfly-swarm-plugin:$version"
@@ -25,7 +25,7 @@ swarm {
     smtp.port = '25'
   }
 }
-  
+
 repositories {
     mavenLocal()
     mavenCentral()
