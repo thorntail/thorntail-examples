@@ -1,7 +1,7 @@
 project do
   artifact_id 'jruby-sinatra'
   group_id    'org.wildfly.swarm.examples'
-  version     '1.0.0.Beta7'
+  version     '1.0.0.CR1-SNAPSHOT'
 
   properties('project.build.sourceEncoding' => 'utf-8',
              'jruby.version'                => '1.7.23')

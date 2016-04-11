@@ -1,5 +1,5 @@
 buildscript {
-  version = '1.0.0.Beta7'
+  version = '1.0.0.CR1-SNAPSHOT'
 
   repositories {
     mavenLocal()
