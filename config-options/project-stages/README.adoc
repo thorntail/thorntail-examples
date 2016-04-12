@@ -1,0 +1,53 @@
+= Project Stages
+
+Project stages are a way to move environment specific configuration properties
+into an external file.
+
+== project-stages.yml
+
+I.e. declaring the database configuration for your production environment externally
+(`project-stages.yml`) would look like this:
+
+[source,yaml]
+----
+database:
+    connection:
+        url: "jdbc:h2:mem:test-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+---
+project:
+    stage: production
+database:
+    connection:
+        url: "jdbc:h2:mem:prod-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+----
+
+== Using expressions for configuration attributes
+
+Within WildFly Swarm you could then reference the configuration property as
+ `database.connection.url`. This can be used to configure subsystem, fractions or application code.
+
+To make use of the configuration property for configuration of a subsystem,
+you would simply need to reference the property through an expression for a specific attribute
+in the configuration model (aka config-api):
+
+[source,java]
+----
+container.fraction(
+ new DatasourcesFraction()
+         [...]
+         .dataSource("ExampleDS", (ds) -> {
+
+             // reference stage config property
+             ds.connectionUrl(
+                container
+                        .stageConfig()
+                        .resolve("database.connection.url")
+                        .getValue()
+             );
+
+             ds.driverName("h2");
+             ds.userName("sa");
+             ds.password("sa");
+         })
+);
+----

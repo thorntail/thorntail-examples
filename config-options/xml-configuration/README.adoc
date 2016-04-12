@@ -1,0 +1,64 @@
+= XML Configuration
+
+This example demonstrates how to use XML configuration instead of the java config-api,
+ to configure WildFly Swarm.
+
+
+== Referencing standalone.xml
+
+
+To reference a `standalone.xml` you need to bootstrap a `Container` with an URL pointing to your file:
+
+[source,java]
+----
+public class XmlMain {
+
+    public static void main(String[] args) throws Exception {
+
+        ClassLoader cl = XmlMain.class.getClassLoader();
+        URL xmlConfig = cl.getResource("standalone.xml");
+
+        // reference standalone.xml
+        Container container = new Container(false)
+                .withXmlConfig(xmlConfig);
+
+        //container.fraction(new LoggingFraction());
+        container.fraction(new DatasourcesFraction());
+
+        // Start the container
+        container.start();
+
+        [...]
+
+    }
+}
+
+----
+
+
+== Subsystem configuration in XML
+
+You can then have any subsystem configuration external in `standalone.xml`.
+These configuration will then be matched with the corresponding fractions automatically.
+
+[source,xml]
+----
+<subsystem xmlns="urn:jboss:domain:datasources:4.0">
+    <datasources>
+        <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
+            <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
+            <driver>h2</driver>
+            <security>
+                <user-name>sa</user-name>
+                <password>sa</password>
+            </security>
+        </datasource>
+        <drivers>
+            <driver name="h2" module="com.h2database.h2">
+                <datasource-class>org.h2.Driver</datasource-class>
+                <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+            </driver>
+        </drivers>
+    </datasources>
+</subsystem>
+----

@@ -57,30 +57,6 @@
     </plugins>
   </build>
 
-  <profiles>
-    <profile>
-      <id>xml</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.wildfly.swarm</groupId>
-            <artifactId>wildfly-swarm-plugin</artifactId>
-            <configuration>
-              <mainClass>org.wildfly.swarm.examples.ds.subsystem.XmlMain</mainClass>
-            </configuration>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>package</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
-
   <dependencies>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>

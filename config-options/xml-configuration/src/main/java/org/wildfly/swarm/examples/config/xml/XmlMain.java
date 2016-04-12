@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.ds.war;
+package org.wildfly.swarm.examples.config.projectStage;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
@@ -20,7 +20,8 @@ public class XmlMain {
 
         assert xmlConfig!=null : "Failed to load standalone.xml";
 
-        Container container = new Container(false, xmlConfig);
+        Container container = new Container(false)
+                .withXmlConfig(xmlConfig);
 
         //container.fraction(new LoggingFraction());
         container.fraction(new DatasourcesFraction());
