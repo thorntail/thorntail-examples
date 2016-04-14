@@ -1,0 +1,4 @@
+<jboss-web>
+  <context-root>/</context-root>
+  <security-domain>my-domain</security-domain>
+</jboss-web>
