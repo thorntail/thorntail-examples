@@ -251,6 +251,7 @@
     <module>gradle</module>
     <module>docker</module>
     <module>spring</module>
+    <module>security</module>
 
 <!--
     <module>kitchensink-html5-mobile</module>
