@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.config.projectStage;
+package org.wildfly.swarm.examples.config.xml;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;

@@ -79,7 +79,7 @@
         <!-- Swarm: File handlers have been removed: MSA services should not make assumptions about their environment -->
         <subsystem xmlns="urn:jboss:domain:logging:3.0">
             <console-handler name="CONSOLE">
-                <level name="DEBUG"/>
+                <level name="INFO"/>
                 <formatter>
                     <named-formatter name="COLOR-PATTERN"/>
                 </formatter>
@@ -139,7 +139,7 @@
                 </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
-                        <datasource-class>org.h2.Driver</datasource-class>
+                        <driver-class>org.h2.Driver</driver-class>
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
                     </driver>
                 </drivers>

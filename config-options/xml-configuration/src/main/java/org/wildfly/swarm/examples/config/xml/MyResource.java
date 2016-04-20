@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.config.projectStage;
+package org.wildfly.swarm.examples.config.xml;
 
 import java.sql.Connection;
 import java.sql.SQLException;
