@@ -1,0 +1,7 @@
+some:
+  string:
+    property: Hello World
+  integer:
+    property: 50
+  boolean:
+    property: true
