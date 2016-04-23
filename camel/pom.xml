@@ -14,31 +14,20 @@
     <version>1.0.0.CR1-SNAPSHOT</version>
   </parent>
 
-  <name>WildFly Swarm :: Examples :: Camel</name>
+  <name>WildFly Swarm Examples: Camel</name>
   
   <artifactId>examples-camel</artifactId>
   <packaging>pom</packaging>
-  
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>camel-core</artifactId>
-        <version>${version.wildfly-swarm-camel}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>camel-full</artifactId>
-        <version>${version.wildfly-swarm-camel}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.wildfly.swarm</groupId>
-        <artifactId>camel-web</artifactId>
-        <version>${version.wildfly-swarm-camel}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-  
+
+  <!-- Repositories -->
+  <repositories>
+    <repository>
+      <!-- for restlet -->
+      <id>springsource-libs-releases</id>
+      <url>http://repo.springsource.org/libs-release-remote</url>
+    </repository>
+  </repositories>
+
   <modules>
     <module>camel-core</module>
     <module>camel-cdi</module>
