@@ -32,7 +32,6 @@ public class SimpleCoreTransformIT extends AbstractIntegrationTest {
 	public void testIt() throws Exception {
 		
 		Log log = getStdOutLog();
-
 		assertThatLog(log).hasLineContaining("(CamelContext: simpleTransform) started");
 	}
 }

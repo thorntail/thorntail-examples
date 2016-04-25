@@ -34,6 +34,7 @@
     <module>camel-cxf-jaxrs</module>
     <module>camel-cxf-jaxws</module>
     <module>camel-jms</module>
+    <module>camel-jpa</module>
   </modules>
   
 </project>
