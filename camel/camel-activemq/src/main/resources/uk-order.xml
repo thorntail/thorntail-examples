@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+    <customer id="B0002">
+        <name>UK Customer</name>
+        <city>London</city>
+        <country>UK</country>
+    </customer>
+
+    <orderlines>
+        <orderline>
+            <item id="001">
+                <description>Wireless mouse</description>
+            </item>
+        </orderline>
+        <orderline>
+            <item id="002">
+                <description>Wireless keyboard</description>
+            </item>
+        </orderline>
+    </orderlines>
+</order>

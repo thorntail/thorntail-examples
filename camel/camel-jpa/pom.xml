@@ -14,7 +14,7 @@
     <version>1.0.0.CR1-SNAPSHOT</version>
   </parent>
 
-  <name>Wildfly Camel :: Example :: Camel JPA</name>
+  <name>WildFly Swarm Examples: Camel JPA</name>
 
   <artifactId>example-camel-jpa</artifactId>
   <packaging>war</packaging>

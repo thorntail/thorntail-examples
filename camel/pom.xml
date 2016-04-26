@@ -29,6 +29,7 @@
   </repositories>
 
   <modules>
+    <module>camel-activemq</module>
     <module>camel-core</module>
     <module>camel-cdi</module>
     <module>camel-cxf-jaxrs</module>

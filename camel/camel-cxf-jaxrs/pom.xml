@@ -29,7 +29,7 @@
     <version>1.0.0.CR1-SNAPSHOT</version>
   </parent>
 
-  <name>Wildfly Swarm :: Examples :: Camel CXF-JAXRS</name>
+  <name>WildFly Swarm Examples: Camel CXF-JAXRS</name>
   
   <artifactId>example-camel-cxf-jaxrs</artifactId>
 

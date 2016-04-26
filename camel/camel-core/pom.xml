@@ -29,7 +29,7 @@
     <version>1.0.0.CR1-SNAPSHOT</version>
   </parent>
 
-  <name>Wildfly Swarm :: Examples :: Camel Core</name>
+  <name>WildFly Swarm Examples: Camel Core</name>
   
   <artifactId>example-camel-core</artifactId>
 

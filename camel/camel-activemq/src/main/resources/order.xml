@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+    <customer id="B0002">
+        <name>UK Customer</name>
+        <city>Test</city>
+        <country>UK</country>
+    </customer>
+
+    <orderlines>
+        <orderline>
+            <item id="001">
+                <description>Test</description>
+            </item>
+        </orderline>
+    </orderlines>
+</order>
