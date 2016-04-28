@@ -26,7 +26,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-camel</artifactId>
-    <version>1.0.0.Beta8</version>
+    <version>1.0.0.CR1-SNAPSHOT</version>
   </parent>
 
   <name>Wildfly Swarm :: Examples :: Camel CXF-JAXWS</name>
