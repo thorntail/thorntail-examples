@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order>
+    <customer id="ABC123">
+        <name>US Customer</name>
+        <city>New York</city>
+        <country>US</country>
+    </customer>
+
+    <orderlines>
+        <orderline>
+            <item id="001">
+                <description>ACME rubber mouse</description>
+            </item>
+        </orderline>
+        <orderline>
+            <item id="002">
+                <description>Cat food</description>
+            </item>
+        </orderline>
+    </orderlines>
+</order>
