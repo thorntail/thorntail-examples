@@ -73,12 +73,6 @@
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>logging</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm</groupId>
-      <artifactId>cdi-ext</artifactId>
-      <version>1.0.0.Beta6</version>
-    </dependency>
-
   </dependencies>
 
 </project>
