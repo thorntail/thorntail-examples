@@ -1,28 +1,30 @@
 package org.wildfly.swarm.examples.jaxrs.cdi;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.wildfly.swarm.cdi.ConfigValue;
-import org.wildfly.swarm.cdi.Configured;
 
 /**
  * @author Heiko Braun
  */
 @ApplicationScoped
-@Configured
 @Path("/app")
 public class Controller {
 
+    @Inject
     @ConfigValue("some.string.property")
     String stringProperty;
 
+    @Inject
     @ConfigValue("some.integer.property")
     Integer intProperty;
 
+    @Inject
     @ConfigValue("some.boolean.property")
     Boolean boolProperty;
 
