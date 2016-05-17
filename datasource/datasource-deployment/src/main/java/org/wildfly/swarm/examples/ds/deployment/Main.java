@@ -23,8 +23,8 @@ public class Main {
         container.deploy(Swarm.artifact("com.h2database:h2", "h2"));
 
         // Create a DS deployment
-        JARArchive dsArchive = ShrinkWrap.create(JARArchive.class);
-        dsArchive.as(DatasourceArchive.class).dataSource("ExampleDS", (ds) -> {
+        DatasourceArchive dsArchive = ShrinkWrap.create(DatasourceArchive.class);
+        dsArchive.dataSource("ExampleDS", (ds) -> {
             ds.connectionUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
             ds.driverName("h2");
             ds.userName("sa");
