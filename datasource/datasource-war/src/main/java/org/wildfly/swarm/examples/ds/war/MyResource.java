@@ -24,7 +24,7 @@ public class MyResource {
         DataSource ds = (DataSource) ctx.lookup("jboss/datasources/ExampleDS");
         Connection conn = ds.getConnection();
         try {
-            return "Howdy using connection: " + conn;
+            return "Howdy using driver: " + conn.getMetaData().getDriverName();
         } finally {
             conn.close();
         }
