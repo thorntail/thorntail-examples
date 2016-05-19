@@ -1,12 +1,12 @@
 package org.wildfly.swarm.examples.config.projectStage;
 
+import java.net.URL;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.wildfly.swarm.config.datasources.DataSource;
+import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
-
-import java.net.URL;
 
 /**
  * @author Heiko Braun
@@ -16,13 +16,9 @@ public class ProjectStagesMain {
 
     public static void main(String[] args) throws Exception {
 
-        ClassLoader cl = ProjectStagesMain.class.getClassLoader();
-        URL stageConfig = cl.getResource("project-stages.yml");
+        Container container = new Container(args);
 
-        assert stageConfig!=null : "Failed to load stage configuration";
-
-        Container container = new Container(false)
-                .withStageConfig(stageConfig);
+        System.err.println( "Connection URL: " + container.stageConfig().resolve("database.connection.url" ).getValue() );
 
         container.fraction(
                 new DatasourcesFraction()
