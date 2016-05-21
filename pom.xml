@@ -254,6 +254,7 @@
     <module>spring</module>
     <module>spring-boot</module>
     <module>security</module>
+    <module>resource-adapter</module>
 
 <!--
     <module>kitchensink-html5-mobile</module>

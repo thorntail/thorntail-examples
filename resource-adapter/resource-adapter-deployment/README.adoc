@@ -1,0 +1,173 @@
+= Datasource via Deployment.
+
+> Please raise any issues found with this example in our JIRA:
+> https://issues.jboss.org/browse/SWARM
+
+This example demonstrates how to deploy a datasource as
+a _deployment_.
+
+== Project `pom.xml`
+
+The project is a normal maven project with `jar` packaging, not `war`.
+
+[source,xml]
+----
+<packaging>jar</packaging>
+----
+
+The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
+create the runnable `.jar`.  
+
+[source,xml]
+----
+<plugin>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-plugin</artifactId>
+  <configuration>
+    <mainClass>org.wildfly.swarm.examples.ds.deployment.Main</mainClass>
+  </configuration>
+  ...
+</plugin>
+----
+    
+As with the other examples, this one inherits a few standard executions
+from the parent `pom.xml`, particularly the `package` execution.
+
+To define the needed parts of WildFly Swarm, a few dependencies are added.
+The first is not strictly required for doing datasource deployments, but is
+needed for the example to demonstrate usage of the deployed datasource:
+
+[source,xml]
+----
+<dependency>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>jaxrs</artifactId>
+</dependency>
+----
+
+To support datasources in general, the next dependency is required:
+    
+[source,xml]
+----
+<dependency>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>datasources</artifactId>
+</dependency>
+----
+
+Additionally, the JDBC driver jar you wish to deploy is specified as a dependency
+within your `pom.xml`
+
+[source,xml]
+----
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <version>1.4.187</version>
+</dependency>
+----
+
+== Project `main()`
+
+Since this project deploys JAX-RS resources without a `.war` being construction, it
+provides its own `main()` method  to configure the container and deploy the resources 
+programatically. Additionally, it deploys the JDBC driver jar using simplified Maven 
+GAV (no version is required) and deploys a datasource.
+
+[source,java]
+----
+package org.wildfly.swarm.examples.ds.deployment;
+
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.wildfly.swarm.Swarm;
+import org.wildfly.swarm.container.Container;
+import org.wildfly.swarm.container.JARArchive;
+import org.wildfly.swarm.datasources.DatasourceArchive;
+import org.wildfly.swarm.jaxrs.JAXRSArchive;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+
+        Container container = new Container();
+
+        container.start();
+
+        // Create a JDBC driver deployment using maven groupId:artifactId
+        // The version is resolved from your pom.xml's <dependency>
+        container.deploy(Swarm.artifact("com.h2database:h2", "h2"));
+
+        // Create a DS deployment
+        JARArchive dsArchive = ShrinkWrap.create(JARArchive.class);
+        dsArchive.as(DatasourceArchive.class).dataSource("ExampleDS", (ds) -> {
+            ds.connectionUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
+            ds.driverName("h2");
+            ds.userName("sa");
+            ds.password("sa");
+        });
+
+        // Deploy the datasource
+        container.deploy(dsArchive);
+
+        JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
+        appDeployment.addResource(MyResource.class);
+
+        // Deploy your app
+        container.deploy(appDeployment);
+
+    }
+}
+----
+
+This method constructs a new default Container, which automatically
+initializes all fractions (or subsystems) that are available.  
+
+The `.jar` containing driver for the H2 database is located by its
+simplified version-less maven coordinates, and deployed with the name
+of `h2.jar`.  The version is inferred from the version in the `pom.xml`.
+
+A datasource is then deployed using the previously-deployed driver by 
+creating a vanilla `JARArchive` and then using the `.as(...)` method 
+to realize it as a `DatasourceArchive).  Once this is done, the
+`.dataSource(...)` method, from the higher-level configuration API is available
+for creating and configuring the datasource.
+
+JNDI names are bound automatically.
+
+A `JAXRSDeployment` is constructed, and the JAX-RS resource class is
+added to it.
+
+The resource looks up the Datasource through JNDI at run-time:
+
+[source,java]
+----
+@Path("/")
+public class MyResource {
+
+    @GET
+    @Produces("text/plain")
+    public String get() throws NamingException, SQLException {
+        Context ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("jboss/datasources/ExampleDS");
+        Connection conn = ds.getConnection();
+        try {
+            return "Howdy using connection: " + conn;
+        } finally {
+            conn.close();
+        }
+    }
+}
+----
+
+
+== Run
+
+You can run it many ways:
+
+* mvn package && java -jar ./target/example-datasource-deployment-swarm.jar
+* mvn wildfly-swarm:run
+* In your IDE run the `org.wildfly.swarm.examples.ds.deployment.Main` class
+
+== Use
+
+    http://localhost:8080/
