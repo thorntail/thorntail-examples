@@ -1,9 +1,9 @@
-= Datasource via Deployment.
+= Resource Adapter via Deployment.
 
 > Please raise any issues found with this example in our JIRA:
 > https://issues.jboss.org/browse/SWARM
 
-This example demonstrates how to deploy a datasource as
+This example demonstrates how to deploy a resource adapter as
 a _deployment_.
 
 == Project `pom.xml`
@@ -24,7 +24,7 @@ create the runnable `.jar`.
   <groupId>org.wildfly.swarm</groupId>
   <artifactId>wildfly-swarm-plugin</artifactId>
   <configuration>
-    <mainClass>org.wildfly.swarm.examples.ds.deployment.Main</mainClass>
+    <mainClass>org.wildfly.swarm.examples.rar.deployment.Main</mainClass>
   </configuration>
   ...
 </plugin>
@@ -34,128 +34,115 @@ As with the other examples, this one inherits a few standard executions
 from the parent `pom.xml`, particularly the `package` execution.
 
 To define the needed parts of WildFly Swarm, a few dependencies are added.
-The first is not strictly required for doing datasource deployments, but is
-needed for the example to demonstrate usage of the deployed datasource:
-
-[source,xml]
-----
-<dependency>
-  <groupId>org.wildfly.swarm</groupId>
-  <artifactId>jaxrs</artifactId>
-</dependency>
-----
-
-To support datasources in general, the next dependency is required:
+To support resource adapters in general, the next dependency is required:
     
 [source,xml]
 ----
 <dependency>
   <groupId>org.wildfly.swarm</groupId>
-  <artifactId>datasources</artifactId>
+  <artifactId>resource-adapters</artifactId>
 </dependency>
 ----
 
-Additionally, the JDBC driver jar you wish to deploy is specified as a dependency
+Additionally, the RAR archive you wish to deploy is specified as a dependency
 within your `pom.xml`
 
 [source,xml]
 ----
 <dependency>
-  <groupId>com.h2database</groupId>
-  <artifactId>h2</artifactId>
-  <version>1.4.187</version>
+  <groupId>net.java.xadisk</groupId>
+  <artifactId>xadisk</artifactId>
+  <version>1.2.2</version>
+  <type>jar</type>
 </dependency>
 ----
 
+Note, we create the rar archive based on the resource adapter jar.
+
 == Project `main()`
 
-Since this project deploys JAX-RS resources without a `.war` being construction, it
-provides its own `main()` method  to configure the container and deploy the resources 
-programatically. Additionally, it deploys the JDBC driver jar using simplified Maven 
-GAV (no version is required) and deploys a datasource.
+Since this project deploys RAR resources, it provides its own `main()` method  to configure the container and deploy the resources programatically. Additionally, it creates and deploys a rar archive using the jar type of the dependecy above. 
 
 [source,java]
 ----
-package org.wildfly.swarm.examples.ds.deployment;
+ackage org.wildfly.swarm.examples.rar.deployment;
+
+import java.io.File;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.container.Container;
-import org.wildfly.swarm.container.JARArchive;
-import org.wildfly.swarm.datasources.DatasourceArchive;
-import org.wildfly.swarm.jaxrs.JAXRSArchive;
+import org.wildfly.swarm.ejb.EJBFraction;
+import org.wildfly.swarm.resource.adapters.RARArchive;
 
+/**
+ * @author Ralf Battenfeld
+ */
 public class Main {
 
     public static void main(String[] args) throws Exception {
-
-        Container container = new Container();
-
+        final ClassLoader classLoader = Main.class.getClassLoader();
+        final File raFile = new File(classLoader.getResource("ra.xml").getFile());
+        final File ironJacamarFile = new File(classLoader.getResource("ironjacamar.xml").getFile());
+        final Container container = new Container();
+        container.fraction(EJBFraction.createDefaultFraction());
         container.start();
+        
+        // since Swarm.artifact doesn't support rar archives, we have to manually create a rar
+        final RARArchive rarArchive = ShrinkWrap.create(RARArchive.class, "xadisk.rar");
+        rarArchive.addAsLibrary(Swarm.artifact("net.java.xadisk:xadisk:jar:1.2.2"));
+        rarArchive.addAsManifestResource(raFile, "ra.xml");
+        
+        // add the required ironjacamar.xml descriptor
+        rarArchive.resourceAdapter(ironJacamarFile);
+        container.deploy(rarArchive);
 
-        // Create a JDBC driver deployment using maven groupId:artifactId
-        // The version is resolved from your pom.xml's <dependency>
-        container.deploy(Swarm.artifact("com.h2database:h2", "h2"));
-
-        // Create a DS deployment
-        JARArchive dsArchive = ShrinkWrap.create(JARArchive.class);
-        dsArchive.as(DatasourceArchive.class).dataSource("ExampleDS", (ds) -> {
-            ds.connectionUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
-            ds.driverName("h2");
-            ds.userName("sa");
-            ds.password("sa");
-        });
-
-        // Deploy the datasource
-        container.deploy(dsArchive);
-
-        JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
-        appDeployment.addResource(MyResource.class);
+        final JavaArchive appDeployment = ShrinkWrap.create(JavaArchive.class);
+        appDeployment.merge(Swarm.artifact("net.java.xadisk:xadisk:jar:1.2.2"));
+        appDeployment.addClass(FileIOBean.class);
 
         // Deploy your app
         container.deploy(appDeployment);
-
     }
 }
 ----
-
 This method constructs a new default Container, which automatically
 initializes all fractions (or subsystems) that are available.  
 
-The `.jar` containing driver for the H2 database is located by its
-simplified version-less maven coordinates, and deployed with the name
-of `h2.jar`.  The version is inferred from the version in the `pom.xml`.
-
-A datasource is then deployed using the previously-deployed driver by 
-creating a vanilla `JARArchive` and then using the `.as(...)` method 
-to realize it as a `DatasourceArchive).  Once this is done, the
-`.dataSource(...)` method, from the higher-level configuration API is available
-for creating and configuring the datasource.
+The resource adapter is created programatically and is then deployed as RARArchive.
+Please note that In order to initialize a rar deployment, Wildfly excepts an ironjacamar.xml descriptor
+as part of the deployment. This is done with the command `rarArchive.resourceAdapter(...)`
+Once this is done, the business module which uses the rar can be deployed in a second step.
 
 JNDI names are bound automatically.
 
-A `JAXRSDeployment` is constructed, and the JAX-RS resource class is
-added to it.
-
-The resource looks up the Datasource through JNDI at run-time:
+The resource is injected on run-time:
 
 [source,java]
 ----
-@Path("/")
-public class MyResource {
+package org.wildfly.swarm.examples.rar.deployment;
 
-    @GET
-    @Produces("text/plain")
-    public String get() throws NamingException, SQLException {
-        Context ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("jboss/datasources/ExampleDS");
-        Connection conn = ds.getConnection();
-        try {
-            return "Howdy using connection: " + conn;
-        } finally {
-            conn.close();
-        }
+import javax.annotation.Resource;
+import javax.annotation.Resource.AuthenticationType;
+import javax.ejb.Stateless;
+
+import org.xadisk.connector.outbound.XADiskConnectionFactory;
+
+@Stateless
+public class FileIOBean {
+ 
+    @Resource(
+        name               = "ra/XADiskConnectionFactory",
+        type               = org.xadisk.connector.outbound.XADiskConnectionFactory.class,
+        authenticationType = AuthenticationType.CONTAINER,
+        mappedName         = "java:global/XADiskCF")
+    private XADiskConnectionFactory _xaDiskConnectionFactory;
+
+    public XADiskConnectionFactory getConnectionFactory() {
+        return _xaDiskConnectionFactory;
     }
+
 }
 ----
 
@@ -164,9 +151,9 @@ public class MyResource {
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/example-datasource-deployment-swarm.jar
+* mvn package && java -jar ./target/example-resource-adapter-deployment-swarm.jar
 * mvn wildfly-swarm:run
-* In your IDE run the `org.wildfly.swarm.examples.ds.deployment.Main` class
+* In your IDE run the `org.wildfly.swarm.examples.rar.deployment.Main` class
 
 == Use
 

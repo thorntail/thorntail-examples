@@ -17,7 +17,7 @@ public class FileIOBean {
     private XADiskConnectionFactory _xaDiskConnectionFactory;
 
     public XADiskConnectionFactory getConnectionFactory() {
-    	return _xaDiskConnectionFactory;
+        return _xaDiskConnectionFactory;
     }
 
 }

@@ -14,7 +14,7 @@ import org.wildfly.swarm.it.Log;
 import static org.fest.assertions.Assertions.assertThat;
 
 /**
- * @author Bob McWhirter
+ * @author Ralf Battenfeld
  */
 @RunWith(Arquillian.class)
 public class ResourceAdapterIT extends AbstractIntegrationTest {

@@ -7,7 +7,6 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.ejb.EJBFraction;
-import org.wildfly.swarm.jaxrs.JAXRSFraction;
 import org.wildfly.swarm.resource.adapters.RARArchive;
 
 /**
@@ -16,12 +15,11 @@ import org.wildfly.swarm.resource.adapters.RARArchive;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-    	final ClassLoader classLoader = Main.class.getClassLoader();
-    	final File raFile = new File(classLoader.getResource("ra.xml").getFile());
-    	final File ironJacamarFile = new File(classLoader.getResource("ironjacamar.xml").getFile());
-    	final Container container = new Container();
-    	container.fraction(EJBFraction.createDefaultFraction());
-    	container.fraction(new JAXRSFraction());
+        final ClassLoader classLoader = Main.class.getClassLoader();
+        final File raFile = new File(classLoader.getResource("ra.xml").getFile());
+        final File ironJacamarFile = new File(classLoader.getResource("ironjacamar.xml").getFile());
+        final Container container = new Container();
+        container.fraction(EJBFraction.createDefaultFraction());
         container.start();
         
         // since Swarm.artifact doesn't support rar archives, we have to manually create a rar
@@ -35,7 +33,6 @@ public class Main {
 
         final JavaArchive appDeployment = ShrinkWrap.create(JavaArchive.class);
         appDeployment.merge(Swarm.artifact("net.java.xadisk:xadisk:jar:1.2.2"));
-        appDeployment.addClass(MyResource.class);
         appDeployment.addClass(FileIOBean.class);
 
         // Deploy your app
