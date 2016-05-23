@@ -1,0 +1,160 @@
+= Resource Adapter via Deployment.
+
+> Please raise any issues found with this example in our JIRA:
+> https://issues.jboss.org/browse/SWARM
+
+This example demonstrates how to deploy a resource adapter as
+a _deployment_.
+
+== Project `pom.xml`
+
+The project is a normal maven project with `jar` packaging, not `war`.
+
+[source,xml]
+----
+<packaging>jar</packaging>
+----
+
+The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
+create the runnable `.jar`.  
+
+[source,xml]
+----
+<plugin>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>wildfly-swarm-plugin</artifactId>
+  <configuration>
+    <mainClass>org.wildfly.swarm.examples.rar.deployment.Main</mainClass>
+  </configuration>
+  ...
+</plugin>
+----
+    
+As with the other examples, this one inherits a few standard executions
+from the parent `pom.xml`, particularly the `package` execution.
+
+To define the needed parts of WildFly Swarm, a few dependencies are added.
+To support resource adapters in general, the next dependency is required:
+    
+[source,xml]
+----
+<dependency>
+  <groupId>org.wildfly.swarm</groupId>
+  <artifactId>resource-adapters</artifactId>
+</dependency>
+----
+
+Additionally, the RAR archive you wish to deploy is specified as a dependency
+within your `pom.xml`
+
+[source,xml]
+----
+<dependency>
+  <groupId>net.java.xadisk</groupId>
+  <artifactId>xadisk</artifactId>
+  <version>1.2.2</version>
+  <type>jar</type>
+</dependency>
+----
+
+Note, we create the rar archive based on the resource adapter jar.
+
+== Project `main()`
+
+Since this project deploys RAR resources, it provides its own `main()` method  to configure the container and deploy the resources programatically. Additionally, it creates and deploys a rar archive using the jar type of the dependecy above. 
+
+[source,java]
+----
+ackage org.wildfly.swarm.examples.rar.deployment;
+
+import java.io.File;
+
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.wildfly.swarm.Swarm;
+import org.wildfly.swarm.container.Container;
+import org.wildfly.swarm.ejb.EJBFraction;
+import org.wildfly.swarm.resource.adapters.RARArchive;
+
+/**
+ * @author Ralf Battenfeld
+ */
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        final ClassLoader classLoader = Main.class.getClassLoader();
+        final File raFile = new File(classLoader.getResource("ra.xml").getFile());
+        final File ironJacamarFile = new File(classLoader.getResource("ironjacamar.xml").getFile());
+        final Container container = new Container();
+        container.fraction(EJBFraction.createDefaultFraction());
+        container.start();
+        
+        // since Swarm.artifact doesn't support rar archives, we have to manually create a rar
+        final RARArchive rarArchive = ShrinkWrap.create(RARArchive.class, "xadisk.rar");
+        rarArchive.addAsLibrary(Swarm.artifact("net.java.xadisk:xadisk:jar:1.2.2"));
+        rarArchive.addAsManifestResource(raFile, "ra.xml");
+        
+        // add the required ironjacamar.xml descriptor
+        rarArchive.resourceAdapter(ironJacamarFile);
+        container.deploy(rarArchive);
+
+        final JavaArchive appDeployment = ShrinkWrap.create(JavaArchive.class);
+        appDeployment.merge(Swarm.artifact("net.java.xadisk:xadisk:jar:1.2.2"));
+        appDeployment.addClass(FileIOBean.class);
+
+        // Deploy your app
+        container.deploy(appDeployment);
+    }
+}
+----
+This method constructs a new default Container, which automatically
+initializes all fractions (or subsystems) that are available.  
+
+The resource adapter is created programatically and is then deployed as RARArchive.
+Please note that In order to initialize a rar deployment, Wildfly excepts an ironjacamar.xml descriptor
+as part of the deployment. This is done with the command `rarArchive.resourceAdapter(...)`
+Once this is done, the business module which uses the rar can be deployed in a second step.
+
+JNDI names are bound automatically.
+
+The resource is injected on run-time:
+
+[source,java]
+----
+package org.wildfly.swarm.examples.rar.deployment;
+
+import javax.annotation.Resource;
+import javax.annotation.Resource.AuthenticationType;
+import javax.ejb.Stateless;
+
+import org.xadisk.connector.outbound.XADiskConnectionFactory;
+
+@Stateless
+public class FileIOBean {
+ 
+    @Resource(
+        name               = "ra/XADiskConnectionFactory",
+        type               = org.xadisk.connector.outbound.XADiskConnectionFactory.class,
+        authenticationType = AuthenticationType.CONTAINER,
+        mappedName         = "java:global/XADiskCF")
+    private XADiskConnectionFactory _xaDiskConnectionFactory;
+
+    public XADiskConnectionFactory getConnectionFactory() {
+        return _xaDiskConnectionFactory;
+    }
+
+}
+----
+
+
+== Run
+
+You can run it many ways:
+
+* mvn package && java -jar ./target/example-resource-adapter-deployment-swarm.jar
+* mvn wildfly-swarm:run
+* In your IDE run the `org.wildfly.swarm.examples.rar.deployment.Main` class
+
+== Use
+
+    http://localhost:8080/
