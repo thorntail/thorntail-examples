@@ -232,7 +232,8 @@
     <module>base</module>
 
     <module>arjuna</module>
-    <module>camel</module>
+    <!-- Prepare for upgrade to wfsc-1.0.4
+    <module>camel</module -->
     <module>config-options</module>
     <module>datasource</module>
     <module>jaxrs</module>
