@@ -19,6 +19,7 @@
  */
 package org.wildfly.swarm.examples.camel.jpa;
 
+import javax.ejb.Startup;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -33,12 +34,13 @@ import org.springframework.transaction.jta.JtaTransactionManager;
 import org.wildfly.extension.camel.CamelAware;
 import org.wildfly.swarm.examples.camel.jpa.model.Customer;
 
+@Startup
 @CamelAware
 @ApplicationScoped
 public class JpaRouteBuilder extends RouteBuilder {
 
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
 
     @Inject
     UserTransaction userTransaction;
