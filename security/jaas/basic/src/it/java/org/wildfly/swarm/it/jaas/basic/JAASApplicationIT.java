@@ -1,4 +1,4 @@
-package org.wildfly.swarm.it.jaas;
+package org.wildfly.swarm.it.jaas.basic;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.wildfly.swarm.examples.jaas.Employee;
+import org.wildfly.swarm.examples.jaas.basic.Employee;
 import org.wildfly.swarm.it.AbstractIntegrationTest;
 
 import static org.fest.assertions.Assertions.assertThat;

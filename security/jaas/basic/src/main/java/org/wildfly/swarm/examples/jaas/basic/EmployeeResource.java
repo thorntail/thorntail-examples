@@ -1,4 +1,4 @@
-package org.wildfly.swarm.examples.jaas;
+package org.wildfly.swarm.examples.jaas.basic;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;

@@ -1,4 +1,4 @@
-# JAAS Sample
+# JAAS Basic Auth Sample
 
 This example is identical to JPA, JAX-RS and CDI with Shrinkwrap Example,
 with the addition of setting up Java Authentication and Authorization Service(JAAS).
@@ -7,9 +7,9 @@ with the addition of setting up Java Authentication and Authorization Service(JA
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/example-jaas-swarm.jar
+* mvn package && java -jar ./target/example-jaas-basic-swarm.jar
 * mvn wildfly-swarm:run
-* In your IDE run the `org.wildfly.swarm.examples.jaas.Main` class
+* In your IDE run the `org.wildfly.swarm.examples.jaas.basic.Main` class
 
 ## Use
 
