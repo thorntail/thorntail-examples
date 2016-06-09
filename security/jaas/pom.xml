@@ -24,7 +24,7 @@
 
   <modules>
     <module>basic</module>
-<!--    <module>form</module> -->
+    <module>form</module>
   </modules>
 
 </project>
