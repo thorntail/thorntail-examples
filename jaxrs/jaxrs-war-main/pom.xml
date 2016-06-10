@@ -35,7 +35,7 @@
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <configuration>
-          <mainClass>org.wildfly.examples.swarm.jaxrs.Main</mainClass>
+          <mainClass>org.wildfly.examples.swarm.main.Main</mainClass>
         </configuration>
         <executions>
           <execution>
