@@ -10,7 +10,7 @@ It is originally from [wildfly-quickstart helloworld-ws](https://github.com/wild
 
 ## Project `pom.xml`
 
-This project is a traditional JAX-RS project, with maven packaging
+This project is a traditional JAX-WS project, with maven packaging
 of `war` in the `pom.xml`
 
 ``` xml
