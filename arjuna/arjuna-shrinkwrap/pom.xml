@@ -27,7 +27,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-arjuna</artifactId>
-    <version>1.0.0.Final-SNAPSHOT</version>
+    <version>1.0.0.CR2</version>
     <relativePath>../</relativePath>
   </parent>
 
