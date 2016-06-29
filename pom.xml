@@ -240,6 +240,7 @@
     <module>jpa</module>
     <module>jpa-jaxrs-cdi</module>
     <module>jsf</module>
+    <module>management-console</module>
     <module>messaging</module>
     <module>msc</module>
     <module>servlet</module>
