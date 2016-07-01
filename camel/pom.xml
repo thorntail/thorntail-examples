@@ -60,6 +60,7 @@
     <module>camel-jms</module>
     <module>camel-jpa</module>
     <module>camel-mail</module>
+    <module>camel-swagger</module>
   </modules>
   
   <!-- Repositories -->
