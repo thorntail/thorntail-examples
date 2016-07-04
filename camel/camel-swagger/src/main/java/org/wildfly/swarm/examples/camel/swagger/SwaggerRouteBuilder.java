@@ -19,14 +19,10 @@
  */
 package org.wildfly.swarm.examples.camel.swagger;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.cdi.ContextName;
 
-@ApplicationScoped
-@ContextName("rest-context")
 public class SwaggerRouteBuilder extends RouteBuilder {
 
     @Override
@@ -38,12 +34,13 @@ public class SwaggerRouteBuilder extends RouteBuilder {
             .port(8080)
             .apiContextPath("/api-doc")
             .apiProperty("api.title", "User API").apiProperty("api.version", "1.2.3")
-            .apiProperty("cors", "true")
-            ;
+            .apiProperty("cors", "true");
+        
         rest("/hello")
             .get("/{name}").description("A user object").outType(User.class).to("direct:hello")
             .produces(MediaType.APPLICATION_JSON)
             .consumes(MediaType.APPLICATION_JSON);
+        
         from("direct:hello").transform(simple("Hello ${header.name}"));
     }
 

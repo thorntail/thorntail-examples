@@ -38,7 +38,7 @@ public class CamelSwaggerIT extends AbstractIntegrationTest {
 	public void testIt() throws Exception {
 
 		Log log = getStdOutLog();
-		assertThatLog(log).hasLineContaining("Bound camel naming object: java:jboss/camel/context/rest-context");
+		assertThatLog(log).hasLineContaining("Camel context starting: rest-context");
 
         browser.navigate().to("http://localhost:8080/rest/api-doc");
         Assertions.assertThat(browser.getPageSource()).contains("\"title\" : \"User API\"");
