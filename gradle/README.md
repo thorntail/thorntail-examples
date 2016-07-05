@@ -10,7 +10,7 @@ Beginning of a Gradle plugin example.
 
 ##Run
 
-`java -jar ./build/libs/wildfly-swarm-example-gradle-swarm.jar`
+`java -jar ./build/libs/example-gradle-swarm.jar`
 
 
 ## Configuration
