@@ -20,10 +20,34 @@
 package org.wildfly.swarm.examples.camel.swagger;
 
 import org.wildfly.swarm.Swarm;
+import javax.ws.rs.core.MediaType;
+
+import org.apache.camel.builder.RouteBuilder;
+import org.wildfly.swarm.camel.core.CamelCoreFraction;
 
 public class Main {
     public static void main(String... args) throws Exception {
         // start with eager HTTP ports
-        new Swarm().start(true).deploy();
+        new Swarm()
+            .fraction(new CamelCoreFraction().addRouteBuilder("rest-context", new RouteBuilder() {
+                @Override
+                public void configure() throws Exception {
+                    restConfiguration().component("undertow")
+                    .contextPath("rest")
+                    .host("localhost")
+                    .port(8080)
+                    .apiContextPath("/api-doc")
+                    .apiProperty("api.title", "User API").apiProperty("api.version", "1.2.3")
+                    .apiProperty("cors", "true");
+                
+                    rest("/hello")
+                    .get("/{name}").description("A user object").outType(User.class).to("direct:hello")
+                    .produces(MediaType.APPLICATION_JSON)
+                    .consumes(MediaType.APPLICATION_JSON);
+                
+                    from("direct:hello").transform(simple("Hello ${header.name}"));
+                }
+             }))
+            .start(true).deploy();
     }
 }
