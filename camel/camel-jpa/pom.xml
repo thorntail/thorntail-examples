@@ -11,7 +11,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-camel</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>2016.7-SNAPSHOT</version>
   </parent>
 
   <name>WildFly Swarm Examples: Camel JPA</name>

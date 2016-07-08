@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-spring</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>2016.7-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
@@ -48,7 +48,7 @@
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
-      <artifactId>spring-rest</artifactId>
+      <artifactId>spring</artifactId>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>

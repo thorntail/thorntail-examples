@@ -10,7 +10,7 @@
 
   <groupId>org.wildfly.swarm.examples</groupId>
   <artifactId>examples-parent</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>2016.7-SNAPSHOT</version>
 
   <name>WildFly Swarm Examples: Parent</name>
   <description>WildFly Swarm Examples: Parent</description>
@@ -200,7 +200,7 @@
     <dependencies>
       <dependency>
         <groupId>org.wildfly.swarm</groupId>
-        <artifactId>bom</artifactId>
+        <artifactId>bom-all</artifactId>
         <version>${project.version}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -232,7 +232,9 @@
     <module>base</module>
 
     <module>arjuna</module>
+<!--
     <module>camel</module>
+-->
     <module>config-options</module>
     <module>datasource</module>
     <module>jaxrs</module>
