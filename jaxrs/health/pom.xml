@@ -57,7 +57,6 @@
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>monitor</artifactId>
-      <version>1.0.0.Beta5-SNAPSHOT</version> <!-- TOOD remove version here -->
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
