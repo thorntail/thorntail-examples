@@ -46,6 +46,7 @@
             <task>wildfly-swarm-package</task>
           </tasks>
           <args>
+            <arg>--stacktrace</arg>
             <arg>-DswarmVersion=${project.version}</arg>
           </args>
         </configuration>

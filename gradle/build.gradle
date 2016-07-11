@@ -1,5 +1,5 @@
 buildscript {
-  version = System.getProperty('swarmVersion') ?: '1.0.0.Final'
+  version = System.getProperty('swarmVersion') ?: '2016.7-SNAPSHOT'
 
   repositories {
     mavenLocal()
@@ -35,7 +35,7 @@ repositories {
 
 dependencyManagement {
   imports {
-    mavenBom "org.wildfly.swarm:bom:$version"
+    mavenBom "org.wildfly.swarm:bom-all:$version"
   }
 }
 
