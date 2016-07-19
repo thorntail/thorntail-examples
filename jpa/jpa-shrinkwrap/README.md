@@ -70,12 +70,11 @@ and deploys a datasource.
     
     import org.jboss.shrinkwrap.api.asset.ClassLoaderAsset;
     import org.wildfly.swarm.container.Container;
-    import org.wildfly.swarm.container.DefaultWarDeployment;
-    import org.wildfly.swarm.container.WarDeployment;
     import org.wildfly.swarm.datasources.Datasource;
     import org.wildfly.swarm.datasources.DatasourcesFraction;
     import org.wildfly.swarm.datasources.Driver;
     import org.wildfly.swarm.jpa.JPAFraction;
+    import org.wildfly.swarm.undertow.WARArchive;
     
     public class Main {
         public static void main(String[] args) throws Exception {
@@ -100,11 +99,11 @@ and deploys a datasource.
     
             container.start();
     
-            WarDeployment deployment = new DefaultWarDeployment(container);
-            deployment.getArchive().addClasses(Employee.class);
-            deployment.getArchive().addClass(EmployeeServlet.class);
-            deployment.getArchive().addAsWebInfResource(new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
-            deployment.getArchive().addAsWebInfResource(new ClassLoaderAsset("META-INF/load.sql", Main.class.getClassLoader()), "classes/META-INF/load.sql");
+            WARArchive deployment = ShrinkWrap.create(WARArchive.class);
+            deployment.addClasses(Employee.class);
+            deployment.addClass(EmployeeServlet.class);
+            deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
+            deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/load.sql", Main.class.getClassLoader()), "classes/META-INF/load.sql");
     
             container.deploy(deployment);
         }
