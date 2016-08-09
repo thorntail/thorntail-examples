@@ -35,7 +35,7 @@ public class JAXRSApplicationIT extends AbstractIntegrationTest {
     }
 
     @Test
-    public void testIt() {
+    public void testIt() throws InterruptedException {
         browser.navigate().to("https://localhost:8443/");
         assertThat(browser.getPageSource()).contains("Howdy at ");
     }

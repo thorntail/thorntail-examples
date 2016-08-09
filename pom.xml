@@ -233,7 +233,9 @@
 
     <module>arjuna</module>
     <module>camel</module>
+<!--
     <module>config-options</module>
+-->
     <module>datasource</module>
     <module>jaxrs</module>
     <module>jaxws</module>
