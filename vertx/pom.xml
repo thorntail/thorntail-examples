@@ -20,6 +20,7 @@
         <configuration>
           <mainClass>org.wildfly.swarm.examples.vertx.Main</mainClass>
         </configuration>
+<!--
         <executions>
           <execution>
             <goals>
@@ -27,6 +28,7 @@
             </goals>
           </execution>
         </executions>
+-->
       </plugin>
     </plugins>
   </build>
@@ -43,10 +45,12 @@
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>ejb</artifactId>
     </dependency>
+<!--
     <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>cdi</artifactId>
     </dependency>
+-->
   </dependencies>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
