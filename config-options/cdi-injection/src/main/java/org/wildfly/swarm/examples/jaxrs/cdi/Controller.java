@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.wildfly.swarm.cdi.ConfigValue;
+import org.wildfly.swarm.spi.runtime.annotations.ConfigurationValue;
 
 /**
  * @author Heiko Braun
@@ -17,22 +17,22 @@ import org.wildfly.swarm.cdi.ConfigValue;
 public class Controller {
 
     @Inject
-    @ConfigValue("some.string.property")
+    @ConfigurationValue("some.string.property")
     String stringProperty;
 
     @Inject
-    @ConfigValue("some.integer.property")
+    @ConfigurationValue("some.integer.property")
     Integer intProperty;
 
     @Inject
-    @ConfigValue("some.boolean.property")
+    @ConfigurationValue("some.boolean.property")
     Boolean boolProperty;
 
     @GET
     @Path("/propertyString")
     @Produces(MediaType.TEXT_PLAIN)
     public String getStringProperty() {
-        if(null==stringProperty) throw new RuntimeException("config property not initialised");
+        if (null == stringProperty) throw new RuntimeException("config property not initialised");
         return stringProperty;
     }
 
@@ -40,7 +40,7 @@ public class Controller {
     @Path("/propertyInteger")
     @Produces(MediaType.TEXT_PLAIN)
     public String getIntegerProperty() {
-        if(null==intProperty) throw new RuntimeException("config property not initialised");
+        if (null == intProperty) throw new RuntimeException("config property not initialised");
         return String.valueOf(intProperty);
     }
 
@@ -48,7 +48,7 @@ public class Controller {
     @Path("/propertyBoolean")
     @Produces(MediaType.TEXT_PLAIN)
     public String getBoolProperty() {
-        if(null==boolProperty) throw new RuntimeException("config property not initialised");
+        if (null == boolProperty) throw new RuntimeException("config property not initialised");
         return String.valueOf(boolProperty);
     }
 }
