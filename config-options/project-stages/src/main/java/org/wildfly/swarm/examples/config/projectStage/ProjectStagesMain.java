@@ -1,10 +1,7 @@
 package org.wildfly.swarm.examples.config.projectStage;
 
-import java.net.URL;
-
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.Swarm;
-import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.datasources.DatasourcesFraction;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 
@@ -15,12 +12,11 @@ import org.wildfly.swarm.jaxrs.JAXRSArchive;
 public class ProjectStagesMain {
 
     public static void main(String[] args) throws Exception {
+        Swarm swarm = new Swarm(args);
 
-        Container container = new Container(args);
+        System.err.println("Connection URL: " + swarm.stageConfig().resolve("database.connection.url").getValue());
 
-        System.err.println( "Connection URL: " + container.stageConfig().resolve("database.connection.url" ).getValue() );
-
-        container.fraction(
+        swarm.fraction(
                 new DatasourcesFraction()
                         .jdbcDriver("h2", (d) -> {
                             d.driverClassName("org.h2.Driver");
@@ -32,7 +28,7 @@ public class ProjectStagesMain {
                             ds.driverName("h2");
 
                             ds.connectionUrl(
-                                    container
+                                    swarm
                                             .stageConfig()
                                             .resolve("database.connection.url")
                                             .getValue()
@@ -43,14 +39,12 @@ public class ProjectStagesMain {
         );
 
         // Start the container
-        container.start();
+        swarm.start();
 
         JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
         appDeployment.addResource(MyResource.class);
 
         // Deploy your app
-        container.deploy(appDeployment);
-
-
+        swarm.deploy(appDeployment);
     }
 }

@@ -15,11 +15,18 @@
   <build>
     <plugins>
       <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <configuration>
           <mainClass>org.wildfly.swarm.examples.vertx.Main</mainClass>
         </configuration>
+<!--
         <executions>
           <execution>
             <goals>
@@ -27,6 +34,7 @@
             </goals>
           </execution>
         </executions>
+-->
       </plugin>
     </plugins>
   </build>

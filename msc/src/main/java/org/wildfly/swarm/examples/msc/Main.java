@@ -2,6 +2,7 @@ package org.wildfly.swarm.examples.msc;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.msc.ServiceActivatorArchive;
 
@@ -11,7 +12,7 @@ import org.wildfly.swarm.msc.ServiceActivatorArchive;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Container container = new Container();
+        Swarm container = new Swarm();
         container.setArgs(args);
         container.start();
 
