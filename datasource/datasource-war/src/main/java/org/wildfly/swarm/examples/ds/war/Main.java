@@ -34,13 +34,11 @@ public class Main {
 
     private static DatasourcesFraction datasourceWithH2() {
         return new DatasourcesFraction()
-                /*
                 .jdbcDriver("h2", (d) -> {
                     d.driverClassName("org.h2.Driver");
                     d.xaDatasourceClass("org.h2.jdbcx.JdbcDataSource");
                     d.driverModuleName("com.h2database.h2");
                 })
-                */
                 .dataSource("ExampleDS", (ds) -> {
                     ds.driverName("h2");
                     ds.connectionUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
@@ -51,13 +49,11 @@ public class Main {
 
     private static DatasourcesFraction datasourceWithPostgresql() {
         return new DatasourcesFraction()
-                /*
                 .jdbcDriver("org.postgresql", (d) -> {
                     d.driverClassName("org.postgresql.Driver");
                     d.xaDatasourceClass("org.postgresql.xa.PGXADataSource");
                     d.driverModuleName("org.postgresql");
                 })
-                */
                 .dataSource("ExampleDS", (ds) -> {
                     ds.driverName("org.postgresql");
                     ds.connectionUrl("jdbc:postgresql://localhost:5432/postgres");
@@ -68,13 +64,11 @@ public class Main {
 
     private static DatasourcesFraction datasourceWithMysql() {
         return new DatasourcesFraction()
-                /*
                 .jdbcDriver("com.mysql", (d) -> {
                     d.driverClassName("com.mysql.jdbc.Driver");
                     d.xaDatasourceClass("com.mysql.jdbc.jdbc2.optional.MysqlXADataSource");
                     d.driverModuleName("com.mysql");
                 })
-                */
                 .dataSource("ExampleDS", (ds) -> {
                     ds.driverName("com.mysql");
                     ds.connectionUrl("jdbc:mysql://localhost:3306/mysql");
