@@ -3,7 +3,6 @@ package org.wildfly.swarm.examples.netflix.ribbon.time;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
-import org.wildfly.swarm.logstash.LogstashFraction;
 import org.wildfly.swarm.netflix.ribbon.RibbonArchive;
 
 /**

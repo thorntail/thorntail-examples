@@ -19,11 +19,11 @@
  */
 package org.wildfly.swarm.examples.camel.jms;
 
-import org.wildfly.swarm.container.Container;
+import org.wildfly.swarm.Swarm;
 
 public class Main {
     public static void main(String... args) throws Exception {
         // start with eager HTTP ports
-        new Container().start(true).deploy();
+        new Swarm().start(true).deploy();
     }
 }

@@ -1,10 +1,11 @@
 package org.wildfly.swarm.example.docker;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-import java.util.HashSet;
-import java.util.Set;
 
 @ApplicationScoped
 @ApplicationPath("/")

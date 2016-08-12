@@ -1,14 +1,14 @@
 
 package org.wildfly.swarm.examples.vaadin;
 
-import com.vaadin.annotations.JavaScript;
+import javax.inject.Inject;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.cdi.CDIUI;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.UI;
-import javax.inject.Inject;
 
 /**
  *

@@ -2,13 +2,11 @@ package org.wildfly.swarm.examples.vertx;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
-import javax.naming.InitialContext;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import io.vertx.core.Vertx;
 import io.vertx.resourceadapter.VertxConnection;
 import io.vertx.resourceadapter.VertxConnectionFactory;
 

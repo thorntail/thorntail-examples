@@ -3,9 +3,10 @@ package org.wildfly.swarm.examples.jaxrs.swagger;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import io.swagger.annotations.*;
 import javax.ws.rs.core.MediaType;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.joda.time.DateTime;
 
 @Path("/time")

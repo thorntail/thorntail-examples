@@ -5,7 +5,6 @@ import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.jgroups.JGroupsFraction;
 import org.wildfly.swarm.keycloak.Secured;
-import org.wildfly.swarm.logging.LoggingFraction;
 import org.wildfly.swarm.netflix.ribbon.RibbonArchive;
 
 /**

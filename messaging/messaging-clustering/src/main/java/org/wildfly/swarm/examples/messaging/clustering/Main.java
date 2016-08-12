@@ -1,6 +1,7 @@
 package org.wildfly.swarm.examples.messaging.clustering;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.messaging.MessagingFraction;
@@ -13,9 +14,9 @@ import org.wildfly.swarm.spi.api.JARArchive;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Container container = new Container();
+        Swarm swarm = new Swarm();
 
-        container.fraction(MessagingFraction.createDefaultFraction()
+        swarm.fraction(MessagingFraction.createDefaultFraction()
                 .defaultServer((s) -> {
                     s.enableClustering();
                     s.jmsTopic("my-topic");
@@ -23,20 +24,20 @@ public class Main {
                 }));
 
         // Start the container
-        container.start();
+        swarm.start();
 
         JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
         appDeployment.addResource(MyResource.class);
 
         // Deploy your app
-        container.deploy(appDeployment);
+        swarm.deploy(appDeployment);
 
         JARArchive deployment = ShrinkWrap.create(JARArchive.class);
         deployment.addClass(MyService.class);
         deployment.as(ServiceActivatorArchive.class).addServiceActivator(MyServiceActivator.class);
 
         // Deploy the services
-        container.deploy(deployment);
+        swarm.deploy(deployment);
 
     }
 }

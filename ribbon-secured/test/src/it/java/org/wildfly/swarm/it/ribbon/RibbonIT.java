@@ -18,7 +18,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.wildfly.swarm.it.AbstractIntegrationTest;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.Fail.fail;
 /**
  * @author Bob McWhirter
  */

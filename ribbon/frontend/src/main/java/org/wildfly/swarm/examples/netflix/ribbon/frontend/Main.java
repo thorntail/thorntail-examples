@@ -1,6 +1,7 @@
 package org.wildfly.swarm.examples.netflix.ribbon.frontend;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jgroups.JGroupsFraction;
 import org.wildfly.swarm.undertow.WARArchive;
@@ -10,7 +11,7 @@ import org.wildfly.swarm.undertow.WARArchive;
  */
 public class Main {
     public static void main(String... args) throws Exception {
-        Container container = new Container();
+        Swarm swarm = new Swarm();
         JGroupsFraction fraction = new JGroupsFraction()
                 .defaultChannel( "swarm-jgroups")
                 .stack( "udp", (s)->{
@@ -43,11 +44,11 @@ public class Main {
                 .channel( "swarm-jgroups", (c)->{
                     c.stack( "udp" );
                 });
-        container.fraction(fraction);
-        container.start();
+        swarm.fraction(fraction);
+        swarm.start();
         WARArchive war = ShrinkWrap.create(WARArchive.class);
         war.staticContent();
         war.addAllDependencies();
-        container.deploy(war);
+        swarm.deploy(war);
     }
 }

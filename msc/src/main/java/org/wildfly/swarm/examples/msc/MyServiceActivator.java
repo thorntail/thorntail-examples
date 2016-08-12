@@ -1,5 +1,7 @@
 package org.wildfly.swarm.examples.msc;
 
+import java.util.Arrays;
+
 import org.jboss.msc.service.ServiceActivator;
 import org.jboss.msc.service.ServiceActivatorContext;
 import org.jboss.msc.service.ServiceController;
@@ -7,8 +9,6 @@ import org.jboss.msc.service.ServiceName;
 import org.jboss.msc.service.ServiceRegistryException;
 import org.jboss.msc.service.ServiceTarget;
 import org.jboss.msc.service.ValueService;
-
-import java.util.Arrays;
 
 /**
  * @author Bob McWhirter

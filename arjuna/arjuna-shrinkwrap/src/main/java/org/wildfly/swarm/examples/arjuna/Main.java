@@ -23,7 +23,7 @@
 package org.wildfly.swarm.examples.arjuna;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.wildfly.swarm.container.Container;
+import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.transactions.TransactionsFraction;
 
@@ -33,14 +33,13 @@ import org.wildfly.swarm.transactions.TransactionsFraction;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Container container = new Container();
+        Swarm swarm = new Swarm();
 
-	/*
-     * Use specific TransactionFraction even though it doesn't do
-	 * any more than the default one - for now.
-	 */
+        // Use specific TransactionFraction even though it doesn't do
+        // any more than the default one - for now.
 
-        container.fraction(TransactionsFraction.createDefaultFraction());
+
+        swarm.fraction(TransactionsFraction.createDefaultFraction());
 
         // Start the container
 
@@ -48,7 +47,7 @@ public class Main {
         JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
         appDeployment.addResource(MyResource.class);
 
-        container.start();
-        container.deploy(appDeployment);
+        swarm.start();
+        swarm.deploy(appDeployment);
     }
 }

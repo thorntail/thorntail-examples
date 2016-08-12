@@ -16,11 +16,11 @@
 
 package org.wildfly.swarm.examples.stm;
 
-import org.jboss.stm.annotations.Transactional;
 import org.jboss.stm.annotations.ReadLock;
 import org.jboss.stm.annotations.State;
+import org.jboss.stm.annotations.Transactional;
 import org.jboss.stm.annotations.WriteLock;
-    
+
 @Transactional
 public class SampleLockable implements Sample
 {
@@ -28,7 +28,7 @@ public class SampleLockable implements Sample
     {
 	_isState = init;
     }
-        
+
     @ReadLock
     public int value ()
     {
@@ -40,7 +40,7 @@ public class SampleLockable implements Sample
     {
 	_isState++;
     }
-        
+
     @WriteLock
     public void decrement ()
     {

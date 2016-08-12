@@ -1,12 +1,13 @@
 package org.wildfly.swarm.examples.netflix.ribbon.time;
 
-import org.joda.time.DateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import java.util.HashMap;
-import java.util.Map;
+
+import org.joda.time.DateTime;
 
 /**
  * @author Bob McWhirter

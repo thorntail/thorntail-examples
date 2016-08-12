@@ -1,11 +1,12 @@
 package org.wildfly.swarm.example.docker;
 
 //import lombok.extern.slf4j.Slf4j;
+
 import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.wildfly.swarm.config.logging.Level;
 import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.logging.LoggingFraction;
-import org.wildfly.swarm.config.logging.Level;
 
 //@Slf4j
 public class SwarmMain {

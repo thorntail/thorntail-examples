@@ -19,20 +19,20 @@
  */
 package org.wildflyswarm.examples.camel.activemq;
 
-import static org.fest.assertions.Assertions.assertThat;
-
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
+import static org.fest.assertions.Assertions.assertThat;
+
 @RunWith(Arquillian.class)
 public class CamelActiveMQIT {
 
     @Drone
     WebDriver browser;
-    
+
     @Test
     public void testFileToActiveMQRoute() throws Exception {
 

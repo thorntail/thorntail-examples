@@ -1,7 +1,7 @@
 package org.wildfly.swarm.examples.staticcontent;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.wildfly.swarm.container.Container;
+import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.undertow.WARArchive;
 
 /**
@@ -11,13 +11,13 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Container container = new Container();
+        Swarm swarm = new Swarm();
 
         WARArchive deployment = ShrinkWrap.create( WARArchive.class );
 
         deployment.staticContent();
 
-        container.start().deploy(deployment);
+        swarm.start().deploy(deployment);
 
     }
 }

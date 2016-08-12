@@ -5,10 +5,8 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.wildfly.swarm.it.AbstractIntegrationTest;
 
 import static org.fest.assertions.Assertions.assertThat;

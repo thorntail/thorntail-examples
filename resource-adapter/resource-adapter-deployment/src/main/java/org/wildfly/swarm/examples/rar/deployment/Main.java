@@ -18,9 +18,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         final ClassLoader classLoader = Main.class.getClassLoader();
-        final Container container = new Container();
-        container.fraction(EJBFraction.createDefaultFraction());
-        container.start();
+        final Swarm swarm = new Swarm();
+        swarm.fraction(EJBFraction.createDefaultFraction());
+        swarm.start();
 
         // since Swarm.artifact doesn't support rar archives, we have to manually create a rar
         final RARArchive rarArchive = ShrinkWrap.create(RARArchive.class, "xadisk.rar");
@@ -29,13 +29,13 @@ public class Main {
 
         // add the required ironjacamar.xml descriptor
         rarArchive.resourceAdapter(new ClassLoaderAsset( "ironjacamar.xml", classLoader ));
-        container.deploy(rarArchive);
+        swarm.deploy(rarArchive);
 
         final JARArchive appDeployment = ShrinkWrap.create(JARArchive.class);
         appDeployment.merge(Swarm.artifact("net.java.xadisk:xadisk:jar:1.2.2"));
         appDeployment.addClass(FileIOBean.class);
 
         // Deploy your app
-        container.deploy(appDeployment);
+        swarm.deploy(appDeployment);
     }
 }

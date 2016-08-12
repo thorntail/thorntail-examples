@@ -1,12 +1,12 @@
 package org.wildfly.swarm.it.jaxrs;
 
-import au.com.dius.pact.consumer.ConsumerPactTest;
-import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
-import au.com.dius.pact.model.PactFragment;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import au.com.dius.pact.consumer.ConsumerPactTest;
+import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
+import au.com.dius.pact.model.PactFragment;
 
 import static org.junit.Assert.assertEquals;
 

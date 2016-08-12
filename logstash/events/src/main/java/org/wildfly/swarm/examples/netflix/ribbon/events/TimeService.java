@@ -8,8 +8,6 @@ import com.netflix.ribbon.proxy.annotation.ResourceGroup;
 import com.netflix.ribbon.proxy.annotation.TemplateName;
 import io.netty.buffer.ByteBuf;
 
-import java.sql.Time;
-
 /**
  * @author Bob McWhirter
  */

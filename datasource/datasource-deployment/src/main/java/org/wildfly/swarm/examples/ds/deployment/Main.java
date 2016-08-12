@@ -2,10 +2,8 @@ package org.wildfly.swarm.examples.ds.deployment;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.Swarm;
-import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.datasources.DatasourceArchive;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
-import org.wildfly.swarm.spi.api.JARArchive;
 
 /**
  * @author Bob McWhirter
@@ -14,13 +12,13 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Container container = new Container();
+        Swarm swarm = new Swarm();
 
-        container.start();
+        swarm.start();
 
         // Create a JDBC driver deployment using maven groupId:artifactId
         // The version is resolved from your pom.xml's <dependency>
-        container.deploy(Swarm.artifact("com.h2database:h2", "h2"));
+        swarm.deploy(Swarm.artifact("com.h2database:h2", "h2"));
 
         // Create a DS deployment
         DatasourceArchive dsArchive = ShrinkWrap.create(DatasourceArchive.class);
@@ -32,13 +30,13 @@ public class Main {
         });
 
         // Deploy the datasource
-        container.deploy(dsArchive);
+        swarm.deploy(dsArchive);
 
         JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
         appDeployment.addResource(MyResource.class);
 
         // Deploy your app
-        container.deploy(appDeployment);
+        swarm.deploy(appDeployment);
 
     }
 }

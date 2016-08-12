@@ -1,7 +1,7 @@
 package org.wildfly.swarm.examples.messaging;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.wildfly.swarm.container.Container;
+import org.wildfly.swarm.Swarm;
 import org.wildfly.swarm.jaxrs.JAXRSArchive;
 import org.wildfly.swarm.messaging.MessagingFraction;
 import org.wildfly.swarm.msc.ServiceActivatorArchive;
@@ -13,29 +13,29 @@ import org.wildfly.swarm.spi.api.JARArchive;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Container container = new Container();
+        Swarm swarm = new Swarm();
 
-        container.fraction(MessagingFraction.createDefaultFraction()
+        swarm.fraction(MessagingFraction.createDefaultFraction()
                 .defaultServer((s) -> {
                     s.jmsTopic("my-topic");
                     s.jmsQueue("my-queue");
                 }));
 
-        // Start the container
-        container.start();
+        // Start the swarm
+        swarm.start();
 
         JAXRSArchive appDeployment = ShrinkWrap.create(JAXRSArchive.class);
         appDeployment.addResource(MyResource.class);
 
         // Deploy your app
-        container.deploy(appDeployment);
+        swarm.deploy(appDeployment);
 
         JARArchive deployment = ShrinkWrap.create(JARArchive.class);
         deployment.addClass(MyService.class);
         deployment.as(ServiceActivatorArchive.class).addServiceActivator(MyServiceActivator.class);
 
         // Deploy the services
-        container.deploy(deployment);
+        swarm.deploy(deployment);
 
     }
 }

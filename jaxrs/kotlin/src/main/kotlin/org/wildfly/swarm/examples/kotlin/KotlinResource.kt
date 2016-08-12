@@ -1,7 +1,7 @@
 package org.wildfly.swarm.examples.kotlin
 
-import javax.ws.rs.Path
 import javax.ws.rs.GET
+import javax.ws.rs.Path
 
 // @author Helio Frota
 @Path("/")

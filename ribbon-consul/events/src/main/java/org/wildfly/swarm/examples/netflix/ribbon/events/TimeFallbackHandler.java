@@ -1,12 +1,12 @@
 package org.wildfly.swarm.examples.netflix.ribbon.events;
 
+import java.util.Map;
+
 import com.netflix.hystrix.HystrixInvokableInfo;
 import com.netflix.ribbon.hystrix.FallbackHandler;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.UnpooledByteBufAllocator;
 import rx.Observable;
-
-import java.util.Map;
 
 /**
  * @author Bob McWhirter

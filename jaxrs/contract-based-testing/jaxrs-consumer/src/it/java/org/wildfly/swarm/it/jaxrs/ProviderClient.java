@@ -1,8 +1,8 @@
 package org.wildfly.swarm.it.jaxrs;
 
-import org.apache.http.client.fluent.Request;
-
 import java.io.IOException;
+
+import org.apache.http.client.fluent.Request;
 
 /**
  * An example client component that invokes on a service.

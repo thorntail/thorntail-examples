@@ -1,8 +1,6 @@
 package org.wildfly.swarm.examples.vertx;
 
 import org.wildfly.swarm.Swarm;
-import org.wildfly.swarm.logging.LoggingFraction;
-import org.wildfly.swarm.vertx.VertxFraction;
 
 /**
  * @author <a href="mailto:ggastald@redhat.com">George Gastaldi</a>

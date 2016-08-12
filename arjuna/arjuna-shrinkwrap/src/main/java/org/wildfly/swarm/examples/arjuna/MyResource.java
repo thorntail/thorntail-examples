@@ -22,19 +22,17 @@
 
 package org.wildfly.swarm.examples.arjuna;
 
+import java.util.Hashtable;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import java.util.Hashtable;
-
+import com.arjuna.ats.arjuna.AtomicAction;
 import com.arjuna.ats.arjuna.common.Uid;
 import com.arjuna.ats.arjuna.common.arjPropertyManager;
-import com.arjuna.ats.arjuna.AtomicAction;
 import com.arjuna.ats.arjuna.coordinator.CheckedAction;
 import com.arjuna.ats.arjuna.coordinator.CheckedActionFactory;
-
-import javax.naming.InitialContext;
 
 /**
  * @author nmcl

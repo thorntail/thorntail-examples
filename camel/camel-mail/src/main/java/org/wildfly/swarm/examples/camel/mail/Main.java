@@ -20,20 +20,19 @@
 package org.wildfly.swarm.examples.camel.mail;
 
 import org.wildfly.swarm.Swarm;
-import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.mail.MailFraction;
 
 public class Main {
     public static void main(String... args) throws Exception {
         MailFraction fraction = MailFraction.defaultFraction();
-        Container container = new Container();
+        Swarm swarm = new Swarm();
 
         // Configure mock mail server SMTP session
-        container.fraction(fraction.smtpServer("greenmail", s -> s.host("localhost").port("10110").username("user1@localhost").password("password")));
+        swarm.fraction(fraction.smtpServer("greenmail", s -> s.host("localhost").port("10110").username("user1@localhost").password("password")));
 
         // Deploy mock mail server
-        container.start(true);
-        container.deploy(Swarm.artifact("com.icegreen:greenmail-webapp:war:1.4.1"));
-        container.deploy();
+        swarm.start(true);
+        swarm.deploy(Swarm.artifact("com.icegreen:greenmail-webapp:war:1.4.1"));
+        swarm.deploy();
     }
 }
