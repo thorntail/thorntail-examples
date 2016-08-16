@@ -11,7 +11,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-ribbon-consul-parent</artifactId>
-    <version>2016.7-SNAPSHOT</version>
+    <version>2016.8</version>
     <relativePath>../</relativePath>
   </parent>
 
