@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-spring</artifactId>
-    <version>2016.9</version>
+    <version>2016.10-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 

@@ -11,7 +11,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>example-jaas-parent</artifactId>
-    <version>2016.9</version>
+    <version>2016.10-SNAPSHOT</version>
   </parent>
 
   <artifactId>example-jaas-basic</artifactId>
