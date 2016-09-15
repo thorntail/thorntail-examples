@@ -15,13 +15,12 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>example-jpa-war</artifactId>
+  <artifactId>example-jpa-eclipselink</artifactId>
 
-  <name>WildFly Swarm Examples: JPA .war</name>
-  <description>WildFly Swarm Examples: JPA .war</description>
+  <name>WildFly Swarm Examples: JPA via EclipseLink .war</name>
+  <description>WildFly Swarm Examples: JPA via EclipseLink .war</description>
 
   <packaging>war</packaging>
-
   <build>
     <plugins>
       <plugin>
@@ -62,9 +61,8 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>org.hibernate.javax.persistence</groupId>
-      <artifactId>hibernate-jpa-2.1-api</artifactId>
-      <version>1.0.0.Final</version>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>jpa-eclipselink</artifactId>
     </dependency>
   </dependencies>
 </project>
