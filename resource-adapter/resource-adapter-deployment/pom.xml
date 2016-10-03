@@ -9,7 +9,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-resource-adapter</artifactId>
-    <version>2016.10-SNAPSHOT</version>
+    <version>2016.10.0</version>
     <relativePath>../</relativePath>
   </parent>
 
