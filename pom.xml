@@ -246,6 +246,7 @@
     <module>camel</module>
     <module>config-options</module>
     <module>datasource</module>
+    <module>flyway</module>
     <module>jaxrs</module>
     <module>jaxws</module>
     <module>jpa</module>
