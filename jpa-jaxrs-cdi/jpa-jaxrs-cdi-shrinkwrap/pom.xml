@@ -36,6 +36,9 @@
           </execution>
           <execution>
             <id>start</id>
+            <configuration>
+              <useUberJar>true</useUberJar>
+            </configuration>
           </execution>
           <execution>
             <id>stop</id>
