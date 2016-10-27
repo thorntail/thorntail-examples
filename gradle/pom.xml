@@ -40,7 +40,7 @@
       <plugin>
         <groupId>org.fortasoft</groupId>
         <artifactId>gradle-maven-plugin</artifactId>
-        <version>1.0.7</version>
+        <version>1.0.8</version>
         <configuration>
           <tasks>
             <task>wildfly-swarm-package</task>
