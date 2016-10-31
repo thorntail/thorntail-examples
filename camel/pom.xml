@@ -37,6 +37,12 @@
         <artifactId>greenmail-webapp</artifactId>
         <version>${version.icegreen.greenmail}</version>
         <type>war</type>
+        <exclusions>
+          <exclusion>
+            <groupId>com.icegreen</groupId>
+            <artifactId>greenmail</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <groupId>org.apache.httpcomponents</groupId>
