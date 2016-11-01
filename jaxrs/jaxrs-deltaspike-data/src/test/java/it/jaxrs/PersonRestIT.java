@@ -21,7 +21,7 @@ import static org.fest.assertions.Assertions.assertThat;
  */
 
 @RunWith(Arquillian.class)
-public class PersonRestIT  extends AbstractIntegrationTest{
+public class PersonRestIT  extends AbstractIntegrationTest {
 
     public static final String API_URL = "http://127.0.0.1:8080/api/persons";
     Client client = ClientBuilder.newBuilder().build();
