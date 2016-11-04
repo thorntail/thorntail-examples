@@ -263,7 +263,9 @@
     <module>ribbon</module>
     <!-- <module>ribbon-secured</module> -->
     <module>ribbon-consul</module>
+<!--
     <module>gradle</module>
+-->
     <module>docker</module>
     <module>spring</module>
     <module>security</module>
