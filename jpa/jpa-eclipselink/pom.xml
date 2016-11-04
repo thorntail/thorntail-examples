@@ -11,7 +11,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-jpa</artifactId>
-    <version>2016.11.0-SNAPSHOT</version>
+    <version>2016.11.0</version>
     <relativePath>../</relativePath>
   </parent>
 
