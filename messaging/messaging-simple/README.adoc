@@ -75,6 +75,8 @@ subsystem and deploy all the pieces of the application.
 include::src/main/java/org/wildfly/swarm/examples/messaging/Main.java[lines=15..40]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/messaging/Main.java#L15[Main.java]
+
 After the container is instantiated, the Messaging fraction is
 configured and installed, enabling the in-vm connector and setting
 up a topic and a queue. 

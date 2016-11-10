@@ -83,6 +83,8 @@ and deploys a datasource.
 include::src/main/java/org/wildfly/swarm/examples/jpa/shrinkwrap/Main.java[lines=15..41]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/jpa/shrinkwrap/Main.java#L15[Main.java]
+
 This method constructs a new default Swarm container, which automatically
 initializes all fractions (or subsystems) that are available.
 

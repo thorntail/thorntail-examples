@@ -92,6 +92,8 @@ and deploys a datasource.
 include::src/main/java/org/wildfly/swarm/examples/jpajaxrscdijta/Main.java[lines=19..46]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/jpajaxrscdijta/Main.java#L19[Main.java]
+
 This method constructs a new default Swarm, which automatically
 initializes all fractions (or subsystems) that are available.
 

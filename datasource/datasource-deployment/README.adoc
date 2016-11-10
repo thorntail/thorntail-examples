@@ -79,6 +79,8 @@ GAV (no version is required) and deploys a datasource.
 include::src/main/java/org/wildfly/swarm/examples/ds/deployment/Main.java[]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/ds/deployment/Main.java#[Main.java]
+
 This method constructs a new default Swarm, which automatically
 initializes all fractions (or subsystems) that are available.  
 
@@ -104,6 +106,7 @@ The resource looks up the Datasource through JNDI at run-time:
 include::src/main/java/org/wildfly/swarm/examples/ds/deployment/MyResource.java[lines=17..29]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/ds/deployment/MyResource.java#L17[MyResource.java]
 
 == Run
 

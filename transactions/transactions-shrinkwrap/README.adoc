@@ -64,6 +64,8 @@ configure the container and deploy the resources programmatically.
 include::src/main/java/org/wildfly/swarm/examples/transactions/Main.java[lines=19..40]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/transactions/Main.java#L19[Main.java]
+
 This demonstrates starting the container without any deployments,
 and then deploying the required classes. 
 

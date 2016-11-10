@@ -13,6 +13,8 @@ I.e. declaring the database configuration for your production environment extern
 include::src/main/resources/project-stages.yml[]
 ----
 
+See: link:src/main/resources/project-stages.yml[project-stages.yml]
+
 == Using expressions for configuration attributes
 
 Within WildFly Swarm you could then reference the configuration property as
@@ -26,3 +28,5 @@ in the configuration model (aka config-api):
 ----
 include::src/main/java/org/wildfly/swarm/examples/config/projectStage/ProjectStagesMain.java[lines=15..39]
 ----
+
+See: link:src/main/java/org/wildfly/swarm/examples/config/projectStage/ProjectStageMain.java#L15[ProjectStageMain.java]

@@ -79,6 +79,8 @@ configure the container and deploy the resources programatically.
 include::src/main/java/org/wildfly/swarm/examples/jaxrs/swagger/Main.java[lines=12..29]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/jaxrs/swagger/Main.java#L12[Main.java]
+
 This method constructs a new default Swarm container, which automatically
 initializes all fractions (or subsystems) that are available.
 
@@ -123,6 +125,8 @@ In our example, we annotate the JAX-RS resource as so:
 ----
 include::src/main/java/org/wildfly/swarm/examples/jaxrs/swagger/TimeResource.java[lines=12..27]
 ----
+
+See: link:src/main/java/org/wildfly/swarm/examples/jaxrs/swagger/TimeResource.java#L12[TimeResource.java]
 
 By pointing your browser at http://localhost:8080/swagger.json you should see the
 API documented similar to this.

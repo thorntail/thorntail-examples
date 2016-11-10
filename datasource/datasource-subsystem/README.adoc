@@ -97,6 +97,8 @@ configure the container and deploy the resources programatically.
 include::src/main/java/org/wildfly/swarm/examples/ds/subsystem/Main.java[lines=11..95]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/ds/subsystem/Main.java#L11[Main.java]
+
 This method constructs a new default Swarm, which automatically
 initializes all fractions (or subsystems) that are available.  The datasources
 fraction has no particular default configuration, so by providing a
@@ -117,6 +119,7 @@ The resource looks up the Datasource through JNDI at run-time:
 include::src/main/java/org/wildfly/swarm/examples/ds/subsystem/MyResource.java[lines=17..32]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/ds/subsystem/MyResource.java#L17[MyResource.java]
 
 == Run
 

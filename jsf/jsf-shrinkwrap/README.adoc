@@ -65,6 +65,8 @@ configure the container and deploy the resources programatically.
 include::src/main/java/org/wildfly/swarm/examples/jsf/shrinkwrap/Main.java[lines=13..36]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/jsf/shrinkwrap/Main.java#L13[Main.java]
+
 This method constructs a new default Swarm container, which automatically
 initializes all fractions (or subsystems) that are available.
 

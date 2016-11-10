@@ -68,6 +68,8 @@ Since this project deploys RAR resources, it provides its own `main()` method  t
 include::src/main/java/org/wildfly/swarm/examples/rar/deployment/Main.java[lines=19..40]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/rar/deployment/Main.java#L19[Main.java]
+
 This method constructs a new default Swarm container, which automatically
 initializes all fractions (or subsystems) that are available.  
 
@@ -84,6 +86,8 @@ The resource is injected on run-time:
 ----
 include::src/main/java/org/wildfly/swarm/examples/rar/deployment/FileIOBean.java[lines=9..23]
 ----
+
+See: link:src/main/java/org/wildfly/swarm/examples/rar/deployment/FileIOBean.java#L9[FileIOBean.java]
 
 == Run
 

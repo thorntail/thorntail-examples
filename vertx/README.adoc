@@ -27,6 +27,8 @@ Usage:
 include::src/main/java/org/wildfly/swarm/examples/vertx/MyEndpoint.java[lines=20..30]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/vertx/MyEndpoint.java#L20[MyEndpoint.java]
+
 * NOTE: as with any JCA resource, always call the close() method when your work is complete to allow the connection to be returned to the pool. This will *not* close the underly Vert.x instance. Please see the JCA specification for my details.
 
 == Inbound Connectivity
@@ -39,3 +41,5 @@ The endpoint of the MDB implements interface: <b>io.vertx.resourceadapter.inflow
 ----
 include::src/main/java/org/wildfly/swarm/examples/vertx/MyListener.java[lines=13..25]
 ----
+
+See: link:src/main/java/org/wildfly/swarm/examples/vertx/MyListener.java#L13[MyListener.java]
