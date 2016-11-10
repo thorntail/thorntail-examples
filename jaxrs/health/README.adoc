@@ -68,6 +68,8 @@ configure the container and deploy the resources programatically.
 include::src/main/java/org/wildfly/swarm/examples/jaxrs/health/Main.java[lines=15..42]
 ----
 
+See: link:src/main/java/org/wildfly/swarm/examples/jaxrs/health/Main.java#L15[Main.java]
+
 This method constructs a new default Container, and
 adds the monitoring and management fractions that provide the /health endpoints and security to them.
 
@@ -79,6 +81,8 @@ In our example, we annotate the JAX-RS resource to be exposed as a health endpoi
 ----
 include::src/main/java/org/wildfly/swarm/examples/jaxrs/health/HealthCheckResource.java[lines=14..22]
 ----
+
+See: link:src/main/java/org/wildfly/swarm/examples/jaxrs/health/HealthCheckResource.java#L14[HealthCheckResource.java]
 
 By pointing your browser at http://localhost:8080/health you should be prompted for credentials (see security domain setup) and
 be able to retrieve the health response.
