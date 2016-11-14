@@ -24,11 +24,10 @@ import org.wildfly.swarm.mail.MailFraction;
 
 public class Main {
     public static void main(String... args) throws Exception {
-        MailFraction fraction = MailFraction.defaultFraction();
         Swarm swarm = new Swarm();
 
         // Configure mock mail server SMTP session
-        swarm.fraction(fraction.smtpServer("greenmail", s -> s.host("localhost").port("10110").username("user1@localhost").password("password")));
+        swarm.fraction(new MailFraction().smtpServer("greenmail", s -> s.host("localhost").port(10110).username("user1@localhost").password("password")));
 
         // Deploy mock mail server
         swarm.start(true);
