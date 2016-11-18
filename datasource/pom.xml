@@ -24,7 +24,6 @@
 
 
   <modules>
-    <module>datasource-deployment</module>
     <module>datasource-subsystem</module>
     <module>datasource-war</module>
   </modules>
