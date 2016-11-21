@@ -51,8 +51,9 @@
       <artifactId>flyway</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.wildfly.swarm</groupId>
+      <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
+      <version>1.4.187</version>
     </dependency>
   </dependencies>
 
