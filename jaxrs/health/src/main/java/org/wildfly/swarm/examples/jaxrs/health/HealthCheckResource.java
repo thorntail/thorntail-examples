@@ -1,6 +1,7 @@
 package org.wildfly.swarm.examples.jaxrs.health;
 
 import java.io.File;
+import java.util.Date;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,17 +16,40 @@ public class HealthCheckResource {
     @Path("/health")
     @Health
     public HealthStatus checkDiskspace() {
-        File path = new File(".");
+
+          File path = new File(System.getProperty("user.home"));
         long freeBytes = path.getFreeSpace();
         long threshold = 1024 * 1024 * 100; // 100mb
-        return freeBytes>threshold ? HealthStatus.up() : HealthStatus.down().withAttribute("freebytes", freeBytes);
+        return freeBytes>threshold ?
+                HealthStatus.
+                        named("diskspace")
+                        .up()
+                        .withAttribute("freebytes", freeBytes) :
+                HealthStatus.
+                        named("diskspace")
+                        .down()
+                        .withAttribute("freebytes", freeBytes);
     }
 
     @GET
     @Path("/second-health")
-    @Health(inheritSecurity = false)
+    @Health
     public HealthStatus checkSomethingElse() {
-        return HealthStatus.up();
+
+        int tipping = (int) Math.ceil(Math.random() * 100);
+
+        if(tipping>50) {
+            return HealthStatus
+                    .named("something-else")
+                    .up()
+                    .withAttribute("date", new Date().toString())
+                    .withAttribute("time", System.currentTimeMillis());
+        } else {
+
+            return HealthStatus
+                    .named("seomthing-else")
+                    .down();
+        }
     }
 
 }

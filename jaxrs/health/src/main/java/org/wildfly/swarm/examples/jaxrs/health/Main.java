@@ -27,14 +27,16 @@ public class Main {
         swarm
                 .fraction(LoggingFraction.createDefaultLoggingFraction())
                 .fraction(new MonitorFraction().securityRealm("ManagementRealm"))
-                .fraction(new ManagementFraction()
-                        .securityRealm("ManagementRealm", (realm) -> {
-                            realm.inMemoryAuthentication((authn) -> {
-                                authn.add(new Properties() {{
-                                    put("admin", "password");
-                                }}, true);
-                            });
-                            realm.inMemoryAuthorization();
+                .fraction(ManagementFraction
+                        .createDefaultFraction()
+                                  .httpInterfaceManagementInterface()
+                                  .securityRealm("ManagementRealm", (realm) -> {
+                                      realm.inMemoryAuthentication((authn) -> {
+                                          authn.add(new Properties() {{
+                                              put("admin", "password");
+                                          }}, true);
+                                      });
+                                      realm.inMemoryAuthorization();
                         }))
                 .start()
                 .deploy(deployment);
