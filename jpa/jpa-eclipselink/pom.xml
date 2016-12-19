@@ -69,5 +69,9 @@
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jpa-eclipselink</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>undertow</artifactId>
+    </dependency>
   </dependencies>
 </project>
