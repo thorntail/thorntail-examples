@@ -26,7 +26,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-camel</artifactId>
-    <version>2017.1.0-SNAPSHOT</version>
+    <version>2017.2-SNAPSHOT</version>
   </parent>
 
   <name>Wildfly Swarm Examples: Camel Mail</name>
