@@ -2,7 +2,6 @@ package org.wildfly.swarm.examples.netflix.ribbon.frontend;
 
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.wildfly.swarm.Swarm;
-import org.wildfly.swarm.container.Container;
 import org.wildfly.swarm.jgroups.JGroupsFraction;
 import org.wildfly.swarm.undertow.WARArchive;
 
