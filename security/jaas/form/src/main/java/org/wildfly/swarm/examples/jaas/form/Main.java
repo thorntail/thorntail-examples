@@ -46,7 +46,7 @@ public class Main {
 
         swarm.start();
 
-        WARArchive deployment = ShrinkWrap.create(WARArchive.class);
+        WARArchive deployment = ShrinkWrap.create(WARArchive.class, "app.war");
         deployment.addPackage(Main.class.getPackage());
 
         deployment.addAsWebInfResource(new ClassLoaderAsset("META-INF/persistence.xml", Main.class.getClassLoader()), "classes/META-INF/persistence.xml");
@@ -56,19 +56,6 @@ public class Main {
         deployment.addAsWebResource(new ClassLoaderAsset("login_error.jsp", Main.class.getClassLoader()), "login_error.jsp");
 
         deployment.addAsWebInfResource(new ClassLoaderAsset("WEB-INF/views/employees.jsp", Main.class.getClassLoader()), "views/employees.jsp");
-
-        // Builder for web.xml and jboss-web.xml
-        WebXmlAsset webXmlAsset = deployment.findWebXmlAsset();
-        webXmlAsset.setFormLoginConfig("my-realm", "/login.jsp", "/login_error.jsp");
-        webXmlAsset.protect("/*")
-                .withMethod("GET", "POST")
-                .withRole("admin");
-
-        deployment.setSecurityDomain("my-domain");
-
-        // Or, you can add web.xml and jboss-web.xml from classpath or somewhere
-        // deployment.addAsWebInfResource(new ClassLoaderAsset("WEB-INF/web.xml", Main.class.getClassLoader()), "web.xml");
-        // deployment.addAsWebInfResource(new ClassLoaderAsset("WEB-INF/jboss-web.xml", Main.class.getClassLoader()), "jboss-web.xml");
 
         swarm.deploy(deployment);
     }

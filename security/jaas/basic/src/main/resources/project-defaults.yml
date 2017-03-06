@@ -1,10 +1,11 @@
 swarm:
   deployment:
-    example-keycloak.war:
+    app.war:
       web:
         login-config:
-          auth-method: KEYCLOAK
+          auth-method: BASIC
+          security-domain: my-domain
         security-constraints:
-          - url-pattern: /secured
+          - url-pattern: /*
             methods: [GET]
             roles: [admin]
