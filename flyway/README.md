@@ -44,7 +44,7 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
 ## Use
 
-Watch the console the following meessages.
+Watch the console the following messages.
 
     2016-10-24 13:38:50,547 INFO  [org.flywaydb.core.internal.util.VersionPrinter] (ServerService Thread Pool -- 11) Flyway 4.0.3 by Boxfuse
     2016-10-24 13:38:50,742 INFO  [org.flywaydb.core.internal.dbsupport.DbSupportFactory] (ServerService Thread Pool -- 11) Database: jdbc:h2:mem:test (H2 1.4)
