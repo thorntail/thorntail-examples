@@ -14,7 +14,7 @@ public class MSCApplicationIT extends AbstractIntegrationTest {
     @Test
     public void testIt() throws Exception {
         Thread.sleep( 3000 );
-        Log log = getStdErrLog();
+        Log log = getStdOutLog();
 
         assertThatLog( log ).hasLineContaining( "Hi #1" );
         assertThatLog( log ).hasLineContaining( "Hi #2" );
