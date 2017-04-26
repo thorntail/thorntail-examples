@@ -31,7 +31,7 @@ public class Main {
         swarm.deploy(rarArchive);
 
         final JARArchive appDeployment = ShrinkWrap.create(JARArchive.class);
-        appDeployment.merge(Swarm.artifact("net.java.xadisk:xadisk:jar:1.2.2"));
+        appDeployment.addModule("deployment.xadisk.rar");
         appDeployment.addClass(FileIOBean.class);
 
         // Deploy your app
