@@ -2,11 +2,13 @@ package org.wildfly.swarm.examples.rar.deployment;
 
 import javax.annotation.Resource;
 import javax.annotation.Resource.AuthenticationType;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 
 import org.xadisk.connector.outbound.XADiskConnectionFactory;
 
-@Stateless
+@Singleton
+@Startup
 public class FileIOBean {
  
     @Resource(
