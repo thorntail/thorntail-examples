@@ -12,6 +12,11 @@
 
   <artifactId>examples-zipkin-jaxrs</artifactId>
 
+  <name>WildFly Swarm Examples: JAX-RS with Zipkin tracing</name>
+  <description>WildFly Swarm Examples: JAX-RS with Zipkin tracing</description>
+
+  <packaging>war</packaging>
+
   <dependencies>
     <!-- Java EE 7 dependency -->
     <dependency>
@@ -32,15 +37,15 @@
       <plugin>
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
-        <configuration>
-          <mainClass>org.wildfly.swarm.examples.zipkin.Main</mainClass>
-          <!--<debug>5005</debug>-->
-        </configuration>
         <executions>
           <execution>
-            <goals>
-              <goal>package</goal>
-            </goals>
+            <id>package</id>
+          </execution>
+          <execution>
+            <id>start</id>
+          </execution>
+          <execution>
+            <id>stop</id>
           </execution>
         </executions>
       </plugin>
