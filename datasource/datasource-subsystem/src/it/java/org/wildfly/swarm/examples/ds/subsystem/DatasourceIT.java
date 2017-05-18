@@ -27,6 +27,6 @@ public class DatasourceIT extends AbstractIntegrationTest {
 
 
         browser.navigate().to("http://localhost:8080/");
-        assertThat(browser.getPageSource()).contains("Howdy using connection: org.jboss.jca.adapters.jdbc.jdk7.WrappedConnectionJDK7" );
+        assertThat(browser.getPageSource()).matches(".*(Howdy using connection: org.jboss.jca.adapters.jdbc.jdk)(7|8)(.WrappedConnectionJDK)(7|8)\\@[a-zA-Z\\d]+.*");
     }
 }
