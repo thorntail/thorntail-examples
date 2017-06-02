@@ -10,7 +10,7 @@
 
   <groupId>org.wildfly.swarm.examples</groupId>
   <artifactId>examples-parent</artifactId>
-  <version>2017.6.0-SNAPSHOT</version>
+  <version>2017.6.0</version>
 
   <name>WildFly Swarm Examples: Parent</name>
   <description>WildFly Swarm Examples: Parent</description>
