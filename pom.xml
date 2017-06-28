@@ -290,6 +290,7 @@
     <module>ribbon-secured</module>
 -->
     <module>logstash</module>
+    <module>opentracing</module>
 
   </modules>
 
