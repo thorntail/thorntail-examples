@@ -1,0 +1,34 @@
+
+swarm:
+  jgroups:
+    stacks:
+      udp:
+        transports:
+          UDP:
+            socket-binding: jgroups-udp
+        protocols:
+          TCP:
+            properties:
+              bind_port: 9090
+          TCPPING:
+            properties:
+              initial_hosts: "localhost[9090],localhost[9091],localhost[9092],localhost[9093]"
+              port_range: 4
+          FD_SOCK:
+            socket-binding: jgroups-udp-fd
+          FD_ALL:
+          VERIFY_SUSPECT:
+          pbcast.NAKACK2:
+          UNICAST3:
+          pbcast.STABLE:
+          pbcast.GMS:
+            properties:
+              join_timeout: 3000
+          UFC:
+          MFC:
+          FRAG2:
+          RSVP:
+    channels:
+      swarm-jgroups:
+        stack: udp
+    default-channel: swarm-jgroups
