@@ -116,16 +116,19 @@
       <groupId>org.wildfly.swarm.examples</groupId>
       <artifactId>example-ribbon-frontend</artifactId>
       <version>${project.version}</version>
+      <type>war</type>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>
       <artifactId>example-ribbon-time</artifactId>
       <version>${project.version}</version>
+      <type>war</type>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>
       <artifactId>example-ribbon-events</artifactId>
       <version>${project.version}</version>
+      <type>war</type>
     </dependency>
   </dependencies>
 

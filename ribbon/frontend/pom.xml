@@ -20,7 +20,7 @@
   <name>WildFly Swarm Examples: Netflix Ribbon: Front End</name>
   <description>WildFly Swarm Examples: Netflix Ribbon: Front End</description>
 
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <build>
     <plugins>
@@ -28,7 +28,9 @@
         <groupId>org.wildfly.swarm</groupId>
         <artifactId>wildfly-swarm-plugin</artifactId>
         <configuration>
+<!--
           <mainClass>org.wildfly.swarm.examples.netflix.ribbon.frontend.Main</mainClass>
+-->
           <properties>
             <swarm.bind.address>127.0.0.1</swarm.bind.address>
             <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>

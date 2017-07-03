@@ -16,9 +16,6 @@ create the runnable `.jar`.
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>wildfly-swarm-plugin</artifactId>
       <version>${version.wildfly-swarm}</version>
-      <configuration>
-        <mainClass>org.wildfly.swarm.examples.management.console.Main</mainClass>
-      </configuration>
       <executions>
         <execution>
           <goals>

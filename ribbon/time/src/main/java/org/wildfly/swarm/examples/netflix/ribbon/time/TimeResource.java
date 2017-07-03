@@ -40,11 +40,6 @@ public class TimeResource {
         t.put( "tz", d.getZone().getID() );
 
         return Response.ok(t, MediaType.APPLICATION_JSON_TYPE)
-                .header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-                .header("Access-Control-Allow-Credentials", "true")
-                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD, undefined")
-                .header("Access-Control-Max-Age", "1209600")
                 .entity(t)
                 .build();
     }
@@ -54,11 +49,6 @@ public class TimeResource {
     public Response options() {
         System.out.println( "Time pre-flight" );
         return Response.ok("")
-                .header("Access-Control-Allow-Origin", "*")
-                .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-                .header("Access-Control-Allow-Credentials", "true")
-                .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD, undefined")
-                .header("Access-Control-Max-Age", "1209600")
                 .build();
     }
 }
