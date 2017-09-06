@@ -10,7 +10,7 @@
   <parent>
     <artifactId>examples-docker</artifactId>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <version>2017.10.0-SNAPSHOT</version>
+    <version>2017.9.4</version>
     <relativePath>../</relativePath>
   </parent>
   <modelVersion>4.0.0</modelVersion>
