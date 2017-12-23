@@ -42,7 +42,7 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
 ## Run
 
-    java -jar ./target/example-arjuna-shrinkwrap-swarm.jar
+    java -jar ./target/example-arjuna-swarm.jar
 
 ## Use
 
@@ -77,4 +77,24 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
     You should get something like the following in your browser ...
 
-    Nested transaction  BasicAction: 0:ffffac1c8001:-315e47ea:567ed60e:19 status: ActionStatus.RUNNING started!
+    Transaction begun ok and rolled back ok
+
+    Now let's try something which isn't typically supported in Java EE applications ... Nested Transactions! Yes, you can have an arbitrarily nested transaction hierarchy and even if child transactions commit, their work will still be undone (aborted) if an enclosing parent transaction later rolls back. Likewise, the impact of aborting a child transaction does not have to impact the outcome of a parent transaction.
+
+    So go to your browser and try ...
+
+    http://localhost:8080/nestedChildCommit
+
+    You should see something like ...
+
+    Nested transaction  BasicAction: 0:ffffc0a80102:-71b7e35b:5a3e32e2:e status: ActionStatus.RUNNING started!
+    Child and parent committed ok!
+
+    Let's try to abort the child transaction whilst still committing the parent. So go to ...
+
+    http://localhost:8080/nestedChildAbort
+
+    And you should see ...
+
+    Nested transaction  BasicAction: 0:ffffc0a80102:-71b7e35b:5a3e32e2:12 status: ActionStatus.RUNNING started!
+    Child aborted and parent still committed ok!
