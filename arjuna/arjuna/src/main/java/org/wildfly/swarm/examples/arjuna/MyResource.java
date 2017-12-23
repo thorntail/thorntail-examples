@@ -29,6 +29,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import com.arjuna.ats.arjuna.AtomicAction;
+import com.arjuna.ats.arjuna.TopLevelAction;
 import com.arjuna.ats.arjuna.common.Uid;
 import com.arjuna.ats.arjuna.common.arjPropertyManager;
 import com.arjuna.ats.arjuna.coordinator.CheckedAction;
@@ -216,6 +217,56 @@ public class MyResource {
 		txn.commit();
 
 		value += "\nChild aborted and parent still committed ok!";
+	    }
+	    catch (final Throwable ex)
+	    {
+	    }
+	}
+	catch (final Throwable ex)
+	{
+	    value += "failed!";
+
+	    txn.commit(); // laziness but should have a try/catch here too
+        }
+
+        return value;
+    }
+
+    @Path("nestedTopLevelCommit")
+    @GET
+    @Produces("text/plain")
+    public String nestedTopLevelCommit() throws Exception {
+	AtomicAction txn = new AtomicAction();
+	String value = "Nested transaction ";
+
+	try
+	{
+	    txn.begin();
+
+	    AtomicAction txn2 = new AtomicAction();
+
+	    txn2.begin();
+
+	    value += " " + txn2+" started!";
+
+	    TopLevelAction tla = new TopLevelAction();
+	    
+	    try
+	    {
+		tla.begin();
+
+		value += "\nNested top-level action started "+tla;
+		
+		// do some work
+
+		tla.commit();
+
+		value += "\nNested top-level action committed ok!";
+		
+		txn2.abort();
+		txn.commit();
+
+		value += "\nChild nested action aborted and parent still committed ok!";
 	    }
 	    catch (final Throwable ex)
 	    {

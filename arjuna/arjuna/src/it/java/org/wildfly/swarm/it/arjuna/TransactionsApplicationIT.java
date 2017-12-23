@@ -53,5 +53,11 @@ public class TransactionsApplicationIT extends AbstractIntegrationTest {
     public void testNestedChildAbort() {
         browser.navigate().to("http://localhost:8080/nestedChildAbort");
         assertThat(browser.getPageSource()).contains("Child aborted and parent still committed ok!");
-    }    
+    }
+
+    @Test
+    public void testNestedTopLevelCommit() {
+        browser.navigate().to("http://localhost:8080/nestedTopLevelCommit");
+        assertThat(browser.getPageSource()).contains("Nested top-level action committed ok!");
+    }
 }

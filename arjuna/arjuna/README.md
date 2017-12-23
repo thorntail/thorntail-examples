@@ -90,3 +90,22 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
     Nested transaction  BasicAction: 0:ffffc0a80102:-71b7e35b:5a3e32e2:12 status: ActionStatus.RUNNING started!
     Child aborted and parent still committed ok!
+
+    Following on from the nested transaction concept we also have what are often called nested top-level transactions. Basically a
+    nested top-level transaction can be created anywhere within a transaction hierarchy and it will always be treated as an independent
+    transaction such that if it is created and then committed within a nested context, the results are not rolled back if the enclosing
+    transaction subsequently decides to abort.
+
+    Give it a go by trying ...
+
+    http://localhost:8080/nestedTopLevelCommit
+
+    And you should see something like ...
+
+    Nested transaction  BasicAction: 0:ffffc0a80102:-71ab9d5e:5a3e6477:10 status: ActionStatus.RUNNING started!
+    Nested top-level action started BasicAction: 0:ffffc0a80102:-71ab9d5e:5a3e6477:11 status: ActionStatus.RUNNING
+    Nested top-level action committed ok!
+    Child nested action aborted and parent still committed ok!
+
+    We'll leave it as an exercise to the reader to figure out what an abort of a nested top-level transaction in this case
+    might generate.
