@@ -26,6 +26,13 @@ public class TransactionsApplicationIT extends AbstractIntegrationTest {
 
     @Test
     public void testBeginCommit() {
+        browser.navigate().to("http://localhost:8080/atomicaction");
+        assertThat(browser.getPageSource()).contains("Begin BasicAction");
+	assertThat(browser.getPageSource()).contains("Committed BasicAction");
+    }
+
+    @Test
+    public void testBeginCommit() {
         browser.navigate().to("http://localhost:8080/begincommit");
         assertThat(browser.getPageSource()).contains("Transaction begun ok and committed ok" );
     }
@@ -35,4 +42,16 @@ public class TransactionsApplicationIT extends AbstractIntegrationTest {
         browser.navigate().to("http://localhost:8080/beginrollback");
         assertThat(browser.getPageSource()).contains("Transaction begun ok and rolled back ok" );
     }
+
+    @Test
+    public void testNestedChildCommit() {
+        browser.navigate().to("http://localhost:8080/nestedChildCommit");
+        assertThat(browser.getPageSource()).contains("Child and parent committed ok!");
+    }
+
+    @Test
+    public void testNestedChildAbort() {
+        browser.navigate().to("http://localhost:8080/nestedChildAbort");
+        assertThat(browser.getPageSource()).contains("Child aborted and parent still committed ok!");
+    }    
 }
