@@ -155,10 +155,10 @@ public class MyResource {
         return value;
     }
 
-    @Path("nested")
+    @Path("nestedChildCommit")
     @GET
     @Produces("text/plain")
-    public String nested() throws Exception {
+    public String nestedChildCommit() throws Exception {
 	AtomicAction txn = new AtomicAction();
 	String value = "Nested transaction ";
 
@@ -176,6 +176,46 @@ public class MyResource {
 	    {
 		txn2.commit();
 		txn.commit();
+
+		value += "\nChild and parent committed ok!";
+	    }
+	    catch (final Throwable ex)
+	    {
+	    }
+	}
+	catch (final Throwable ex)
+	{
+	    value += "failed!";
+
+	    txn.commit(); // laziness but should have a try/catch here too
+        }
+
+        return value;
+    }
+
+    @Path("nestedChildAbort")
+    @GET
+    @Produces("text/plain")
+    public String nestedChildAbort() throws Exception {
+	AtomicAction txn = new AtomicAction();
+	String value = "Nested transaction ";
+
+	try
+	{
+	    txn.begin();
+
+	    AtomicAction txn2 = new AtomicAction();
+
+	    txn2.begin();
+
+	    value += " " + txn2+" started!";
+
+	    try
+	    {
+		txn2.abort();
+		txn.commit();
+
+		value += "\nChild aborted and parent still committed ok!";
 	    }
 	    catch (final Throwable ex)
 	    {
