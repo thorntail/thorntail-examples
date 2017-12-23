@@ -25,7 +25,7 @@ public class TransactionsApplicationIT extends AbstractIntegrationTest {
     }
 
     @Test
-    public void testBeginCommit() {
+    public void testAtomicAction() {
         browser.navigate().to("http://localhost:8080/atomicaction");
         assertThat(browser.getPageSource()).contains("Begin BasicAction");
 	assertThat(browser.getPageSource()).contains("Committed BasicAction");
