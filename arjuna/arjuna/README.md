@@ -63,14 +63,6 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
     Transaction begun ok and committed ok
 
-    Next ...
-
-    http://localhost:8080/beginrollback
-
-    Should give you the following in the browser ...
-
-    Transaction begun ok and committed ok
-    
     Now try ...
 
     http://localhost:8080/beginrollback
