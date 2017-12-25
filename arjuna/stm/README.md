@@ -66,32 +66,15 @@ To define the needed parts of WildFly Swarm, a dependency is added
 
     In the browser you should see something like ...
 
-Object name: 0:ffffac1c8001:a3d6627:567f024a:b
-
-Transaction value hello11
-
-Transaction value hello12
-
-Transaction value hello13
-
-Transaction value hello14
-
-Transaction value hello15
-
-Transaction value hello16
-
-Transaction value hello17
-
-Transaction value hello18
-
-Transaction value hello19
-
-Transaction value hello20
-
-Note that depending upon which version of Narayana STM you're using, you may see some warnings like the following in the console ...
-
-2015-12-26 21:00:32,498 WARN  [com.arjuna.ats.arjuna] (default task-1) ARJUNA012281: ShadowingStore::read_state() - no type name given for object state 0:ffffac1c8001:-62da914f:567effe8:b
-
-You can safely ignore them as they're due to a known issue in some versions of Narayana ...
-
-https://issues.jboss.org/browse/JBTM-2592
+Object name: 0:ffffc0a80102:-48ffece4:5a3fb241:d
+Transactional object value initially 10
+Transactional object value incremented to 11
+Transactional object value incremented to 12
+Transactional object value incremented to 13
+Transactional object value incremented to 14
+Transactional object value incremented to 15
+Transactional object value incremented to 16
+Transactional object value incremented to 17
+Transactional object value incremented to 18
+Transactional object value incremented to 19
+Transactional object value incremented to 20
