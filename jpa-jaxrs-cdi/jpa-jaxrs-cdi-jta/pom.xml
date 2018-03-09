@@ -11,7 +11,7 @@
   <parent>
     <artifactId>examples-jpa-jaxrs-cdi-parent</artifactId>
     <groupId>org.wildfly.swarm.examples</groupId>
-    <version>2018.3.0-SNAPSHOT</version>
+    <version>2018.3.3</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
