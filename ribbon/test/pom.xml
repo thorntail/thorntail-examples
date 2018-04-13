@@ -113,18 +113,21 @@
       <artifactId>example-ribbon-frontend</artifactId>
       <version>${project.version}</version>
       <classifier>swarm</classifier>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>
       <artifactId>example-ribbon-time</artifactId>
       <version>${project.version}</version>
       <classifier>swarm</classifier>
+      <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>
       <artifactId>example-ribbon-events</artifactId>
       <version>${project.version}</version>
       <classifier>swarm</classifier>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
 
