@@ -53,12 +53,19 @@
 
   <dependencies>
     <dependency>
+      <groupId>org.wildfly.swarm.examples</groupId>
+      <artifactId>examples-base</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>topology-jgroups</artifactId>
     </dependency>
   </dependencies>
 
   <modules>
+    <module>frontend</module>
+    <module>time</module>
+    <module>events</module>
     <module>test</module>
   </modules>
 </project>

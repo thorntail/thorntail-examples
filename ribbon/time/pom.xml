@@ -33,6 +33,13 @@
             <java.net.preferIPv4Stack>true</java.net.preferIPv4Stack>
           </properties>
         </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
