@@ -278,8 +278,8 @@
     <module>opentracing</module>
     <module>jaeger</module>
     <module>ribbon</module>
-    <module>ribbon-consul</module>
     <!--
+    <module>ribbon-consul</module>
     <module>ribbon-secured</module>
     <module>gradle</module>
     <module>kitchensink-html5-mobile</module>

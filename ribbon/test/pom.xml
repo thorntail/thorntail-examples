@@ -114,6 +114,7 @@
       <version>${project.version}</version>
       <classifier>swarm</classifier>
       <scope>runtime</scope>
+      <type>jar</type>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>
@@ -121,6 +122,7 @@
       <version>${project.version}</version>
       <classifier>swarm</classifier>
       <scope>runtime</scope>
+      <type>jar</type>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>
@@ -128,6 +130,7 @@
       <version>${project.version}</version>
       <classifier>swarm</classifier>
       <scope>runtime</scope>
+      <type>jar</type>
     </dependency>
   </dependencies>
 
