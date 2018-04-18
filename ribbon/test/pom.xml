@@ -110,32 +110,28 @@
   <dependencies>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>
-      <artifactId>examples-base</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.wildfly.swarm.examples</groupId>
       <artifactId>example-ribbon-frontend</artifactId>
       <version>${project.version}</version>
-      <type>war</type>
+      <classifier>swarm</classifier>
+      <scope>runtime</scope>
+      <type>jar</type>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>
       <artifactId>example-ribbon-time</artifactId>
       <version>${project.version}</version>
-      <type>war</type>
+      <classifier>swarm</classifier>
+      <scope>runtime</scope>
+      <type>jar</type>
     </dependency>
     <dependency>
       <groupId>org.wildfly.swarm.examples</groupId>
       <artifactId>example-ribbon-events</artifactId>
       <version>${project.version}</version>
-      <type>war</type>
+      <classifier>swarm</classifier>
+      <scope>runtime</scope>
+      <type>jar</type>
     </dependency>
   </dependencies>
-
-  <modules>
-    <module>../frontend</module>
-    <module>../events</module>
-    <module>../time</module>
-  </modules>
 
 </project>

@@ -1,5 +1,9 @@
 
 swarm:
+  deployment:
+    example-ribbon-frontend.war:
+      jaxrs:
+        application-path: /
   network:
     socket-binding-groups:
       standard-sockets:
