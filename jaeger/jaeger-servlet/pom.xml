@@ -11,7 +11,7 @@
   <parent>
     <groupId>org.wildfly.swarm.examples</groupId>
     <artifactId>examples-jaeger-parent</artifactId>
-    <version>2018.5.0-SNAPSHOT</version>
+    <version>2018.5.0</version>
     <relativePath>../</relativePath>
   </parent>
 
