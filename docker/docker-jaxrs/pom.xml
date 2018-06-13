@@ -95,14 +95,14 @@
                       <inline>
                         <files>
                           <file>
-                            <source>${project.build.directory}/${project.artifactId}-swarm.jar</source>
+                            <source>${project.build.directory}/${project.artifactId}-thorntail.jar</source>
                             <outputDirectory>/opt</outputDirectory>
                           </file>
                         </files>
                       </inline>
                     </assembly>
                     <entryPoint>
-                      <shell>java -jar /opt/${project.artifactId}-swarm.jar</shell>
+                      <shell>java -jar /opt/${project.artifactId}-thorntail.jar</shell>
                     </entryPoint>
                   </build>
                 </image>
