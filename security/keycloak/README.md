@@ -3,7 +3,7 @@
 Simple JAX-RS application with Keycloak example.
 
 > Please raise any issues found with this example in our JIRA:
-> https://issues.jboss.org/browse/SWARM
+> https://issues.jboss.org/browse/THORN
 
 This example shows how the command-line and browser clients can access a JAX-RS service
 secured by Keycloak.
