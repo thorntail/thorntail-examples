@@ -26,5 +26,6 @@
     <module>jaas</module>
     <module>keycloak</module>
     <module>keycloak-multitenancy</module>
+    <module>jose</module>
   </modules>
 </project>
