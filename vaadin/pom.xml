@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ Copyright 2015 Red Hat, Inc. and/or its affiliates.
-  ~
-  ~ Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
-  -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -15,78 +11,15 @@
     <relativePath>../</relativePath>
   </parent>
 
-  <artifactId>example-vaadin</artifactId>
 
-  <name>Thorntail Examples: CDI and Vaadin</name>
-  <description>Thorntail Examples: CDI and Vaadin</description>
+  <artifactId>examples-vaadin</artifactId>
+  <name>Thorntail Examples: Vaadin</name>
 
-  <packaging>war</packaging>
-  
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>io.thorntail</groupId>
-        <artifactId>thorntail-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>package</id>
-          </execution>
-          <execution>
-            <id>start</id>
-          </execution>
-          <execution>
-            <id>stop</id>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-bom</artifactId>
-        <version>8.3.2</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <packaging>pom</packaging>
 
-  <dependencies>
-    <dependency>
-      <groupId>io.thorntail.examples</groupId>
-      <artifactId>examples-base</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-server</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-client-compiled</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-themes</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-cdi</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>javax.enterprise</groupId>
-      <artifactId>cdi-api</artifactId>
-      <version>1.2</version>
-      <scope>provided</scope>
-    </dependency>
-  </dependencies>
+  <modules>
+    <module>vaadin08</module>
+    <module>vaadin10</module>
+  </modules>
 
 </project>
