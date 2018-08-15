@@ -1,7 +1,7 @@
 # JAX-RS .war With Swagger Enabled Example
 
 This example takes a normal JAX-RS build, and wraps it into
-a `-swarm` runnable jar with `swagger` enabled on the resources.
+a `-thorntail` runnable jar with `swagger` enabled on the resources.
 
 > Please raise any issues found with this example in our JIRA:
 > https://issues.jboss.org/browse/THORN
@@ -19,7 +19,7 @@ create the runnable `.jar`.
     <plugin>
       <groupid>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
-      <version>${version.wildfly-swarm}</version>
+      <version>${version.thorntail}</version>
       <executions>
         <execution>
           <goals>
@@ -34,7 +34,7 @@ To define the needed parts of Thorntail, a dependency is added
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>jaxrs</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
 
 This dependency provides the JAX-RS APIs to your application, so the
@@ -46,7 +46,7 @@ within the Thorntail application `.jar`.
 
 ## Run
 
-* mvn package && java -jar ./target/example-jaxrs-war-swarm.jar
+* mvn package && java -jar ./target/example-jaxrs-war-thorntail.jar
 * mvn thorntail:run
 * From your IDE, run class `org.wildfly.swarm.Swarm`
 

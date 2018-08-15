@@ -65,11 +65,11 @@ In this example, it happens through the pact-jvm maven plugin (See `jaxrs-provid
 [INFO] 
 [INFO] --- pact-jvm-provider-maven_2.11:3.2.0:verify (verify-pacts) @ example-jaxrs-cdc-provider ---
 
-Loading pact files for provider MyProvider from /Users/hbraun/dev/prj/wildfly-swarm-examples/jaxrs/contract-based-testing/jaxrs-provider/src/pacts
+Loading pact files for provider MyProvider from /Users/hbraun/dev/prj/thorntail-examples/jaxrs/contract-based-testing/jaxrs-provider/src/pacts
 Found 1 pact files
 
 Verifying a pact between MyConsumer and MyProvider
-  [Using file /Users/hbraun/dev/prj/wildfly-swarm-examples/jaxrs/contract-based-testing/jaxrs-provider/src/pacts/MyConsumer-MyProvider.json]
+  [Using file /Users/hbraun/dev/prj/thorntail-examples/jaxrs/contract-based-testing/jaxrs-provider/src/pacts/MyConsumer-MyProvider.json]
   Given Consumer is FOOBAR
   A request to say Howdy
     returns a response which

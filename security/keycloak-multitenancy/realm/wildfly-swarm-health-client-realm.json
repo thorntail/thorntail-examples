@@ -1,6 +1,6 @@
 {
-  "id" : "wildfly-swarm-health-client",
-  "realm" : "wildfly-swarm-health-client",
+  "id" : "thorntail-health-client",
+  "realm" : "thorntail-health-client",
   "enabled" : true,
   "sslRequired" : "external",
   "roles" : {
@@ -28,12 +28,12 @@
   } ],
   "clientScopeMappings" : {
     "realm-management" : [ {
-      "client" : "wildfly-swarm-health-client",
+      "client" : "thorntail-health-client",
       "roles" : [ "health-admin" ]
     } ]
   },
   "clients" : [ {
-    "clientId" : "wildfly-swarm-health-client",
+    "clientId" : "thorntail-health-client",
     "enabled" : true,
     "directAccessGrantsEnabled" : true,
     "publicClient" : true

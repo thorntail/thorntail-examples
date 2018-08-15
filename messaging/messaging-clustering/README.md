@@ -15,7 +15,7 @@ create the runnable `.jar`.
     <plugin>
       <groupid>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
-      <version>${version.wildfly-swarm}</version>
+      <version>${version.thorntail}</version>
       <configuration>
         <mainClass>org.wildfly.swarm.examples.messaging.clustering.Main</mainClass>
       </configuration>
@@ -33,17 +33,17 @@ To define the needed parts of Thorntail, some dependencies are added
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>jaxrs</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>messaging</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>msc</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
 
 ## Project `main()`
@@ -67,7 +67,7 @@ MSC service-activator, which activates a service to consume messages.
     java -Djboss.messaging.cluster.password=mypassword \
        -Djava.net.preferIPv4Stack=true \
        -Dswarm.bind.address=127.0.0.1 \
-       -jar target/example-messaging-clustering-swarm.jar
+       -jar target/example-messaging-clustering-thorntail.jar
 
 * start a second server with:
 
@@ -75,7 +75,7 @@ MSC service-activator, which activates a service to consume messages.
         -Djava.net.preferIPv4Stack=true \
         -Dswarm.bind.address=127.0.0.1 \
         -Dswarm.port.offset=100 \
-        -jar target/example-messaging-clustering-swarm.jar
+        -jar target/example-messaging-clustering-thorntail.jar
 
 The `jboss.messaging.cluster.password` property is required to let only authenticated ActiveMQ nodes join the cluster.
 The second server is started with `swarm.port.offset=100` so that it opens its ports with an offset of 100 added to its configuration, i.e. its HTTP port is at 8180 (8080 + 100).

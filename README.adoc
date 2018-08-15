@@ -1,11 +1,11 @@
-= WildFly-Swarm Examples
+= thorntail Examples
 
 > Please raise any issues found with the examples in our JIRA:
 > https://issues.jboss.org/browse/SWARM
 
 == Thorntail
 
-This repository contains examples for the http://wildfly-swarm.io[Thorntail] project.
+This repository contains examples for the http://thorntail.io[Thorntail] project.
 
 It is currently listed as *alpha* release software, subject to massive, possibly-breaking,
 changes as we determine exactly how it should all hang together.
@@ -61,7 +61,7 @@ If you want to use our *snapshot* repository in your own projects, include this 
 ----
 
 To run the examples for a given release, please clone and checkout the particular Git tag
-or https://github.com/wildfly-swarm/wildfly-swarm-examples/releases[download from the releases].
+or https://github.com/thorntail/thorntail-examples/releases[download from the releases].
 
 == UberJar vs non
 

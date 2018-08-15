@@ -26,7 +26,7 @@ project does *not* need to specify those.
 
 You can run it many ways:
 
-* java -jar ./target/example-camel-cxf-jaxrs-swarm.jar
+* java -jar ./target/example-camel-cxf-jaxrs-thorntail.jar
 * mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.Swarm` class
 

@@ -10,7 +10,7 @@ docker run -d -p 9411:9411 openzipkin/zipkin
 ## Build & Run Example
 ```
 mvn clean package
-java -jar target/examples-zipkin-jaxrs-swarm.jar
+java -jar target/examples-zipkin-jaxrs-thorntail.jar
 ```
 
 ## Example Requests

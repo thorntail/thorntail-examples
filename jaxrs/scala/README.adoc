@@ -12,14 +12,14 @@ The project is a normal maven project with `jar` packaging, not `war`.
 <packaging>jar</packaging>
 ----
 
-The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
+The project adds a `<plugin>` to configure `thorntail-plugin` to
 create the runnable `.jar`.
 
 [source,xml]
 ----
 <plugin>
-  <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-plugin</artifactId>
+  <groupId>io.thorntail</groupId>
+  <artifactId>thorntail-plugin</artifactId>
   ....
 </plugin>
 ----
@@ -32,9 +32,9 @@ To define the needed parts of Thorntail, a dependency is added
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>jaxrs</artifactId>
-  <version>${version.wildfly-swarm}</version>
+  <version>${version.thorntail}</version>
 </dependency>
 ----
 
@@ -45,8 +45,8 @@ to providing the JAX-RS APIs.
 
 You can run this example many ways:
 
-* mvn package && java -jar ./target/example-scala-swarm.jar
-* mvn wildfly-swarm:run
+* mvn package && java -jar ./target/example-scala-thorntail.jar
+* mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.examples.scala.Main` class
 
 == Use

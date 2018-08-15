@@ -65,7 +65,7 @@ mvn clean package
 ### Start the example server
 
 ``` sh
-java -Dswarm.keycloak.json.path=classpath:cmd-client-keycloak.json -jar target/example-keycloak-swarm.jar
+java -Dswarm.keycloak.json.path=classpath:cmd-client-keycloak.json -jar target/example-keycloak-thorntail.jar
 ```
 
 ### Access the secured resource
@@ -81,7 +81,7 @@ You'll get the response with `401 Unauthorized`. Let's get a Token to access it.
 ``` sh
 USER=user1
 PASS=password1
-RESULT=`curl -s --data "grant_type=password&client_id=wildfly-swarm-cmd-client-example&username=${USER}&password=${PASS}" http://localhost:8180/auth/realms/wildfly-swarm-cmd-client/protocol/openid-connect/token`
+RESULT=`curl -s --data "grant_type=password&client_id=thorntail-cmd-client-example&username=${USER}&password=${PASS}" http://localhost:8180/auth/realms/thorntail-cmd-client/protocol/openid-connect/token`
 TOKEN=`echo $RESULT | sed 's/.*access_token":"//g' | sed 's/".*//g'`
 ```
 
@@ -100,7 +100,7 @@ You'll get the response which contains `Hi user1, this is Secured Resource`.
 Stop the example server if it is already running and start it with:
 
 ``` sh
-java -Dswarm.keycloak.json.path=classpath:browser-client-keycloak.json -jar target/example-keycloak-swarm.jar
+java -Dswarm.keycloak.json.path=classpath:browser-client-keycloak.json -jar target/example-keycloak-thorntail.jar
 ```
 
 ### Access the public client page

@@ -12,7 +12,7 @@ import javax.jws.WebService;
  * @author Yoshimasa Tanabe
  *
  */
-@WebService(targetNamespace = "http://wildfly-swarm.io/HelloWorld")
+@WebService(targetNamespace = "http://thorntail.io/HelloWorld")
 public interface HelloWorldService {
 
     /**

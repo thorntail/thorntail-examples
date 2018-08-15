@@ -7,7 +7,7 @@ This example shows how to add support for the Vert.x API in Java EE applications
 [source,xml]
 ----
 <dependency>
-    <groupId>org.wildfly.swarm</groupId>
+    <groupId>io.thorntail</groupId>
     <artifactId>vertx</artifactId>
 </dependency>
 ----

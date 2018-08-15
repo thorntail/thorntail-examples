@@ -67,7 +67,7 @@ Jaeger will be available at [http://localhost:16686](http://localhost:16686)
 
 You are now ready to run the example and have span data reported to Jaeger:
 
-* mvn package && java -jar ./target/example-jaeger-servlet-swarm.jar
+* mvn package && java -jar ./target/example-jaeger-servlet-thorntail.jar
 * mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.Swarm` class
 

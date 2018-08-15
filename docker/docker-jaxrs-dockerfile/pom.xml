@@ -68,7 +68,7 @@
              <resource>
                <targetPath>/</targetPath>
                <directory>${project.build.directory}</directory>
-               <include>${project.build.finalName}-swarm.jar</include>
+               <include>${project.build.finalName}-thorntail.jar</include>
              </resource>
           </resources>
         </configuration>

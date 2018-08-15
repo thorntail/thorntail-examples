@@ -60,7 +60,7 @@
         <configuration>
           <generator>
             <includes>
-              <include>wildfly-swarm</include>
+              <include>thorntail-v2</include>
             </includes>
             <config>
               <thorntail>

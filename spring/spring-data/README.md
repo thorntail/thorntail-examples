@@ -1,7 +1,7 @@
 # Spring Data .war Example
 
 This example takes a normal Spring and Spring Data build, and wraps it into
-a `-swarm` runnable jar.
+a `-thorntail` runnable jar.
 
 > Please raise any issues found with this example in our JIRA:
 > https://issues.jboss.org/browse/THORN
@@ -19,7 +19,7 @@ create the runnable `.jar`.
     <plugin>
       <groupid>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
-      <version>${version.wildfly-swarm}</version>
+      <version>${version.thorntail}</version>
       <executions>
         <execution>
           <goals>
@@ -34,12 +34,12 @@ To define the needed parts of Thorntail, the following dependencies are added
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>spring</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>jpa</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
 
 Thess dependencies provide the JPA APIs to your application, so the
@@ -53,7 +53,7 @@ within the Thorntail application `.jar`.
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/example-spring-data-swarm.jar
+* mvn package && java -jar ./target/example-spring-data-thorntail.jar
 * mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.Swarm` class
 

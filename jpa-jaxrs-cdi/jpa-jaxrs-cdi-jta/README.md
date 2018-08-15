@@ -1,7 +1,7 @@
 # JPA, JAX-RS, CDI and JTA with .war Example
 
 This example takes a normal JPA, JTA (transaction), CDI, JAX-RS build, and wraps it into
-a `-swarm` runnable jar.
+a `-thorntail` runnable jar.
 
 > Please raise any issues found with this example in our JIRA:
 > https://issues.jboss.org/browse/THORN
@@ -75,7 +75,7 @@ The `org.jboss.logging:jboss-logging` provides JBoss Logging required by observe
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/example-jpa-jaxrs-cdi-jta-swarm.jar
+* mvn package && java -jar ./target/example-jpa-jaxrs-cdi-jta-thorntail.jar
 * mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.Swarm` class
 

@@ -10,7 +10,7 @@ object Main extends App {
 
   val container = new Swarm()
 
-  val deployment = ShrinkWrap.create(classOf[JAXRSArchive], "scala-wildfly-swarm.war")
+  val deployment = ShrinkWrap.create(classOf[JAXRSArchive], "scala-thorntail.war")
   deployment.addClass(classOf[ScalaResource])
   deployment.addAllDependencies()
   container.start().deploy(deployment)

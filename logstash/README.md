@@ -27,7 +27,7 @@ docker run --rm -it \
 
 ``` sh
 mvn clean package
-java -jar target/examples-logstash-swarm.jar
+java -jar target/examples-logstash-thorntail.jar
 ```
 
 ## Example Requests

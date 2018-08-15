@@ -16,7 +16,7 @@ create the `.war`.
     <plugin>
       <groupid>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
-      <version>${version.wildfly-swarm}</version>
+      <version>${version.thorntail}</version>
       <executions>
         <execution>
           <phase>package</phase>
@@ -42,12 +42,12 @@ To define the needed parts of Thorntail, a dependency is added
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>jaxrs</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>transactions</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
 
 ## Build

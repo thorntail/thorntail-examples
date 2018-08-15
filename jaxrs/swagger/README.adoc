@@ -21,15 +21,15 @@ The project is a normal maven project with `jar` packaging, not `war`.
 <packaging>jar</packaging>
 ----
 
-The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
+The project adds a `<plugin>` to configure `thorntail-maven-plugin` to
 create the runnable `.jar`.
 
 [source,xml]
 ----
 <plugin>
-  <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-plugin</artifactId>
-  <version>${version.wildfly-swarm}</version>
+  <groupId>io.thorntail</groupId>
+  <artifactId>thorntail-maven-plugin</artifactId>
+  <version>${version.thorntail}</version>
   <executions>
     <execution>
       <goals>
@@ -45,9 +45,9 @@ To define the needed parts of Thorntail, dependencies are added
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>jaxrs</artifactId>
-  <version>${version.wildfly-swarm}</version>
+  <version>${version.thorntail}</version>
 </dependency>
 ----
 
@@ -59,7 +59,7 @@ For the swagger dependency, the `pom.xml` file needs
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>swagger</artifactId>
   <version>${project.version}</version>
 </dependency>
@@ -68,7 +68,7 @@ For the swagger dependency, the `pom.xml` file needs
 == Project `main()`
 
 Since this project deploys JAX-RS resources without a `.war` being constructed, it
-provides its own `main()` method (specified above via the `wildfly-swarm-plugin`) to
+provides its own `main()` method (specified above via the `thorntail-maven-plugin`) to
 configure the container and deploy the resources programatically.
 
 [source,java]
@@ -162,8 +162,8 @@ API documented similar to this.
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/example-jaxrs-swagger-swarm.jar
-* mvn wildfly-swarm:run
+* mvn package && java -jar ./target/example-jaxrs-swagger-thorntail.jar
+* mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.examples.jaxrs.swagger..Main` class
 
 == Use
@@ -180,11 +180,11 @@ To `GET` the API specification as a `swagger.json` document
 
 Download the latest Swarm Swagger-UI standalone server jar, for example, 2018.2.0 version:
 
-wget http://repo1.maven.org/maven2/org/wildfly/swarm/servers/swagger-ui/2018.2.0/swagger-ui-2018.2.0-swarm.jar .
+wget http://repo1.maven.org/maven2/org/wildfly/swarm/servers/swagger-ui/2018.2.0/swagger-ui-2018.2.0-thorntail.jar .
 
 and start it:
 
-java -Dswarm.http.port=8180 -jar swagger-ui-2018.2.0-swarm.jar
+java -Dswarm.http.port=8180 -jar swagger-ui-2018.2.0-thorntail.jar
 
 Go to 
 

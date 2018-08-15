@@ -19,7 +19,7 @@ create the runnable `.jar`.
     <plugin>
       <groupid>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
-      <version>${version.wildfly-swarm}</version>
+      <version>${version.thorntail}</version>
       <executions>
         <execution>
           <goals>
@@ -34,12 +34,12 @@ To define the needed parts of Thorntail, a dependency is added
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>flyway</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
 
 ## Run
 
-* `mvn package && java -jar ./target/example-flyway-swarm.jar`
+* `mvn package && java -jar ./target/example-flyway-thorntail.jar`
 * Or `mvn thorntail:run`
 
 ## Use

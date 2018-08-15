@@ -44,7 +44,7 @@
         <configuration>
           <gradleVersion>2.14.1</gradleVersion>
           <tasks>
-            <task>wildfly-swarm-package</task>
+            <task>thorntail-package</task>
           </tasks>
           <args>
             <arg>--stacktrace</arg>

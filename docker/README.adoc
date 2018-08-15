@@ -1,4 +1,4 @@
-= WildFly-Swarm and Docker
+= Thorntail and Docker
 
 These examples will only be built if you provide `-Pdocker` to the
 Maven command-line from the root, or build from this directory or lower.

@@ -4,5 +4,5 @@ require 'sinatra'
 # author helio frota
 
 get '/' do
-  "hail ! wildfly-swarm-jruby-sinatra !"
+  "hail ! thorntail-jruby-sinatra !"
 end

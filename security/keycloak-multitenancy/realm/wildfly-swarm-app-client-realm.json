@@ -1,6 +1,6 @@
 {
-  "id" : "wildfly-swarm-app-client",
-  "realm" : "wildfly-swarm-app-client",
+  "id" : "thorntail-app-client",
+  "realm" : "thorntail-app-client",
   "enabled" : true,
   "sslRequired" : "external",
   "roles" : {
@@ -28,12 +28,12 @@
   } ],
   "clientScopeMappings" : {
     "realm-management" : [ {
-      "client" : "wildfly-swarm-app-client",
+      "client" : "thorntail-app-client",
       "roles" : [ "app-admin" ]
     } ]
   },
   "clients" : [ {
-    "clientId" : "wildfly-swarm-app-client",
+    "clientId" : "thorntail-app-client",
     "enabled" : true,
     "directAccessGrantsEnabled" : true,
     "publicClient" : true

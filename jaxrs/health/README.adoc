@@ -11,15 +11,15 @@ so that the JAX-RS endpoints can securely expose health checks to service regist
 
 == Project `pom.xml`
 
-The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
+The project adds a `<plugin>` to configure `thorntail-maven-plugin` to
 create the runnable `.jar`.
 
 [source,xml]
 ----
 <plugin>
-  <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-plugin</artifactId>
-  <version>${version.wildfly-swarm}</version>
+  <groupId>io.thorntail</groupId>
+  <artifactId>thorntail-maven-plugin</artifactId>
+  <version>${version.thorntail}</version>
   <executions>
     <execution>
       <goals>
@@ -35,15 +35,15 @@ To define the needed parts of Thorntail, dependencies are added
 [source,xml]
 ----
 <dependency>
-    <groupId>org.wildfly.swarm</groupId>
+    <groupId>io.thorntail</groupId>
     <artifactId>jaxrs</artifactId>
-    <version>${version.wildfly-swarm}</version>
+    <version>${version.thorntail}</version>
 </dependency>
 
 <dependency>
-       <groupId>org.wildfly.swarm</groupId>
+       <groupId>io.thorntail</groupId>
        <artifactId>monitor</artifactId>
-       <version>${version.wildfly-swarm}</version>
+       <version>${version.thorntail}</version>
 </dependency>
 ----
 
@@ -64,8 +64,8 @@ By pointing your browser at http://localhost:8080/health and be able to retrieve
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/example-jaxrs-health-swarm.jar
-* mvn wildfly-swarm:run
+* mvn package && java -jar ./target/example-jaxrs-health-thorntail.jar
+* mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.examples.jaxrs.health.Main` class
 
 == Use

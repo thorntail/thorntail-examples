@@ -15,7 +15,7 @@ create the runnable `.jar`.
     <plugin>
       <groupid>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
-      <version>${version.wildfly-swarm}</version>
+      <version>${version.thorntail}</version>
       <executions>
         <execution>
           <goals>
@@ -30,12 +30,12 @@ To define the needed parts of Thorntail, some dependencies are added
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>management-console</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>management</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
 
 ## Project `main()`
@@ -57,7 +57,7 @@ The container is started.
 
 Then start the server
 
-    java -jar target/example-management-console-swarm.jar
+    java -jar target/example-management-console-thorntail.jar
        
 
 ## Use

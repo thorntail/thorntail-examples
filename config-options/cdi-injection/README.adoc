@@ -1,6 +1,6 @@
 = CDI Injection Configuration
 
-This examples takes a normal JAX-RS build, and wraps it into a `-swarm` runnable jar.
+This examples takes a normal JAX-RS build, and wraps it into a `-thorntail` runnable jar.
 
 The example shows how to use CDI injection to configure Thorntail.
 
@@ -16,14 +16,14 @@ The project is a normal maven project with  packaging of `war` in the pom.xml.
 <packaging>war</packaging>
 ----
 
-The project adds a `plugin` to configure `wildfly-swarm-plugin` to
+The project adds a `plugin` to configure `thorntail-plugin` to
 create the runnable `.jar`.
 
 [source,xml]
 ----
 <plugin>
-  <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-plugin</artifactId>
+  <groupId>io.thorntail</groupId>
+  <artifactId>thorntail-maven-plugin</artifactId>
   <configuration>
     <bundleDependencies>true</bundleDependencies>
   </configuration>
@@ -46,19 +46,19 @@ To define the required parts of Thorntail, some dependencies are added
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>jaxrs</artifactId>
 </dependency>
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>cdi</artifactId>
 </dependency>
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>monitor</artifactId>
 </dependency>
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>logging</artifactId>
 </dependency>
 ----
@@ -68,8 +68,8 @@ To define the required parts of Thorntail, some dependencies are added
 
 You can run it many ways:
 
-* mvn package &amp;&amp; java -jar ./target/cdi-injection-swarm.jar
-* mvn wildfly-swarm:run
+* mvn package &amp;&amp; java -jar ./target/cdi-injection-thorntail.jar
+* mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.Swarm` class
 
 == Use

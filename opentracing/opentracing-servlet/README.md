@@ -65,7 +65,7 @@ uncomment the Jaeger dependencies.
 
 You are now ready to run the example and have span data reported to Jaeger:
 
-* mvn package && java -jar ./target/example-opentracing-servlet-swarm.jar
+* mvn package && java -jar ./target/example-opentracing-servlet-thorntail.jar
 * mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.Swarm` class
 

@@ -1,17 +1,17 @@
-= WildFly-Swarm and Docker
+= Thorntail and Docker
 
 > Please raise any issues found with this example in our JIRA:
-> https://issues.jboss.org/browse/SWARM
+> https://issues.jboss.org/browse/THORN
 
 == Packaging your application
   
-Run `mvn clean package -Pdocker`. A `example-docker-jaxrs-swarm.jar` file will be built in your target folder.
+Run `mvn clean package -Pdocker`. A `example-docker-jaxrs-thorntail.jar` file will be built in your target folder.
 
 Additionally A docker image named 'example-docker-jaxrs' will be added to your local image registry.
 
-== Running Docker with a Wildfly-Swarm microservice inside
+== Running Docker with a thorntail microservice inside
 
-You run the Docker container and start the Wildfly-Swarm microservice (a simple JAX-RS application) with the following commands:
+You run the Docker container and start the thorntail microservice (a simple JAX-RS application) with the following commands:
 
 `mvn docker:start -Pdocker`
 

@@ -13,7 +13,7 @@ In order to achieve these objectives the packaging type must be:
 
      <packaging>war</packaging>
      
-Additionally you must include wildfly-swarm maven plugin in your `pom.xml`
+Additionally you must include thorntail maven plugin in your `pom.xml`
 
             <plugin>
                 <groupid>io.thorntail</groupId>

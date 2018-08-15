@@ -1,7 +1,7 @@
-Clone and install wildfly-swarm
+Clone and install thorntail
 
 ```
-$ git clone https://github.com/wildfly-swarm/wildfly-swarm.git
+$ git clone https://github.com/thorntail/thorntail.git
 $ mvn clean install -DskipTests
 ```
 
@@ -9,5 +9,5 @@ Download and extract jruby [1.7.23] and put on PATH, then
 
 ```
 $ jruby -S gem install ruby-maven
-$ rmvn clean package wildfly-swarm:run
+$ rmvn clean package thorntail:run
 ```

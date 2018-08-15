@@ -20,14 +20,14 @@ The project is a normal maven project with `war` packaging,
 <packaging>war</packaging>
 ----
 
-The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
+The project adds a `<plugin>` to configure `thorntail-plugin` to
 create the runnable `.jar`. 
 
 [source,xml]
 ----
 <plugin>
-  <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-plugin</artifactId>
+  <groupId>io.thorntail</groupId>
+  <artifactId>thorntail-maven-plugin</artifactId>
   ....
 </plugin>
 ----
@@ -42,7 +42,7 @@ needed for the example to demonstrate usage of the datasource:
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>jaxrs</artifactId>
 </dependency>
 ----
@@ -52,7 +52,7 @@ To support datasources in general, the next dependency is required:
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>datasources</artifactId>
 </dependency>
 ----
@@ -61,8 +61,8 @@ To support datasources in general, the next dependency is required:
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/example-datasource-auto-detect-swarm.jar
-* mvn wildfly-swarm:run
+* mvn package && java -jar ./target/example-datasource-auto-detect-thorntail.jar
+* mvn thorntail:run
 
 == Use
 

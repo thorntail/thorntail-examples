@@ -1,7 +1,7 @@
 # JAX-WS .war Example
 
 This example takes a normal JAX-WS build, and wraps it into
-a `-swarm` runnable jar.
+a `-thorntail` runnable jar.
 
 It is originally from [wildfly-quickstart helloworld-ws](https://github.com/wildfly/quickstart/tree/10.x/helloworld-ws).
 
@@ -24,7 +24,7 @@ create the runnable `.jar`.
 <plugin>
   <groupid>io.thorntail</groupId>
   <artifactId>thorntail-maven-plugin</artifactId>
-  <version>${version.wildfly-swarm}</version>
+  <version>${version.thorntail}</version>
   <executions>
     <execution>
       <goals>
@@ -41,7 +41,7 @@ To define the needed parts of Thorntail, a dependency is added
 <dependency>
   <groupid>io.thorntail</groupId>
   <artifactId>webservices</artifactId>
-  <version>${version.wildfly-swarm}</version>
+  <version>${version.thorntail}</version>
 </dependency>
 ```
 
@@ -50,7 +50,7 @@ project does *not* need to specify those.
 
 ## Run
 
-* mvn package && java -jar ./target/example-jaxws-swarm.jar
+* mvn package && java -jar ./target/example-jaxws-thorntail.jar
 * mvn thorntail:run
 * From your IDE, run class `org.wildfly.swarm.Swarm`
 

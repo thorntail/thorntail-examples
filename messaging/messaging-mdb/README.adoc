@@ -1,6 +1,6 @@
 = JAX-RS &amp; Messaging MDB
 
-This examples takes a normal JAX-RS and MDB build, and wraps it into a `-swarm` runnable jar.
+This examples takes a normal JAX-RS and MDB build, and wraps it into a `-thorntail` runnable jar.
 
 Additionally, it configures a JMS server, sets up some
 JMS destinations for use by the JAX-RS resource and
@@ -18,14 +18,14 @@ The project is a normal maven project with  packaging of `war` in the pom.xml.
 <packaging>war</packaging>
 ----
 
-The project adds a `plugin` to configure `wildfly-swarm-plugin` to
+The project adds a `plugin` to configure `thorntail-maven-plugin` to
 create the runnable `.jar`.
 
 [source,xml]
 ----
 <plugin>
-  <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-plugin</artifactId>
+  <groupId>io.thorntail</groupId>
+  <artifactId>thorntail-maven-plugin</artifactId>
   <executions>
     <execution>
       <id>package</id>
@@ -45,19 +45,19 @@ To define the required parts of Thorntail, some dependencies are added
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>jaxrs</artifactId>
 </dependency>
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>cdi</artifactId>
 </dependency>
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>messaging</artifactId>
 </dependency>
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>ejb</artifactId>
 </dependency>
 ----
@@ -67,8 +67,8 @@ To define the required parts of Thorntail, some dependencies are added
 
 You can run it many ways:
 
-* mvn package &amp;&amp; java -jar ./target/example-messaging-mdb-swarm.jar
-* mvn wildfly-swarm:run
+* mvn package &amp;&amp; java -jar ./target/example-messaging-mdb-thorntail.jar
+* mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.Swarm` class
 
 == Use

@@ -12,7 +12,7 @@ import javax.jws.WebService;
  * @author Yoshimasa Tanabe
  */
 @WebService(serviceName = "HelloWorldService", portName = "HelloWorld", name = "HelloWorld", endpointInterface = "org.wildfly.swarm.examples.jaxws.HelloWorldService",
-        targetNamespace = "http://wildfly-swarm.io/HelloWorld")
+        targetNamespace = "http://thorntail.io/HelloWorld")
 public class HelloWorldServiceImpl implements HelloWorldService {
 
     @Override

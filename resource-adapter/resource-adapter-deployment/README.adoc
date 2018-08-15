@@ -15,14 +15,14 @@ The project is a normal maven project with `jar` packaging, not `war`.
 <packaging>jar</packaging>
 ----
 
-The project adds a `<plugin>` to configure `wildfly-swarm-plugin` to
+The project adds a `<plugin>` to configure `thorntail-maven-plugin` to
 create the runnable `.jar`.  
 
 [source,xml]
 ----
 <plugin>
-  <groupId>org.wildfly.swarm</groupId>
-  <artifactId>wildfly-swarm-plugin</artifactId>
+  <groupId>io.thorntail</groupId>
+  <artifactId>thorntail-maven-plugin</artifactId>
   <configuration>
     <mainClass>org.wildfly.swarm.examples.rar.deployment.Main</mainClass>
   </configuration>
@@ -39,7 +39,7 @@ To support resource adapters in general, the next dependency is required:
 [source,xml]
 ----
 <dependency>
-  <groupId>org.wildfly.swarm</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>resource-adapters</artifactId>
 </dependency>
 ----
@@ -93,8 +93,8 @@ See: link:src/main/java/org/wildfly/swarm/examples/rar/deployment/FileIOBean.jav
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/example-resource-adapter-deployment-swarm.jar
-* mvn wildfly-swarm:run
+* mvn package && java -jar ./target/example-resource-adapter-deployment-thorntail.jar
+* mvn thorntail:run
 * In your IDE run the `org.wildfly.swarm.examples.rar.deployment.Main` class
 
 == Use

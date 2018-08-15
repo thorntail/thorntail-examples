@@ -1,7 +1,7 @@
 # JSF .war Example
 
 This example takes a normal JSF build, and wraps it into
-a `-swarm` runnable jar.
+a `-thorntail` runnable jar.
 
 > Please raise any issues found with this example in our JIRA:
 > https://issues.jboss.org/browse/THORN
@@ -20,7 +20,7 @@ create the runnable `.jar`.
 <plugin>
   <groupid>io.thorntail</groupId>
   <artifactId>thorntail-maven-plugin</artifactId>
-  <version>${version.wildfly-swarm}</version>
+  <version>${version.thorntail}</version>
   <executions>
     <execution>
       <goals>
@@ -37,12 +37,12 @@ To define the needed parts of Thorntail, a dependency is added
 <dependency>
   <groupid>io.thorntail</groupId>
   <artifactId>jsf</artifactId>
-  <version>${version.wildfly-swarm}</version>
+  <version>${version.thorntail}</version>
 </dependency>
 <dependency>
   <groupid>io.thorntail</groupId>
   <artifactId>cdi</artifactId>
-  <version>${version.wildfly-swarm}</version>
+  <version>${version.thorntail}</version>
 </dependency>
 ```
 
@@ -51,7 +51,7 @@ project does *not* need to specify those.
 
 ## Run
 
-* mvn package && java -jar ./target/example-jsf-war-swarm.jar
+* mvn package && java -jar ./target/example-jsf-war-thorntail.jar
 * mvn thorntail:run
 * From your IDE, run class `org.wildfly.swarm.Swarm`
 

@@ -1,6 +1,6 @@
 {
-  "realm": "wildfly-swarm-browser-client",
+  "realm": "thorntail-browser-client",
   "auth-server-url": "http://localhost:8180/auth",
   "ssl-required": "external",
-  "resource": "wildfly-swarm-browser-client-example"
+  "resource": "thorntail-browser-client-example"
 }

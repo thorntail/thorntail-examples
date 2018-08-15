@@ -24,7 +24,7 @@ public class Client implements HelloWorldService {
      * @param url The URL to the Hello World WSDL endpoint.
      */
     public Client(final URL wsdlUrl) {
-        QName serviceName = new QName("http://wildfly-swarm.io/HelloWorld", "HelloWorldService");
+        QName serviceName = new QName("http://thorntail.io/HelloWorld", "HelloWorldService");
 
         Service service = Service.create(wsdlUrl, serviceName);
         helloWorldService = service.getPort(HelloWorldService.class);

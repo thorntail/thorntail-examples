@@ -5,12 +5,12 @@ Beginning of a Gradle plugin example.
 
 ## Build
 
-`./gradlew clean wildfly-swarm-package`
+`./gradlew clean thorntail-package`
 
 
 ##Run
 
-`java -jar ./build/libs/example-gradle-swarm.jar`
+`java -jar ./build/libs/example-gradle-thorntail.jar`
 
 
 ## Configuration

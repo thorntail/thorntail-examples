@@ -1,7 +1,7 @@
 # JPA and Servlet .war Example
 
 This example takes a normal JPA and Servlet build, and wraps it into
-a `-swarm` runnable jar.
+a `-thorntail` runnable jar.
 
 > Please raise any issues found with this example in our JIRA:
 > https://issues.jboss.org/browse/THORN
@@ -18,7 +18,7 @@ create the runnable `.jar`.
     <plugin>
       <groupid>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
-      <version>${version.wildfly-swarm}</version>
+      <version>${version.thorntail}</version>
       <executions>
         <execution>
           <goals>
@@ -33,12 +33,12 @@ To define the needed parts of Thorntail, a few dependencies are added
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>jpa</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
     <dependency>
         <groupid>io.thorntail</groupId>
         <artifactId>undertow</artifactId>
-        <version>${version.wildfly-swarm}</version>
+        <version>${version.thorntail}</version>
     </dependency>
 
 The `jpa` dependency provides the JPA APIs and `undertow` provides the Servlet
@@ -48,7 +48,7 @@ APIs.
 
 You can run it many ways:
 
-* mvn package && java -jar ./target/example-jpa-war-swarm.jar
+* mvn package && java -jar ./target/example-jpa-war-thorntail.jar
 * mvn thorntail:run
 * From your IDE, run class `org.wildfly.swarm.Swarm`
 
