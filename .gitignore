@@ -15,5 +15,5 @@ log
 jaxrs/.DS_Store
 .DS_Store
 *.db
-
-
+audit.log
+phantomjsdriver.log
