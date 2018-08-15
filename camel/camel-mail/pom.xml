@@ -26,7 +26,7 @@
   <parent>
     <groupId>io.thorntail.examples</groupId>
     <artifactId>examples-camel</artifactId>
-    <version>2.1.0.Final</version>
+    <version>2.2.0.Final-SNAPSHOT</version>
   </parent>
 
   <name>Thorntail Examples: Camel Mail</name>
