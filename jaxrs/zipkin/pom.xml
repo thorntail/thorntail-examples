@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.thorntail.examples</groupId>
     <artifactId>examples-jaxrs</artifactId>
-    <version>2.2.0.Final</version>
+    <version>2.3.0.Final-SNAPSHOT</version>
   </parent>
 
   <artifactId>examples-zipkin-jaxrs</artifactId>
