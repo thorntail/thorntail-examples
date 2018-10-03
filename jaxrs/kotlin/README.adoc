@@ -38,8 +38,7 @@ To define the needed parts of Thorntail, a dependency is added
 </dependency>
 ----
 
-This dependency allows usage of ShrinkWrap APIs within the `main()` in addition
-to providing the JAX-RS APIs.
+This dependency provides the JAX-RS APIs.
 
 == Run
 

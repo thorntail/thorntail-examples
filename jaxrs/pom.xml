@@ -33,7 +33,6 @@
     <module>scala</module>
     <module>kotlin</module>
     <module>swagger</module>
-    <module>health</module>	
     <module>jaxrs-deltaspike-data</module>
     <module>zipkin</module>
   </modules>

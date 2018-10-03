@@ -1,7 +1,7 @@
 = thorntail Examples
 
 > Please raise any issues found with the examples in our JIRA:
-> https://issues.jboss.org/browse/SWARM
+> https://issues.jboss.org/browse/THORN
 
 == Thorntail
 

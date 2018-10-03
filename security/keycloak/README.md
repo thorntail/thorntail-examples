@@ -10,9 +10,9 @@ secured by Keycloak.
 
 ## Start Keycloak
 
-### Keycloak Swarm Server
+### Keycloak Thorntail Server
 
-Download the latest Swarm Keycloak standalone server jar, for example, 2018.4.1 version:
+Download the latest Thorntail Keycloak standalone server jar, for example, 2018.4.1 version:
 
 ``` sh
 wget http://repo1.maven.org/maven2/org/wildfly/swarm/servers/keycloak/2018.5.0/keycloak-2018.5.0-swarm.jar .
