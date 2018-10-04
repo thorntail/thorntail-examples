@@ -16,9 +16,6 @@ create the runnable `.jar`.
       <groupid>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
       <version>${version.thorntail}</version>
-      <configuration>
-        <mainClass>org.wildfly.swarm.examples.messaging.clustering.Main</mainClass>
-      </configuration>
       <executions>
         <execution>
           <goals>
@@ -42,15 +39,11 @@ To define the needed parts of Thorntail, some dependencies are added
     </dependency>
     <dependency>
         <groupid>io.thorntail</groupId>
-        <artifactId>msc</artifactId>
+        <artifactId>ejb</artifactId>
         <version>${version.thorntail}</version>
     </dependency>
 
-## Project `main()`
-
-This project supplies a `main()` in order to configure the messaging
-subsystem and deploy all the pieces of the application.
-
+## Running
 
 After the container is instantiated, the Messaging fraction is
 configured and installed, enabling the in-vm connector and setting

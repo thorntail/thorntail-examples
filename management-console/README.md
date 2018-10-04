@@ -38,18 +38,7 @@ To define the needed parts of Thorntail, some dependencies are added
         <version>${version.thorntail}</version>
     </dependency>
 
-## Project `main()`
-
-This project supplies a `main()` in order to configure the management
-console and deploy all the pieces of the application.
-
-After the container is instantiated, the management-fraction is 
-configured with a management user `bob` and password `tacos!` and 
-enabled on port 9090.
-
-Then as this project depends on the management-console fraction, the 
-fraction is configured and installed, enabling a new `/console` context 
-root. 
+## Running
 
 The container is started.
 

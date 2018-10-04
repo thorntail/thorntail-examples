@@ -7,7 +7,7 @@ JMS destinations for use by the JAX-RS resource and
 deploys an MDB to consume messages from the destination.
 
 > Please raise any issues found with this example in our JIRA:
-> https://issues.jboss.org/browse/SWARM[https://issues.jboss.org/browse/SWARM]
+> https://issues.jboss.org/browse/THORN[https://issues.jboss.org/browse/THORN]
 
 == Project `pom.xml`
 

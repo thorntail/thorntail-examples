@@ -1,7 +1,7 @@
 = Resource Adapter via Deployment.
 
 > Please raise any issues found with this example in our JIRA:
-> https://issues.jboss.org/browse/SWARM
+> https://issues.jboss.org/browse/THORN
 
 This example demonstrates how to deploy a resource adapter as
 a _deployment_.
@@ -59,26 +59,7 @@ within your `pom.xml`
 
 Note, we create the rar archive based on the resource adapter jar.
 
-== Project `main()`
-
-Since this project deploys RAR resources, it provides its own `main()` method  to configure the container and deploy the resources programatically. Additionally, it creates and deploys a rar archive using the jar type of the dependecy above. 
-
-[source,java]
-----
-include::src/main/java/org/wildfly/swarm/examples/rar/deployment/Main.java[lines=19..40]
-----
-
-See: link:src/main/java/org/wildfly/swarm/examples/rar/deployment/Main.java#L19[Main.java]
-
-This method constructs a new default Swarm container, which automatically
-initializes all fractions (or subsystems) that are available.  
-
-The resource adapter is created programatically and is then deployed as RARArchive.
-Please note that In order to initialize a rar deployment, Wildfly excepts an ironjacamar.xml descriptor
-as part of the deployment. This is done with the command `rarArchive.resourceAdapter(...)`
-Once this is done, the business module which uses the rar can be deployed in a second step.
-
-JNDI names are bound automatically.
+== Resource Injection
 
 The resource is injected on run-time:
 

@@ -10,12 +10,12 @@ secured by Keycloak.
 
 ## Start Keycloak
 
-### Keycloak Swarm Server
+### Keycloak Thorntail Server
 
-Download the latest Swarm Keycloak standalone server jar, for example, 2018.4.1 version:
+Download the latest Thorntail Keycloak standalone server jar, for example, 2.2.0.Final version:
 
 ``` sh
-wget http://repo1.maven.org/maven2/org/wildfly/swarm/servers/keycloak/2018.5.0/keycloak-2018.5.0-swarm.jar .
+wget http://repo2.maven.org/maven2/io.thorntail/servers/keycloak/2.2.0.Final/keycloak-2.2.0.Final-thorntail.jar .
 ```
 and start it:
 
@@ -25,7 +25,7 @@ java -Dswarm.http.port=8180 \
      -Dkeycloak.migration.action=import \
      -Dkeycloak.migration.provider=dir \
      -Dkeycloak.migration.dir=${THIS_EXAMPLE}/realm \
-     -jar keycloak-2018.5.0-swarm.jar
+     -jar keycloak-2.2.0.Final-thorntail.jar
 ```
 
 

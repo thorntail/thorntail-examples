@@ -1,16 +1,11 @@
 = JAX-RS & Swagger Example
 
-This example builds on the JAX-RS and ShrinkWrap example.
-They both have JAX-RS resource implementations and deploy
-them through a user-provided `main()` programatically without
-construction a `.war` file during the build.
-
-This example builds on that by adding the `swagger` fraction
+This example builds on the "jaxrs" example by adding the `swagger` fraction
 so that the JAX-RS API is exposed through the /swagger.json
 URL.
 
 > Please raise any issues found with this example in our JIRA:
-> https://issues.jboss.org/browse/SWARM
+> https://issues.jboss.org/browse/THORN
 
 == Project `pom.xml`
 
@@ -51,8 +46,7 @@ To define the needed parts of Thorntail, dependencies are added
 </dependency>
 ----
 
-This dependency allows usage of ShrinkWrap APIs within the `main()` in addition
-to providing the JAX-RS APIs.
+This dependency provides the JAX-RS APIs.
 
 For the swagger dependency, the `pom.xml` file needs
 
@@ -64,51 +58,6 @@ For the swagger dependency, the `pom.xml` file needs
   <version>${project.version}</version>
 </dependency>
 ----
-
-== Project `main()`
-
-Since this project deploys JAX-RS resources without a `.war` being constructed, it
-provides its own `main()` method (specified above via the `thorntail-maven-plugin`) to
-configure the container and deploy the resources programatically.
-
-[source,java]
-----
-include::src/main/java/org/wildfly/swarm/examples/jaxrs/swagger/Main.java[lines=12..29]
-----
-
-See: link:src/main/java/org/wildfly/swarm/examples/jaxrs/swagger/Main.java#L12[Main.java]
-
-This method constructs a new default Swarm container, which automatically
-initializes all fractions (or subsystems) that are available.
-
-A `SwaggerArchive` is constructed, and the JAX-RS resource class is
-added to it.
-
-The resources to be exposed by `swagger.json` are specified using
-a comma-separated list of package names. In this case, we only have
-a single package containing JAX-RS resources that we are interested
-in exposing, which is specified like so:
-
-[source,java]
-----
-archive.setResourcePackages("org.wildfly.swarm.examples.jaxrs.swagger");
-----
-
-The Swarm container is then started with the deployment.
-
-By default, if no JAX-RS `Application` is provided a default is added
-to the deployment specifying an `@ApplicationPath("/")` to bind the
-deployment to the root URL.
-
-We could modify the above `main()` method with:
-
-[source,java]
-----
-deployment.addClass(MyApp.class);
-----
-
-to provide our own JAX-RS `Application`, which would modify the path to be
-`http://localhost:8080/taco`.
 
 == Swagger Annotations
 
@@ -164,7 +113,7 @@ You can run it many ways:
 
 * mvn package && java -jar ./target/example-jaxrs-swagger-thorntail.jar
 * mvn thorntail:run
-* In your IDE run the `org.wildfly.swarm.examples.jaxrs.swagger..Main` class
+* From your IDE, run class `org.wildfly.swarm.Swarm`
 
 == Use
 
@@ -180,11 +129,11 @@ To `GET` the API specification as a `swagger.json` document
 
 Download the latest Swarm Swagger-UI standalone server jar, for example, 2018.2.0 version:
 
-wget http://repo1.maven.org/maven2/org/wildfly/swarm/servers/swagger-ui/2018.2.0/swagger-ui-2018.2.0-thorntail.jar .
+wget http://repo2.maven.org/maven2/io/thorntail/servers/swagger-ui/2.2.0.Final/swagger-ui-2.2.0.Final-thorntail.jar .
 
 and start it:
 
-java -Dswarm.http.port=8180 -jar swagger-ui-2018.2.0-thorntail.jar
+java -Dswarm.http.port=8180 -jar swagger-ui-2.2.0.Final-thorntail.jar
 
 Go to 
 
