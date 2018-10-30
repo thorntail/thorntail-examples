@@ -1,5 +1,5 @@
 buildscript {
-    version = System.getProperty('swarmVersion') ?: '2.3.0.Final-SNAPSHOT'
+    version = System.getProperty('swarmVersion') ?: '2.2.1.Final'
 
     repositories {
         mavenLocal()
@@ -31,7 +31,7 @@ subprojects {
         }
     }
 
-    version = System.getProperty('swarmVersion') ?: '2.3.0.Final-SNAPSHOT'
+    version = System.getProperty('swarmVersion') ?: '2.2.1.Final'
 
     dependencies {
         // Include the JavaEE API dependency.

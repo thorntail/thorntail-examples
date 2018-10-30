@@ -10,7 +10,7 @@
 
   <groupId>io.thorntail.examples</groupId>
   <artifactId>examples-parent</artifactId>
-  <version>2.3.0.Final-SNAPSHOT</version>
+  <version>2.2.1.Final</version>
 
   <name>Thorntail Examples: Parent</name>
   <description>Thorntail Examples: Parent</description>
