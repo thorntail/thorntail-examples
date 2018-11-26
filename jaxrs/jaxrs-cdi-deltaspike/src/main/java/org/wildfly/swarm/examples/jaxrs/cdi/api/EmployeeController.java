@@ -26,7 +26,7 @@ public class EmployeeController {
         EmployeeService employeeService = BeanProvider.getContextualReference(EmployeeService.class, false);
 
         List<Employee> results = employeeService.findAll();
-        System.err.println(results);
+        System.out.println(results);
         return results;
     }
 
