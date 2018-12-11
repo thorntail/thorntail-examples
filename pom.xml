@@ -253,7 +253,6 @@
     <module>base</module>
 
     <module>arjuna</module>
-    <module>camel</module>
     <module>config-options</module>
     <module>datasource</module>
     <module>flyway</module>
