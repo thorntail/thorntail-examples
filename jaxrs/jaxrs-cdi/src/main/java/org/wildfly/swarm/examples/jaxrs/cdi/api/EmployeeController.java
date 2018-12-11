@@ -26,7 +26,7 @@ public class EmployeeController {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Employee> findAll() {
         List<Employee> results = employeeService.findAll();
-        System.err.println(results);
+        System.out.println(results);
         return results;
     }
 

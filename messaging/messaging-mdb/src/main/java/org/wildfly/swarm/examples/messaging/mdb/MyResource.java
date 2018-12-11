@@ -16,7 +16,7 @@ import javax.ws.rs.Produces;
 @Path("/")
 public class MyResource {
 
-    public static final String MY_TOPIC = "/jms/topic/my-topic";
+    public static final String MY_TOPIC = "java:/jms/topic/my-topic";
 
     @Inject
     private JMSContext context;

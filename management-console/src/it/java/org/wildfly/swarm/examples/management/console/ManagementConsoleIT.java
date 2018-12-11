@@ -21,6 +21,6 @@ public class ManagementConsoleIT extends AbstractIntegrationTest {
         assertThatLog(log).hasLineContaining("Registered web context: '/console'");
 
         browser.navigate().to("http://127.0.0.1:8080/console");
-        Assertions.assertThat(browser.getTitle()).isEqualTo("Management Interface");
+        Assertions.assertThat(browser.getTitle()).isEqualTo("HAL Management Console");
     }
 }
