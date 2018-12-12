@@ -1,8 +1,0 @@
-project:
-    stage: default
-swarm:
-  ds:
-    name: ${datasource.name}
-datasource:
-    name: JpaExampleDS 
-    
