@@ -1,5 +1,5 @@
 buildscript {
-    version = System.getProperty('swarmVersion') ?: VERSION_THORNTAIL
+    String thorntailVersion = System.getProperty('thorntailVersion') ?: VERSION_THORNTAIL
 
     repositories {
         mavenLocal()
@@ -7,17 +7,22 @@ buildscript {
     }
 
     dependencies {
-        classpath("io.thorntail:thorntail-gradle-plugin:$version") {
-            if (version.endsWith('-SNAPSHOT')) {
-                changing = true
-            }
-        }
+        classpath "io.thorntail:thorntail-gradle-plugin:$thorntailVersion"
     }
+}
+
+String thorntailVersion = System.getProperty('thorntailVersion') ?: VERSION_THORNTAIL
+
+// Project details
+allprojects {
+    group = 'io.thorntail.examples.gradle'
+    version = '0.0.0'
 }
 
 subprojects {
     apply plugin: 'java'
     apply plugin: 'jacoco'
+    apply plugin: 'thorntail-arquillian'
 
     // Configure the repositories for all projects.
     repositories {
@@ -32,7 +37,6 @@ subprojects {
         }
     }
 
-    version = System.getProperty('swarmVersion') ?: VERSION_THORNTAIL
 
     dependencies {
         // Include the JavaEE API dependency.
@@ -40,20 +44,10 @@ subprojects {
         testCompileOnly 'javax:javaee-api:7.0'
 
         // Include the Thorntail BOM for testing the code.
-        testImplementation("io.thorntail:bom-all:$version") {
-            if (version.endsWith('-SNAPSHOT')) {
-                changing = true
-            }
-        }
+        testImplementation(enforcedPlatform("io.thorntail:bom-all:$thorntailVersion"))
 
         testImplementation "junit:junit:4.12"
-        testImplementation("io.thorntail:gradle-arquillian-adapter:$version") {
-            if (version.endsWith('-SNAPSHOT')) {
-                changing = true
-            }
-        }
-        // Make use of the tooling jar appropriate for the current Gradle version.
-        testImplementation "org.gradle:gradle-tooling-api:${gradle.gradleVersion}"
+        testImplementation("io.thorntail:gradle-arquillian-adapter:$thorntailVersion")
 
         // Include the Arquillian JaCoCo extension
         testImplementation 'org.jboss.arquillian.extension:arquillian-jacoco:1.0.0.Alpha9'
@@ -72,6 +66,7 @@ subprojects {
             String dir = project.buildDir
             arg = arg.replaceAll(project.relativePath(dir), dir)
             systemProperty 'thorntail.arquillian.jvm.args', arg
+            systemProperty 'thorntailVersion', thorntailVersion
         }
     }
 

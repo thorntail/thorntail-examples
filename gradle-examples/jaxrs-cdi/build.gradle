@@ -1,5 +1,5 @@
 buildscript {
-  version = System.getProperty('swarmVersion') ?: '2.3.0.Final-SNAPSHOT'
+  String thorntailVersion = System.getProperty('thorntailVersion') ?: VERSION_THORNTAIL
 
   repositories {
     mavenLocal()
@@ -7,12 +7,12 @@ buildscript {
   }
 
   dependencies {
-    classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
-    classpath "io.thorntail:thorntail-gradle-plugin:$version"
+    classpath "io.thorntail:thorntail-gradle-plugin:$thorntailVersion"
   }
 }
 
-apply plugin: "io.spring.dependency-management"
+String thorntailVersion = System.getProperty('thorntailVersion') ?: VERSION_THORNTAIL
+
 apply plugin: 'thorntail'
 apply plugin: 'java'
 apply plugin: 'application'
@@ -20,6 +20,7 @@ apply plugin: 'application'
 mainClassName = 'org.wildfly.swarm.examples.gradle.Main'
 
 thorntail {
+  fractions = ['io.thorntail:jaxrs', 'io.thorntail:cdi']
   properties {
     swarm.http.port = 8181
   }
@@ -33,19 +34,18 @@ repositories {
   }
 }
 
-dependencyManagement {
-  imports {
-    mavenBom "io.thorntail:bom-all:$version"
-  }
-}
-
 dependencies {
-  compile "io.thorntail:cdi"
-  compile "io.thorntail:jaxrs"
-  compile "commons-io:commons-io:2.4"
 
-  testCompile "junit:junit:4.12"
-  testCompile "io.thorntail:gradle-arquillian-adapter:$version"
+  // Include the Thorntail BOM for compilation.
+  implementation(enforcedPlatform("io.thorntail:bom-all:$thorntailVersion"))
+  implementation "io.thorntail:cdi"
+  implementation "io.thorntail:jaxrs"
+
+  implementation "commons-io:commons-io:2.4"
+
+  testImplementation "junit:junit:4.12"
+  testImplementation "org.gradle:gradle-tooling-api:${gradle.gradleVersion}"
+  testImplementation "io.thorntail:gradle-arquillian-adapter:$thorntailVersion"
 }
 
 test {
@@ -53,5 +53,6 @@ test {
   // The following property needed *only if* you have a pom.xml file along with your build.gradle script.
   // Otherwise, you do not need to set this property.
   systemProperty 'thorntail.filesystem.layout.class', 'org.wildfly.swarm.internal.GradleFileSystemLayout'
+  systemProperty 'thorntailVersion', thorntailVersion
 
 }
