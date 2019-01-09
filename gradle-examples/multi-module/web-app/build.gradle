@@ -6,7 +6,7 @@ dependencies {
     testImplementation 'commons-io:commons-io:2.4'
     testImplementation 'io.thorntail:cdi'
     testImplementation 'io.thorntail:jaxrs'
-    
+
     // Additional fractions to include.
     // providedRuntime "io.thorntail:swagger"
 }
@@ -15,7 +15,7 @@ thorntail {
     properties {
         swarm.http.port = 8181
     }
-    
+
     bundleDependencies = true
     fractions = ['io.thorntail:swagger']
 }
@@ -23,7 +23,7 @@ thorntail {
 /**
  * Run the Thorntail application with the debug option enabled.
  */
-task runApp(type: JavaExec, dependsOn: [assemble, 'wildfly-swarm-package']) {
+task runApp(type: JavaExec, dependsOn: [assemble, 'thorntail-package']) {
     jvmArgs += '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8787'
     main = '-jar'
 
