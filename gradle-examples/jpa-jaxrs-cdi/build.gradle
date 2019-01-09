@@ -14,14 +14,11 @@ buildscript {
 String thorntailVersion = System.getProperty('thorntailVersion') ?: VERSION_THORNTAIL
 
 apply plugin: 'thorntail'
-apply plugin: 'java'
-apply plugin: 'application'
-
-mainClassName = 'org.wildfly.swarm.examples.gradle.Main'
+apply plugin: 'war'
 
 thorntail {
-  fractions = ['io.thorntail:jaxrs', 'io.thorntail:cdi']
   properties {
+    swarm.http.host = 'localhost'
     swarm.http.port = 8181
   }
 }
@@ -40,11 +37,12 @@ repositories {
 dependencies {
 
   // Include the Thorntail BOM for compilation.
-  implementation(enforcedPlatform("io.thorntail:bom-all:$thorntailVersion"))
+  implementation enforcedPlatform("io.thorntail:bom-all:$thorntailVersion")
   implementation "io.thorntail:cdi"
   implementation "io.thorntail:jaxrs"
-
+  implementation "io.thorntail:jpa"
   implementation "commons-io:commons-io:2.4"
+  implementation "com.h2database:h2:1.4.187"
 
   testImplementation "junit:junit:4.12"
   testImplementation "org.gradle:gradle-tooling-api:${gradle.gradleVersion}"
@@ -52,10 +50,5 @@ dependencies {
 }
 
 test {
-
-  // The following property needed *only if* you have a pom.xml file along with your build.gradle script.
-  // Otherwise, you do not need to set this property.
-  systemProperty 'thorntail.filesystem.layout.class', 'org.wildfly.swarm.internal.GradleFileSystemLayout'
   systemProperty 'thorntailVersion', thorntailVersion
-
 }
