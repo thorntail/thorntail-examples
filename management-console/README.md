@@ -28,12 +28,12 @@ create the runnable `.jar`.
 To define the needed parts of Thorntail, some dependencies are added
 
     <dependency>
-        <groupid>io.thorntail</groupId>
+        <groupId>io.thorntail</groupId>
         <artifactId>management-console</artifactId>
         <version>${version.thorntail}</version>
     </dependency>
     <dependency>
-        <groupid>io.thorntail</groupId>
+        <groupId>io.thorntail</groupId>
         <artifactId>management</artifactId>
         <version>${version.thorntail}</version>
     </dependency>
