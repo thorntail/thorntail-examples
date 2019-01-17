@@ -13,7 +13,7 @@ The project adds a `<plugin>` to configure `thorntail-maven-plugin` to
 create the runnable `.jar`.
 
     <plugin>
-      <groupid>io.thorntail</groupId>
+      <groupId>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
       <version>${version.thorntail}</version>
       <executions>
