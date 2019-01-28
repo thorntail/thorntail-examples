@@ -17,7 +17,7 @@ The project adds a `<plugin>` to configure `thorntail-maven-plugin` to
 create the runnable `.jar`.
 
     <plugin>
-      <groupid>io.thorntail</groupId>
+      <groupId>io.thorntail</groupId>
       <artifactId>thorntail-maven-plugin</artifactId>
       <version>${version.thorntail}</version>
       <executions>
@@ -32,22 +32,22 @@ create the runnable `.jar`.
 To define the needed parts of Thorntail, the following dependencies are added
 
     <dependency>
-      <groupid>io.thorntail</groupId>
+      <groupId>io.thorntail</groupId>
       <artifactId>jaxrs-weld</artifactId>
       <version>${version.thorntail}</version>
     </dependency>
     <dependency>
-      <groupid>io.thorntail</groupId>
+      <groupId>io.thorntail</groupId>
       <artifactId>jpa</artifactId>
       <version>${version.thorntail}</version>
     </dependency>
     <dependency>
-      <groupid>io.thorntail</groupId>
+      <groupId>io.thorntail</groupId>
       <artifactId>ejb</artifactId>
       <version>${version.thorntail}</version>
     </dependency>
     <dependency>
-      <groupid>io.thorntail</groupId>
+      <groupId>io.thorntail</groupId>
       <artifactId>hibernate-validator</artifactId>
       <version>${version.thorntail}</version>
     </dependency>
