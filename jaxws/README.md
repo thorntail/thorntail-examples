@@ -22,7 +22,7 @@ create the runnable `.jar`.
 
 ``` xml
 <plugin>
-  <groupid>io.thorntail</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>thorntail-maven-plugin</artifactId>
   <version>${version.thorntail}</version>
   <executions>
@@ -39,7 +39,7 @@ To define the needed parts of Thorntail, a dependency is added
 
 ``` xml
 <dependency>
-  <groupid>io.thorntail</groupId>
+  <groupId>io.thorntail</groupId>
   <artifactId>webservices</artifactId>
   <version>${version.thorntail}</version>
 </dependency>
