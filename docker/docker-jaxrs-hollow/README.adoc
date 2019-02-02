@@ -1,0 +1,62 @@
+= Thorntail Docker image using a hollow JAR
+
+This example shows how to build a Thorntail application in form of a https://docs.thorntail.io/2.3.0.Final/#hollow-jar_thorntail[hollow JAR].
+Instead of building one single _uberjar_, a hollow JAR contains only the runtime components but not your actual application itself.
+This plays nicely together with layered container images: unless your application's dependencies change
+(e.g. because you're using one more of the Java EE APIs which means that another Thorntail fraction must be added to the hollow JAR),
+only the image layer with the thin application WAR must be re-built.
+This is very efficient in terms of build time and distributing the image.
+
+== Build the hollow JAR
+
+Run `mvn clean install -pl hollow-jar`.
+A _example-docker-jaxrs-hollow-hollow-thorntail.jar_ file will be built in the _hollow-jar/target_ folder.
+
+== Build the application WAR
+
+Run `mvn clean install -pl application`.
+A _example-docker-jaxrs-hollow-application.war_ file will be built in the _application/target_ folder.
+
+== Build the container image containing a Thorntail microservice
+
+Build the container image by running `docker build -t example-docker-jaxrs-hollow-jar`.
+You then can run the Docker container and start the Thorntail microservice (a simple JAX-RS application) with the following commands:
+
+`docker run -p 8080:8080 example-docker-jaxrs-hollow-jar`
+
+== Inspect your running Docker containers
+
+From a terminal run `docker ps` and you should see something like:
+
+    CONTAINER ID        IMAGE                                     COMMAND                  CREATED             STATUS              PORTS                    NAMES
+    a840d7990c15        example-docker-jaxrs-hollow-jar           "/bin/sh -c 'java -ja"   43 seconds ago      Up 42 seconds       0.0.0.0:8080->8080/tcp   admiring_brattain
+
+Now try to `curl` the resource running inside Docker:
+
+    curl localhost:8080/resource
+
+Result should be the following:
+
+    bar
+
+== Inspect the image history
+
+From a terminal run `docker image history example-docker-jaxrs-hollow-jar` and you should see something like:
+
+    IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+    49e3ad5e5d35        8 seconds ago       /bin/sh -c #(nop)  ENTRYPOINT ["java" "-jar"…   0B
+    626845640c85        8 seconds ago       /bin/sh -c #(nop)  EXPOSE 8080                  0B
+    fe6ebf276aaf        8 seconds ago       /bin/sh -c #(nop) ADD file:15d156433fec71f2b…   3.9kB
+    9e52594ce062        15 minutes ago      /bin/sh -c #(nop) ADD file:e2d445038c831f006…   72MB
+    ccfb0c83b2fe        7 months ago        /bin/sh -c set -x  && apk add --no-cache   o…   78.6MB
+    <missing>           7 months ago        /bin/sh -c #(nop)  ENV JAVA_ALPINE_VERSION=8…   0B
+    <missing>           7 months ago        /bin/sh -c #(nop)  ENV JAVA_VERSION=8u171       0B
+    <missing>           7 months ago        /bin/sh -c #(nop)  ENV PATH=/usr/local/sbin:…   0B
+    <missing>           7 months ago        /bin/sh -c #(nop)  ENV JAVA_HOME=/usr/lib/jv…   0B
+    <missing>           7 months ago        /bin/sh -c {   echo '#!/bin/sh';   echo 'set…   87B
+    <missing>           7 months ago        /bin/sh -c #(nop)  ENV LANG=C.UTF-8             0B
+    <missing>           7 months ago        /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B
+    <missing>           7 months ago        /bin/sh -c #(nop) ADD file:25f61d70254b9807a…   4.41MB
+
+Note how only the layers fe6ebf276aaf (containing the application WAR) and derived ones are re-built if the hollow JAR remains unchanged,
+whereas the layer 9e52594ce062 (containing the hollow JAR) didn't get re-built.
