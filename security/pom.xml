@@ -27,5 +27,6 @@
     <module>keycloak</module>
     <module>keycloak-multitenancy</module>
     <module>jose</module>
+    <module>ee-security-basic</module>
   </modules>
 </project>
