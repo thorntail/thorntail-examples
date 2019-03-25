@@ -9,15 +9,14 @@ The example shows how to use CDI injection to configure Thorntail.
 
 == Project `pom.xml`
 
-The project is a normal maven project with  packaging of `war` in the pom.xml.
+The project is a normal Maven project with packaging of `war` in the pom.xml.
 
 [source,xml]
 ----
 <packaging>war</packaging>
 ----
 
-The project adds a `plugin`-tag to configure the `thorntail-plugin` to
-create the runnable `.jar`.
+The project configures the `thorntail-maven-plugin` to create a runnable `.jar`.
 
 [source,xml]
 ----
