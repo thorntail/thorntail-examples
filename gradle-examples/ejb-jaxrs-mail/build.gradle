@@ -4,6 +4,9 @@ buildscript {
   repositories {
     mavenLocal()
     mavenCentral()
+    maven {
+      url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
   }
 
   dependencies {
@@ -29,6 +32,9 @@ run {
 repositories {
     mavenLocal()
     mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
 }
 
 dependencies {
