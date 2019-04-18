@@ -201,7 +201,7 @@
     <dependency>
       <groupId>io.thorntail</groupId>
       <artifactId>arquillian</artifactId>
-      <version>${project.version}</version>
+      <version>${version.thorntail}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -222,7 +222,7 @@
       <dependency>
         <groupId>io.thorntail</groupId>
         <artifactId>bom-all</artifactId>
-        <version>${project.version}</version>
+        <version>${version.thorntail}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
