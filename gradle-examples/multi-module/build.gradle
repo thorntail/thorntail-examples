@@ -4,6 +4,9 @@ buildscript {
     repositories {
         mavenLocal()
         mavenCentral()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
     }
 
     dependencies {
@@ -34,6 +37,9 @@ subprojects {
         maven {
             name 'Gradle Tooling'
             url 'https://repo.gradle.org/gradle/libs-releases/'
+        }
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
 

@@ -16,10 +16,10 @@ swarm:
         cluster-password: CHANGEME
         discovery-groups:
           activemq-discovery:
-            jgroups-channel: activemq-jgroups-channel
+            jgroups-cluster: activemq-cluster
         broadcast-groups:
           activemq-broadcast:
-            jgroups-channel: activemq-jgroups-broadcast
+            jgroups-cluster: activemq-cluster
             connectors:
               - http-connector
         cluster-connections:
