@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ Copyright 2015 Red Hat, Inc. and/or its affiliates.
-  ~
-  ~ Licensed under the Apache License version 2.0, available at http://www.apache.org/licenses/LICENSE-2.0
-  -->
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-
   <parent>
-    <groupId>io.thorntail.examples</groupId>
     <artifactId>examples-vaadin</artifactId>
+    <groupId>io.thorntail.examples</groupId>
     <version>2.4.1.Final-SNAPSHOT</version>
   </parent>
+  <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>example-vaadin-08</artifactId>
-
-  <name>Thorntail Examples: CDI and Vaadin 8</name>
-  <description>Thorntail Examples: CDI and Vaadin 8</description>
+  <artifactId>example-vaadin-14</artifactId>
+  <name>Thorntail Examples: CDI and Vaadin 14 (LTS)</name>
+  <description>Thorntail Examples: CDI and Vaadin 14</description>
 
   <packaging>war</packaging>
-  
+
+  <repositories>
+    <!-- Repository used by many Vaadin add-ons -->
+    <repository>
+      <id>Vaadin Directory</id>
+      <url>http://maven.vaadin.com/vaadin-addons</url>
+    </repository>
+    <!-- Repository needed for prerelease versions of Vaadin -->
+    <repository>
+      <id>Vaadin - Prereleases</id>
+      <url>https://maven.vaadin.com/vaadin-prereleases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <!-- Repository needed for prerelease versions of Vaadin -->
+    <pluginRepository>
+      <id>Vaadin - Prereleases</id>
+      <url>https://maven.vaadin.com/vaadin-prereleases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
   <build>
     <plugins>
       <plugin>
@@ -51,7 +71,7 @@
       <dependency>
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-bom</artifactId>
-        <version>8.8.2</version>
+        <version>14.0.0.rc1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -82,27 +102,14 @@
 
     <!--Vaadin related -->
     <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-server</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-client-compiled</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.vaadin</groupId>
-        <artifactId>vaadin-themes</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-cdi</artifactId>
+      <artifactId>vaadin</artifactId>
     </dependency>
 
-    <!--API -->
     <dependency>
       <groupId>javax.enterprise</groupId>
       <artifactId>cdi-api</artifactId>
-      <version>1.2</version>
+      <version>2.0</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

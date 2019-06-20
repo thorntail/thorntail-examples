@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Use this script to bump the version accross all POMs.
+# Use this script to bump the version across all POMs.
 
 PROGNAME=`basename "$0"`
 

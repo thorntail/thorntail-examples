@@ -20,6 +20,7 @@
   <modules>
     <module>vaadin08</module>
     <module>vaadin10</module>
+    <module>vaadin14</module>
   </modules>
 
 </project>
