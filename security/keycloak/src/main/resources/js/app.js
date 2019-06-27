@@ -25,7 +25,6 @@ var App = React.createClass({
 
 var Auth = React.createClass({
   render: function() {
-    console.log( "render", this.props.keycloak );
     if ( this.props.keycloak.authenticated ) {
       return (
         <div><Logout keycloak={this.props.keycloak}/></div>
@@ -58,7 +57,7 @@ var Secured = React.createClass({
   render: function() {
     return (
       <div id="securedService" onClick={this.handleClick}>
-        Access Secured Service
+        <button type="button">Access Secured Service</button>
       </div>
     )
   }
@@ -73,7 +72,7 @@ var Login = React.createClass({
   render: function() {
     return (
       <div id="login" onClick={this.handleClick}>
-        Login
+        <button type="button">Login</button>
       </div>
     )
   }
@@ -87,7 +86,7 @@ var Logout = React.createClass({
   render: function() {
     return (
       <div id="logout" onClick={this.handleClick}>
-        Logout
+        <button type="button">Logout</button>
       </div>
     )
   }
