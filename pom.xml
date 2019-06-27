@@ -293,7 +293,7 @@
     <profile>
       <id>uberjar</id>
       <properties>
-        <wildfly-swarm.useUberJar>true</wildfly-swarm.useUberJar>
+        <thorntail.useUberJar>true</thorntail.useUberJar>
       </properties>
     </profile>
     <profile>
