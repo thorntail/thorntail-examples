@@ -52,6 +52,10 @@
       <artifactId>opentracing</artifactId>
     </dependency>
     <dependency>
+      <groupId>io.thorntail</groupId>
+      <artifactId>jaeger</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.jboss.spec.javax.servlet</groupId>
       <artifactId>jboss-servlet-api_3.1_spec</artifactId>
       <version>1.0.0.Final</version>
@@ -60,18 +64,6 @@
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
       <version>2.7</version>
-    </dependency>
-
-    <!-- concrete OpenTracing tracer implementation -->
-    <dependency>
-      <groupId>com.uber.jaeger</groupId>
-      <artifactId>jaeger-core</artifactId>
-      <version>0.20.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.uber.jaeger</groupId>
-      <artifactId>jaeger-tracerresolver</artifactId>
-      <version>0.20.0</version>
     </dependency>
   </dependencies>
 
