@@ -34,12 +34,7 @@ public class ArqWarDeploymentTest {
         archive.addAsResource(EmptyAsset.INSTANCE, "META-INF/beans.xml");
         archive.addAsResource("META-INF/load.sql", "META-INF/load.sql");
         archive.addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml");
-
-        // Include the test case related dependencies (non-fractions) explicitly.
-        // Do not use the addAllDependencies() as that will pull in dependencies that won't be satisfied in a test case.
-        // If you ended up on https://issues.jboss.org/browse/THORN-1072 via a google search, then make sure that you remove
-        // the addAllDependencies() invocation.
-        archive.addDependency("commons-io:commons-io:2.4");
+        archive.addAllDependencies();
         return archive;
     }
 

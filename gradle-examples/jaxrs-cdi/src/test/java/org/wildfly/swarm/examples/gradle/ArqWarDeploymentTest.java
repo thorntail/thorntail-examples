@@ -37,12 +37,7 @@ public class ArqWarDeploymentTest {
         archive.addClass(HelloRest.class);
         archive.addClass(MyApplication.class);
         archive.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
-
-        // Include the test case related dependencies (non-fractions) explicitly.
-        // Do not use the addAllDependencies() as that will pull in dependencies that won't be satisfied in a test case.
-        // If you ended up on https://issues.jboss.org/browse/THORN-1072 via a google search, then make sure that you remove
-        // the addAllDependencies() invocation.
-        archive.addDependency("commons-io:commons-io:2.4");
+        archive.addAllDependencies();
         return archive;
     }
 
