@@ -1,5 +1,7 @@
-package org.wildfly.swarm.examples.gradle;
+package io.thorntail.example.gradle.composite.test;
 
+import io.thorntail.examples.gradle.composite.HelloRest;
+import io.thorntail.examples.gradle.composite.MyApplication;
 import org.apache.commons.io.IOUtils;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.container.test.api.RunAsClient;
@@ -14,9 +16,9 @@ import org.wildfly.swarm.undertow.WARArchive;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example test showcasing the use of Arquillian within a Gradle project. This test case constructs a custom web archive.
@@ -32,8 +34,7 @@ public class ArqWarDeploymentTest {
      */
     @Deployment
     public static Archive createDeployment() throws Exception {
-        WARArchive archive = ShrinkWrap.create(WARArchive.class, "SampleTest.war");
-        archive.addClass(Greeter.class);
+        WARArchive archive = ShrinkWrap.create(WARArchive.class);
         archive.addClass(HelloRest.class);
         archive.addClass(MyApplication.class);
         archive.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
@@ -47,9 +48,9 @@ public class ArqWarDeploymentTest {
     @Test
     @RunAsClient
     public void testAPIInvocation() throws IOException {
-        URL target = new URL(url, "api");
-        String content = IOUtils.toString(target, Charset.forName("UTF-8").toString());
-        assertTrue("Did not receive the appropriate content.", content.contains("hello: Thorntail + gradle + java"));
+        URL endPoint = new URL(url.getProtocol(), url.getHost(), url.getPort(), "/api");
+        String content = IOUtils.toString(endPoint, StandardCharsets.UTF_8.toString());
+        assertEquals("Did not receive the appropriate content.", "hello: Thorntail + gradle + java", content);
     }
 
 }

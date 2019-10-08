@@ -2,13 +2,10 @@ apply plugin: 'thorntail'
 apply plugin: 'war'
 
 dependencies {
-    compile project(':library-module')
+    implementation project(':library-module')
     testImplementation 'commons-io:commons-io:2.4'
     testImplementation 'io.thorntail:cdi'
     testImplementation 'io.thorntail:jaxrs'
-
-    // Additional fractions to include.
-    // providedRuntime "io.thorntail:swagger"
 }
 
 thorntail {

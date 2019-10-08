@@ -8,7 +8,7 @@ A sample project showcasing a trivial multi-module project.
 `./gradlew clean thorntail-package`
 
 
-##Run
+## Run
 
 `java -jar ./build/libs/example-gradle-thorntail.jar`
 

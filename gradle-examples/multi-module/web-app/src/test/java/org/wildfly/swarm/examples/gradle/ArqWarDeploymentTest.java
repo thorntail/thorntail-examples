@@ -2,7 +2,7 @@ package org.wildfly.swarm.examples.gradle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -33,16 +33,10 @@ public class ArqWarDeploymentTest {
     @Deployment
     public static Archive createDeployment() throws Exception {
         WARArchive archive = ShrinkWrap.create(WARArchive.class, "SampleTest.war");
-        archive.addClass(Greeter.class);
         archive.addClass(HelloRest.class);
         archive.addClass(MyApplication.class);
         archive.addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
-
-        // Include the test case related dependencies (non-fractions) explicitly.
-        // Do not use the addAllDependencies() as that will pull in dependencies that won't be satisfied in a test case.
-        // If you ended up on https://issues.jboss.org/browse/THORN-1072 via a google search, then make sure that you remove
-        // the addAllDependencies() invocation.
-        archive.addDependency("commons-io:commons-io:2.4");
+        archive.addAllDependencies();
         return archive;
     }
 
@@ -53,7 +47,7 @@ public class ArqWarDeploymentTest {
     @RunAsClient
     public void testAPIInvocation() throws IOException {
         URL endPoint = new URL(url.getProtocol(), url.getHost(), url.getPort(), "/api");
-        String content = IOUtils.toString(endPoint, Charset.forName("UTF-8").toString());
+        String content = IOUtils.toString(endPoint, StandardCharsets.UTF_8.toString());
         assertTrue("Did not receive the appropriate content.", content.contains("hello: Thorntail + gradle + java"));
     }
 

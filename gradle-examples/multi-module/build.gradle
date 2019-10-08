@@ -16,6 +16,36 @@ buildscript {
 
 String thorntailVersion = System.getProperty('thorntailVersion') ?: VERSION_THORNTAIL
 
+// We are going to publish a "BOM" style artifact from this module.
+apply plugin: 'java-platform'
+
+// ----------------------------------------------------
+//
+// Define the constraints exported by this platform.
+//
+// ----------------------------------------------------
+
+javaPlatform {
+    allowDependencies()
+}
+
+dependencies {
+
+    constraints {
+
+        // The recommended version of Thorntail.
+        api platform("io.thorntail:bom-all:$VERSION_THORNTAIL")
+
+        // Include the bootstrap & arquillian jar so that the test cases can work properly
+        api "io.thorntail:bootstrap:$VERSION_THORNTAIL"
+        api "io.thorntail:gradle-arquillian-adapter:$VERSION_THORNTAIL"
+
+        // Export the library module.
+        api project(':library-module')
+    }
+}
+
+
 // Project details
 allprojects {
     group = 'io.thorntail.examples.gradle'
@@ -46,8 +76,8 @@ subprojects {
 
     dependencies {
         // Include the JavaEE API dependency.
-        compileOnly 'javax:javaee-api:7.0'
-        testCompileOnly 'javax:javaee-api:7.0'
+        compileOnly 'javax:javaee-api:8.0'
+        testCompileOnly 'javax:javaee-api:8.0'
 
         // Include the Thorntail BOM for testing the code.
         testImplementation(enforcedPlatform("io.thorntail:bom-all:$thorntailVersion"))
@@ -62,6 +92,10 @@ subprojects {
 
     // Configure the properties required for enabling the JaCoCo agent withing Arquillian tests
     test {
+
+        // If you do not pull in any dependencies dynamically as part of archive creation, then it is recommended that
+        // you set the following property as it can speed up your test execution.
+        // systemProperty 'swarm.resolver.offline', true
 
         doFirst {
             // Gradle starts the test task with the JaCoCo agent configured.
@@ -78,7 +112,7 @@ subprojects {
 
     // Optional configuration
     // ----------------------
-    // The following property needed *only if* you have a pom.xml file along with your build.gradle script.
+    // The following property is needed *only if* you have a pom.xml file along with your build.gradle script.
     // Otherwise, you do not need to set this property.
     afterEvaluate { Project project ->
         if (project.pluginManager.hasPlugin('java')) {
