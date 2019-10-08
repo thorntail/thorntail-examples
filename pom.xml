@@ -65,22 +65,6 @@
         <enabled>true</enabled>
       </snapshots>
     </pluginRepository>
-
-    <!--
-        needed until the latest version of gradle-maven-plugin is released to central:
-        https://github.com/LendingClub/gradle-maven-plugin/issues/25
-    -->
-    <pluginRepository>
-      <id>spring</id>
-      <name>Spring releases</name>
-      <url>https://repo.spring.io/libs-release-remote/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
   </pluginRepositories>
 
   <build>
@@ -280,9 +264,9 @@
     <module>ribbon</module>
     <module>ribbon-consul</module>
     <module>vaadin</module>
+    <module>gradle-examples</module>
     <!--
     <module>kitchensink-html5-mobile</module>
-    <module>gradle-examples/jaxrs-cdi</module>
     -->
   </modules>
 
