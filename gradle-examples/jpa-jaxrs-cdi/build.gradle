@@ -55,5 +55,7 @@ dependencies {
 }
 
 test {
-  systemProperty 'thorntailVersion', thorntailVersion
+  testLogging {
+    showStandardStreams = true
+  }
 }

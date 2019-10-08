@@ -77,3 +77,9 @@ task runApp(type: JavaExec, dependsOn: [assemble, 'thorntail-package']) {
         args file.absolutePath
     }
 }
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}

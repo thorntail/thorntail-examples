@@ -57,10 +57,7 @@ dependencies {
 }
 
 test {
-
-  // The following property needed *only if* you have a pom.xml file along with your build.gradle script.
-  // Otherwise, you do not need to set this property.
-  systemProperty 'thorntail.filesystem.layout.class', 'org.wildfly.swarm.internal.GradleFileSystemLayout'
-  systemProperty 'thorntailVersion', thorntailVersion
-
+  testLogging {
+    showStandardStreams = true
+  }
 }
