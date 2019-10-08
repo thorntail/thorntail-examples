@@ -1,0 +1,7 @@
+rootProject.name = 'thorntail-composite-app'
+
+// Include the dependent platform projects if they are around.
+File platformPrj = new File(rootDir.parentFile, 'multi-module')
+if(platformPrj.exists()) {
+    includeBuild '../multi-module'
+}

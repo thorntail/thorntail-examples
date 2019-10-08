@@ -32,8 +32,6 @@ javaPlatform {
 dependencies {
 
     constraints {
-        // Set the JEE version for all projects
-        api 'javax:javaee-api:8.0'
 
         // The recommended version of Thorntail.
         api platform("io.thorntail:bom-all:$VERSION_THORNTAIL")
