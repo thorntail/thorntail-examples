@@ -1,0 +1,37 @@
+// Test project for executing the builds on all sub projects. The test cases run each of the individual builds using the Gradle TestKit.
+
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
+}
+
+dependencies {
+    testImplementation gradleTestKit()
+    testImplementation 'junit:junit:4.12'
+}
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src/funcTest/java']
+        }
+        resources {
+            srcDirs = ['src/funcTest/resources']
+        }
+    }
+}
+
+test {
+    // The following property needed *only if* you have a pom.xml file along with your build.gradle script.
+    // Otherwise, you do not need to set this property.
+    systemProperty 'thorntail.filesystem.layout.class', 'org.wildfly.swarm.internal.GradleFileSystemLayout'
+    systemProperty "VERSION_THORNTAIL", System.getProperty("thorntailVersion", VERSION_THORNTAIL)
+    testLogging {
+        showStandardStreams = true
+    }
+}

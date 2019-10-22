@@ -93,6 +93,10 @@ subprojects {
     // Configure the properties required for enabling the JaCoCo agent withing Arquillian tests
     test {
 
+        testLogging {
+            showStandardStreams = true
+        }
+
         // If you do not pull in any dependencies dynamically as part of archive creation, then it is recommended that
         // you set the following property as it can speed up your test execution.
         // systemProperty 'swarm.resolver.offline', true

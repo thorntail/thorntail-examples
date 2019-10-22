@@ -18,6 +18,12 @@ The following are examples of multi-module Gradle projects that showcase buildin
 > Maven BOMs, i.e., 
 > [IMPROVED_POM_SUPPORT](https://docs.gradle.org/current/userguide/managing_transitive_dependencies.html#sec:bom_import)
 
+## Composite builds
+The [composite-build](composite-build) project showcases Gradle [composite-build capability](https://docs.gradle.org/current/userguide/composite_builds.html)
+which is really useful when you are making changes across multiple modules that reside in different repositories. For the
+purpose of this example, the `composite-build` project expresses a dependency on the `library-module` generated from the
+`multi-module` project.
+
 ## Generating Code Coverage for Arquillian Tests
 Generating code coverage for Arquillian based tests can be tricky. The below instructions (also implemented in the
 "multi-module" example) will help you setup JaCoCo for your Arquillian tests.
@@ -64,6 +70,20 @@ Generating code coverage for Arquillian based tests can be tricky. The below ins
 ```
 
 ## Developer Notes
+
+### Running Integration Tests
+
+The Gradle project defined here allows you to run basic integration tests across the various example projects listed.
+When making changes to the Gradle plugin in Thorntail core, it is advisable to execute this project to verify that you
+aren't breaking anything.
+
+```
+$> ./gradlew clean test -DthorntailVersion=<THORNTAIL_VERSION>
+
+e.g.,
+
+$> ./gradlew clean test -DthorntailVersion=2.5.1.Final-SNAPSHOT
+```
 
 ### Updating the Gradle version.
 
