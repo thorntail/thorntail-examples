@@ -19,7 +19,7 @@
     <!-- Repository used by many Vaadin add-ons -->
     <repository>
       <id>Vaadin Directory</id>
-      <url>http://maven.vaadin.com/vaadin-addons</url>
+      <url>https://maven.vaadin.com/vaadin-addons</url>
     </repository>
     <!-- Repository needed for prerelease versions of Vaadin -->
     <repository>
