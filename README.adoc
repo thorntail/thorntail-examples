@@ -5,7 +5,7 @@
 
 == Thorntail
 
-This repository contains examples for the http://thorntail.io[Thorntail] project.
+This repository contains examples for the https://thorntail.io[Thorntail] project.
 
 It is currently listed as *alpha* release software, subject to massive, possibly-breaking,
 changes as we determine exactly how it should all hang together.

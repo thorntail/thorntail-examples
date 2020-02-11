@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'jar-dependencies','0.1.15'
 gem 'rack','1.6.4'

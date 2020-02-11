@@ -9,7 +9,7 @@ This example shows how the application and health endpoints requiring different 
 Download the latest Thorntail Keycloak standalone server jar, for example, 2.2.0.Final version:
 
 ``` sh
-wget http://repo2.maven.org/maven2/io.thorntail/servers/keycloak/2.2.0.Final/keycloak-2.2.0.Final-thorntail.jar .
+wget https://repo1.maven.org/maven2/io.thorntail/servers/keycloak/2.2.0.Final/keycloak-2.2.0.Final-thorntail.jar .
 ```
 and start it:
 
