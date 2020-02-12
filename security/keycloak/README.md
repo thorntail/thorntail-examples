@@ -18,7 +18,7 @@ Select one of them and proceed according to the instructions.
 Download the latest Thorntail Keycloak standalone server JAR, for example, 2.4.0.Final version:
 
 ```sh
-wget http://repo1.maven.org/maven2/io/thorntail/servers/keycloak/2.4.0.Final/keycloak-2.4.0.Final-thorntail.jar
+wget https://repo1.maven.org/maven2/io/thorntail/servers/keycloak/2.4.0.Final/keycloak-2.4.0.Final-thorntail.jar
 ```
 
 and start it:
